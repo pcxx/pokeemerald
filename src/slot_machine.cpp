@@ -154,7 +154,7 @@ enum {
 
 #define DIG_SPRITE_DUMMY {255, 0, 0}
 
-// Sprite template IDs for the digital display in the right panel
+// Sprite template_ IDs for the digital display in the right panel
 enum {
     DIG_SPRITE_REEL,
     DIG_SPRITE_TIME,

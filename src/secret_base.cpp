@@ -989,12 +989,12 @@ static void HandleRegistryMenuInput(u8 taskId)
 
 static void ShowRegistryMenuActions(u8 taskId)
 {
-    struct WindowTemplate template;
+    struct WindowTemplate template_;
     s16 *data = gTasks[taskId].data;
     RemoveScrollIndicatorArrowPair(data[8]);
-    template = sRegistryWindowTemplates[1];
-    template.width = GetMaxWidthInMenuTable(sRegistryMenuActions, 2);
-    data[7] = AddWindow(&template);
+    template_ = sRegistryWindowTemplates[1];
+    template_.width = GetMaxWidthInMenuTable(sRegistryMenuActions, 2);
+    data[7] = AddWindow(&template_);
     SetStandardWindowBorderStyle(data[7], 0);
     PrintMenuTable(data[7], 2, sRegistryMenuActions);
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(data[7], 2, 0);

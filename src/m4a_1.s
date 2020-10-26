@@ -795,8 +795,8 @@ ldrb_r3_r2:
 	ldrb r3, [r2]
 
 @ This attempts to protect against reading anything from the BIOS ROM
-@ besides the jump table template.
-@ It assumes that the jump table template is located at the end of the ROM.
+@ besides the jump table template_.
+@ It assumes that the jump table template_ is located at the end of the ROM.
 	.thumb_func
 chk_adr_r2:
 	push {r0}

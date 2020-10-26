@@ -228,9 +228,9 @@ u8 sub_81D1C84(u8 a0)
     {
         if (a0 == 2)
         {
-            struct WindowTemplate template = sUnknown_086253E8[2];
-            template.width = GetMaxWidthInMenuTable(&gMailboxMailOptions[0], 4);
-            sUnknown_0203CF48[2] = AddWindow(&template);
+            struct WindowTemplate template_ = sUnknown_086253E8[2];
+            template_.width = GetMaxWidthInMenuTable(&gMailboxMailOptions[0], 4);
+            sUnknown_0203CF48[2] = AddWindow(&template_);
         }
         else
         {
@@ -1156,7 +1156,7 @@ static const union AnimCmd *const sAnims_ConditionSelectionIcon[] =
 };
 
 // Just loads the generic data, up to the caller to load the actual sheet/pal for the specific mon
-void LoadConditionMonPicTemplate(struct SpriteSheet *sheet, struct SpriteTemplate *template, struct SpritePalette *pal)
+void LoadConditionMonPicTemplate(struct SpriteSheet *sheet, struct SpriteTemplate *template_, struct SpritePalette *pal)
 {
     struct SpriteSheet dataSheet = {NULL, 0x800, TAG_CONDITION_MON};
 
@@ -1174,11 +1174,11 @@ void LoadConditionMonPicTemplate(struct SpriteSheet *sheet, struct SpriteTemplat
     struct SpritePalette dataPal = {NULL, TAG_CONDITION_MON};
 
     *sheet = dataSheet;
-    *template = dataTemplate;
+    *template_ = dataTemplate;
     *pal = dataPal;
 }
 
-void LoadConditionSelectionIcons(struct SpriteSheet *sheets, struct SpriteTemplate * template, struct SpritePalette *pals)
+void LoadConditionSelectionIcons(struct SpriteSheet *sheets, struct SpriteTemplate * template_, struct SpritePalette *pals)
 {
     u8 i;
 
@@ -1212,7 +1212,7 @@ void LoadConditionSelectionIcons(struct SpriteSheet *sheets, struct SpriteTempla
     for (i = 0; i < ARRAY_COUNT(dataSheets); i++)
         *(sheets++) = dataSheets[i];
 
-    *template = dataTemplate;
+    *template_ = dataTemplate;
 
     for (i = 0; i < ARRAY_COUNT(dataPals); i++)
         *(pals++) = dataPals[i];

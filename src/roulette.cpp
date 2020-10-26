@@ -3498,10 +3498,10 @@ static void LoadOrFreeMiscSpritePalettesAndSheets(bool8 free)
     }
 }
 
-static u8 CreateWheelIconSprite(const struct SpriteTemplate *template, u8 r1, u16 *angle)
+static u8 CreateWheelIconSprite(const struct SpriteTemplate *template_, u8 r1, u16 *angle)
 {
     u16 temp;
-    u8 spriteId = CreateSprite(template, 116, 80, template->oam->y);
+    u8 spriteId = CreateSprite(template_, 116, 80, template_->oam->y);
     gSprites[spriteId].data[0] = *angle;
     gSprites[spriteId].data[1] = r1;
     gSprites[spriteId].coordOffsetEnabled = TRUE;

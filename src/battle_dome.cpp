@@ -972,7 +972,7 @@ static const union AnimCmd * const sSpriteAnimTable_TourneyTreePokeball[] =
     sSpriteAnim_TourneyTreePokeballSelected,
 };
 
-// Sprite template for the pokeballs on the tourney tree that act as buttons to view a trainer/match info card
+// Sprite template_ for the pokeballs on the tourney tree that act as buttons to view a trainer/match info card
 static const struct SpriteTemplate sTourneyTreePokeballSpriteTemplate =
 {
     .tileTag = 0x0000,

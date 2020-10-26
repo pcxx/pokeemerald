@@ -1530,19 +1530,19 @@ void sub_8021D34(struct BerryCrushGame *r8)
 bool32 sub_8022070(struct BerryCrushGame *r4, struct BerryCrushGame_138 *r6)
 {
     u8 r5;
-    struct WindowTemplate template;
+    struct WindowTemplate template_;
 
     switch (r6->unk80)
     {
     case 0:
         r5 = r4->unk9 - 2;
         sub_8022554(r6);
-        memcpy(&template, &gUnknown_082F3324[r4->unk12 - 11], sizeof(struct WindowTemplate));
+        memcpy(&template_, &gUnknown_082F3324[r4->unk12 - 11], sizeof(struct WindowTemplate));
         if (r4->unk12 == 13)
-            template.height = gUnknown_082F3344[1][r5];
+            template_.height = gUnknown_082F3344[1][r5];
         else
-            template.height = gUnknown_082F3344[0][r5];
-        r6->unk82 = AddWindow(&template);
+            template_.height = gUnknown_082F3344[0][r5];
+        r6->unk82 = AddWindow(&template_);
         break;
     case 1:
         PutWindowTilemap(r6->unk82);

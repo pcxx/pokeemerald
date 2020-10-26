@@ -108,7 +108,7 @@ bool16 InitWindows(const struct WindowTemplate *templates)
     return TRUE;
 }
 
-u16 AddWindow(const struct WindowTemplate *template)
+u16 AddWindow(const struct WindowTemplate *template_)
 {
     u16 win;
     u8 bgLayer;
@@ -126,12 +126,12 @@ u16 AddWindow(const struct WindowTemplate *template)
     if (win == WINDOWS_MAX)
         return 0xFF;
 
-    bgLayer = template->bg;
+    bgLayer = template_->bg;
     allocatedBaseBlock = 0;
 
     if (gUnneededFireRedVariable == 1)
     {
-        allocatedBaseBlock = DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, 0, template->width * template->height, 0);
+        allocatedBaseBlock = DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, 0, template_->width * template_->height, 0);
 
         if (allocatedBaseBlock == -1)
             return 0xFF;
@@ -156,7 +156,7 @@ u16 AddWindow(const struct WindowTemplate *template)
         }
     }
 
-    allocatedTilemapBuffer = AllocZeroed((u16)(0x20 * (template->width * template->height)));
+    allocatedTilemapBuffer = AllocZeroed((u16)(0x20 * (template_->width * template_->height)));
 
     if (allocatedTilemapBuffer == NULL)
     {
@@ -169,7 +169,7 @@ u16 AddWindow(const struct WindowTemplate *template)
     }
 
     gWindows[win].tileData = allocatedTilemapBuffer;
-    gWindows[win].window = *template;
+    gWindows[win].window = *template_;
 
     if (gUnneededFireRedVariable == 1)
     {
@@ -180,7 +180,7 @@ u16 AddWindow(const struct WindowTemplate *template)
     return win;
 }
 
-int AddWindowWithoutTileMap(const struct WindowTemplate *template)
+int AddWindowWithoutTileMap(const struct WindowTemplate *template_)
 {
     u16 win;
     u8 bgLayer;
@@ -195,18 +195,18 @@ int AddWindowWithoutTileMap(const struct WindowTemplate *template)
     if (win == WINDOWS_MAX)
         return 0xFF;
 
-    bgLayer = template->bg;
+    bgLayer = template_->bg;
     allocatedBaseBlock = 0;
 
     if (gUnneededFireRedVariable == 1)
     {
-        allocatedBaseBlock = DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, 0, template->width * template->height, 0);
+        allocatedBaseBlock = DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, 0, template_->width * template_->height, 0);
 
         if (allocatedBaseBlock == -1)
             return 0xFF;
     }
 
-    gWindows[win].window = *template;
+    gWindows[win].window = *template_;
 
     if (gUnneededFireRedVariable == 1)
     {
@@ -601,7 +601,7 @@ static void nullsub_9(void)
 
 }
 
-u16 AddWindow8Bit(const struct WindowTemplate *template)
+u16 AddWindow8Bit(const struct WindowTemplate *template_)
 {
     u16 windowId;
     u8* memAddress;
@@ -614,7 +614,7 @@ u16 AddWindow8Bit(const struct WindowTemplate *template)
     }
     if (windowId == WINDOWS_MAX)
         return 0xFF;
-    bgLayer = template->bg;
+    bgLayer = template_->bg;
     if (gUnknown_03002F70[bgLayer] == 0)
     {
         u16 attribute = GetBgAttribute(bgLayer, BG_ATTR_METRIC);
@@ -630,7 +630,7 @@ u16 AddWindow8Bit(const struct WindowTemplate *template)
             SetBgTilemapBuffer(bgLayer, memAddress);
         }
     }
-    memAddress = Alloc((u16)(0x40 * (template->width * template->height)));
+    memAddress = Alloc((u16)(0x40 * (template_->width * template_->height)));
     if (memAddress == NULL)
     {
         if (GetNumActiveWindowsOnBg8Bit(bgLayer) == 0 && gUnknown_03002F70[bgLayer] != nullsub_9)
@@ -641,7 +641,7 @@ u16 AddWindow8Bit(const struct WindowTemplate *template)
         return 0xFF;
     }
     gWindows[windowId].tileData = memAddress;
-    gWindows[windowId].window = *template;
+    gWindows[windowId].window = *template_;
     return windowId;
 }
 

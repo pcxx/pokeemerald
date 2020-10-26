@@ -2002,29 +2002,29 @@ static void sub_80C7958(u8 curBox)
 {
     u16 i;
     u8 spriteId;
-    struct SpriteTemplate template;
+    struct SpriteTemplate template_;
     struct OamData oamData = {};
     oamData.size = SPRITE_SIZE(64x64);
     oamData.paletteNum = 1;
-    template = (struct SpriteTemplate){
+    template_ = (struct SpriteTemplate){
         0, 0, &oamData, gDummySpriteAnimTable, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy
     };
 
     gUnknown_02039D04->curBox = curBox;
-    template.tileTag = gUnknown_02039D04->unk_0240;
-    template.paletteTag = gUnknown_02039D04->unk_0242;
+    template_.tileTag = gUnknown_02039D04->unk_0240;
+    template_.paletteTag = gUnknown_02039D04->unk_0242;
 
-    spriteId = CreateSprite(&template, 160, 96, 0);
+    spriteId = CreateSprite(&template_, 160, 96, 0);
     gUnknown_02039D04->unk_0000 = gSprites + spriteId;
 
     oamData.shape = SPRITE_SHAPE(8x32);
     oamData.size = SPRITE_SIZE(8x32);
-    template.tileTag = gUnknown_02039D04->unk_0240 + 1;
-    template.anims = sSpriteAnimTable_8571710;
+    template_.tileTag = gUnknown_02039D04->unk_0240 + 1;
+    template_.anims = sSpriteAnimTable_8571710;
     for (i = 0; i < 4; i++)
     {
         u16 r5;
-        spriteId = CreateSprite(&template, 124, 80, gUnknown_02039D04->unk_0246);
+        spriteId = CreateSprite(&template_, 124, 80, gUnknown_02039D04->unk_0246);
         gUnknown_02039D04->unk_0004[i] = gSprites + spriteId;
         r5 = 0;
         if (i & 2)
@@ -4051,7 +4051,7 @@ static void LoadCursorMonSprite(void)
     u8 spriteId;
     struct SpriteSheet sheet = {sPSSData->field_22C4, 0x800, TAG_TILE_2};
     struct SpritePalette palette = {sPSSData->field_2244, TAG_PAL_DAC6};
-    struct SpriteTemplate template = sSpriteTemplate_CursorMon;
+    struct SpriteTemplate template_ = sSpriteTemplate_CursorMon;
 
     for (i = 0; i < 0x800; i++)
         sPSSData->field_22C4[i] = 0;
@@ -4070,7 +4070,7 @@ static void LoadCursorMonSprite(void)
         if (palSlot == 0xFF)
             break;
 
-        spriteId = CreateSprite(&template, 40, 48, 0);
+        spriteId = CreateSprite(&template_, 40, 48, 0);
         if (spriteId == MAX_SPRITES)
             break;
 
@@ -5538,7 +5538,7 @@ static void sub_80CCCFC(u8 boxId, s8 direction)
     s16 x, x2;
     u16 i;
     struct SpriteSheet spriteSheet = {sPSSData->field_2F8, 0x200, TAG_TILE_3};
-    struct SpriteTemplate template = gSpriteTemplate_857B0A8;
+    struct SpriteTemplate template_ = gSpriteTemplate_857B0A8;
 
     sPSSData->field_6F8 = (sPSSData->field_6F8 == 0);
     if (sPSSData->field_6F8 == 0)
@@ -5550,8 +5550,8 @@ static void sub_80CCCFC(u8 boxId, s8 direction)
     {
         spriteSheet.tag = TAG_TILE_4;
         r8 = sPSSData->field_71C;
-        template.tileTag = TAG_TILE_4;
-        template.paletteTag = TAG_PAL_DAC9;
+        template_.tileTag = TAG_TILE_4;
+        template_.paletteTag = TAG_PAL_DAC9;
     }
 
     StringCopyPadded(sPSSData->field_21B8, GetBoxNamePtr(boxId), 0, 8);
@@ -5564,7 +5564,7 @@ static void sub_80CCCFC(u8 boxId, s8 direction)
 
     for (i = 0; i < 2; i++)
     {
-        u8 spriteId = CreateSprite(&template, i * 32 + x2, 28, 24);
+        u8 spriteId = CreateSprite(&template_, i * 32 + x2, 28, 24);
 
         sPSSData->field_728[i] = &gSprites[spriteId];
         sPSSData->field_728[i]->data[0] = (-direction) * 6;

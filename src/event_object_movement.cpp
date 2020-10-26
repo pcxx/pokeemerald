@@ -1204,24 +1204,24 @@ static u8 GetObjectEventIdByLocalId(u8 localId)
     return OBJECT_EVENTS_COUNT;
 }
 
-static u8 InitObjectEventStateFromTemplate(struct ObjectEventTemplate *template, u8 mapNum, u8 mapGroup)
+static u8 InitObjectEventStateFromTemplate(struct ObjectEventTemplate *template_, u8 mapNum, u8 mapGroup)
 {
     struct ObjectEvent *objectEvent;
     u8 objectEventId;
     s16 x;
     s16 y;
 
-    if (GetAvailableObjectEventId(template->localId, mapNum, mapGroup, &objectEventId))
+    if (GetAvailableObjectEventId(template_->localId, mapNum, mapGroup, &objectEventId))
         return OBJECT_EVENTS_COUNT;
     objectEvent = &gObjectEvents[objectEventId];
     ClearObjectEvent(objectEvent);
-    x = template->x + 7;
-    y = template->y + 7;
+    x = template_->x + 7;
+    y = template_->y + 7;
     objectEvent->active = TRUE;
     objectEvent->triggerGroundEffectsOnMove = TRUE;
-    objectEvent->graphicsId = template->graphicsId;
-    objectEvent->movementType = template->movementType;
-    objectEvent->localId = template->localId;
+    objectEvent->graphicsId = template_->graphicsId;
+    objectEvent->movementType = template_->movementType;
+    objectEvent->localId = template_->localId;
     objectEvent->mapNum = mapNum;
     objectEvent->mapGroup = mapGroup;
     objectEvent->initialCoords.x = x;
@@ -1230,14 +1230,14 @@ static u8 InitObjectEventStateFromTemplate(struct ObjectEventTemplate *template,
     objectEvent->currentCoords.y = y;
     objectEvent->previousCoords.x = x;
     objectEvent->previousCoords.y = y;
-    objectEvent->currentElevation = template->elevation;
-    objectEvent->previousElevation = template->elevation;
-    objectEvent->range.as_nybbles.x = template->movementRangeX;
-    objectEvent->range.as_nybbles.y = template->movementRangeY;
-    objectEvent->trainerType = template->trainerType;
+    objectEvent->currentElevation = template_->elevation;
+    objectEvent->previousElevation = template_->elevation;
+    objectEvent->range.as_nybbles.x = template_->movementRangeX;
+    objectEvent->range.as_nybbles.y = template_->movementRangeY;
+    objectEvent->trainerType = template_->trainerType;
     objectEvent->mapNum = mapNum; //redundant, but needed to match
-    objectEvent->trainerRange_berryTreeId = template->trainerRange_berryTreeId;
-    objectEvent->previousMovementDirection = gInitialMovementTypeFacingDirections[template->movementType];
+    objectEvent->trainerRange_berryTreeId = template_->trainerRange_berryTreeId;
+    objectEvent->previousMovementDirection = gInitialMovementTypeFacingDirections[template_->movementType];
     SetObjectEventDirection(objectEvent, objectEvent->previousMovementDirection);
     SetObjectEventDynamicGraphicsId(objectEvent);
     if (gRangedMovementTypes[objectEvent->movementType])
@@ -1258,7 +1258,7 @@ u8 Unref_TryInitLocalObjectEvent(u8 localId)
 {
     u8 i;
     u8 objectEventCount;
-    struct ObjectEventTemplate *template;
+    struct ObjectEventTemplate *template_;
 
     if (gMapHeader.events != NULL)
     {
@@ -1276,10 +1276,10 @@ u8 Unref_TryInitLocalObjectEvent(u8 localId)
         }
         for (i = 0; i < objectEventCount; i++)
         {
-            template = &gSaveBlock1Ptr->objectEventTemplates[i];
-            if (template->localId == localId && !FlagGet(template->flagId))
+            template_ = &gSaveBlock1Ptr->objectEventTemplates[i];
+            if (template_->localId == localId && !FlagGet(template_->flagId))
             {
-                return InitObjectEventStateFromTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+                return InitObjectEventStateFromTemplate(template_, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
             }
         }
     }
@@ -1601,13 +1601,13 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
 
         for (i = 0; i < objectCount; i++)
         {
-            struct ObjectEventTemplate *template = &gSaveBlock1Ptr->objectEventTemplates[i];
-            s16 npcX = template->x + 7;
-            s16 npcY = template->y + 7;
+            struct ObjectEventTemplate *template_ = &gSaveBlock1Ptr->objectEventTemplates[i];
+            s16 npcX = template_->x + 7;
+            s16 npcY = template_->y + 7;
 
             if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX
-                && !FlagGet(template->flagId))
-                TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
+                && !FlagGet(template_->flagId))
+                TrySpawnObjectEventTemplate(template_, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
         }
     }
 }

@@ -169,7 +169,7 @@ struct NamingScreenData
     u8 cursorSpriteId;
     u8 swapBtnFrameSpriteId;
     u8 keyRepeatStartDelayCopy;
-    const struct NamingScreenTemplate *template;
+    const struct NamingScreenTemplate *template_;
     u8 templateNum;
     u8 *destBuffer;
     u16 monSpecies;
@@ -473,14 +473,14 @@ static void NamingScreen_Init(void)
     sNamingScreen->bg2Priority = BGCNT_PRIORITY(2);
     sNamingScreen->bgToReveal = 0;
     sNamingScreen->bgToHide = 1;
-    sNamingScreen->template = sNamingScreenTemplates[sNamingScreen->templateNum];
-    sNamingScreen->currentPage = sNamingScreen->template->initialPage;
-    sNamingScreen->inputCharBaseXPos = (240 - sNamingScreen->template->maxChars * 8) / 2 + 6;
+    sNamingScreen->template_ = sNamingScreenTemplates[sNamingScreen->templateNum];
+    sNamingScreen->currentPage = sNamingScreen->template_->initialPage;
+    sNamingScreen->inputCharBaseXPos = (240 - sNamingScreen->template_->maxChars * 8) / 2 + 6;
     if (sNamingScreen->templateNum == NAMING_SCREEN_WALDA)
         sNamingScreen->inputCharBaseXPos += 11;
     sNamingScreen->keyRepeatStartDelayCopy = gKeyRepeatStartDelay;
     memset(sNamingScreen->textBuffer, EOS, sizeof(sNamingScreen->textBuffer));
-    if (sNamingScreen->template->copyExistingString)
+    if (sNamingScreen->template_->copyExistingString)
         StringCopy(sNamingScreen->textBuffer, sNamingScreen->destBuffer);
     gKeyRepeatStartDelay = 16;
 }
@@ -1357,7 +1357,7 @@ static void CreateTextEntrySprites(void)
     gSprites[spriteId].oam.priority = 3;
     gSprites[spriteId].invisible = TRUE;
     xPos = sNamingScreen->inputCharBaseXPos;
-    for (i = 0; i < sNamingScreen->template->maxChars; i++, xPos += 8)
+    for (i = 0; i < sNamingScreen->template_->maxChars; i++, xPos += 8)
     {
         spriteId = CreateSprite(&sSpriteTemplate_Underscore, xPos + 3, 60, 0);
         gSprites[spriteId].oam.priority = 3;
@@ -1387,7 +1387,7 @@ static void (*const sIconFunctions[])(void) =
 
 static void CreateInputTargetIcon(void)
 {
-    sIconFunctions[sNamingScreen->template->iconFunction]();
+    sIconFunctions[sNamingScreen->template_->iconFunction]();
 }
 
 static void NamingScreen_NoIcon(void)
@@ -1706,7 +1706,7 @@ static void HandleDpadMovement(struct Task *task)
 static void DrawNormalTextEntryBox(void)
 {
     FillWindowPixelBuffer(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], PIXEL_FILL(1));
-    AddTextPrinterParameterized(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], 1, sNamingScreen->template->title, 8, 1, 0, 0);
+    AddTextPrinterParameterized(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], 1, sNamingScreen->template_->title, 8, 1, 0, 0);
     PutWindowTilemap(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX]);
 }
 
@@ -1715,7 +1715,7 @@ static void DrawMonTextEntryBox(void)
     u8 buffer[32];
 
     StringCopy(buffer, gSpeciesNames[sNamingScreen->monSpecies]);
-    StringAppendN(buffer, sNamingScreen->template->title, 15);
+    StringAppendN(buffer, sNamingScreen->template_->title, 15);
     FillWindowPixelBuffer(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], PIXEL_FILL(1));
     AddTextPrinterParameterized(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], 1, buffer, 8, 1, 0, 0);
     PutWindowTilemap(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX]);
@@ -1746,7 +1746,7 @@ static void (*const sDrawGenderIconFuncs[])(void) =
 
 static void TryDrawGenderIcon(void)
 {
-    sDrawGenderIconFuncs[sNamingScreen->template->addGenderIcon]();
+    sDrawGenderIconFuncs[sNamingScreen->template_->addGenderIcon]();
 }
 
 static void DummyGenderIcon(void)
@@ -1787,19 +1787,19 @@ static u8 GetTextEntryPosition(void)
 {
     u8 i;
 
-    for (i = 0; i < sNamingScreen->template->maxChars; i++)
+    for (i = 0; i < sNamingScreen->template_->maxChars; i++)
     {
         if (sNamingScreen->textBuffer[i] == EOS)
             return i;
     }
-    return sNamingScreen->template->maxChars - 1;
+    return sNamingScreen->template_->maxChars - 1;
 }
 
 static u8 GetPreviousTextCaretPosition(void)
 {
     s8 i;
 
-    for (i = sNamingScreen->template->maxChars - 1; i > 0; i--)
+    for (i = sNamingScreen->template_->maxChars - 1; i > 0; i--)
     {
         if (sNamingScreen->textBuffer[i] != EOS)
             return i;
@@ -1838,7 +1838,7 @@ static bool8 AddTextCharacter(void)
     CopyBgTilemapBufferToVram(3);
     PlaySE(SE_SELECT);
 
-    if (GetPreviousTextCaretPosition() != sNamingScreen->template->maxChars - 1)
+    if (GetPreviousTextCaretPosition() != sNamingScreen->template_->maxChars - 1)
         return FALSE;
     else
         return TRUE;
@@ -1854,11 +1854,11 @@ static void SaveInputText(void)
 {
     u8 i;
 
-    for (i = 0; i < sNamingScreen->template->maxChars; i++)
+    for (i = 0; i < sNamingScreen->template_->maxChars; i++)
     {
         if (sNamingScreen->textBuffer[i] != CHAR_SPACE && sNamingScreen->textBuffer[i] != EOS)
         {
-            StringCopyN(sNamingScreen->destBuffer, sNamingScreen->textBuffer, sNamingScreen->template->maxChars + 1);
+            StringCopyN(sNamingScreen->destBuffer, sNamingScreen->textBuffer, sNamingScreen->template_->maxChars + 1);
             break;
         }
     }
@@ -1902,7 +1902,7 @@ static void DrawTextEntry(void)
     u8 i;
     u8 temp[2];
     u16 extraWidth;
-    u8 maxChars = sNamingScreen->template->maxChars;
+    u8 maxChars = sNamingScreen->template_->maxChars;
     u16 x = sNamingScreen->inputCharBaseXPos - 0x40;
 
     FillWindowPixelBuffer(sNamingScreen->windows[WIN_TEXT_ENTRY], PIXEL_FILL(1));

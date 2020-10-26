@@ -1152,29 +1152,29 @@ void sub_81989B8(u8 windowId, u8 fontId, u8 lineHeight, u8 itemCount, const stru
     AddItemMenuActionTextPrinters(windowId, fontId, GetFontAttribute(fontId, FONTATTR_MAX_LETTER_WIDTH), 1, GetFontAttribute(fontId, FONTATTR_LETTER_SPACING), lineHeight, itemCount, strs, a5);
 }
 
-void SetWindowTemplateFields(struct WindowTemplate *template, u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum, u16 baseBlock)
+void SetWindowTemplateFields(struct WindowTemplate *template_, u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum, u16 baseBlock)
 {
-    template->bg = bg;
-    template->tilemapLeft = left;
-    template->tilemapTop = top;
-    template->width = width;
-    template->height = height;
-    template->paletteNum = paletteNum;
-    template->baseBlock = baseBlock;
+    template_->bg = bg;
+    template_->tilemapLeft = left;
+    template_->tilemapTop = top;
+    template_->width = width;
+    template_->height = height;
+    template_->paletteNum = paletteNum;
+    template_->baseBlock = baseBlock;
 }
 
 struct WindowTemplate CreateWindowTemplate(u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum, u16 baseBlock)
 {
-    struct WindowTemplate template;
-    SetWindowTemplateFields(&template, bg, left, top, width, height, paletteNum, baseBlock);
-    return template;
+    struct WindowTemplate template_;
+    SetWindowTemplateFields(&template_, bg, left, top, width, height, paletteNum, baseBlock);
+    return template_;
 }
 
 u16 sub_8198AA4(u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum, u16 baseBlock)
 {
-    struct WindowTemplate template;
-    SetWindowTemplateFields(&template, bg, left, top, width, height, paletteNum, baseBlock);
-    return AddWindow(&template);
+    struct WindowTemplate template_;
+    SetWindowTemplateFields(&template_, bg, left, top, width, height, paletteNum, baseBlock);
+    return AddWindow(&template_);
 }
 
 void sub_8198AF8(const struct WindowTemplate *window, u8 fontId, u8 left, u8 top, u16 baseTileNum, u8 paletteNum, u8 initialCursorPos)

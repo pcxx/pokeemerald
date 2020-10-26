@@ -3502,8 +3502,8 @@ static int sub_802DCCC(u8 flags)
 
 static void sub_802DD08(void)
 {
-    struct DigitObjUtilTemplate template;
-    struct DigitObjUtilTemplate *ptr = &template; // This temp variable is needed to match, don't ask me why.
+    struct DigitObjUtilTemplate template_;
+    struct DigitObjUtilTemplate *ptr = &template_; // This temp variable is needed to match, don't ask me why.
 
     ptr->shape = SPRITE_SHAPE(8x8);
     ptr->size = SPRITE_SIZE(8x8);
@@ -3519,10 +3519,10 @@ static void sub_802DD08(void)
     DigitObjUtil_Init(2);
     DigitObjUtil_CreatePrinter(0, 0, ptr);
 
-    template.oamCount = 4;
-    template.x = 30;
-    template.y = 6;
-    DigitObjUtil_CreatePrinter(1, 0, &template);
+    template_.oamCount = 4;
+    template_.x = 30;
+    template_.y = 6;
+    DigitObjUtil_CreatePrinter(1, 0, &template_);
 }
 
 static void sub_802DD64(int arg0)

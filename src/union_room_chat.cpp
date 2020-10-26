@@ -2715,15 +2715,15 @@ static bool32 Display_Dummy(u8 *state)
 
 static void AddYesNoMenuAt(u8 left, u8 top, u8 initialCursorPos)
 {
-    struct WindowTemplate template;
-    template.bg = 0;
-    template.tilemapLeft = left;
-    template.tilemapTop = top;
-    template.width = 6;
-    template.height = 4;
-    template.paletteNum = 14;
-    template.baseBlock = 0x52;
-    sDisplay->yesNoMenuWindowId = AddWindow(&template);
+    struct WindowTemplate template_;
+    template_.bg = 0;
+    template_.tilemapLeft = left;
+    template_.tilemapTop = top;
+    template_.width = 6;
+    template_.height = 4;
+    template_.paletteNum = 14;
+    template_.baseBlock = 0x52;
+    sDisplay->yesNoMenuWindowId = AddWindow(&template_);
     if (sDisplay->yesNoMenuWindowId != 0xFF)
     {
         FillWindowPixelBuffer(sDisplay->yesNoMenuWindowId, PIXEL_FILL(1));
@@ -2762,21 +2762,21 @@ static void AddStdMessageWindow(int msgId, u16 bg0vofs)
 {
     const u8 *str;
     int windowId;
-    struct WindowTemplate template;
-    template.bg = 0;
-    template.tilemapLeft = 8;
-    template.tilemapTop = 16;
-    template.width = 21;
-    template.height = 4;
-    template.paletteNum = 14;
-    template.baseBlock = 0x6A;
+    struct WindowTemplate template_;
+    template_.bg = 0;
+    template_.tilemapLeft = 8;
+    template_.tilemapTop = 16;
+    template_.width = 21;
+    template_.height = 4;
+    template_.paletteNum = 14;
+    template_.baseBlock = 0x6A;
     if (sDisplayStdMessages[msgId].useWiderBox)
     {
-        template.tilemapLeft -= 7;
-        template.width += 7;
+        template_.tilemapLeft -= 7;
+        template_.width += 7;
     }
 
-    sDisplay->messageWindowId = AddWindow(&template);
+    sDisplay->messageWindowId = AddWindow(&template_);
     windowId = sDisplay->messageWindowId;
     if (sDisplay->messageWindowId == 0xFF)
         return;

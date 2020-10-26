@@ -114,7 +114,7 @@ void DigitObjUtil_Free(void)
     }
 }
 
-bool32 DigitObjUtil_CreatePrinter(u32 id, s32 num, const struct DigitObjUtilTemplate *template)
+bool32 DigitObjUtil_CreatePrinter(u32 id, s32 num, const struct DigitObjUtilTemplate *template_)
 {
     u32 i;
 
@@ -123,23 +123,23 @@ bool32 DigitObjUtil_CreatePrinter(u32 id, s32 num, const struct DigitObjUtilTemp
     if (sOamWork->array[id].isActive)
         return FALSE;
 
-    sOamWork->array[id].firstOamId = GetFirstOamId(template->oamCount);
+    sOamWork->array[id].firstOamId = GetFirstOamId(template_->oamCount);
     if (sOamWork->array[id].firstOamId == 0xFF)
         return FALSE;
 
-    sOamWork->array[id].tileStart = GetSpriteTileStartByTag(template->spriteSheet->tag);
+    sOamWork->array[id].tileStart = GetSpriteTileStartByTag(template_->spriteSheet->tag);
     if (sOamWork->array[id].tileStart == 0xFFFF)
     {
-        if (template->spriteSheet->size != 0)
+        if (template_->spriteSheet->size != 0)
         {
-            sOamWork->array[id].tileStart = LoadSpriteSheet(template->spriteSheet);
+            sOamWork->array[id].tileStart = LoadSpriteSheet(template_->spriteSheet);
         }
         else
         {
             struct CompressedSpriteSheet compSpriteSheet;
 
-            compSpriteSheet = *(struct CompressedSpriteSheet*)(template->spriteSheet);
-            compSpriteSheet.size = GetDecompressedDataSize(template->spriteSheet->data);
+            compSpriteSheet = *(struct CompressedSpriteSheet*)(template_->spriteSheet);
+            compSpriteSheet.size = GetDecompressedDataSize(template_->spriteSheet->data);
             sOamWork->array[id].tileStart = LoadCompressedSpriteSheet(&compSpriteSheet);
         }
 
@@ -147,26 +147,26 @@ bool32 DigitObjUtil_CreatePrinter(u32 id, s32 num, const struct DigitObjUtilTemp
             return FALSE;
     }
 
-    sOamWork->array[id].palTagIndex = IndexOfSpritePaletteTag(template->spritePal->tag);
+    sOamWork->array[id].palTagIndex = IndexOfSpritePaletteTag(template_->spritePal->tag);
     if (sOamWork->array[id].palTagIndex == 0xFF)
-        sOamWork->array[id].palTagIndex = LoadSpritePalette(template->spritePal);
+        sOamWork->array[id].palTagIndex = LoadSpritePalette(template_->spritePal);
 
-    sOamWork->array[id].strConvMode = template->strConvMode;
-    sOamWork->array[id].oamCount = template->oamCount;
-    sOamWork->array[id].x = template->x;
-    sOamWork->array[id].y = template->y;
-    sOamWork->array[id].shape = template->shape;
-    sOamWork->array[id].size = template->size;
-    sOamWork->array[id].priority = template->priority;
-    sOamWork->array[id].xDelta = template->xDelta;
-    sOamWork->array[id].tilesPerImage = GetTilesPerImage(template->shape, template->size);
-    sOamWork->array[id].tileTag = template->spriteSheet->tag;
-    sOamWork->array[id].palTag = template->spritePal->tag;
+    sOamWork->array[id].strConvMode = template_->strConvMode;
+    sOamWork->array[id].oamCount = template_->oamCount;
+    sOamWork->array[id].x = template_->x;
+    sOamWork->array[id].y = template_->y;
+    sOamWork->array[id].shape = template_->shape;
+    sOamWork->array[id].size = template_->size;
+    sOamWork->array[id].priority = template_->priority;
+    sOamWork->array[id].xDelta = template_->xDelta;
+    sOamWork->array[id].tilesPerImage = GetTilesPerImage(template_->shape, template_->size);
+    sOamWork->array[id].tileTag = template_->spriteSheet->tag;
+    sOamWork->array[id].palTag = template_->spritePal->tag;
     sOamWork->array[id].isActive = TRUE;
 
     // Decimal left shift
     sOamWork->array[id].pow10 = 1;
-    for (i = 1; i < template->oamCount; i++)
+    for (i = 1; i < template_->oamCount; i++)
         sOamWork->array[id].pow10 *= 10;
 
     CopyWorkToOam(&sOamWork->array[id]);

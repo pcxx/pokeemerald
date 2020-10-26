@@ -1216,18 +1216,18 @@ static s32 DrawResultsTextWindow(const u8 *text, u8 spriteId)
 static void LoadContestResultSprites(void)
 {
     int i;
-    struct SpriteTemplate template;
+    struct SpriteTemplate template_;
     u8 spriteIds[ARRAY_COUNT(sUnknown_0858D810)];
 
-    template = sSpriteTemplate_858D7F8;
+    template_ = sSpriteTemplate_858D7F8;
     for (i = 0; i < (int)ARRAY_COUNT(sUnknown_0858D810); i++)
         LoadSpriteSheet(&sUnknown_0858D810[i]);
 
     LoadSpritePalette(&sUnknown_0858D850);
     for (i = 0; i < (int)ARRAY_COUNT(sUnknown_0858D810); i++)
     {
-        spriteIds[i] = CreateSprite(&template, 272, 144, 10);
-        template.tileTag++;
+        spriteIds[i] = CreateSprite(&template_, 272, 144, 10);
+        template_.tileTag++;
     }
 
     gSprites[spriteIds[0]].data[0] = spriteIds[1];

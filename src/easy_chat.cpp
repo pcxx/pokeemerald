@@ -3792,17 +3792,17 @@ static void sub_811D214(u8 initialCursorPos)
 static void sub_811D230(void)
 {
     u8 frameId;
-    struct WindowTemplate template;
+    struct WindowTemplate template_;
 
     frameId = GetEasyChatScreenFrameId();
-    template.bg = 3;
-    template.tilemapLeft = sPhraseFrameDimensions[frameId].left;
-    template.tilemapTop = sPhraseFrameDimensions[frameId].top;
-    template.width = sPhraseFrameDimensions[frameId].width;
-    template.height = sPhraseFrameDimensions[frameId].height;
-    template.paletteNum = 11;
-    template.baseBlock = 0x6C;
-    sUnknown_0203A11C->windowId = AddWindow(&template);
+    template_.bg = 3;
+    template_.tilemapLeft = sPhraseFrameDimensions[frameId].left;
+    template_.tilemapTop = sPhraseFrameDimensions[frameId].top;
+    template_.width = sPhraseFrameDimensions[frameId].width;
+    template_.height = sPhraseFrameDimensions[frameId].height;
+    template_.paletteNum = 11;
+    template_.baseBlock = 0x6C;
+    sUnknown_0203A11C->windowId = AddWindow(&template_);
     PutWindowTilemap(sUnknown_0203A11C->windowId);
 }
 
@@ -4785,19 +4785,19 @@ static void sub_811E948(void)
 {
     int i;
     u16 windowId;
-    struct WindowTemplate template;
+    struct WindowTemplate template_;
     int footerId = GetFooterIndex();
     if (footerId == 3)
         return;
 
-    template.bg = 3;
-    template.tilemapLeft = 1;
-    template.tilemapTop = 11;
-    template.width = 28;
-    template.height = 2;
-    template.paletteNum = 11;
-    template.baseBlock = 0x34;
-    windowId = AddWindow(&template);
+    template_.bg = 3;
+    template_.tilemapLeft = 1;
+    template_.tilemapTop = 11;
+    template_.width = 28;
+    template_.height = 2;
+    template_.paletteNum = 11;
+    template_.baseBlock = 0x34;
+    windowId = AddWindow(&template_);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
     for (i = 0; i < 4; i++)
     {

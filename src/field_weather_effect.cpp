@@ -2359,7 +2359,7 @@ static void DestroyBubbleSprites(void)
     {
         for (i = 0; i < MAX_SPRITES; i++)
         {
-            if (gSprites[i].template == &sBubbleSpriteTemplate)
+            if (gSprites[i].template_ == &sBubbleSpriteTemplate)
                 DestroySprite(&gSprites[i]);
         }
 

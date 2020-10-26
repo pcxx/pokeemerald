@@ -1986,13 +1986,13 @@ static void ScriptCmd_unloadspritegfx(void)
 static void ScriptCmd_createsprite(void)
 {
     s32 i;
-    const struct SpriteTemplate *template;
+    const struct SpriteTemplate *template_;
     u8 argVar;
     u8 argsCount;
     s16 subpriority;
 
     sBattleAnimScriptPtr++;
-    template = (const struct SpriteTemplate *)(T2_READ_32(sBattleAnimScriptPtr));
+    template_ = (const struct SpriteTemplate *)(T2_READ_32(sBattleAnimScriptPtr));
     sBattleAnimScriptPtr += 4;
 
     argVar = sBattleAnimScriptPtr[0];
@@ -2030,7 +2030,7 @@ static void ScriptCmd_createsprite(void)
         subpriority = 3;
 
     CreateSpriteAndAnimate(
-        template,
+        template_,
         GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2),
         GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET),
         subpriority);
