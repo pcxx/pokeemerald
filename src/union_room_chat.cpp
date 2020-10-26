@@ -318,152 +318,171 @@ static const u8 sKeyboardPageMaxRow[UNION_ROOM_KB_PAGE_COUNT] =
     [UNION_ROOM_KB_PAGE_REGISTER] = 9
 };
 
-static const u8 sCaseToggleTable[256] = {
-    [CHAR_A] = CHAR_a,
-    [CHAR_B] = CHAR_b,
-    [CHAR_C] = CHAR_c,
-    [CHAR_D] = CHAR_d,
-    [CHAR_E] = CHAR_e,
-    [CHAR_F] = CHAR_f,
-    [CHAR_G] = CHAR_g,
-    [CHAR_H] = CHAR_h,
-    [CHAR_I] = CHAR_i,
-    [CHAR_J] = CHAR_j,
-    [CHAR_K] = CHAR_k,
-    [CHAR_L] = CHAR_l,
-    [CHAR_M] = CHAR_m,
-    [CHAR_N] = CHAR_n,
-    [CHAR_O] = CHAR_o,
-    [CHAR_P] = CHAR_p,
-    [CHAR_Q] = CHAR_q,
-    [CHAR_R] = CHAR_r,
-    [CHAR_S] = CHAR_s,
-    [CHAR_T] = CHAR_t,
-    [CHAR_U] = CHAR_u,
-    [CHAR_V] = CHAR_v,
-    [CHAR_W] = CHAR_w,
-    [CHAR_X] = CHAR_x,
-    [CHAR_Y] = CHAR_y,
-    [CHAR_Z] = CHAR_z,
-    [CHAR_a] = CHAR_A,
-    [CHAR_b] = CHAR_B,
-    [CHAR_c] = CHAR_C,
-    [CHAR_d] = CHAR_D,
-    [CHAR_e] = CHAR_E,
-    [CHAR_f] = CHAR_F,
-    [CHAR_g] = CHAR_G,
-    [CHAR_h] = CHAR_H,
-    [CHAR_i] = CHAR_I,
-    [CHAR_j] = CHAR_J,
-    [CHAR_k] = CHAR_K,
-    [CHAR_l] = CHAR_L,
-    [CHAR_m] = CHAR_M,
-    [CHAR_n] = CHAR_N,
-    [CHAR_o] = CHAR_O,
-    [CHAR_p] = CHAR_P,
-    [CHAR_q] = CHAR_Q,
-    [CHAR_r] = CHAR_R,
-    [CHAR_s] = CHAR_S,
-    [CHAR_t] = CHAR_T,
-    [CHAR_u] = CHAR_U,
-    [CHAR_v] = CHAR_V,
-    [CHAR_w] = CHAR_W,
-    [CHAR_x] = CHAR_X,
-    [CHAR_y] = CHAR_Y,
-    [CHAR_z] = CHAR_Z,
-    [CHAR_A_GRAVE] = CHAR_a_GRAVE,
-    [CHAR_A_ACUTE] = CHAR_a_ACUTE,
-    [CHAR_A_CIRCUMFLEX] = CHAR_a_CIRCUMFLEX,
-    [CHAR_A_DIAERESIS] = CHAR_a_DIAERESIS,
-    [CHAR_C_CEDILLA] = CHAR_c_CEDILLA,
-    [CHAR_E_GRAVE] = CHAR_e_GRAVE,
-    [CHAR_E_ACUTE] = CHAR_e_ACUTE,
-    [CHAR_E_CIRCUMFLEX] = CHAR_e_CIRCUMFLEX,
-    [CHAR_E_DIAERESIS] = CHAR_e_DIAERESIS,
-    [CHAR_I_GRAVE] = CHAR_i_GRAVE,
-    [CHAR_I_ACUTE] = CHAR_i_ACUTE,
-    [CHAR_I_CIRCUMFLEX] = CHAR_i_CIRCUMFLEX,
-    [CHAR_I_DIAERESIS] = CHAR_i_DIAERESIS,
-    [CHAR_O_GRAVE] = CHAR_o_GRAVE,
-    [CHAR_O_ACUTE] = CHAR_o_ACUTE,
-    [CHAR_O_CIRCUMFLEX] = CHAR_o_CIRCUMFLEX,
-    [CHAR_O_DIAERESIS] = CHAR_o_DIAERESIS,
-    [CHAR_OE] = CHAR_oe,
-    [CHAR_U_GRAVE] = CHAR_u_GRAVE,
-    [CHAR_U_ACUTE] = CHAR_u_ACUTE,
-    [CHAR_U_CIRCUMFLEX] = CHAR_u_CIRCUMFLEX,
-    [CHAR_U_DIAERESIS] = CHAR_u_DIAERESIS,
-    [CHAR_N_TILDE] = CHAR_n_TILDE,
-    [CHAR_ESZETT] = CHAR_ESZETT,
-    [CHAR_a_GRAVE] = CHAR_A_GRAVE,
-    [CHAR_a_ACUTE] = CHAR_A_ACUTE,
-    [CHAR_a_CIRCUMFLEX] = CHAR_A_CIRCUMFLEX,
-    [CHAR_a_DIAERESIS] = CHAR_A_DIAERESIS,
-    [CHAR_c_CEDILLA] = CHAR_C_CEDILLA,
-    [CHAR_e_GRAVE] = CHAR_E_GRAVE,
-    [CHAR_e_ACUTE] = CHAR_E_ACUTE,
-    [CHAR_e_CIRCUMFLEX] = CHAR_E_CIRCUMFLEX,
-    [CHAR_e_DIAERESIS] = CHAR_E_DIAERESIS,
-    [CHAR_i_GRAVE] = CHAR_I_GRAVE,
-    [CHAR_i_ACUTE] = CHAR_I_ACUTE,
-    [CHAR_i_CIRCUMFLEX] = CHAR_I_CIRCUMFLEX,
-    [CHAR_i_DIAERESIS] = CHAR_I_DIAERESIS,
-    [CHAR_o_GRAVE] = CHAR_O_GRAVE,
-    [CHAR_o_ACUTE] = CHAR_O_ACUTE,
-    [CHAR_o_CIRCUMFLEX] = CHAR_O_CIRCUMFLEX,
-    [CHAR_o_DIAERESIS] = CHAR_O_DIAERESIS,
-    [CHAR_oe] = CHAR_OE,
-    [CHAR_u_GRAVE] = CHAR_U_GRAVE,
-    [CHAR_u_ACUTE] = CHAR_U_ACUTE,
-    [CHAR_u_CIRCUMFLEX] = CHAR_U_CIRCUMFLEX,
-    [CHAR_u_DIAERESIS] = CHAR_U_DIAERESIS,
-    [CHAR_n_TILDE] = CHAR_N_TILDE,
-    [CHAR_0] = CHAR_0,
-    [CHAR_1] = CHAR_1,
-    [CHAR_2] = CHAR_2,
-    [CHAR_3] = CHAR_3,
-    [CHAR_4] = CHAR_4,
-    [CHAR_5] = CHAR_5,
-    [CHAR_6] = CHAR_6,
-    [CHAR_7] = CHAR_7,
-    [CHAR_8] = CHAR_8,
-    [CHAR_9] = CHAR_9,
-    [CHAR_PK] = CHAR_PK,
-    [CHAR_MN] = CHAR_MN,
-    [CHAR_PO] = CHAR_PO,
-    [CHAR_KE] = CHAR_KE,
-    [CHAR_SUPER_E]  = CHAR_SUPER_E,
-    [CHAR_SUPER_ER] = CHAR_SUPER_ER,
-    [CHAR_SUPER_RE] = CHAR_SUPER_RE,
-    [CHAR_PERIOD] = CHAR_PERIOD,
-    [CHAR_COMMA] = CHAR_COMMA,
-    [CHAR_COLON] = CHAR_COLON,
-    [CHAR_SEMICOLON] = CHAR_SEMICOLON,
-    [CHAR_EXCL_MARK] = CHAR_EXCL_MARK,
-    [CHAR_QUESTION_MARK] = CHAR_QUESTION_MARK,
-    [CHAR_HYPHEN] = CHAR_HYPHEN,
-    [CHAR_SLASH] = CHAR_SLASH,
-    [CHAR_ELLIPSIS] = CHAR_ELLIPSIS,
-    [CHAR_LEFT_PAREN] = CHAR_LEFT_PAREN,
-    [CHAR_RIGHT_PAREN] = CHAR_RIGHT_PAREN,
-    [CHAR_AMPERSAND] = CHAR_AMPERSAND,
-    [CHAR_DBL_QUOT_LEFT] = CHAR_DBL_QUOT_LEFT,
-    [CHAR_DBL_QUOT_RIGHT] = CHAR_DBL_QUOT_RIGHT,
-    [CHAR_SGL_QUOT_LEFT] = CHAR_SGL_QUOT_LEFT,
-    [CHAR_SGL_QUOT_RIGHT] = CHAR_SGL_QUOT_RIGHT,
-    [CHAR_MASCULINE_ORDINAL] = CHAR_MASCULINE_ORDINAL,
-    [CHAR_FEMININE_ORDINAL] = CHAR_FEMININE_ORDINAL,
-    [CHAR_BULLET] = CHAR_BULLET,
-    [CHAR_EQUALS] = CHAR_EQUALS,
-    [CHAR_MULT_SIGN] = CHAR_MULT_SIGN,
-    [CHAR_PERCENT] = CHAR_PERCENT,
-    [CHAR_LESS_THAN] = CHAR_LESS_THAN,
-    [CHAR_GREATER_THAN] = CHAR_GREATER_THAN,
-    [CHAR_MALE] = CHAR_MALE,
-    [CHAR_FEMALE] = CHAR_FEMALE,
-    [CHAR_CURRENCY] = CHAR_CURRENCY,
-    [CHAR_BLACK_TRIANGLE] = CHAR_BLACK_TRIANGLE,
+constexpr u8 sCaseToggleTable[256] = {
+    0,CHAR_a_GRAVE,CHAR_a_ACUTE,CHAR_a_CIRCUMFLEX, CHAR_c_CEDILLA,CHAR_e_GRAVE,CHAR_e_ACUTE,CHAR_e_CIRCUMFLEX,  CHAR_e_DIAERESIS,CHAR_i_GRAVE,0,CHAR_i_CIRCUMFLEX, CHAR_i_DIAERESIS,CHAR_o_GRAVE,CHAR_o_ACUTE,CHAR_o_CIRCUMFLEX, // 0
+    CHAR_oe,CHAR_u_GRAVE,CHAR_u_ACUTE,CHAR_u_CIRCUMFLEX, CHAR_n_TILDE,CHAR_ESZETT,CHAR_A_GRAVE,CHAR_A_ACUTE,  0,CHAR_C_CEDILLA,CHAR_E_GRAVE,CHAR_E_ACUTE, CHAR_E_CIRCUMFLEX,CHAR_E_DIAERESIS,CHAR_I_GRAVE,0, // 1
+    CHAR_I_CIRCUMFLEX,CHAR_I_DIAERESIS,CHAR_O_GRAVE,CHAR_O_ACUTE, CHAR_O_CIRCUMFLEX,CHAR_OE,CHAR_U_GRAVE,CHAR_U_ACUTE,  CHAR_U_CIRCUMFLEX,CHAR_N_TILDE,CHAR_MASCULINE_ORDINAL,CHAR_FEMININE_ORDINAL, CHAR_SUPER_ER,CHAR_AMPERSAND,0,0, // 2
+    0,0,0,0, 0,CHAR_EQUALS,CHAR_SEMICOLON,0,  0,0,0,0, 0,0,0,0, // 3
+
+    0,0,0,0, 0,0,0,0,  0,0,0,0, 0,0,0,0, // 4
+    0,0,0,CHAR_PK, CHAR_MN,CHAR_PO,CHAR_KE,0,  0,0,CHAR_i_ACUTE,CHAR_PERCENT, CHAR_LEFT_PAREN,CHAR_RIGHT_PAREN,0,0, // 5
+    0,0,0,0, 0,0,0,0,  CHAR_A_CIRCUMFLEX,0,0,0, 0,0,0,CHAR_I_ACUTE, // 6
+    0,0,0,0, 0,0,0,0,  0,0,0,0, 0,0,0,0, // 7
+
+    0,0,0,0, CHAR_SUPER_E,CHAR_LESS_THAN,CHAR_GREATER_THAN,0,  0,0,0,0, 0,0,0,0, // 8
+    0,0,0,0, 0,0,0,0,  0,0,0,0, 0,0,0,0, // 9
+    CHAR_SUPER_RE,CHAR_0,CHAR_1,CHAR_2, CHAR_3,CHAR_4,CHAR_5,CHAR_6, CHAR_7,CHAR_8,CHAR_9,CHAR_EXCL_MARK, CHAR_QUESTION_MARK,CHAR_PERIOD,CHAR_HYPHEN,CHAR_BULLET, // a
+    CHAR_ELLIPSIS,CHAR_DBL_QUOT_LEFT,CHAR_DBL_QUOT_RIGHT,CHAR_SGL_QUOT_LEFT, CHAR_SGL_QUOT_RIGHT,CHAR_MALE,CHAR_FEMALE,CHAR_CURRENCY,  CHAR_COMMA,CHAR_MULT_SIGN,CHAR_SLASH,CHAR_a, CHAR_b,CHAR_c,CHAR_d,CHAR_e, // b
+
+    CHAR_f,CHAR_g,CHAR_h,CHAR_i, CHAR_j,CHAR_k,CHAR_l,CHAR_m, CHAR_n,CHAR_o,CHAR_p,CHAR_q, CHAR_r,CHAR_s,CHAR_t,CHAR_u, // c
+    CHAR_v,CHAR_w,CHAR_x,CHAR_y, CHAR_z,CHAR_A,CHAR_B,CHAR_C, CHAR_D,CHAR_E,CHAR_F,CHAR_G, CHAR_H,CHAR_I,CHAR_J,CHAR_K, // d
+    CHAR_L,CHAR_M,CHAR_N,CHAR_O, CHAR_P,CHAR_Q,CHAR_R,CHAR_S, CHAR_T,CHAR_U,CHAR_V,CHAR_W, CHAR_X,CHAR_Y,CHAR_Z,CHAR_BLACK_TRIANGLE, // e
+    CHAR_COLON,CHAR_a_DIAERESIS,CHAR_o_DIAERESIS,CHAR_u_DIAERESIS, CHAR_A_DIAERESIS,CHAR_O_DIAERESIS,CHAR_U_DIAERESIS,0,  0,0,0,0, 0,0,0,0, // f
 };
+static_assert(sCaseToggleTable[CHAR_A] == CHAR_a, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_B] == CHAR_b, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_C] == CHAR_c, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_D] == CHAR_d, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_E] == CHAR_e, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_F] == CHAR_f, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_G] == CHAR_g, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_H] == CHAR_h, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_I] == CHAR_i, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_J] == CHAR_j, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_K] == CHAR_k, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_L] == CHAR_l, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_M] == CHAR_m, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_N] == CHAR_n, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_O] == CHAR_o, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_P] == CHAR_p, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_Q] == CHAR_q, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_R] == CHAR_r, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_S] == CHAR_s, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_T] == CHAR_t, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_U] == CHAR_u, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_V] == CHAR_v, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_W] == CHAR_w, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_X] == CHAR_x, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_Y] == CHAR_y, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_Z] == CHAR_z, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_a] == CHAR_A, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_b] == CHAR_B, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_c] == CHAR_C, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_d] == CHAR_D, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_e] == CHAR_E, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_f] == CHAR_F, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_g] == CHAR_G, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_h] == CHAR_H, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_i] == CHAR_I, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_j] == CHAR_J, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_k] == CHAR_K, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_l] == CHAR_L, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_m] == CHAR_M, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_n] == CHAR_N, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_o] == CHAR_O, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_p] == CHAR_P, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_q] == CHAR_Q, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_r] == CHAR_R, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_s] == CHAR_S, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_t] == CHAR_T, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_u] == CHAR_U, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_v] == CHAR_V, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_w] == CHAR_W, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_x] == CHAR_X, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_y] == CHAR_Y, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_z] == CHAR_Z, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_A_GRAVE] == CHAR_a_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_A_ACUTE] == CHAR_a_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_A_CIRCUMFLEX] == CHAR_a_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_A_DIAERESIS] == CHAR_a_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_C_CEDILLA] == CHAR_c_CEDILLA, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_E_GRAVE] == CHAR_e_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_E_ACUTE] == CHAR_e_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_E_CIRCUMFLEX] == CHAR_e_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_E_DIAERESIS] == CHAR_e_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_I_GRAVE] == CHAR_i_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_I_ACUTE] == CHAR_i_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_I_CIRCUMFLEX] == CHAR_i_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_I_DIAERESIS] == CHAR_i_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_O_GRAVE] == CHAR_o_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_O_ACUTE] == CHAR_o_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_O_CIRCUMFLEX] == CHAR_o_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_O_DIAERESIS] == CHAR_o_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_OE] == CHAR_oe, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_U_GRAVE] == CHAR_u_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_U_ACUTE] == CHAR_u_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_U_CIRCUMFLEX] == CHAR_u_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_U_DIAERESIS] == CHAR_u_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_N_TILDE] == CHAR_n_TILDE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_ESZETT] == CHAR_ESZETT, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_a_GRAVE] == CHAR_A_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_a_ACUTE] == CHAR_A_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_a_CIRCUMFLEX] == CHAR_A_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_a_DIAERESIS] == CHAR_A_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_c_CEDILLA] == CHAR_C_CEDILLA, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_e_GRAVE] == CHAR_E_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_e_ACUTE] == CHAR_E_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_e_CIRCUMFLEX] == CHAR_E_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_e_DIAERESIS] == CHAR_E_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_i_GRAVE] == CHAR_I_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_i_ACUTE] == CHAR_I_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_i_CIRCUMFLEX] == CHAR_I_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_i_DIAERESIS] == CHAR_I_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_o_GRAVE] == CHAR_O_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_o_ACUTE] == CHAR_O_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_o_CIRCUMFLEX] == CHAR_O_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_o_DIAERESIS] == CHAR_O_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_oe] == CHAR_OE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_u_GRAVE] == CHAR_U_GRAVE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_u_ACUTE] == CHAR_U_ACUTE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_u_CIRCUMFLEX] == CHAR_U_CIRCUMFLEX, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_u_DIAERESIS] == CHAR_U_DIAERESIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_n_TILDE] == CHAR_N_TILDE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_0] == CHAR_0, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_1] == CHAR_1, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_2] == CHAR_2, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_3] == CHAR_3, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_4] == CHAR_4, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_5] == CHAR_5, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_6] == CHAR_6, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_7] == CHAR_7, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_8] == CHAR_8, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_9] == CHAR_9, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_PK] == CHAR_PK, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_MN] == CHAR_MN, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_PO] == CHAR_PO, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_KE] == CHAR_KE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_SUPER_E]  == CHAR_SUPER_E, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_SUPER_ER] == CHAR_SUPER_ER, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_SUPER_RE] == CHAR_SUPER_RE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_PERIOD] == CHAR_PERIOD, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_COMMA] == CHAR_COMMA, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_COLON] == CHAR_COLON, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_SEMICOLON] == CHAR_SEMICOLON, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_EXCL_MARK] == CHAR_EXCL_MARK, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_QUESTION_MARK] == CHAR_QUESTION_MARK, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_HYPHEN] == CHAR_HYPHEN, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_SLASH] == CHAR_SLASH, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_ELLIPSIS] == CHAR_ELLIPSIS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_LEFT_PAREN] == CHAR_LEFT_PAREN, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_RIGHT_PAREN] == CHAR_RIGHT_PAREN, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_AMPERSAND] == CHAR_AMPERSAND, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_DBL_QUOT_LEFT] == CHAR_DBL_QUOT_LEFT, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_DBL_QUOT_RIGHT] == CHAR_DBL_QUOT_RIGHT, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_SGL_QUOT_LEFT] == CHAR_SGL_QUOT_LEFT, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_SGL_QUOT_RIGHT] == CHAR_SGL_QUOT_RIGHT, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_MASCULINE_ORDINAL] == CHAR_MASCULINE_ORDINAL, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_FEMININE_ORDINAL] == CHAR_FEMININE_ORDINAL, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_BULLET] == CHAR_BULLET, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_EQUALS] == CHAR_EQUALS, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_MULT_SIGN] == CHAR_MULT_SIGN, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_PERCENT] == CHAR_PERCENT, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_LESS_THAN] == CHAR_LESS_THAN, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_GREATER_THAN] == CHAR_GREATER_THAN, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_MALE] == CHAR_MALE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_FEMALE] == CHAR_FEMALE, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_CURRENCY] == CHAR_CURRENCY, "char missmatch");
+static_assert(sCaseToggleTable[CHAR_BLACK_TRIANGLE] == CHAR_BLACK_TRIANGLE, "char missmatch");
 
 // Excludes UNION_ROOM_KB_PAGE_REGISTER, the text for which is chosen by the player
 static const u8 *const sUnionRoomKeyboardText[UNION_ROOM_KB_PAGE_COUNT - 1][UNION_ROOM_KB_ROW_COUNT] = 
