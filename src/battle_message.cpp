@@ -504,20 +504,20 @@ const u8 gText_EmptyString3[] = _("");
 static const u8 sText_YouThrowABallNowRight[] = _("You throw a BALL now, right?\nI… I'll do my best!");
 
 // early declaration of strings
-static const u8 sText_PkmnIncapableOfPower[];
-static const u8 sText_GlintAppearsInEye[];
-static const u8 sText_PkmnGettingIntoPosition[];
-static const u8 sText_PkmnBeganGrowlingDeeply[];
-static const u8 sText_PkmnEagerForMore[];
-static const u8 sText_DefeatedOpponentByReferee[];
-static const u8 sText_LostToOpponentByReferee[];
-static const u8 sText_TiedOpponentByReferee[];
-static const u8 sText_QuestionForfeitMatch[];
-static const u8 sText_ForfeitedMatch[];
-static const u8 sText_Trainer1WinText[];
-static const u8 sText_Trainer2WinText[];
-static const u8 sText_TwoInGameTrainersDefeated[];
-static const u8 sText_Trainer2LoseText[];
+static const u8 sText_PkmnIncapableOfPower[] = _("{B_ATK_NAME_WITH_PREFIX} appears incapable\nof using its power!");
+static const u8 sText_GlintAppearsInEye[] = _("A glint appears in\n{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s eyes!");
+static const u8 sText_PkmnGettingIntoPosition[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is getting into\nposition!");
+static const u8 sText_PkmnBeganGrowlingDeeply[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} began growling deeply!");
+static const u8 sText_PkmnEagerForMore[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is eager for more!");
+static const u8 sText_DefeatedOpponentByReferee[] = _("{B_PLAYER_MON1_NAME} defeated the opponent\n{B_OPPONENT_MON1_NAME} in a REFEREE's decision!");
+static const u8 sText_LostToOpponentByReferee[] = _("{B_PLAYER_MON1_NAME} lost to the opponent\n{B_OPPONENT_MON1_NAME} in a REFEREE's decision!");
+static const u8 sText_TiedOpponentByReferee[] = _("{B_PLAYER_MON1_NAME} tied the opponent\n{B_OPPONENT_MON1_NAME} in a REFEREE's decision!");
+static const u8 sText_QuestionForfeitMatch[] = _("Would you like to forfeit the match\nand quit now?");
+static const u8 sText_ForfeitedMatch[] = _("{B_PLAYER_NAME} forfeited the match!");
+static const u8 sText_Trainer1WinText[] = _("{B_TRAINER1_WIN_TEXT}");
+static const u8 sText_Trainer2WinText[] = _("{B_TRAINER2_WIN_TEXT}");
+static const u8 sText_TwoInGameTrainersDefeated[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_NAME} and\n{B_TRAINER2_CLASS} {B_TRAINER2_NAME}\lwere defeated!\p");
+static const u8 sText_Trainer2LoseText[] = _("{B_TRAINER2_LOSE_TEXT}");
 
 const u8 * const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1300,13 +1300,6 @@ static const u8 sText_TwoTrainersSentPkmn[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_
 static const u8 sText_Trainer2SentOutPkmn[] = _("{B_TRAINER2_CLASS} {B_TRAINER2_NAME} sent\nout {B_BUFF1}!");
 static const u8 sText_TwoTrainersWantToBattle[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_NAME} and\n{B_TRAINER2_CLASS} {B_TRAINER2_NAME}\lwant to battle!\p");
 static const u8 sText_InGamePartnerSentOutZGoN[] = _("{B_PARTNER_CLASS} {B_PARTNER_NAME} sent\nout {B_PLAYER_MON2_NAME}!\lGo, {B_PLAYER_MON1_NAME}!");
-static const u8 sText_TwoInGameTrainersDefeated[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_NAME} and\n{B_TRAINER2_CLASS} {B_TRAINER2_NAME}\lwere defeated!\p");
-static const u8 sText_Trainer2LoseText[] = _("{B_TRAINER2_LOSE_TEXT}");
-static const u8 sText_PkmnIncapableOfPower[] = _("{B_ATK_NAME_WITH_PREFIX} appears incapable\nof using its power!");
-static const u8 sText_GlintAppearsInEye[] = _("A glint appears in\n{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s eyes!");
-static const u8 sText_PkmnGettingIntoPosition[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is getting into\nposition!");
-static const u8 sText_PkmnBeganGrowlingDeeply[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} began growling deeply!");
-static const u8 sText_PkmnEagerForMore[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is eager for more!");
 
 const u16 gBattlePalaceFlavorTextTable[] =
 {
@@ -1324,9 +1317,6 @@ static const u8 sText_RefJudgeBody[] = _("REFEREE: Judging category 3, Body!\nTh
 static const u8 sText_RefJudgement1[] = _("REFEREE: Judgment: {B_BUFF1} to {B_BUFF2}!\nThe winner is {B_PLAYER_NAME}'s {B_PLAYER_MON1_NAME}!\p");
 static const u8 sText_RefJudgement2[] = _("REFEREE: Judgment: {B_BUFF1} to {B_BUFF2}!\nThe winner is {B_TRAINER1_NAME}'s {B_OPPONENT_MON1_NAME}!\p");
 static const u8 sText_RefJudgement3[] = _("REFEREE: Judgment: 3 to 3!\nWe have a draw!\p");
-static const u8 sText_DefeatedOpponentByReferee[] = _("{B_PLAYER_MON1_NAME} defeated the opponent\n{B_OPPONENT_MON1_NAME} in a REFEREE's decision!");
-static const u8 sText_LostToOpponentByReferee[] = _("{B_PLAYER_MON1_NAME} lost to the opponent\n{B_OPPONENT_MON1_NAME} in a REFEREE's decision!");
-static const u8 sText_TiedOpponentByReferee[] = _("{B_PLAYER_MON1_NAME} tied the opponent\n{B_OPPONENT_MON1_NAME} in a REFEREE's decision!");
 static const u8 sText_RefCommenceBattle[] = _("REFEREE: {B_PLAYER_MON1_NAME} VS {B_OPPONENT_MON1_NAME}!\nCommence battling!");
 
 const u8 * const gRefereeStringsTable[] =
@@ -1342,10 +1332,6 @@ const u8 * const gRefereeStringsTable[] =
     sText_RefCommenceBattle,
 };
 
-static const u8 sText_QuestionForfeitMatch[] = _("Would you like to forfeit the match\nand quit now?");
-static const u8 sText_ForfeitedMatch[] = _("{B_PLAYER_NAME} forfeited the match!");
-static const u8 sText_Trainer1WinText[] = _("{B_TRAINER1_WIN_TEXT}");
-static const u8 sText_Trainer2WinText[] = _("{B_TRAINER2_WIN_TEXT}");
 static const u8 sText_Trainer1Fled[] = _( "{PLAY_SE SE_FLEE}{B_TRAINER1_CLASS} {B_TRAINER1_NAME} fled!");
 static const u8 sText_PlayerLostAgainstTrainer1[] = _("Player lost against\n{B_TRAINER1_CLASS} {B_TRAINER1_NAME}!");
 static const u8 sText_PlayerBattledToDrawTrainer1[] = _("Player battled to a draw against\n{B_TRAINER1_CLASS} {B_TRAINER1_NAME}!");
