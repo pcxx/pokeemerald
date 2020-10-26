@@ -79,25 +79,25 @@ static const union AnimCmd sAnim_SmokescreenImpact_0[] =
 
 static const union AnimCmd sAnim_SmokescreenImpact_1[] =
 {
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE), 
-    ANIMCMD_FRAME(4, 4, .hFlip = TRUE), 
-    ANIMCMD_FRAME(8, 4, .hFlip = TRUE), 
+    ANIMCMD_FRAME(0, 4, TRUE), 
+    ANIMCMD_FRAME(4, 4, TRUE), 
+    ANIMCMD_FRAME(8, 4, TRUE), 
     ANIMCMD_END
 };
 
 static const union AnimCmd sAnim_SmokescreenImpact_2[] =
 {
-    ANIMCMD_FRAME(0, 4, .vFlip = TRUE), 
-    ANIMCMD_FRAME(4, 4, .vFlip = TRUE), 
-    ANIMCMD_FRAME(8, 4, .vFlip = TRUE), 
+    ANIMCMD_FRAME(0, 4, FALSE, TRUE), 
+    ANIMCMD_FRAME(4, 4, FALSE, TRUE), 
+    ANIMCMD_FRAME(8, 4, FALSE, TRUE), 
     ANIMCMD_END
 };
 
 static const union AnimCmd sAnim_SmokescreenImpact_3[] =
 {
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE, .vFlip = TRUE), 
-    ANIMCMD_FRAME(4, 4, .hFlip = TRUE, .vFlip = TRUE), 
-    ANIMCMD_FRAME(8, 4, .hFlip = TRUE, .vFlip = TRUE), 
+    ANIMCMD_FRAME(0, 4, TRUE, TRUE), 
+    ANIMCMD_FRAME(4, 4, TRUE, TRUE), 
+    ANIMCMD_FRAME(8, 4, TRUE, TRUE), 
     ANIMCMD_END
 };
 

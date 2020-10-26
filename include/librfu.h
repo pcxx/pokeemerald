@@ -293,6 +293,16 @@ union RfuPacket
     struct RfuPacket8 rfuPacket8;
 };
 
+struct STWIStatus;
+
+union CallbackMType
+{
+    void *v;
+    void (*u8vu16)(u8, vu16);
+    void (*u8vu16STWIStatusPtr)(u8, vu16, STWIStatus *);
+    void (*v0)();
+};
+
 struct STWIStatus
 {
     vs32 state;
@@ -316,9 +326,9 @@ struct STWIStatus
     u8 recoveryCount;
     u8 unk_16;
     u8 unk_17;
-    void (*callbackM)();
+    CallbackMType callbackM;
     void (*callbackS)(u16);
-    void (*callbackID)(void);
+    void (*callbackID)();
     union RfuPacket *txPacket;
     union RfuPacket *rxPacket;
     vu8 sending;

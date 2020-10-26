@@ -208,13 +208,13 @@ const struct SpriteTemplate gUnknown_08593304 =
 
 const union AnimCmd gKinesisZapEnergyAnimCmds[] =
 {
-    ANIMCMD_FRAME(0, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(8, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(24, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(40, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(48, 3, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 3, TRUE),
+    ANIMCMD_FRAME(8, 3, TRUE),
+    ANIMCMD_FRAME(16, 3, TRUE),
+    ANIMCMD_FRAME(24, 3, TRUE),
+    ANIMCMD_FRAME(32, 3, TRUE),
+    ANIMCMD_FRAME(40, 3, TRUE),
+    ANIMCMD_FRAME(48, 3, TRUE),
     ANIMCMD_LOOP(1),
     ANIMCMD_END,
 };
@@ -476,9 +476,9 @@ const union AnimCmd gViceGripAnimCmds1[] =
 
 const union AnimCmd gViceGripAnimCmds2[] =
 {
-    ANIMCMD_FRAME(0, 3, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 3, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 20, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 3, TRUE, TRUE),
+    ANIMCMD_FRAME(16, 3, TRUE, TRUE),
+    ANIMCMD_FRAME(32, 20, TRUE, TRUE),
     ANIMCMD_END,
 };
 
@@ -509,9 +509,9 @@ const union AnimCmd gGuillotineAnimCmds1[] =
 
 const union AnimCmd gGuillotineAnimCmds2[] =
 {
-    ANIMCMD_FRAME(0, 2, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 2, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 1, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 2, TRUE, TRUE),
+    ANIMCMD_FRAME(16, 2, TRUE, TRUE),
+    ANIMCMD_FRAME(32, 1, TRUE, TRUE),
     ANIMCMD_END,
 };
 
@@ -550,10 +550,10 @@ const union AffineAnimCmd gGrowAndShrinkAffineAnimCmds[] =
 
 const union AnimCmd gBreathPuffAnimCmds1[] =
 {
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(4, 40, .hFlip = TRUE),
-    ANIMCMD_FRAME(8, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(12, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 4, TRUE),
+    ANIMCMD_FRAME(4, 40, TRUE),
+    ANIMCMD_FRAME(8, 4, TRUE),
+    ANIMCMD_FRAME(12, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -853,9 +853,9 @@ const union AnimCmd gBellAnimCmds[] =
     ANIMCMD_FRAME(32, 15),
     ANIMCMD_FRAME(16, 6),
     ANIMCMD_FRAME(0, 6),
-    ANIMCMD_FRAME(16, 6, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 15, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 6, .hFlip = TRUE),
+    ANIMCMD_FRAME(16, 6, TRUE),
+    ANIMCMD_FRAME(32, 15, TRUE),
+    ANIMCMD_FRAME(16, 6, TRUE),
     ANIMCMD_FRAME(0, 6),
     ANIMCMD_FRAME(16, 6),
     ANIMCMD_FRAME(32, 15),
@@ -1107,10 +1107,10 @@ const union AnimCmd gUnknown_08593B08[] =
 
 const union AnimCmd gUnknown_08593B1C[] =
 {
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(48, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 4, TRUE),
+    ANIMCMD_FRAME(16, 4, TRUE),
+    ANIMCMD_FRAME(32, 4, TRUE),
+    ANIMCMD_FRAME(48, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -1142,10 +1142,10 @@ const union AnimCmd gMovementWavesAnimCmds1[] =
 
 const union AnimCmd gMovementWavesAnimCmds2[] =
 {
-    ANIMCMD_FRAME(16, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 8, .hFlip = TRUE),
+    ANIMCMD_FRAME(16, 8, TRUE),
+    ANIMCMD_FRAME(32, 8, TRUE),
+    ANIMCMD_FRAME(16, 8, TRUE),
+    ANIMCMD_FRAME(0, 8, TRUE),
     ANIMCMD_END,
 };
 

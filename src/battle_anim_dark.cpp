@@ -162,11 +162,11 @@ static const union AnimCmd sAnim_ClawSlash_0[] =
 
 static const union AnimCmd sAnim_ClawSlash_1[] =
 {
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(48, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(64, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 4, TRUE),
+    ANIMCMD_FRAME(16, 4, TRUE),
+    ANIMCMD_FRAME(32, 4, TRUE),
+    ANIMCMD_FRAME(48, 4, TRUE),
+    ANIMCMD_FRAME(64, 4, TRUE),
     ANIMCMD_END,
 };
 

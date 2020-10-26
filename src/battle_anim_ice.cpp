@@ -51,8 +51,8 @@ static bool8 GenerateHailParticle(u8 hailStructId, u8 affineAnimNum, u8 taskId, 
 
 static const union AnimCmd gUnknown_08595A48[] =
 {
-    ANIMCMD_FRAME(0, 5, .hFlip = TRUE),
-    ANIMCMD_FRAME(1, 5, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 5, TRUE),
+    ANIMCMD_FRAME(1, 5, TRUE),
     ANIMCMD_JUMP(0),
 };
 

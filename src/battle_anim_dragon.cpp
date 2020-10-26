@@ -53,9 +53,9 @@ static const union AnimCmd sAnim_DragonBreathFire_0[] =
 
 static const union AnimCmd sAnim_DragonBreathFire_1[] =
 {
-    ANIMCMD_FRAME(16, 3, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 3, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(48, 3, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(16, 3, TRUE, TRUE),
+    ANIMCMD_FRAME(32, 3, TRUE, TRUE),
+    ANIMCMD_FRAME(48, 3, TRUE, TRUE),
     ANIMCMD_JUMP(0),
 };
 

@@ -182,7 +182,8 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
     {
         .effect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
-        .comboStarterId = 0,{0, COMBO_STARTER_LEER},
+        .comboStarterId = 0,
+        .comboMoves = {0, COMBO_STARTER_LEER},
     },
 
     [MOVE_DOUBLE_KICK] =

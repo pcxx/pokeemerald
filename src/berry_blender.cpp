@@ -471,19 +471,19 @@ static const struct OamData sOam_PlayerArrow =
 
 static const union AnimCmd sAnim_PlayerArrow_TopLeft[] =
 {
-    ANIMCMD_FRAME(16, 5, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(16, 5, TRUE, TRUE),
     ANIMCMD_END
 };
 
 static const union AnimCmd sAnim_PlayerArrow_TopRight[] =
 {
-    ANIMCMD_FRAME(16, 5, .vFlip = TRUE),
+    ANIMCMD_FRAME(16, 5, FALSE, TRUE),
     ANIMCMD_END
 };
 
 static const union AnimCmd sAnim_PlayerArrow_BottomLeft[] =
 {
-    ANIMCMD_FRAME(16, 5, .hFlip = TRUE),
+    ANIMCMD_FRAME(16, 5, TRUE),
     ANIMCMD_END
 };
 
@@ -495,28 +495,28 @@ static const union AnimCmd sAnim_PlayerArrow_BottomRight[] =
 
 static const union AnimCmd sAnim_PlayerArrow_TopLeft_Flash[] =
 {
-    ANIMCMD_FRAME(48, 2, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 5, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(48, 3, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 5, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(48, 2, TRUE, TRUE),
+    ANIMCMD_FRAME(32, 5, TRUE, TRUE),
+    ANIMCMD_FRAME(48, 3, TRUE, TRUE),
+    ANIMCMD_FRAME(16, 5, TRUE, TRUE),
     ANIMCMD_END
 };
 
 static const union AnimCmd sAnim_PlayerArrow_TopRight_Flash[] =
 {
-    ANIMCMD_FRAME(48, 2, .vFlip = TRUE),
-    ANIMCMD_FRAME(32, 5, .vFlip = TRUE),
-    ANIMCMD_FRAME(48, 3, .vFlip = TRUE),
-    ANIMCMD_FRAME(16, 5, .vFlip = TRUE),
+    ANIMCMD_FRAME(48, 2, FALSE, TRUE),
+    ANIMCMD_FRAME(32, 5, FALSE, TRUE),
+    ANIMCMD_FRAME(48, 3, FALSE, TRUE),
+    ANIMCMD_FRAME(16, 5, FALSE, TRUE),
     ANIMCMD_END
 };
 
 static const union AnimCmd sAnim_PlayerArrow_BottomLeft_Flash[] =
 {
-    ANIMCMD_FRAME(48, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 5, .hFlip = TRUE),
-    ANIMCMD_FRAME(48, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 5, .hFlip = TRUE),
+    ANIMCMD_FRAME(48, 2, TRUE),
+    ANIMCMD_FRAME(32, 5, TRUE),
+    ANIMCMD_FRAME(48, 3, TRUE),
+    ANIMCMD_FRAME(16, 5, TRUE),
     ANIMCMD_END
 };
 
@@ -531,19 +531,19 @@ static const union AnimCmd sAnim_PlayerArrow_BottomRight_Flash[] =
 
 static const union AnimCmd sAnim_PlayerArrow_TopLeft_Off[] =
 {
-    ANIMCMD_FRAME(0, 5, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 5, TRUE, TRUE),
     ANIMCMD_END
 };
 
 static const union AnimCmd sAnim_PlayerArrow_TopRight_Off[] =
 {
-    ANIMCMD_FRAME(0, 5, .vFlip = TRUE),
+    ANIMCMD_FRAME(0, 5, FALSE, TRUE),
     ANIMCMD_END
 };
 
 static const union AnimCmd sAnim_PlayerArrow_BottomLeft_Off[] =
 {
-    ANIMCMD_FRAME(0, 5, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 5, TRUE),
     ANIMCMD_END
 };
 

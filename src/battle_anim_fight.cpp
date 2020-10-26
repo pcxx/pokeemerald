@@ -77,7 +77,7 @@ static const union AnimCmd sAnim_CrossChopHand_0[] =
 
 static const union AnimCmd sAnim_CrossChopHand_1[] =
 {
-    ANIMCMD_FRAME(48, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(48, 1, TRUE),
     ANIMCMD_END,
 };
 
@@ -323,17 +323,17 @@ static const union AnimCmd sAnim_RevengeSmallScratch_0[] =
 
 static const union AnimCmd sAnim_RevengeSmallScratch_1[] =
 {
-    ANIMCMD_FRAME(0, 4, .vFlip = TRUE),
-    ANIMCMD_FRAME(16, 4, .vFlip = TRUE),
-    ANIMCMD_FRAME(32, 4, .vFlip = TRUE),
+    ANIMCMD_FRAME(0, 4, FALSE, TRUE),
+    ANIMCMD_FRAME(16, 4, FALSE, TRUE),
+    ANIMCMD_FRAME(32, 4, FALSE, TRUE),
     ANIMCMD_END,
 };
 
 static const union AnimCmd sAnim_RevengeSmallScratch_2[] =
 {
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 4, TRUE),
+    ANIMCMD_FRAME(16, 4, TRUE),
+    ANIMCMD_FRAME(32, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -364,15 +364,15 @@ static const union AnimCmd sAnim_RevengeBigScratch_0[] =
 
 static const union AnimCmd sAnim_RevengeBigScratch_1[] =
 {
-    ANIMCMD_FRAME(0, 6, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(64, 6, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 6, TRUE, TRUE),
+    ANIMCMD_FRAME(64, 6, TRUE, TRUE),
     ANIMCMD_END,
 };
 
 static const union AnimCmd sAnim_RevengeBigScratch_2[] =
 {
-    ANIMCMD_FRAME(0, 6, .hFlip = TRUE),
-    ANIMCMD_FRAME(64, 6, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 6, TRUE),
+    ANIMCMD_FRAME(64, 6, TRUE),
     ANIMCMD_END,
 };
 

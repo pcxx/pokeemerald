@@ -49,9 +49,9 @@ static const union AnimCmd sAnim_FireSpiralSpread_0[] =
 
 static const union AnimCmd sAnim_FireSpiralSpread_1[] =
 {
-    ANIMCMD_FRAME(16, 4, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 4, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(48, 4, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(16, 4, TRUE, TRUE),
+    ANIMCMD_FRAME(32, 4, TRUE, TRUE),
+    ANIMCMD_FRAME(48, 4, TRUE, TRUE),
     ANIMCMD_JUMP(0),
 };
 

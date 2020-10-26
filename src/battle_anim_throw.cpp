@@ -176,7 +176,7 @@ static const union AnimCmd sAnim_RegularBall[] =
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_FRAME(1, 1),
     ANIMCMD_FRAME(2, 1),
-    ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 1, TRUE),
     ANIMCMD_FRAME(2, 1),
     ANIMCMD_FRAME(1, 1),
     ANIMCMD_JUMP(0),
@@ -383,14 +383,14 @@ const u16 gBallOpenFadeColors[] =
     [BALL_PREMIER] = RGB(31, 9, 10),
 
     // Garbage data
-    RGB(0, 0, 0),
-    RGB(1, 16, 0),
-    RGB(3, 0, 1),
-    RGB(1, 8, 0),
-    RGB(0, 8, 0),
-    RGB(3, 8, 1),
-    RGB(6, 8, 1),
-    RGB(4, 0, 0),
+    [12] = RGB(0, 0, 0),
+    [13] = RGB(1, 16, 0),
+    [14] = RGB(3, 0, 1),
+    [15] = RGB(1, 8, 0),
+    [16] = RGB(0, 8, 0),
+    [17] = RGB(3, 8, 1),
+    [18] = RGB(6, 8, 1),
+    [19] = RGB(4, 0, 0),
 };
 
 const struct SpriteTemplate gPokeblockSpriteTemplate =

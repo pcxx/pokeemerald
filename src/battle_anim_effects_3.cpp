@@ -482,9 +482,9 @@ const union AnimCmd gEclipsingOrbAnimCmds[] =
     ANIMCMD_FRAME(16, 3),
     ANIMCMD_FRAME(32, 3),
     ANIMCMD_FRAME(48, 3),
-    ANIMCMD_FRAME(32, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 3, .hFlip = TRUE),
+    ANIMCMD_FRAME(32, 3, TRUE),
+    ANIMCMD_FRAME(16, 3, TRUE),
+    ANIMCMD_FRAME(0, 3, TRUE),
     ANIMCMD_LOOP(1),
     ANIMCMD_END,
 };
@@ -674,23 +674,23 @@ const union AnimCmd gSweetScentPetalAnimCmds1[] =
     ANIMCMD_FRAME(1, 8),
     ANIMCMD_FRAME(2, 8),
     ANIMCMD_FRAME(3, 8),
-    ANIMCMD_FRAME(3, 8, .vFlip = TRUE),
-    ANIMCMD_FRAME(2, 8, .vFlip = TRUE),
-    ANIMCMD_FRAME(0, 8, .vFlip = TRUE),
-    ANIMCMD_FRAME(1, 8, .vFlip = TRUE),
+    ANIMCMD_FRAME(3, 8, FALSE, TRUE),
+    ANIMCMD_FRAME(2, 8, FALSE, TRUE),
+    ANIMCMD_FRAME(0, 8, FALSE, TRUE),
+    ANIMCMD_FRAME(1, 8, FALSE, TRUE),
     ANIMCMD_JUMP(0),
 };
 
 const union AnimCmd gSweetScentPetalAnimCmds2[] =
 {
-    ANIMCMD_FRAME(0, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(1, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(3, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(3, 8, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 8, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 8, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(1, 8, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 8, TRUE),
+    ANIMCMD_FRAME(1, 8, TRUE),
+    ANIMCMD_FRAME(2, 8, TRUE),
+    ANIMCMD_FRAME(3, 8, TRUE),
+    ANIMCMD_FRAME(3, 8, TRUE, TRUE),
+    ANIMCMD_FRAME(2, 8, TRUE, TRUE),
+    ANIMCMD_FRAME(0, 8, TRUE, TRUE),
+    ANIMCMD_FRAME(1, 8, TRUE, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -1982,7 +1982,7 @@ static void TormentAttacker_Step(u8 taskId)
     case 4:
         for (i = 0, j = 0; i < MAX_SPRITES; i++)
         {
-            if (gSprites[i].template_ == &gThoughtBubbleSpriteTemplate)
+            if (gSprites[i]._template == &gThoughtBubbleSpriteTemplate)
             {
                 gSprites[i].data[0] = taskId;
                 gSprites[i].data[1] = 6;

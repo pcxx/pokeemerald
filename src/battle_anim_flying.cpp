@@ -74,9 +74,9 @@ const struct SpriteTemplate gGustToTargetSpriteTemplate =
 static const union AnimCmd sAffineAnim_AirWaveCrescent[] =
 {
     ANIMCMD_FRAME(0, 3),
-    ANIMCMD_FRAME(0, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 3, .vFlip = TRUE),
-    ANIMCMD_FRAME(0, 3, .vFlip = TRUE, .hFlip = TRUE),
+    ANIMCMD_FRAME(.imageValue = 0, .duration = 3, .hFlip = TRUE),
+    ANIMCMD_FRAME(.imageValue = 0, .duration = 3, .vFlip = TRUE),
+    ANIMCMD_FRAME(.imageValue = 0, .duration = 3, .hFlip = TRUE, .vFlip = TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -158,7 +158,7 @@ static const union AnimCmd sAnim_FallingFeather_0[] =
 
 static const union AnimCmd sAnim_FallingFeather_1[] =
 {
-    ANIMCMD_FRAME(16, 0, .hFlip = TRUE),
+    ANIMCMD_FRAME(.imageValue = 16, .duration = 0, .hFlip = TRUE),
     ANIMCMD_END,
 };
 
@@ -195,8 +195,8 @@ static const union AnimCmd sAnim_WhirlwindLines[] =
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_FRAME(8, 1),
     ANIMCMD_FRAME(16, 1),
-    ANIMCMD_FRAME(8, 1, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(.imageValue = 8, .duration = 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(.imageValue = 0, .duration = 1, .hFlip = TRUE),
     ANIMCMD_END,
 };
 

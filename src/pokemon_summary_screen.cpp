@@ -1363,7 +1363,7 @@ static void CopyMonToSummaryStruct(struct Pokemon *mon)
 static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
 {
     u32 i;
-    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *sum = &sMonSummaryScreen->summary;
     // Spread the data extraction over multiple frames.
     switch (sMonSummaryScreen->switchCounter)
     {
@@ -1723,7 +1723,7 @@ static bool8 IsValidToViewInMulti(struct Pokemon* mon)
 
 static void ChangePage(u8 taskId, s8 delta)
 {
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
     s16 *data = gTasks[taskId].data;
 
     if (summary->isEgg)
@@ -2077,7 +2077,7 @@ static void ExitMovePositionSwitchMode(u8 taskId, bool8 swapMoves)
 
 static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
 {
-    struct PokeSummary* summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary* summary = &sMonSummaryScreen->summary;
 
     u16 move1 = summary->moves[moveIndex1];
     u16 move2 = summary->moves[moveIndex2];
@@ -2112,7 +2112,7 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
 
 static void SwapBoxMonMoves(struct BoxPokemon *mon, u8 moveIndex1, u8 moveIndex2)
 {
-    struct PokeSummary* summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary* summary = &sMonSummaryScreen->summary;
 
     u16 move1 = summary->moves[moveIndex1];
     u16 move2 = summary->moves[moveIndex2];
@@ -2590,7 +2590,7 @@ static void SetDexNumberColor(bool8 isMonShiny)
 static void DrawExperienceProgressBar(struct Pokemon *unused)
 {
     s64 numExpProgressBarTicks;
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
     u16 *dst;
     u8 i;
 
@@ -2704,7 +2704,7 @@ static void PrintNotEggInfo(void)
 {
     u8 strArray[16];
     struct Pokemon *mon = &sMonSummaryScreen->currentMon;
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
     u16 dexNum = SpeciesToPokedexNum(summary->species);
 
     if (dexNum != 0xFFFF)
@@ -2935,12 +2935,12 @@ static void ClearPageWindowTilemaps(u8 page)
     ScheduleBgCopyTilemapToVram(0);
 }
 
-static u8 AddWindowFromTemplateList(const struct WindowTemplate *template_, u8 templateId)
+static u8 AddWindowFromTemplateList(const struct WindowTemplate *_template, u8 templateId)
 {
     u8 *windowIdPtr = &sMonSummaryScreen->windowIds[templateId];
     if (*windowIdPtr == 0xFF)
     {
-        *windowIdPtr = AddWindow(&template_[templateId]);
+        *windowIdPtr = AddWindow(&_template[templateId]);
         FillWindowPixelBuffer(*windowIdPtr, PIXEL_FILL(0));
     }
     return *windowIdPtr;
@@ -3063,7 +3063,7 @@ static void PrintMonAbilityDescription(void)
 
 static void BufferMonTrainerMemo(void)
 {
-    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *sum = &sMonSummaryScreen->summary;
     const u8 *text;
 
     DynamicPlaceholderTextUtil_Reset();
@@ -3136,7 +3136,7 @@ static void GetMetLevelString(u8 *output)
 
 static bool8 DoesMonOTMatchOwner(void)
 {
-    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *sum = &sMonSummaryScreen->summary;
     u32 trainerId;
     u8 gender;
 
@@ -3162,7 +3162,7 @@ static bool8 DoesMonOTMatchOwner(void)
 
 static bool8 DidMonComeFromGBAGames(void)
 {
-    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *sum = &sMonSummaryScreen->summary;
     if (sum->metGame > 0 && sum->metGame <= VERSION_LEAF_GREEN)
         return TRUE;
     return FALSE;
@@ -3170,7 +3170,7 @@ static bool8 DidMonComeFromGBAGames(void)
 
 bool8 DidMonComeFromRSE(void)
 {
-    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *sum = &sMonSummaryScreen->summary;
     if (sum->metGame > 0 && sum->metGame <= VERSION_EMERALD)
         return TRUE;
     return FALSE;
@@ -3206,7 +3206,7 @@ static void PrintEggOTID(void)
 static void PrintEggState(void)
 {
     const u8 *text;
-    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *sum = &sMonSummaryScreen->summary;
 
     if (sMonSummaryScreen->summary.sanity == TRUE)
         text = gText_EggWillTakeALongTime;
@@ -3225,7 +3225,7 @@ static void PrintEggState(void)
 static void PrintEggMemo(void)
 {
     const u8 *text;
-    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *sum = &sMonSummaryScreen->summary;
 
     if (sMonSummaryScreen->summary.sanity != 1)
     {
@@ -3386,7 +3386,7 @@ static void PrintRightColumnStats(void)
 
 static void PrintExpPointsNextLevel(void)
 {
-    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *sum = &sMonSummaryScreen->summary;
     u8 windowId = AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_EXP);
     int x;
     u32 expToNextLevel;
@@ -3477,7 +3477,7 @@ static void PrintMoveNameAndPP(u8 moveIndex)
     u8 pp;
     int ppState, x;
     const u8 *text;
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
     u8 moveNameWindowId = AddWindowFromTemplateList(sPageMovesTemplate, PSS_DATA_WINDOW_MOVE_NAMES);
     u8 ppValueWindowId = AddWindowFromTemplateList(sPageMovesTemplate, PSS_DATA_WINDOW_MOVE_PP);
     u16 move = summary->moves[moveIndex];
@@ -3764,7 +3764,7 @@ static void SetTypeSpritePosAndPal(u8 typeId, u8 x, u8 y, u8 spriteArrayId)
 
 static void SetMonTypeIcons(void)
 {
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
     if (summary->isEgg)
     {
         SetTypeSpritePosAndPal(TYPE_MYSTERY, 120, 48, SPRITE_ARR_ID_TYPE);
@@ -3788,7 +3788,7 @@ static void SetMonTypeIcons(void)
 static void SetMoveTypeIcons(void)
 {
     u8 i;
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (summary->moves[i] != MOVE_NONE)
@@ -3801,7 +3801,7 @@ static void SetMoveTypeIcons(void)
 static void SetContestMoveTypeIcons(void)
 {
     u8 i;
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (summary->moves[i] != MOVE_NONE)
@@ -3848,7 +3848,7 @@ static void SwapMovesTypeSprites(u8 moveIndex1, u8 moveIndex2)
 static u8 LoadMonGfxAndSprite(struct Pokemon *mon, s16 *state)
 {
     const struct CompressedSpritePalette *pal;
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
 
     switch (*state)
     {
@@ -3892,7 +3892,7 @@ static u8 LoadMonGfxAndSprite(struct Pokemon *mon, s16 *state)
 
 static void PlayMonCry(void)
 {
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
     if (!summary->isEgg)
     {
         if (ShouldPlayNormalMonCry(&sMonSummaryScreen->currentMon) == TRUE)
@@ -3904,7 +3904,7 @@ static void PlayMonCry(void)
 
 static u8 CreateMonSprite(struct Pokemon *unused)
 {
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
     u8 spriteId = CreateSprite(&gMultiuseSpriteTemplate, 40, 64, 5);
 
     FreeSpriteOamMatrix(&gSprites[spriteId]);
@@ -3923,7 +3923,7 @@ static u8 CreateMonSprite(struct Pokemon *unused)
 
 static void SpriteCB_Pokemon(struct Sprite *sprite)
 {
-    struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    PokemonSummaryScreenData::PokeSummary *summary = &sMonSummaryScreen->summary;
 
     if (!gPaletteFade.active && sprite->data[2] != 1)
     {

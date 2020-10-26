@@ -134,8 +134,8 @@ static void sio32intr_clock_master(void)
             }
         }
         gSTWIStatus->sending = 0;
-        if (gSTWIStatus->callbackM != NULL)
-            Callback_Dummy_M(gSTWIStatus->reqActiveCommand, gSTWIStatus->error, gSTWIStatus->callbackM);
+        if (gSTWIStatus->callbackM.v != NULL)
+            Callback_Dummy_M(gSTWIStatus->reqActiveCommand, gSTWIStatus->error, gSTWIStatus->callbackM.v0);
     }
     else
     {

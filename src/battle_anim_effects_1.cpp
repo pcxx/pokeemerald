@@ -529,9 +529,9 @@ const struct SpriteTemplate gTwisterLeafSpriteTemplate =
 const union AnimCmd gRazorLeafCutterAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 3),
-    ANIMCMD_FRAME(0, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 3, .vFlip = TRUE, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 3, .vFlip = TRUE),
+    ANIMCMD_FRAME(0, 3, TRUE),
+    ANIMCMD_FRAME(0, 3, TRUE, TRUE),
+    ANIMCMD_FRAME(0, 3, FALSE, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -582,10 +582,10 @@ const union AnimCmd gConstrictBindingAnimCmds1[] =
 
 const union AnimCmd gConstrictBindingAnimCmds2[] =
 {
-    ANIMCMD_FRAME(0,  4, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(64, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(96, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(0,  4, TRUE),
+    ANIMCMD_FRAME(32, 4, TRUE),
+    ANIMCMD_FRAME(64, 4, TRUE),
+    ANIMCMD_FRAME(96, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -663,10 +663,10 @@ const union AnimCmd gIngrainRootAnimCmds1[] =
 
 const union AnimCmd gIngrainRootAnimCmds2[] =
 {
-    ANIMCMD_FRAME(0, 7, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 7, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 7, .hFlip = TRUE),
-    ANIMCMD_FRAME(48, 7, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 7, TRUE),
+    ANIMCMD_FRAME(16, 7, TRUE),
+    ANIMCMD_FRAME(32, 7, TRUE),
+    ANIMCMD_FRAME(48, 7, TRUE),
     ANIMCMD_END,
 };
 
@@ -680,9 +680,9 @@ const union AnimCmd gIngrainRootAnimCmds3[] =
 
 const union AnimCmd gIngrainRootAnimCmds4[] =
 {
-    ANIMCMD_FRAME(0, 7, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 7, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 7, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 7, TRUE),
+    ANIMCMD_FRAME(16, 7, TRUE),
+    ANIMCMD_FRAME(32, 7, TRUE),
     ANIMCMD_END,
 };
 
@@ -899,7 +899,7 @@ const union AnimCmd gLeafBladeAnimCmds3[] =
 
 const union AnimCmd gLeafBladeAnimCmds4[] =
 {
-    ANIMCMD_FRAME(28, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(28, 1, TRUE),
     ANIMCMD_END,
 };
 
@@ -911,7 +911,7 @@ const union AnimCmd gLeafBladeAnimCmds5[] =
 
 const union AnimCmd gLeafBladeAnimCmds6[] =
 {
-    ANIMCMD_FRAME(16, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(16, 1, TRUE),
     ANIMCMD_END,
 };
 
@@ -1071,10 +1071,10 @@ const union AnimCmd gWhipAnimCmds1[] =
 
 const union AnimCmd gWhipAnimCmds2[] =
 {
-    ANIMCMD_FRAME(64, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(80, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(96, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(112, 6, .hFlip = TRUE),
+    ANIMCMD_FRAME(64, 3, TRUE),
+    ANIMCMD_FRAME(80, 3, TRUE),
+    ANIMCMD_FRAME(96, 3, TRUE),
+    ANIMCMD_FRAME(112, 6, TRUE),
     ANIMCMD_END,
 };
 
@@ -1282,25 +1282,25 @@ const union AnimCmd gUnknown_08592A74[] =
 
 const union AnimCmd gUnknown_08592A7C[] =
 {
-    ANIMCMD_FRAME(0, 1, .vFlip = TRUE),
+    ANIMCMD_FRAME(0, 1, FALSE, TRUE),
     ANIMCMD_END,
 };
 
 const union AnimCmd gUnknown_08592A84[] =
 {
-    ANIMCMD_FRAME(4, 1, .vFlip = TRUE),
+    ANIMCMD_FRAME(4, 1, FALSE, TRUE),
     ANIMCMD_END,
 };
 
 const union AnimCmd gUnknown_08592A8C[] =
 {
-    ANIMCMD_FRAME(8, 1, .vFlip = TRUE),
+    ANIMCMD_FRAME(8, 1, FALSE, TRUE),
     ANIMCMD_END,
 };
 
 const union AnimCmd gUnknown_08592A94[] =
 {
-    ANIMCMD_FRAME(12, 1, .vFlip = TRUE),
+    ANIMCMD_FRAME(12, 1, FALSE, TRUE),
     ANIMCMD_END,
 };
 
@@ -1429,14 +1429,14 @@ const union AnimCmd gUnknown_08592BAC[] =
 
 const union AnimCmd gUnknown_08592BD0[] =
 {
-    ANIMCMD_FRAME(0, 10, .hFlip = TRUE),
-    ANIMCMD_FRAME(4, 10, .hFlip = TRUE),
-    ANIMCMD_FRAME(8, 10, .hFlip = TRUE),
-    ANIMCMD_FRAME(12, 10, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 26, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 5, .hFlip = TRUE),
-    ANIMCMD_FRAME(20, 5, .hFlip = TRUE),
-    ANIMCMD_FRAME(24, 15, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 10, TRUE),
+    ANIMCMD_FRAME(4, 10, TRUE),
+    ANIMCMD_FRAME(8, 10, TRUE),
+    ANIMCMD_FRAME(12, 10, TRUE),
+    ANIMCMD_FRAME(16, 26, TRUE),
+    ANIMCMD_FRAME(16, 5, TRUE),
+    ANIMCMD_FRAME(20, 5, TRUE),
+    ANIMCMD_FRAME(24, 15, TRUE),
     ANIMCMD_END,
 };
 
@@ -1918,13 +1918,13 @@ const union AnimCmd gWavyMusicNotesAnimCmds6[] =
 
 const union AnimCmd gWavyMusicNotesAnimCmds7[] =
 {
-    ANIMCMD_FRAME(0, 10, .vFlip = TRUE),
+    ANIMCMD_FRAME(0, 10, FALSE, TRUE),
     ANIMCMD_END,
 };
 
 const union AnimCmd gWavyMusicNotesAnimCmds8[] =
 {
-    ANIMCMD_FRAME(4, 10, .vFlip = TRUE),
+    ANIMCMD_FRAME(4, 10, FALSE, TRUE),
     ANIMCMD_END,
 };
 
@@ -2018,19 +2018,19 @@ const struct SpriteTemplate gSlowFlyingMusicNotesSpriteTemplate =
 
 const union AnimCmd gMetronomeThroughtBubbleAnimCmds1[] =
 {
-    ANIMCMD_FRAME(0, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(48, 2, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 2, TRUE),
+    ANIMCMD_FRAME(16, 2, TRUE),
+    ANIMCMD_FRAME(32, 2, TRUE),
+    ANIMCMD_FRAME(48, 2, TRUE),
     ANIMCMD_END,
 };
 
 const union AnimCmd gMetronomeThroughtBubbleAnimCmds3[] =
 {
-    ANIMCMD_FRAME(48, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 2, .hFlip = TRUE),
+    ANIMCMD_FRAME(48, 2, TRUE),
+    ANIMCMD_FRAME(32, 2, TRUE),
+    ANIMCMD_FRAME(16, 2, TRUE),
+    ANIMCMD_FRAME(0, 2, TRUE),
     ANIMCMD_END,
 };
 
@@ -2136,7 +2136,7 @@ const union AnimCmd gTauntFingerAnimCmds1[] =
 
 const union AnimCmd gTauntFingerAnimCmds2[] =
 {
-    ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 1, TRUE),
     ANIMCMD_END,
 };
 
@@ -2154,13 +2154,13 @@ const union AnimCmd gTauntFingerAnimCmds3[] =
 
 const union AnimCmd gTauntFingerAnimCmds4[] =
 {
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(16, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(32, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 4, TRUE),
+    ANIMCMD_FRAME(16, 4, TRUE),
+    ANIMCMD_FRAME(32, 4, TRUE),
+    ANIMCMD_FRAME(16, 4, TRUE),
+    ANIMCMD_FRAME(0, 4, TRUE),
+    ANIMCMD_FRAME(16, 4, TRUE),
+    ANIMCMD_FRAME(32, 4, TRUE),
     ANIMCMD_END,
 };
 

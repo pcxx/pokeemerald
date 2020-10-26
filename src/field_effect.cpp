@@ -32,7 +32,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
-#define subsprite_table(ptr) {.subsprites = ptr, .subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite))}
+#define subsprite_table(ptr) {.subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite)), .subsprites = ptr}
 
 EWRAM_DATA s32 gFieldEffectArguments[8] = {0};
 

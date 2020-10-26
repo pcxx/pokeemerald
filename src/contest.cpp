@@ -822,7 +822,7 @@ static const struct WindowTemplate sContestWindowTemplates[] =
         .paletteNum = 0xF,
         .baseBlock = 0x2EE
     },
-    DUMMY_WIN_TEMPLATE
+    [11] = DUMMY_WIN_TEMPLATE
 };
 
 #include "data/contest_opponents.h"
