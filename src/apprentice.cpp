@@ -1215,9 +1215,9 @@ static void SetSavedApprenticeTrainerGfxId(void)
 {
     u8 i;
     u8 objectEventGfxId;
-    u8 class = gApprentices[gSaveBlock2Ptr->apprentices[0].id].facilityClass;
+    u8 class_ = gApprentices[gSaveBlock2Ptr->apprentices[0].id].facilityClass;
 
-    for (i = 0; i < ARRAY_COUNT(gTowerMaleFacilityClasses) && gTowerMaleFacilityClasses[i] != class; i++)
+    for (i = 0; i < ARRAY_COUNT(gTowerMaleFacilityClasses) && gTowerMaleFacilityClasses[i] != class_; i++)
         ;
     if (i != ARRAY_COUNT(gTowerMaleFacilityClasses))
     {
@@ -1226,7 +1226,7 @@ static void SetSavedApprenticeTrainerGfxId(void)
         return;
     }
 
-    for (i = 0; i < ARRAY_COUNT(gTowerFemaleFacilityClasses) && gTowerFemaleFacilityClasses[i] != class; i++)
+    for (i = 0; i < ARRAY_COUNT(gTowerFemaleFacilityClasses) && gTowerFemaleFacilityClasses[i] != class_; i++)
         ;
     if (i != ARRAY_COUNT(gTowerFemaleFacilityClasses))
     {
@@ -1239,9 +1239,9 @@ static void SetPlayerApprenticeTrainerGfxId(void)
 {
     u8 i;
     u8 objectEventGfxId;
-    u8 class = gApprentices[PLAYER_APPRENTICE.id].facilityClass;
+    u8 class_ = gApprentices[PLAYER_APPRENTICE.id].facilityClass;
 
-    for (i = 0; i < ARRAY_COUNT(gTowerMaleFacilityClasses) && gTowerMaleFacilityClasses[i] != class; i++)
+    for (i = 0; i < ARRAY_COUNT(gTowerMaleFacilityClasses) && gTowerMaleFacilityClasses[i] != class_; i++)
         ;
     if (i != ARRAY_COUNT(gTowerMaleFacilityClasses))
     {
@@ -1250,7 +1250,7 @@ static void SetPlayerApprenticeTrainerGfxId(void)
         return;
     }
 
-    for (i = 0; i < ARRAY_COUNT(gTowerFemaleFacilityClasses) && gTowerFemaleFacilityClasses[i] != class; i++)
+    for (i = 0; i < ARRAY_COUNT(gTowerFemaleFacilityClasses) && gTowerFemaleFacilityClasses[i] != class_; i++)
         ;
     if (i != ARRAY_COUNT(gTowerFemaleFacilityClasses))
     {

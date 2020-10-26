@@ -402,8 +402,8 @@ void BufferMatchCallNameAndDesc(struct PokenavMatchCallEntries *matchCallEntry, 
     {
         int index = GetTrainerIdxByRematchIdx(matchCallEntry->headerId);
         const struct Trainer *trainer = &gTrainers[index];
-        int class = trainer->trainerClass;
-        className = gTrainerClassNames[class];
+        int class_ = trainer->trainerClass;
+        className = gTrainerClassNames[class_];
         trainerName = trainer->trainerName;
     }
     else

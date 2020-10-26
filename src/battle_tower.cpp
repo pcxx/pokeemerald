@@ -2137,7 +2137,7 @@ static void SaveCurrentWinStreak(void)
 static void sub_8163EE4(void)
 {
     s32 i;
-    u8 lvlMode, battleMode, class;
+    u8 lvlMode, battleMode, class_;
     struct EmeraldBattleTowerRecord *playerRecord = &gSaveBlock2Ptr->frontier.towerPlayer;
 
     ClearBattleTowerRecord(playerRecord);
@@ -2145,20 +2145,20 @@ static void sub_8163EE4(void)
     battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     if (gSaveBlock2Ptr->playerGender != MALE)
     {
-        class = gTowerFemaleFacilityClasses[(gSaveBlock2Ptr->playerTrainerId[0] +
+        class_ = gTowerFemaleFacilityClasses[(gSaveBlock2Ptr->playerTrainerId[0] +
                                        gSaveBlock2Ptr->playerTrainerId[1] +
                                        gSaveBlock2Ptr->playerTrainerId[2] +
                                        gSaveBlock2Ptr->playerTrainerId[3]) % ARRAY_COUNT(gTowerFemaleFacilityClasses)];
     }
     else
     {
-        class = gTowerMaleFacilityClasses[(gSaveBlock2Ptr->playerTrainerId[0] +
+        class_ = gTowerMaleFacilityClasses[(gSaveBlock2Ptr->playerTrainerId[0] +
                                      gSaveBlock2Ptr->playerTrainerId[1] +
                                      gSaveBlock2Ptr->playerTrainerId[2] +
                                      gSaveBlock2Ptr->playerTrainerId[3]) % ARRAY_COUNT(gTowerMaleFacilityClasses)];
     }
     playerRecord->lvlMode = lvlMode;
-    playerRecord->facilityClass = class;
+    playerRecord->facilityClass = class_;
     CopyTrainerId(playerRecord->trainerId, gSaveBlock2Ptr->playerTrainerId);
     StringCopy7(playerRecord->name, gSaveBlock2Ptr->playerName);
     playerRecord->winStreak = GetCurrentBattleTowerWinStreak(lvlMode, battleMode);
