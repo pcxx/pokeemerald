@@ -57,7 +57,7 @@ extern struct MusicPlayerInfo gMPlayInfo_BGM;
 
 extern const u8* const gBattleScriptsForMoveEffects[];
 
-#define DEFENDER_IS_PROTECTED ((gProtectStructs[gBattlerTarget].protected) && (gBattleMoves[gCurrentMove].flags & FLAG_PROTECT_AFFECTED))
+#define DEFENDER_IS_PROTECTED ((gProtectStructs[gBattlerTarget].protected_) && (gBattleMoves[gCurrentMove].flags & FLAG_PROTECT_AFFECTED))
 
 // this file's functions
 static bool8 IsTwoTurnsMove(u16 move);
@@ -6452,7 +6452,7 @@ static void Cmd_setprotectlike(void) // protect and endure
     {
         if (gBattleMoves[gCurrentMove].effect == EFFECT_PROTECT)
         {
-            gProtectStructs[gBattlerAttacker].protected = 1;
+            gProtectStructs[gBattlerAttacker].protected_ = 1;
             gBattleCommunication[MULTISTRING_CHOOSER] = 0;
         }
         if (gBattleMoves[gCurrentMove].effect == EFFECT_ENDURE)
