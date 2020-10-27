@@ -902,7 +902,23 @@ static const struct SpriteSheet gWaveformSpriteSheet =
     gWaveformTiles, sizeof(gWaveformTiles), TAG_TILE_WAVEFORM
 };
 
-static const struct OamData sOamData_857286C;
+static const struct OamData sOamData_857286C =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = 0,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(64x64),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+    .affineParam = 0
+};
+
 static const struct SpriteTemplate sSpriteTemplate_CursorMon =
 {
     .tileTag = TAG_TILE_2,
@@ -958,23 +974,6 @@ static const struct WindowTemplate sYesNoWindowTemplate =
     .height = 4,
     .paletteNum = 15,
     .baseBlock = 0x5C,
-};
-
-static const struct OamData sOamData_857286C =
-{
-    .y = 0,
-    .affineMode = ST_OAM_AFFINE_OFF,
-    .objMode = ST_OAM_OBJ_NORMAL,
-    .mosaic = 0,
-    .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(64x64),
-    .x = 0,
-    .matrixNum = 0,
-    .size = SPRITE_SIZE(64x64),
-    .tileNum = 0,
-    .priority = 0,
-    .paletteNum = 0,
-    .affineParam = 0
 };
 
 static const struct OamData sOamData_8572874 =
@@ -1041,18 +1040,6 @@ static const struct SpriteTemplate sSpriteTemplate_Waveform =
     .callback = SpriteCallbackDummy,
 };
 
-static const struct OamData sOamData_85728EC;
-static const struct SpriteTemplate gUnknown_085728D4 =
-{
-    .tileTag = TAG_TILE_12,
-    .paletteTag = TAG_PAL_DAC0,
-    .oam = &sOamData_85728EC,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
-};
-
 static const struct OamData sOamData_85728EC =
 {
     .y = 0,
@@ -1068,6 +1055,17 @@ static const struct OamData sOamData_85728EC =
     .priority = 0,
     .paletteNum = 0,
     .affineParam = 0
+};
+
+static const struct SpriteTemplate gUnknown_085728D4 =
+{
+    .tileTag = TAG_TILE_12,
+    .paletteTag = TAG_PAL_DAC0,
+    .oam = &sOamData_85728EC,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
 
 static const union AffineAnimCmd gSpriteAffineAnim_85728F4[] =
