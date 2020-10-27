@@ -96,6 +96,7 @@ static const INIT_PARAM sRfuReqConfigTemplate = {
 };
 
 static const u8 sAvailSlots[] = {
+    [0] = 0,
     [1] = AVAIL_SLOT1,
     [2] = AVAIL_SLOT2,
     [3] = AVAIL_SLOT3,
