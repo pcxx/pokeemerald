@@ -196,7 +196,7 @@ static const union AnimCmd sSurfBlobAnim_FaceWest[] =
 
 static const union AnimCmd sSurfBlobAnim_FaceEast[] =
 {
-    ANIMCMD_FRAME(2, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(2, 1, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -342,7 +342,7 @@ static const struct SpriteFrameImage sPicTable_SandFootprints[] = {
 
 static const union AnimCmd sSandFootprintsAnim_South[] =
 {
-    ANIMCMD_FRAME(0, 1, .vFlip = TRUE),
+    ANIMCMD_FRAME(0, 1, FALSE, TRUE),
     ANIMCMD_END,
 };
 
@@ -360,7 +360,7 @@ static const union AnimCmd sSandFootprintsAnim_West[] =
 
 static const union AnimCmd sSandFootprintsAnim_East[] =
 {
-    ANIMCMD_FRAME(1, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(1, 1, TRUE),
     ANIMCMD_END,
 };
 
@@ -390,7 +390,7 @@ static const struct SpriteFrameImage sPicTable_DeepSandFootprints[] = {
 
 static const union AnimCmd sDeepSandFootprintsAnim_South[] =
 {
-    ANIMCMD_FRAME(0, 1, .vFlip = TRUE),
+    ANIMCMD_FRAME(0, 1, FALSE, TRUE),
     ANIMCMD_END,
 };
 
@@ -408,7 +408,7 @@ static const union AnimCmd sDeepSandFootprintsAnim_West[] =
 
 static const union AnimCmd sDeepSandFootprintsAnim_East[] =
 {
-    ANIMCMD_FRAME(1, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(1, 1, TRUE),
     ANIMCMD_END,
 };
 
@@ -470,13 +470,13 @@ static const union AnimCmd sBikeTireTracksAnim_SECornerTurn[] =
 
 static const union AnimCmd sBikeTireTracksAnim_SWCornerTurn[] =
 {
-    ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 1, TRUE),
     ANIMCMD_END,
 };
 
 static const union AnimCmd sBikeTireTracksAnim_NWCornerTurn[] =
 {
-    ANIMCMD_FRAME(3, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(3, 1, TRUE),
     ANIMCMD_END,
 };
 

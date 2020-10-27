@@ -440,11 +440,11 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
 #include "data/field_effects/field_effect_object_template_pointers.h"
-#include "data/object_events/object_event_pic_tables.h"
-#include "data/object_events/object_event_anims.h"
-#include "data/object_events/base_oam.h"
-#include "data/object_events/object_event_subsprites.h"
-#include "data/object_events/object_event_graphics_info.h"
+//#include "data/object_events/object_event_pic_tables.h"
+//#include "data/object_events/object_event_anims.h"
+//#include "data/object_events/base_oam.h"
+//#include "data/object_events/object_event_subsprites.h"
+//#include "data/object_events/object_event_graphics_info.h"
 
 const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette0,  OBJ_EVENT_PAL_TAG_0},
@@ -667,7 +667,7 @@ const u16 *const gObjectPaletteTagSets[] = {
 };
 
 #include "data/object_events/berry_tree_graphics_tables.h"
-#include "data/field_effects/field_effect_objects.h"
+//#include "data/field_effects/field_effect_objects.h"
 
 const s16 gMovementDelaysMedium[] = {32, 64,  96, 128};
 const s16 gMovementDelaysLong[] =   {32, 64, 128, 192};
@@ -8810,28 +8810,6 @@ static void DoRippleFieldEffect(struct ObjectEvent *objectEvent, struct Sprite *
     gFieldEffectArguments[3] = 3;
     FieldEffectStart(FLDEFF_RIPPLE);
 }
-
-u8 (*const gMovementActionFuncs_StoreAndLockAnim[])(struct ObjectEvent *, struct Sprite *) = {
-    MovementAction_StoreAndLockAnim_Step0,
-    MovementAction_Finish,
-};
-
-u8 (*const gMovementActionFuncs_FreeAndUnlockAnim[])(struct ObjectEvent *, struct Sprite *) = {
-    MovementAction_FreeAndUnlockAnim_Step0,
-    MovementAction_Finish,
-};
-
-u8 (*const gMovementActionFuncs_FlyUp[])(struct ObjectEvent *, struct Sprite *) = {
-    MovementAction_FlyUp_Step0,
-    MovementAction_FlyUp_Step1,
-    MovementAction_Fly_Finish,
-};
-
-u8 (*const gMovementActionFuncs_FlyDown[])(struct ObjectEvent *, struct Sprite *) = {
-    MovementAction_FlyDown_Step0,
-    MovementAction_FlyDown_Step1,
-    MovementAction_Fly_Finish,
-};
 
 u8 MovementAction_StoreAndLockAnim_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {

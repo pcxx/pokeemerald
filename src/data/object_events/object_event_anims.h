@@ -27,7 +27,7 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpFaceWest[] =
 
 const union AnimCmd gObjectEventImageAnim_QuintyPlumpFaceEast[] =
 {
-    ANIMCMD_FRAME(2, 16, .hFlip = TRUE),
+    ANIMCMD_FRAME(2, 16, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -35,7 +35,7 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoSouth[] =
 {
     ANIMCMD_FRAME(3, 8),
     ANIMCMD_FRAME(0, 8),
-    ANIMCMD_FRAME(3, 8, .hFlip = TRUE),
+    ANIMCMD_FRAME(3, 8, TRUE),
     ANIMCMD_FRAME(0, 8),
     ANIMCMD_JUMP(0),
 };
@@ -44,7 +44,7 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoNorth[] =
 {
     ANIMCMD_FRAME(4, 8),
     ANIMCMD_FRAME(1, 8),
-    ANIMCMD_FRAME(4, 8, .hFlip = TRUE),
+    ANIMCMD_FRAME(4, 8, TRUE),
     ANIMCMD_FRAME(1, 8),
     ANIMCMD_JUMP(0),
 };
@@ -60,10 +60,10 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoWest[] =
 
 const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoEast[] =
 {
-    ANIMCMD_FRAME(5, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(6, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 8, .hFlip = TRUE),
+    ANIMCMD_FRAME(5, 8, TRUE),
+    ANIMCMD_FRAME(2, 8, TRUE),
+    ANIMCMD_FRAME(6, 8, TRUE),
+    ANIMCMD_FRAME(2, 8, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -71,7 +71,7 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFastSouth[] =
 {
     ANIMCMD_FRAME(3, 4),
     ANIMCMD_FRAME(0, 4),
-    ANIMCMD_FRAME(3, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(3, 4, TRUE),
     ANIMCMD_FRAME(0, 4),
     ANIMCMD_JUMP(0),
 };
@@ -80,7 +80,7 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFastNorth[] =
 {
     ANIMCMD_FRAME(4, 4),
     ANIMCMD_FRAME(1, 4),
-    ANIMCMD_FRAME(4, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(4, 4, TRUE),
     ANIMCMD_FRAME(1, 4),
     ANIMCMD_JUMP(0),
 };
@@ -96,10 +96,10 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFastWest[] =
 
 const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFastEast[] =
 {
-    ANIMCMD_FRAME(5, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(6, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(5, 4, TRUE),
+    ANIMCMD_FRAME(2, 4, TRUE),
+    ANIMCMD_FRAME(6, 4, TRUE),
+    ANIMCMD_FRAME(2, 4, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -107,7 +107,7 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFasterSouth[] =
 {
     ANIMCMD_FRAME(3, 2),
     ANIMCMD_FRAME(0, 2),
-    ANIMCMD_FRAME(3, 2, .hFlip = TRUE),
+    ANIMCMD_FRAME(3, 2, TRUE),
     ANIMCMD_FRAME(0, 2),
     ANIMCMD_JUMP(0),
 };
@@ -116,7 +116,7 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFasterNorth[] =
 {
     ANIMCMD_FRAME(4, 2),
     ANIMCMD_FRAME(1, 2),
-    ANIMCMD_FRAME(4, 2, .hFlip = TRUE),
+    ANIMCMD_FRAME(4, 2, TRUE),
     ANIMCMD_FRAME(1, 2),
     ANIMCMD_JUMP(0),
 };
@@ -132,10 +132,10 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFasterWest[] =
 
 const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFasterEast[] =
 {
-    ANIMCMD_FRAME(5, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(6, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 2, .hFlip = TRUE),
+    ANIMCMD_FRAME(5, 2, TRUE),
+    ANIMCMD_FRAME(2, 2, TRUE),
+    ANIMCMD_FRAME(6, 2, TRUE),
+    ANIMCMD_FRAME(2, 2, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -143,7 +143,7 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFastestSouth[] =
 {
     ANIMCMD_FRAME(3, 1),
     ANIMCMD_FRAME(0, 1),
-    ANIMCMD_FRAME(3, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(3, 1, TRUE),
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_JUMP(0),
 };
@@ -152,7 +152,7 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFastestNorth[] =
 {
     ANIMCMD_FRAME(4, 1),
     ANIMCMD_FRAME(1, 1),
-    ANIMCMD_FRAME(4, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(4, 1, TRUE),
     ANIMCMD_FRAME(1, 1),
     ANIMCMD_JUMP(0),
 };
@@ -168,10 +168,10 @@ const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFastestWest[] =
 
 const union AnimCmd gObjectEventImageAnim_QuintyPlumpGoFastestEast[] =
 {
-    ANIMCMD_FRAME(5, 1, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 1, .hFlip = TRUE),
-    ANIMCMD_FRAME(6, 1, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(5, 1, TRUE),
+    ANIMCMD_FRAME(2, 1, TRUE),
+    ANIMCMD_FRAME(6, 1, TRUE),
+    ANIMCMD_FRAME(2, 1, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -195,7 +195,7 @@ const union AnimCmd gObjectEventImageAnim_FaceWest[] =
 
 const union AnimCmd gObjectEventImageAnim_FaceEast[] =
 {
-    ANIMCMD_FRAME(2, 16, .hFlip = TRUE),
+    ANIMCMD_FRAME(2, 16, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -228,10 +228,10 @@ const union AnimCmd gObjectEventImageAnim_GoWest[] =
 
 const union AnimCmd gObjectEventImageAnim_GoEast[] =
 {
-    ANIMCMD_FRAME(7, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(8, 8, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 8, .hFlip = TRUE),
+    ANIMCMD_FRAME(7, 8, TRUE),
+    ANIMCMD_FRAME(2, 8, TRUE),
+    ANIMCMD_FRAME(8, 8, TRUE),
+    ANIMCMD_FRAME(2, 8, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -264,10 +264,10 @@ const union AnimCmd gObjectEventImageAnim_GoFastWest[] =
 
 const union AnimCmd gObjectEventImageAnim_GoFastEast[] =
 {
-    ANIMCMD_FRAME(7, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(8, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(7, 4, TRUE),
+    ANIMCMD_FRAME(2, 4, TRUE),
+    ANIMCMD_FRAME(8, 4, TRUE),
+    ANIMCMD_FRAME(2, 4, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -300,10 +300,10 @@ const union AnimCmd gObjectEventImageAnim_GoFasterWest[] =
 
 const union AnimCmd gObjectEventImageAnim_GoFasterEast[] =
 {
-    ANIMCMD_FRAME(7, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(8, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 2, .hFlip = TRUE),
+    ANIMCMD_FRAME(7, 2, TRUE),
+    ANIMCMD_FRAME(2, 2, TRUE),
+    ANIMCMD_FRAME(8, 2, TRUE),
+    ANIMCMD_FRAME(2, 2, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -336,10 +336,10 @@ const union AnimCmd gObjectEventImageAnim_GoFastestWest[] =
 
 const union AnimCmd gObjectEventImageAnim_GoFastestEast[] =
 {
-    ANIMCMD_FRAME(7, 1, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 1, .hFlip = TRUE),
-    ANIMCMD_FRAME(8, 1, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(7, 1, TRUE),
+    ANIMCMD_FRAME(2, 1, TRUE),
+    ANIMCMD_FRAME(8, 1, TRUE),
+    ANIMCMD_FRAME(2, 1, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -372,10 +372,10 @@ const union AnimCmd gObjectEventImageAnim_RunWest[] =
 
 const union AnimCmd gObjectEventImageAnim_RunEast[] =
 {
-    ANIMCMD_FRAME(16, 5, .hFlip = TRUE),
-    ANIMCMD_FRAME(11, 3, .hFlip = TRUE),
-    ANIMCMD_FRAME(17, 5, .hFlip = TRUE),
-    ANIMCMD_FRAME(11, 3, .hFlip = TRUE),
+    ANIMCMD_FRAME(16, 5, TRUE),
+    ANIMCMD_FRAME(11, 3, TRUE),
+    ANIMCMD_FRAME(17, 5, TRUE),
+    ANIMCMD_FRAME(11, 3, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -409,7 +409,7 @@ const union AnimCmd gObjectEventImageAnim_GetOnOffSurfBlobWest[] =
 
 const union AnimCmd gObjectEventImageAnim_GetOnOffSurfBlobEast[] =
 {
-    ANIMCMD_FRAME(11, 32, .hFlip = TRUE),
+    ANIMCMD_FRAME(11, 32, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -436,8 +436,8 @@ const union AnimCmd gObjectEventImageAnim_BunnyHoppyBackWheelWest[] =
 
 const union AnimCmd gObjectEventImageAnim_BunnyHoppyBackWheelEast[] =
 {
-    ANIMCMD_FRAME(17, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(18, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(17, 4, TRUE),
+    ANIMCMD_FRAME(18, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -464,8 +464,8 @@ const union AnimCmd gObjectEventImageAnim_BunnyHoppyFrontWheelWest[] =
 
 const union AnimCmd gObjectEventImageAnim_BunnyHoppyFrontWheelEast[] =
 {
-    ANIMCMD_FRAME(19, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(20, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(19, 4, TRUE),
+    ANIMCMD_FRAME(20, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -492,8 +492,8 @@ const union AnimCmd gObjectEventImageAnim_StandingWheelieBackWheelWest[] =
 
 const union AnimCmd gObjectEventImageAnim_StandingWheelieBackWheelEast[] =
 {
-    ANIMCMD_FRAME(17, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(17, 4, TRUE),
+    ANIMCMD_FRAME(2, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -520,8 +520,8 @@ const union AnimCmd gObjectEventImageAnim_StandingWheelieFrontWheelWest[] =
 
 const union AnimCmd gObjectEventImageAnim_StandingWheelieFrontWheelEast[] =
 {
-    ANIMCMD_FRAME(19, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(19, 4, TRUE),
+    ANIMCMD_FRAME(2, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -554,10 +554,10 @@ const union AnimCmd gObjectEventImageAnim_MovingWheelieWest[] =
 
 const union AnimCmd gObjectEventImageAnim_MovingWheelieEast[] =
 {
-    ANIMCMD_FRAME(25, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(18, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(26, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(18, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(25, 4, TRUE),
+    ANIMCMD_FRAME(18, 4, TRUE),
+    ANIMCMD_FRAME(26, 4, TRUE),
+    ANIMCMD_FRAME(18, 4, TRUE),
     ANIMCMD_JUMP(0),
 };
 
@@ -654,10 +654,10 @@ const union AnimCmd gObjectEventImageAnim_TakeOutRodWest[] =
 
 const union AnimCmd gObjectEventImageAnim_TakeOutRodEast[] =
 {
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(1, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(3, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(0, 4, TRUE),
+    ANIMCMD_FRAME(1, 4, TRUE),
+    ANIMCMD_FRAME(2, 4, TRUE),
+    ANIMCMD_FRAME(3, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -690,10 +690,10 @@ const union AnimCmd gObjectEventImageAnim_PutAwayRodWest[] =
 
 const union AnimCmd gObjectEventImageAnim_PutAwayRodEast[] =
 {
-    ANIMCMD_FRAME(3, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(2, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(1, 4, .hFlip = TRUE),
-    ANIMCMD_FRAME(0, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(3, 4, TRUE),
+    ANIMCMD_FRAME(2, 4, TRUE),
+    ANIMCMD_FRAME(1, 4, TRUE),
+    ANIMCMD_FRAME(0, 4, TRUE),
     ANIMCMD_END,
 };
 
@@ -726,10 +726,10 @@ const union AnimCmd gObjectEventImageAnim_HookedPokemonWest[] =
 
 const union AnimCmd gObjectEventImageAnim_HookedPokemonEast[] =
 {
-    ANIMCMD_FRAME(2, 6, .hFlip = TRUE),
-    ANIMCMD_FRAME(3, 6, .hFlip = TRUE),
+    ANIMCMD_FRAME(2, 6, TRUE),
+    ANIMCMD_FRAME(3, 6, TRUE),
     ANIMCMD_LOOP(1),
-    ANIMCMD_FRAME(3, 30, .hFlip = TRUE),
+    ANIMCMD_FRAME(3, 30, TRUE),
     ANIMCMD_JUMP(0),
 };
 

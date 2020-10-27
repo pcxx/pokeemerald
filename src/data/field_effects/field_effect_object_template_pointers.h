@@ -1,4 +1,6 @@
-const struct SpriteTemplate gFieldEffectObjectTemplate_ShadowSmall;
+#include "field_effect_objects.h"
+
+/*const struct SpriteTemplate gFieldEffectObjectTemplate_ShadowSmall;
 const struct SpriteTemplate gFieldEffectObjectTemplate_ShadowMedium;
 const struct SpriteTemplate gFieldEffectObjectTemplate_ShadowLarge;
 const struct SpriteTemplate gFieldEffectObjectTemplate_ShadowExtraLarge;
@@ -34,7 +36,7 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_AshPuff;
 const struct SpriteTemplate gFieldEffectObjectTemplate_AshLaunch;
 const struct SpriteTemplate gFieldEffectObjectTemplate_Bubbles;
 const struct SpriteTemplate gFieldEffectObjectTemplate_SmallSparkle;
-const struct SpriteTemplate gFieldEffectObjectTemplate_Rayquaza;
+const struct SpriteTemplate gFieldEffectObjectTemplate_Rayquaza;*/
 
 const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_SHADOW_S]              = &gFieldEffectObjectTemplate_ShadowSmall,
