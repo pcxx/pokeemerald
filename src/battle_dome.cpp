@@ -1050,13 +1050,13 @@ static const union AnimCmd sSpriteAnim_UpArrow[] =
 
 static const union AnimCmd sSpriteAnim_DownArrow[] =
 {
-    ANIMCMD_FRAME(18, 1, .vFlip = TRUE),
+    ANIMCMD_FRAME(18, 1, FALSE, TRUE),
     ANIMCMD_END,
  };
 
 static const union AnimCmd sSpriteAnim_LeftArrow[] =
 {
-    ANIMCMD_FRAME(16, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(16, 1, TRUE),
     ANIMCMD_END,
 };
 
@@ -1455,172 +1455,172 @@ static const u8 sTourneyTreePokeballCoords[DOME_TOURNAMENT_TRAINERS_COUNT + DOME
 // Each of these line sections define the position of the advancement line on the tourney tree for the victor of that round
 // The trainers here are numbered by tourney ID (rank/seed) and ordered according to where they start on the tourney tree
 #define LINESECTION_ROUND1_TRAINER1(lastSrc) \
-    {.src = 0x6021,  .y = 0x04, .x = 0x09},  \
-    {.src = 0x6023,  .y = 0x04, .x = 0x0a},  \
-    {.src = 0x6047,  .y = 0x05, .x = 0x0a},  \
-    {.src = lastSrc, .y = 0x05, .x = 0x0b},
+    {.x = 0x09, .y = 0x04, .src = 0x6021 },  \
+    {.x = 0x0a, .y = 0x04, .src = 0x6023 },  \
+    {.x = 0x0a, .y = 0x05, .src = 0x6047 },  \
+    {.x = 0x0b, .y = 0x05, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER9(lastSrc) \
-    {.src = 0x6021,  .y = 0x06, .x = 0x09},  \
-    {.src = 0x6021,  .y = 0x06, .x = 0x0a},  \
-    {.src = 0x6027,  .y = 0x05, .x = 0x0a},  \
-    {.src = lastSrc, .y = 0x05, .x = 0x0b},
+    {.x = 0x09, .y = 0x06, .src = 0x6021},  \
+    {.x = 0x0a, .y = 0x06, .src = 0x6021},  \
+    {.x = 0x0a, .y = 0x05, .src = 0x6027},  \
+    {.x = 0x0b, .y = 0x05, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER13(lastSrc) \
-    {.src = 0x6021,  .y = 0x08, .x = 0x09},   \
-    {.src = 0x6023,  .y = 0x08, .x = 0x0a},   \
-    {.src = 0x6047,  .y = 0x09, .x = 0x0a},   \
-    {.src = lastSrc, .y = 0x09, .x = 0x0b},
+    {.x = 0x09, .y = 0x08, .src = 0x6021},   \
+    {.x = 0x0a, .y = 0x08, .src = 0x6023},   \
+    {.x = 0x0a, .y = 0x09, .src = 0x6047},   \
+    {.x = 0x0b, .y = 0x09, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER5(lastSrc) \
-    {.src = 0x6021,  .y = 0x0a, .x = 0x09},  \
-    {.src = 0x6021,  .y = 0x0a, .x = 0x0a},  \
-    {.src = 0x6027,  .y = 0x09, .x = 0x0a},  \
-    {.src = lastSrc, .y = 0x09, .x = 0x0b},
+    {.x = 0x09, .y = 0x0a, .src = 0x6021},  \
+    {.x = 0x0a, .y = 0x0a, .src = 0x6021},  \
+    {.x = 0x0a, .y = 0x09, .src = 0x6027},  \
+    {.x = 0x0b, .y = 0x09, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER8(lastSrc) \
-    {.src = 0x6021,  .y = 0x0c, .x = 0x09},  \
-    {.src = 0x6023,  .y = 0x0c, .x = 0x0a},  \
-    {.src = 0x6047,  .y = 0x0d, .x = 0x0a},  \
-    {.src = lastSrc, .y = 0x0d, .x = 0x0b},
+    {.x = 0x09, .y = 0x0c, .src = 0x6021},  \
+    {.x = 0x0a, .y = 0x0c, .src = 0x6023},  \
+    {.x = 0x0a, .y = 0x0d, .src = 0x6047},  \
+    {.x = 0x0b, .y = 0x0d, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER16(lastSrc) \
-    {.src = 0x6021,  .y = 0x0e, .x = 0x09},   \
-    {.src = 0x6021,  .y = 0x0e, .x = 0x0a},   \
-    {.src = 0x6027,  .y = 0x0d, .x = 0x0a},   \
-    {.src = lastSrc, .y = 0x0d, .x = 0x0b},
+    {.x = 0x09, .y = 0x0e, .src = 0x6021},   \
+    {.x = 0x0a, .y = 0x0e, .src = 0x6021},   \
+    {.x = 0x0a, .y = 0x0d, .src = 0x6027},   \
+    {.x = 0x0b, .y = 0x0d, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER12(lastSrc) \
-    {.src = 0x6021,  .y = 0x10, .x = 0x09},   \
-    {.src = 0x6023,  .y = 0x10, .x = 0x0a},   \
-    {.src = 0x6047,  .y = 0x11, .x = 0x0a},   \
-    {.src = lastSrc, .y = 0x11, .x = 0x0b},
+    {.x = 0x09, .y = 0x10, .src = 0x6021},   \
+    {.x = 0x0a, .y = 0x10, .src = 0x6023},   \
+    {.x = 0x0a, .y = 0x11, .src = 0x6047},   \
+    {.x = 0x0b, .y = 0x11, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER4(lastSrc) \
-    {.src = 0x602b,  .y = 0x12, .x = 0x09},  \
-    {.src = 0x602b,  .y = 0x12, .x = 0x0a},  \
-    {.src = 0x6027,  .y = 0x11, .x = 0x0a},  \
-    {.src = lastSrc, .y = 0x11, .x = 0x0b},
+    {.x = 0x09, .y = 0x12, .src = 0x602b},  \
+    {.x = 0x0a, .y = 0x12, .src = 0x602b},  \
+    {.x = 0x0a, .y = 0x11, .src = 0x6027},  \
+    {.x = 0x0b, .y = 0x11, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER3(lastSrc) \
-    {.src = 0x6021,  .y = 0x04, .x = 0x14},  \
-    {.src = 0x6025,  .y = 0x04, .x = 0x13},  \
-    {.src = 0x6049,  .y = 0x05, .x = 0x13},  \
-    {.src = lastSrc, .y = 0x05, .x = 0x12},
+    {.x = 0x14, .y = 0x04, .src = 0x6021},  \
+    {.x = 0x13, .y = 0x04, .src = 0x6025},  \
+    {.x = 0x13, .y = 0x05, .src = 0x6049},  \
+    {.x = 0x12, .y = 0x05, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER11(lastSrc) \
-    {.src = 0x6021,  .y = 0x06, .x = 0x14},   \
-    {.src = 0x6021,  .y = 0x06, .x = 0x13},   \
-    {.src = 0x6029,  .y = 0x05, .x = 0x13},   \
-    {.src = lastSrc, .y = 0x05, .x = 0x12},
+    {.x = 0x14, .y = 0x06, .src = 0x6021},   \
+    {.x = 0x13, .y = 0x06, .src = 0x6021},   \
+    {.x = 0x13, .y = 0x05, .src = 0x6029},   \
+    {.x = 0x12, .y = 0x05, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER15(lastSrc) \
-    {.src = 0x6021,  .y = 0x08, .x = 0x14},   \
-    {.src = 0x6025,  .y = 0x08, .x = 0x13},   \
-    {.src = 0x6049,  .y = 0x09, .x = 0x13},   \
-    {.src = lastSrc, .y = 0x09, .x = 0x12},
+    {.x = 0x14, .y = 0x08, .src = 0x6021},   \
+    {.x = 0x13, .y = 0x08, .src = 0x6025},   \
+    {.x = 0x13, .y = 0x09, .src = 0x6049},   \
+    {.x = 0x12, .y = 0x09, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER7(lastSrc) \
-    {.src = 0x6021,  .y = 0x0a, .x = 0x14},  \
-    {.src = 0x6021,  .y = 0x0a, .x = 0x13},  \
-    {.src = 0x6029,  .y = 0x09, .x = 0x13},  \
-    {.src = lastSrc, .y = 0x09, .x = 0x12},
+    {.x = 0x14, .y = 0x0a, .src = 0x6021},  \
+    {.x = 0x13, .y = 0x0a, .src = 0x6021},  \
+    {.x = 0x13, .y = 0x09, .src = 0x6029},  \
+    {.x = 0x12, .y = 0x09, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER6(lastSrc) \
-    {.src = 0x6021,  .y = 0x0c, .x = 0x14},  \
-    {.src = 0x6025,  .y = 0x0c, .x = 0x13},  \
-    {.src = 0x6049,  .y = 0x0d, .x = 0x13},  \
-    {.src = lastSrc, .y = 0x0d, .x = 0x12},
+    {.x = 0x14, .y = 0x0c, .src = 0x6021},  \
+    {.x = 0x13, .y = 0x0c, .src = 0x6025},  \
+    {.x = 0x13, .y = 0x0d, .src = 0x6049},  \
+    {.x = 0x12, .y = 0x0d, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER14(lastSrc) \
-    {.src = 0x6021,  .y = 0x0e, .x = 0x14},   \
-    {.src = 0x6021,  .y = 0x0e, .x = 0x13},   \
-    {.src = 0x6029,  .y = 0x0d, .x = 0x13},   \
-    {.src = lastSrc, .y = 0x0d, .x = 0x12},
+    {.x = 0x14, .y = 0x0e, .src = 0x6021},   \
+    {.x = 0x13, .y = 0x0e, .src = 0x6021},   \
+    {.x = 0x13, .y = 0x0d, .src = 0x6029},   \
+    {.x = 0x12, .y = 0x0d, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER10(lastSrc) \
-    {.src = 0x6021,  .y = 0x10, .x = 0x14},   \
-    {.src = 0x6025,  .y = 0x10, .x = 0x13},   \
-    {.src = 0x6049,  .y = 0x11, .x = 0x13},   \
-    {.src = lastSrc, .y = 0x11, .x = 0x12},
+    {.x = 0x14, .y = 0x10, .src = 0x6021},   \
+    {.x = 0x13, .y = 0x10, .src = 0x6025},   \
+    {.x = 0x13, .y = 0x11, .src = 0x6049},   \
+    {.x = 0x12, .y = 0x11, .src = lastSrc},
 
 #define LINESECTION_ROUND1_TRAINER2(lastSrc) \
-    {.src = 0x602b,  .y = 0x12, .x = 0x14},  \
-    {.src = 0x602b,  .y = 0x12, .x = 0x13},  \
-    {.src = 0x6029,  .y = 0x11, .x = 0x13},  \
-    {.src = lastSrc, .y = 0x11, .x = 0x12},
+    {.x = 0x14, .y = 0x12, .src = 0x602b},  \
+    {.x = 0x13, .y = 0x12, .src = 0x602b},  \
+    {.x = 0x13, .y = 0x11, .src = 0x6029},  \
+    {.x = 0x12, .y = 0x11, .src = lastSrc},
 
 #define LINESECTION_ROUND2_MATCH1(lastSrc)  \
-    {.src = 0x6027,  .y = 0x06, .x = 0x0b}, \
-    {.src = 0x6047,  .y = 0x07, .x = 0x0b}, \
-    {.src = lastSrc, .y = 0x07, .x = 0x0c},
+    {.x = 0x0b, .y = 0x06, .src = 0x6027}, \
+    {.x = 0x0b, .y = 0x07, .src = 0x6047}, \
+    {.x = 0x0c, .y = 0x07, .src = lastSrc},
 
 #define LINESECTION_ROUND2_MATCH2(lastSrc)  \
-    {.src = 0x6027,  .y = 0x08, .x = 0x0b}, \
-    {.src = 0x6027,  .y = 0x07, .x = 0x0b}, \
-    {.src = lastSrc, .y = 0x07, .x = 0x0c},
+    {.x = 0x0b, .y = 0x08, .src = 0x6027}, \
+    {.x = 0x0b, .y = 0x07, .src = 0x6027}, \
+    {.x = 0x0c, .y = 0x07, .src = lastSrc},
 
 #define LINESECTION_ROUND2_MATCH3(lastSrc)  \
-    {.src = 0x6027,  .y = 0x0e, .x = 0x0b}, \
-    {.src = 0x6047,  .y = 0x0f, .x = 0x0b}, \
-    {.src = lastSrc, .y = 0x0f, .x = 0x0c},
+    {.x = 0x0b, .y = 0x0e, .src = 0x6027}, \
+    {.x = 0x0b, .y = 0x0f, .src = 0x6047}, \
+    {.x = 0x0c, .y = 0x0f, .src = lastSrc},
 
 #define LINESECTION_ROUND2_MATCH4(lastSrc)  \
-    {.src = 0x6027,  .y = 0x10, .x = 0x0b}, \
-    {.src = 0x6027,  .y = 0x0f, .x = 0x0b}, \
-    {.src = lastSrc, .y = 0x0f, .x = 0x0c},
+    {.x = 0x0b, .y = 0x10, .src = 0x6027}, \
+    {.x = 0x0b, .y = 0x0f, .src = 0x6027}, \
+    {.x = 0x0c, .y = 0x0f, .src = lastSrc},
 
 #define LINESECTION_ROUND2_MATCH5(lastSrc)  \
-    {.src = 0x6029,  .y = 0x06, .x = 0x12}, \
-    {.src = 0x6049,  .y = 0x07, .x = 0x12}, \
-    {.src = lastSrc, .y = 0x07, .x = 0x11},
+    {.x = 0x12, .y = 0x06, .src = 0x6029}, \
+    {.x = 0x12, .y = 0x07, .src = 0x6049}, \
+    {.x = 0x11, .y = 0x07, .src = lastSrc},
 
 #define LINESECTION_ROUND2_MATCH6(lastSrc)  \
-    {.src = 0x6029,  .y = 0x08, .x = 0x12}, \
-    {.src = 0x6029,  .y = 0x07, .x = 0x12}, \
-    {.src = lastSrc, .y = 0x07, .x = 0x11},
+    {.x = 0x12, .y = 0x08, .src = 0x6029}, \
+    {.x = 0x12, .y = 0x07, .src = 0x6029}, \
+    {.x = 0x11, .y = 0x07, .src = lastSrc},
 
 #define LINESECTION_ROUND2_MATCH7(lastSrc)  \
-    {.src = 0x6029,  .y = 0x0e, .x = 0x12}, \
-    {.src = 0x6049,  .y = 0x0f, .x = 0x12}, \
-    {.src = lastSrc, .y = 0x0f, .x = 0x11},
+    {.x = 0x12, .y = 0x0e, .src = 0x6029}, \
+    {.x = 0x12, .y = 0x0f, .src = 0x6049}, \
+    {.x = 0x11, .y = 0x0f, .src = lastSrc},
 
 #define LINESECTION_ROUND2_MATCH8(lastSrc)  \
-    {.src = 0x6029,  .y = 0x10, .x = 0x12}, \
-    {.src = 0x6029,  .y = 0x0f, .x = 0x12}, \
-    {.src = lastSrc, .y = 0x0f, .x = 0x11},
+    {.x = 0x12, .y = 0x10, .src = 0x6029}, \
+    {.x = 0x12, .y = 0x0f, .src = 0x6029}, \
+    {.x = 0x11, .y = 0x0f, .src = lastSrc},
 
 #define LINESECTION_SEMIFINAL_TOP_LEFT     \
-    {.src = 0x6027, .y = 0x08, .x = 0x0c}, \
-    {.src = 0x6027, .y = 0x09, .x = 0x0c}, \
-    {.src = 0x6027, .y = 0x0a, .x = 0x0c}, \
-    {.src = 0x603b, .y = 0x0b, .x = 0x0c},
+    {.x = 0x0c, .y = 0x08, .src = 0x6027}, \
+    {.x = 0x0c, .y = 0x09, .src = 0x6027}, \
+    {.x = 0x0c, .y = 0x0a, .src = 0x6027}, \
+    {.x = 0x0c, .y = 0x0b, .src = 0x603b},
 
 #define LINESECTION_SEMIFINAL_BOTTOM_LEFT  \
-    {.src = 0x6033, .y = 0x0e, .x = 0x0c}, \
-    {.src = 0x6032, .y = 0x0d, .x = 0x0c}, \
-    {.src = 0x6031, .y = 0x0c, .x = 0x0c}, \
-    {.src = 0x6030, .y = 0x0b, .x = 0x0c},
+    {.x = 0x0c, .y = 0x0e, .src = 0x6033}, \
+    {.x = 0x0c, .y = 0x0d, .src = 0x6032}, \
+    {.x = 0x0c, .y = 0x0c, .src = 0x6031}, \
+    {.x = 0x0c, .y = 0x0b, .src = 0x6030},
 
 #define LINESECTION_SEMIFINAL_TOP_RIGHT    \
-    {.src = 0x6029, .y = 0x08, .x = 0x11}, \
-    {.src = 0x6029, .y = 0x09, .x = 0x11}, \
-    {.src = 0x6029, .y = 0x0a, .x = 0x11}, \
-    {.src = 0x603c, .y = 0x0b, .x = 0x11},
+    {.x = 0x11, .y = 0x08, .src = 0x6029}, \
+    {.x = 0x11, .y = 0x09, .src = 0x6029}, \
+    {.x = 0x11, .y = 0x0a, .src = 0x6029}, \
+    {.x = 0x11, .y = 0x0b, .src = 0x603c},
 
 #define LINESECTION_SEMIFINAL_BOTTOM_RIGHT \
-    {.src = 0x6038, .y = 0x0e, .x = 0x11}, \
-    {.src = 0x6037, .y = 0x0d, .x = 0x11}, \
-    {.src = 0x6036, .y = 0x0c, .x = 0x11}, \
-    {.src = 0x6035, .y = 0x0b, .x = 0x11},
+    {.x = 0x11, .y = 0x0e, .src = 0x6038}, \
+    {.x = 0x11, .y = 0x0d, .src = 0x6037}, \
+    {.x = 0x11, .y = 0x0c, .src = 0x6036}, \
+    {.x = 0x11, .y = 0x0b, .src = 0x6035},
 
 #define LINESECTION_FINAL_LEFT             \
-    {.src = 0x602c, .y = 0x0b, .x = 0x0d}, \
-    {.src = 0x602d, .y = 0x0b, .x = 0x0e},
+    {.x = 0x0d, .y = 0x0b, .src = 0x602c}, \
+    {.x = 0x0e, .y = 0x0b, .src = 0x602d},
 
 #define LINESECTION_FINAL_RIGHT            \
-    {.src = 0x602f, .y = 0x0b, .x = 0x10}, \
-    {.src = 0x602e, .y = 0x0b, .x = 0x0f},
+    {.x = 0x10, .y = 0x0b, .src = 0x602f}, \
+    {.x = 0x0f, .y = 0x0b, .src = 0x602e},
 
 
 static const struct TourneyTreeLineSection sLineSectionTrainer1Round1[] =
@@ -2031,7 +2031,7 @@ static const struct TourneyTreeLineSection sLineSectionTrainer2Semifinal[] =
     LINESECTION_SEMIFINAL_BOTTOM_RIGHT
 };
 
-static const struct TourneyTreeLineSection sLineSectionTrainer2Final[] =
+static const TourneyTreeLineSection sLineSectionTrainer2Final[] =
 {
     LINESECTION_ROUND1_TRAINER2(0x6021)
     LINESECTION_ROUND2_MATCH8(0x6021)
