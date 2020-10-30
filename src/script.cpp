@@ -21,7 +21,7 @@ extern ScrCmdFunc gScriptCmdTable[];
 extern ScrCmdFunc gScriptCmdTableEnd[];
 extern void *gNullScriptPtr;
 
-void InitScriptContext(struct ScriptContext *ctx, void *cmdTable, void *cmdTableEnd)
+void InitScriptContext(struct ScriptContext *ctx, ScrCmdFunc *cmdTable, ScrCmdFunc *cmdTableEnd)
 {
     s32 i;
 
@@ -236,7 +236,9 @@ void EnableBothScriptContexts(void)
 
 void ScriptContext2_RunNewScript(const u8 *ptr)
 {
-    InitScriptContext(&sScriptContext2, &gScriptCmdTable, &gScriptCmdTableEnd);
+    // I think this is wrong, at least the types dont make any sense
+    //InitScriptContext(&sScriptContext2, &gScriptCmdTable, &gScriptCmdTableEnd);
+    InitScriptContext(&sScriptContext2, gScriptCmdTable, gScriptCmdTableEnd);
     SetupBytecodeScript(&sScriptContext2, ptr);
     while (RunScriptCommand(&sScriptContext2) == TRUE);
 }
