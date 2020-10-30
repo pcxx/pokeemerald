@@ -1382,9 +1382,9 @@ static void InitOverworldBgs(void)
     SetBgAttribute(1, BG_ATTR_MOSAIC, 1);
     SetBgAttribute(2, BG_ATTR_MOSAIC, 1);
     SetBgAttribute(3, BG_ATTR_MOSAIC, 1);
-    gBGTilemapBuffers2 = AllocZeroed(BG_SCREEN_SIZE);
-    gBGTilemapBuffers1 = AllocZeroed(BG_SCREEN_SIZE);
-    gBGTilemapBuffers3 = AllocZeroed(BG_SCREEN_SIZE);
+    gBGTilemapBuffers2 = AllocZeroed<u16>(BG_SCREEN_SIZE/2);
+    gBGTilemapBuffers1 = AllocZeroed<u16>(BG_SCREEN_SIZE/2);
+    gBGTilemapBuffers3 = AllocZeroed<u16>(BG_SCREEN_SIZE/2);
     SetBgTilemapBuffer(1, gBGTilemapBuffers2);
     SetBgTilemapBuffer(2, gBGTilemapBuffers1);
     SetBgTilemapBuffer(3, gBGTilemapBuffers3);
@@ -2060,8 +2060,8 @@ static void sub_80867D8(void)
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     ScanlineEffect_Stop();
 
-    DmaClear16(3, PLTT + 2, PLTT_SIZE - 2);
-    DmaFillLarge16(3, 0, (void *)(VRAM + 0x0), 0x18000, 0x1000);
+    DmaClear<3>((vu16*)(PLTT + 2), (PLTT_SIZE - 2)/2);
+    DmaFillLarge<3>(0, (vu16 *)(VRAM + 0x0), 0xc000, 0x800);
     ResetOamRange(0, 128);
     LoadOam();
 }
@@ -2143,7 +2143,7 @@ static void InitObjectEventsLink(void)
 
 static void InitObjectEventsLocal(void)
 {
-    s16 x, y;
+    u16 x, y;
     struct InitialPlayerAvatarState *player;
 
     gTotalCameraPixelOffsetX = 0;
@@ -2673,7 +2673,7 @@ u16 sub_80872C4(void)
 
 static void LoadTradeRoomPlayer(s32 linkPlayerId, s32 myPlayerId, struct TradeRoomPlayer *trainer)
 {
-    s16 x, y;
+    u16 x, y;
 
     trainer->playerId = linkPlayerId;
     trainer->isLocalPlayer = (linkPlayerId == myPlayerId) ? 1 : 0;
