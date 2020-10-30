@@ -33,7 +33,8 @@ struct MatchCallWindowState {
     u16 visibleEntries;
     u16 unkA;
     u32 unkC;
-    void * unk10;
+    // maybe???
+    PokenavMatchCallEntries * unk10;
 };
 
 struct PokenavSub17Substruct
@@ -42,13 +43,14 @@ struct PokenavSub17Substruct
     u32 unk10;
     u32 unk14;
     u32 unk18;
-    void * unk1C;
+    // probably? because of use in unk34()
+    PokenavMatchCallEntries *unk1C;
     s32 unk20;
     s32 unk24;
     u32 loopedTaskId;
     s32 unk2C;
     u32 unk30;
-    void (*unk34)(struct PokenavMatchCallEntries *, u8*);
+    void (*unk34)(PokenavMatchCallEntries *, u8*);
     void (*unk38)(u16, u32, u32);
     struct Sprite *rightArrow;
     struct Sprite *upArrow;
@@ -56,6 +58,7 @@ struct PokenavSub17Substruct
     u8 unkTextBuffer[0x40];
 };
 
+// Matchcall list?
 // Generally at index 0x11 (17)
 struct PokenavSub17
 {
@@ -100,9 +103,16 @@ static const u32 sMatchcallArrowSpriteSheetData[] = INCBIN_U32("graphics/pokenav
 
 EWRAM_DATA u32 gUnknown_0203CF44 = 0;
 
+
+template<typename T>
+T *h_GetSubstructPtr(u32 index)
+{
+    return static_cast<T *>(GetSubstructPtr(index));
+}
+
 bool32 sub_81C81D4(const struct BgTemplate *arg0, struct PokenavListTemplate *arg1, s32 arg2)
 {
-    struct PokenavSub17 *structPtr = AllocSubstruct(POKENAV_SUBSTRUCT_MATCH_CALL_LIST, sizeof(struct PokenavSub17));
+    struct PokenavSub17 *structPtr = static_cast<PokenavSub17 *>(AllocSubstruct(POKENAV_SUBSTRUCT_MATCH_CALL_LIST, sizeof(struct PokenavSub17)));
     if (structPtr == NULL)
         return FALSE;
 
@@ -123,7 +133,7 @@ void sub_81C8234(void)
 {
     struct PokenavSub17 *structPtr;
 
-    structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     DestroyMatchCallListArrows(&structPtr->list);
     RemoveWindow(structPtr->list.listWindow.windowId);
     FreePokenavSubstruct(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
@@ -136,7 +146,7 @@ u32 LoopedTask_sub_81C8254(s32 state)
     if (IsDma3ManagerBusyWithBgCopy())
         return LT_PAUSE;
 
-    structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
 
     switch (state)
     {
@@ -196,11 +206,12 @@ void sub_81C837C(struct MatchCallWindowState *state, struct PokenavSub17Substruc
     sub_81C83AC(state->unk10, state->windowTopIndex, arg2, state->unkC, 0, a1);
 }
 
-void sub_81C83AC(void * a0, u32 a1, u32 a2, u32 a3, u32 a4, struct PokenavSub17Substruct *list)
+void sub_81C83AC(PokenavMatchCallEntries * a0, u32 a1, u32 a2, u32 a3, u32 a4, struct PokenavSub17Substruct *list)
 {
     if (a2 == 0)
         return;
 
+    // TODO does this work????
     list->unk1C = a0 + a1 * a3;
     list->unk18 = a3;
     list->listWindow.unkC = 0;
@@ -218,7 +229,7 @@ bool32 sub_81C83E0(void)
 u32 LoopedTask_sub_81C83F0(s32 state)
 {
     u32 v1;
-    struct PokenavSub17Substruct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17Substruct *structPtr = h_GetSubstructPtr<PokenavSub17Substruct>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
 
     switch (state)
     {
@@ -253,14 +264,14 @@ u32 LoopedTask_sub_81C83F0(s32 state)
 
 bool32 ShouldShowUpArrow(void)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
 
     return (structPtr->unk888.windowTopIndex != 0);
 }
 
 bool32 ShouldShowDownArrow(void)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     struct MatchCallWindowState *subPtr = &structPtr->unk888;
 
     return (subPtr->windowTopIndex + subPtr->visibleEntries < subPtr->listLength);
@@ -268,7 +279,7 @@ bool32 ShouldShowDownArrow(void)
 
 void MatchCall_MoveWindow(s32 a0, bool32 a1)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     struct MatchCallWindowState *subPtr = &structPtr->unk888;
 
     if (a0 < 0)
@@ -307,7 +318,7 @@ u32 LoopedTask_sub_81C85A0(s32 state)
 {
     s32 y, v1;
     bool32 flag;
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     struct PokenavSub17Substruct *subPtr = &structPtr->list;
 
     switch (state)
@@ -344,13 +355,13 @@ u32 LoopedTask_sub_81C85A0(s32 state)
 
 bool32 IsMonListLoopedTaskActive(void)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     return IsLoopedTaskActive(structPtr->list.loopedTaskId);
 }
 
 struct MatchCallWindowState *GetMatchCallWindowStruct(void)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     return &structPtr->unk888;
 }
 
@@ -464,14 +475,14 @@ u32 GetMatchCallListTopIndex(void)
 
 void sub_81C877C(void)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     structPtr->unk89C = 0;
     structPtr->loopedTaskId = CreateLoopedTask(LoopedTask_sub_81C8870, 6);
 }
 
 void PrintCheckPageInfo(s16 a0)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     structPtr->unk888.windowTopIndex += a0;
     structPtr->unk89C = 0;
     structPtr->loopedTaskId = CreateLoopedTask(LoopedTask_PrintCheckPageInfo, 6);
@@ -479,20 +490,20 @@ void PrintCheckPageInfo(s16 a0)
 
 void sub_81C87F0(void)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     structPtr->unk89C = 0;
     structPtr->loopedTaskId = CreateLoopedTask(LoopedTask_sub_81C8A28, 6);
 }
 
 bool32 IsMatchCallListTaskActive(void)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     return IsLoopedTaskActive(structPtr->loopedTaskId);
 }
 
 void sub_81C8838(void)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     struct MatchCallWindowState *subPtr = &structPtr->unk888;
     structPtr->list.unk38(structPtr->list.listWindow.windowId, subPtr->windowTopIndex + subPtr->selectedIndexOffset, (structPtr->list.listWindow.unkA + subPtr->selectedIndexOffset) & 0xF);
     CopyWindowToVram(structPtr->list.listWindow.windowId, 1);
@@ -501,7 +512,7 @@ void sub_81C8838(void)
 // TODO:
 u32 LoopedTask_sub_81C8870(s32 state)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
 
     switch (state)
     {
@@ -548,7 +559,7 @@ u32 LoopedTask_sub_81C8870(s32 state)
 
 u32 LoopedTask_PrintCheckPageInfo(s32 state)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     if (IsDma3ManagerBusyWithBgCopy())
         return LT_PAUSE;
 
@@ -594,7 +605,7 @@ u32 LoopedTask_sub_81C8A28(s32 state)
     if (IsDma3ManagerBusyWithBgCopy())
         return LT_PAUSE;
 
-    structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     subPtr888 = &structPtr->unk888;
     subPtr0 = &structPtr->list;
 
@@ -889,7 +900,7 @@ void ToggleMatchCallArrows(struct PokenavSub17Substruct *list, bool32 shouldHide
 
 void SpriteCB_MatchCallRightArrow(struct Sprite *sprite)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     sprite->pos2.y = structPtr->unk888.selectedIndexOffset << 4;
 }
 
@@ -931,7 +942,7 @@ void SpriteCB_MatchCallUpArrow(struct Sprite *sprite)
 
 void ToggleMatchCallVerticalArrows(bool32 shouldHide)
 {
-    struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
+    struct PokenavSub17 *structPtr = h_GetSubstructPtr<PokenavSub17>(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
     structPtr->list.upArrow->data[7] = shouldHide;
     structPtr->list.downArrow->data[7] = shouldHide;
 }
