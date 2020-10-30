@@ -298,6 +298,7 @@ struct STWIStatus;
 union CallbackMType
 {
     void *v;
+    void (*u8u16)(u8, u16);
     void (*u8vu16)(u8, vu16);
     void (*u8vu16STWIStatusPtr)(u8, vu16, STWIStatus *);
     void (*v0)();
@@ -606,7 +607,7 @@ void STWI_init_all(struct RfuIntrStruct *interruptStruct, IntrFunc *interrupt, b
 void STWI_set_MS_mode(u8 mode);
 void STWI_init_Callback_M(void);
 void STWI_init_Callback_S(void);
-void STWI_set_Callback_M(void *callbackM);
+void STWI_set_Callback_M(CallbackMType callbackM);
 void STWI_set_Callback_S(void (*callbackS)(u16));
 void STWI_init_timer(IntrFunc *interrupt, s32 timerSelect);
 void AgbRFU_SoftReset(void);

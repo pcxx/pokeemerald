@@ -108,20 +108,20 @@ u16 STWI_read_status(u8 index)
     }
 }
 
-void STWI_init_Callback_M(void)
+void STWI_init_Callback_M()
 {
-    STWI_set_Callback_M(NULL);
+    STWI_set_Callback_M({NULL});
 }
 
-void STWI_init_Callback_S(void)
+void STWI_init_Callback_S()
 {
     STWI_set_Callback_S(NULL);
 }
 
 // The callback can take 2 or 3 arguments. 
-void STWI_set_Callback_M(void *callbackM)
+void STWI_set_Callback_M(CallbackMType callbackM)
 {
-    gSTWIStatus->callbackM.v = callbackM;
+    gSTWIStatus->callbackM = callbackM;
 }
 
 void STWI_set_Callback_S(void (*callbackS)(u16))
