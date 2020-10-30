@@ -15,15 +15,15 @@
 extern u8 gHeap[];
 
 template<typename T>
-T *Alloc(u32 size)
+T *Alloc()
 {
-    return static_cast<T *>( AllocInternal(sHeapStart, size));
+    return static_cast<T *>( AllocInternal(sHeapStart, sizeof(T)));
 }
 
 template<typename T>
-T *AllocZeroed(u32 size)
+T *AllocZeroed()
 {
-    return static_cast<T *>( AllocZeroedInternal(sHeapStart, size));
+    return static_cast<T *>( AllocZeroedInternal(sHeapStart, sizeof(T)));
 }
 void Free(void *pointer);
 void InitHeap(void *pointer, u32 size);
