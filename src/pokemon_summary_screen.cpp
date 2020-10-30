@@ -1062,9 +1062,10 @@ static const u16 sSummaryMarkingsPalette[] = INCBIN_U16("graphics/interface/summ
 // code
 void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void))
 {
-    sMonSummaryScreen = AllocZeroed(sizeof(*sMonSummaryScreen));
+    sMonSummaryScreen = AllocZeroed<PokemonSummaryScreenData>();
     sMonSummaryScreen->mode = mode;
-    sMonSummaryScreen->monList.mons = mons;
+    // this is not correct but should work
+    sMonSummaryScreen->monList.mons = static_cast<Pokemon *>(mons);
     sMonSummaryScreen->curMonIndex = monIndex;
     sMonSummaryScreen->maxMonIndex = maxMonIndex;
     sMonSummaryScreen->callback = callback;
@@ -2300,7 +2301,8 @@ u8 GetMoveSlotToReplace(void)
 
 static void DrawPagination(void) // Updates the pagination dots at the top of the summary screen
 {
-    u16 *alloced = Alloc(32);
+    // isn't this overflowing the buffer
+    u16 *alloced = Alloc<u16>(16);
     u8 i;
 
     for (i = 0; i < 4; i++)
@@ -2368,7 +2370,7 @@ static void DrawPagination(void) // Updates the pagination dots at the top of th
 static void ChangeTilemap(const struct TilemapCtrl *unkStruct, u16 *dest, u8 c, bool8 d)
 {
     u16 i;
-    u16 *alloced = Alloc(unkStruct->field_6 * 2 * unkStruct->field_7);
+    u16 *alloced = Alloc<u16>(unkStruct->field_6 * unkStruct->field_7);
     CpuFill16(unkStruct->field_4, alloced, unkStruct->field_6 * 2 * unkStruct->field_7);
     if (unkStruct->field_6 != c)
     {
@@ -3077,8 +3079,8 @@ static void BufferMonTrainerMemo(void)
     }
     else
     {
-        u8 *metLevelString = Alloc(32);
-        u8 *metLocationString = Alloc(32);
+        u8 *metLevelString = Alloc<u8>(32);
+        u8 *metLocationString = Alloc<u8>(32);
         GetMetLevelString(metLevelString);
 
         if (sum->metLocation < MAPSEC_NONE)
@@ -3338,10 +3340,10 @@ static void PrintRibbonCount(void)
 
 static void BufferLeftColumnStats(void)
 {
-    u8 *currentHPString = Alloc(8);
-    u8 *maxHPString = Alloc(8);
-    u8 *attackString = Alloc(8);
-    u8 *defenseString = Alloc(8);
+    u8 *currentHPString = Alloc<u8>(8);
+    u8 *maxHPString = Alloc<u8>(8);
+    u8 *attackString = Alloc<u8>(8);
+    u8 *defenseString = Alloc<u8>(8);
 
     ConvertIntToDecimalStringN(currentHPString, sMonSummaryScreen->summary.currentHP, STR_CONV_MODE_RIGHT_ALIGN, 3);
     ConvertIntToDecimalStringN(maxHPString, sMonSummaryScreen->summary.maxHP, STR_CONV_MODE_RIGHT_ALIGN, 3);
