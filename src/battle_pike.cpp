@@ -1076,7 +1076,7 @@ static u8 GetNextRoomType(void)
         }
     }
 
-    roomCandidates = AllocZeroed(numRoomCandidates);
+    roomCandidates = AllocZeroed<u8>(numRoomCandidates);
     id = 0;
     for (i = 0; i < ARRAY_COUNT(roomTypesDisabled); i++)
     {
@@ -1349,7 +1349,7 @@ static void SetHintedRoom(void)
         else
             count = NUM_PIKE_ROOM_TYPES - 1; // exclude Brain room
 
-        roomCandidates = AllocZeroed(count);
+        roomCandidates = AllocZeroed<u8>(count);
         for (i = 0, id = 0; i < count; i++)
         {
             if (gSaveBlock2Ptr->frontier.pikeHealingRoomsDisabled)
