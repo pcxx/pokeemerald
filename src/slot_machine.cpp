@@ -3435,12 +3435,12 @@ static void SlotMachineSetup_InitVBlank(void)
 
 static void SlotMachineSetup_InitVRAM(void)
 {
-    DmaClearLarge16(3, (u16 *)(BG_VRAM), BG_VRAM_SIZE, 0x1000);
+    DmaClearLarge<3>((vu16 *)(BG_VRAM), BG_VRAM_SIZE/2, 0x800);
 }
 
 static void SlotMachineSetup_InitOAM(void)
 {
-    DmaClear16(3, (u16 *)OAM, OAM_SIZE);
+    DmaClear<3>((vu16 *)OAM, OAM_SIZE/2);
 }
 
 static void SlotMachineSetup_InitGpuRegs(void)
