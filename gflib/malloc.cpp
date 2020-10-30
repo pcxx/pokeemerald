@@ -176,6 +176,16 @@ void InitHeap(void *heapStart, u32 heapSize)
     PutFirstMemBlockHeader(heapStart, heapSize);
 }
 
+void *Alloc_(u32 size)
+{
+    return AllocInternal(sHeapStart, size);
+}
+
+void *AllocZeroed_(u32 size)
+{
+    return AllocZeroedInternal(sHeapStart, size);
+}
+
 void Free(void *pointer)
 {
     FreeInternal(sHeapStart, pointer);
