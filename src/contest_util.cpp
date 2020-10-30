@@ -1101,14 +1101,14 @@ static void LoadContestMonIcon(u16 species, u8 monIndex, u8 srcOffset, u8 useDma
     iconPtr += srcOffset * 0x200 + 0x80;
     if (useDmaNow)
     {
-        RequestDma3Copy(iconPtr, (void *)BG_CHAR_ADDR(1) + monIndex * 0x200, 0x180, 1);
+        RequestDma3Copy(iconPtr, (void *)(BG_CHAR_ADDR(1) + monIndex * 0x200), 0x180, 1);
         var0 = ((monIndex + 10) << 12);
         var1 = (monIndex * 0x10 + 0x200);
         WriteSequenceToBgTilemapBuffer(1, var1 | var0, 3, monIndex * 3 + 4, 4, 3, 17, 1);
     }
     else
     {
-        RequestDma3Copy(iconPtr, (void *)BG_CHAR_ADDR(1) + monIndex * 0x200, 0x180, 1);
+        RequestDma3Copy(iconPtr, (void *)(BG_CHAR_ADDR(1) + monIndex * 0x200), 0x180, 1);
     }
 }
 
@@ -1142,7 +1142,7 @@ static void TryCreateWirelessSprites(void)
         CreateWirelessStatusIndicatorSprite(8, 8);
         gSprites[gWirelessStatusIndicatorSpriteId].subpriority = 1;
         sheet = LoadSpriteSheet(&sUnknown_0858D8E0);
-        RequestDma3Fill(0xFFFFFFFF, (void *)BG_CHAR_ADDR(4) + sheet * 0x20, 0x80, 1);
+        RequestDma3Fill(0xFFFFFFFF, (void *)(BG_CHAR_ADDR(4) + sheet * 0x20), 0x80, 1);
         spriteId = CreateSprite(&sSpriteTemplate_858D8C8, 8, 8, 0);
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_WINDOW;
     }
@@ -1884,15 +1884,16 @@ static void Task_UpdateContestResultBar(u8 taskId)
 
 static void AllocContestResults(void)
 {
-    sContestResults = AllocZeroed(sizeof(*sContestResults));
-    sContestResults->data = AllocZeroed(sizeof(*sContestResults->data));
-    sContestResults->monResults = AllocZeroed(sizeof(*sContestResults->monResults));
-    sContestResults->unusedBg = AllocZeroed(BG_SCREEN_SIZE);
-    sContestResults->tilemapBuffers[0] = AllocZeroed(BG_SCREEN_SIZE);
-    sContestResults->tilemapBuffers[1] = AllocZeroed(BG_SCREEN_SIZE);
-    sContestResults->tilemapBuffers[2] = AllocZeroed(BG_SCREEN_SIZE);
-    sContestResults->tilemapBuffers[3] = AllocZeroed(BG_SCREEN_SIZE);
-    sContestResults->unused = AllocZeroed(0x1000);
+    sContestResults = AllocZeroed<ContestResults>();
+    sContestResults->data = AllocZeroed<ContestResultsInternal>();
+    // this is so evil, but it compiles and I dont get the type. TODO make this better
+    sContestResults->monResults = static_cast<decltype(sContestResults->monResults)>((void *)AllocZeroed<u8>(sizeof(*sContestResults->monResults)));
+    sContestResults->unusedBg = AllocZeroed<u8>(BG_SCREEN_SIZE);
+    sContestResults->tilemapBuffers[0] = AllocZeroed<u8>(BG_SCREEN_SIZE);
+    sContestResults->tilemapBuffers[1] = AllocZeroed<u8>(BG_SCREEN_SIZE);
+    sContestResults->tilemapBuffers[2] = AllocZeroed<u8>(BG_SCREEN_SIZE);
+    sContestResults->tilemapBuffers[3] = AllocZeroed<u8>(BG_SCREEN_SIZE);
+    sContestResults->unused = AllocZeroed<u8>(0x1000);
     AllocateMonSpritesGfx();
 }
 
