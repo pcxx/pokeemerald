@@ -305,6 +305,18 @@ bool32 CanViewRibbonsMenu(void);
 void SetPokenavVBlankCallback(void);
 void SetVBlankCallback_(IntrCallback callback);
 
+template<typename T>
+T *h_GetSubstructPtr(u32 index)
+{
+    return static_cast<T *>(GetSubstructPtr(index));
+}
+
+template<typename T>
+T *h_AllocSubstruct(u32 index)
+{
+    return static_cast<T *>(AllocSubstruct(index, sizeof(T)));
+}
+
 // pokenav_match_call_ui.c
 u32 GetSelectedPokenavListIndex(void);
 bool32 sub_81C8224(void);

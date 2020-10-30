@@ -103,13 +103,6 @@ static const u32 sMatchcallArrowSpriteSheetData[] = INCBIN_U32("graphics/pokenav
 
 EWRAM_DATA u32 gUnknown_0203CF44 = 0;
 
-
-template<typename T>
-T *h_GetSubstructPtr(u32 index)
-{
-    return static_cast<T *>(GetSubstructPtr(index));
-}
-
 bool32 sub_81C81D4(const struct BgTemplate *arg0, struct PokenavListTemplate *arg1, s32 arg2)
 {
     struct PokenavSub17 *structPtr = static_cast<PokenavSub17 *>(AllocSubstruct(POKENAV_SUBSTRUCT_MATCH_CALL_LIST, sizeof(struct PokenavSub17)));

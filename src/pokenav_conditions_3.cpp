@@ -31,7 +31,7 @@ struct PokenavSub7
     u32 conditionDataId;
     u32 returnFromGraph;
     u32 isPartyCondition;
-    struct PokenavSub18 *monList;
+    PokenavSub18 *monList;
 };
 
 struct PokenavSub8
@@ -130,11 +130,11 @@ static const u8 sText_NoGenderSymbol[] = _("{UNK_SPACER}");
 
 bool32 PokenavCallback_Init_ConditionSearch(void)
 {
-    struct PokenavSub7 *structPtr = AllocSubstruct(7, sizeof(struct PokenavSub7));
+    struct PokenavSub7 *structPtr = h_AllocSubstruct<PokenavSub7>(7);
     if (structPtr == NULL)
         return FALSE;
 
-    structPtr->monList = AllocSubstruct(POKENAV_SUBSTRUCT_MON_LIST, sizeof(struct PokenavSub18));
+    structPtr->monList = h_AllocSubstruct<PokenavSub18>(POKENAV_SUBSTRUCT_MON_LIST);
     if (structPtr->monList == NULL)
         return FALSE;
 
@@ -148,11 +148,11 @@ bool32 PokenavCallback_Init_ConditionSearch(void)
 // return to search results from condition graph
 bool32 PokenavCallback_Init_ReturnToMonSearchList(void)
 {
-    struct PokenavSub7 *structPtr = AllocSubstruct(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS, sizeof(struct PokenavSub7));
+    struct PokenavSub7 *structPtr = h_AllocSubstruct<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     if (structPtr == NULL)
         return FALSE;
 
-    structPtr->monList = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_LIST);
+    structPtr->monList = h_GetSubstructPtr<PokenavSub18>(POKENAV_SUBSTRUCT_MON_LIST);
     structPtr->callback = HandleConditionSearchInput;
     structPtr->returnFromGraph = 1;
     structPtr->conditionDataId = sSearchMonDataIds[GetSelectedConditionSearch()];
@@ -161,13 +161,13 @@ bool32 PokenavCallback_Init_ReturnToMonSearchList(void)
 
 u32 GetConditionSearchResultsCallback(void)
 {
-    struct PokenavSub7 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 *structPtr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     return structPtr->callback(structPtr);
 }
 
 void FreeSearchResultSubstruct1(void)
 {
-    struct PokenavSub7 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 *structPtr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     if (structPtr->isPartyCondition == 0)
         FreePokenavSubstruct(POKENAV_SUBSTRUCT_MON_LIST);
     FreePokenavSubstruct(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
@@ -218,32 +218,32 @@ static u32 OpenConditionGraphFromSearchList(struct PokenavSub7 *structPtr)
 
 static u32 sub_81CF0C0(void)
 {
-    struct PokenavSub7 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 *structPtr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     return structPtr->returnFromGraph;
 }
 
 static struct PokenavMonList * GetSearchResultsMonDataList(void)
 {
-    struct PokenavSub7 * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 * ptr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     return ptr->monList->monData;
 }
 
 static u16 GetSearchResultsMonListCount(void)
 {
-    struct PokenavSub7 * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 * ptr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     return ptr->monList->listCount;
 }
 
 static s32 GetSearchResultsSelectedMonData(void)
 {
-    struct PokenavSub7 * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 * ptr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     s32 i = GetSelectedPokenavListIndex();
     return ptr->monList->monData[i].data;
 }
 
 static u16 sub_81CF10C(void)
 {
-    struct PokenavSub7 * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 * ptr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     return ptr->monList->currIndex;
 }
 
@@ -256,7 +256,7 @@ static u32 BuildPartyMonSearchResults(s32 state)
 {
     s32 i;
     struct PokenavMonList item;
-    struct PokenavSub7 * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 * ptr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
 
     ptr->monList->listCount = 0;
     ptr->monList->currIndex = 0;
@@ -279,7 +279,7 @@ static u32 BuildPartyMonSearchResults(s32 state)
 
 static u32 InitBoxMonSearchResults(s32 state)
 {
-    struct PokenavSub7 * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 * ptr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     ptr->monId = 0;
     ptr->boxId = 0;
     return LT_INC_AND_CONTINUE;
@@ -287,7 +287,7 @@ static u32 InitBoxMonSearchResults(s32 state)
 
 static u32 BuildBoxMonSearchResults(s32 state)
 {
-    struct PokenavSub7 * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 * ptr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     s32 boxId = ptr->boxId;
     s32 monId = ptr->monId;
     s32 boxCount = 0;
@@ -322,7 +322,7 @@ static u32 BuildBoxMonSearchResults(s32 state)
 
 static u32 sub_81CF278(s32 state)
 {
-    struct PokenavSub7 * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
+    struct PokenavSub7 * ptr = h_GetSubstructPtr<PokenavSub7>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS);
     s32 r6 = ptr->monList->listCount;
     s32 r4 = ptr->monList->monData[0].data;
     s32 i;
@@ -365,7 +365,7 @@ static void sub_81CF2C4(struct PokenavSub7 *structPtr, struct PokenavMonList *it
 
 bool32 OpenConditionSearchResults(void)
 {
-    struct PokenavSub8 *searchList = AllocSubstruct(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST, sizeof(struct PokenavSub8));
+    struct PokenavSub8 *searchList = h_AllocSubstruct<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     if (searchList == NULL)
         return FALSE;
     searchList->ltid = CreateLoopedTask(LoopedTask_OpenConditionSearchResults, 1);
@@ -376,7 +376,7 @@ bool32 OpenConditionSearchResults(void)
 
 bool32 OpenConditionSearchListFromGraph(void)
 {
-    struct PokenavSub8 *searchList = AllocSubstruct(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST, sizeof(struct PokenavSub8));
+    struct PokenavSub8 *searchList = h_AllocSubstruct<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     if (searchList == NULL)
         return FALSE;
     searchList->ltid = CreateLoopedTask(LoopedTask_OpenConditionSearchResults, 1);
@@ -387,26 +387,26 @@ bool32 OpenConditionSearchListFromGraph(void)
 
 void CreateSearchResultsLoopedTask(s32 idx)
 {
-    struct PokenavSub8 *searchList = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
+    struct PokenavSub8 *searchList = h_GetSubstructPtr<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     searchList->ltid = CreateLoopedTask(sSearchResultLoopTaskFuncs[idx], 1);
     searchList->callback = GetSearchResultCurrentLoopedTaskActive;
 }
 
 bool32 IsSearchResultLoopedTaskActive(void)
 {
-    struct PokenavSub8 *searchList = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
+    struct PokenavSub8 *searchList = h_GetSubstructPtr<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     return searchList->callback();
 }
 
 bool32 GetSearchResultCurrentLoopedTaskActive(void)
 {
-    struct PokenavSub8 *searchList = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
+    struct PokenavSub8 *searchList = h_GetSubstructPtr<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     return IsLoopedTaskActive(searchList->ltid);
 }
 
 void FreeSearchResultSubstruct2(void)
 {
-    struct PokenavSub8 *searchList = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
+    struct PokenavSub8 *searchList = h_GetSubstructPtr<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     sub_81C8234();
     RemoveWindow(searchList->winid);
     FreePokenavSubstruct(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
@@ -414,7 +414,7 @@ void FreeSearchResultSubstruct2(void)
 
 static u32 LoopedTask_OpenConditionSearchResults(s32 state)
 {
-    struct PokenavSub8 *searchList = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
+    struct PokenavSub8 *searchList = h_GetSubstructPtr<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     switch (state)
     {
     case 0:
@@ -473,7 +473,7 @@ static u32 LoopedTask_OpenConditionSearchResults(s32 state)
 
 static u32 LoopedTask_MoveSearchListCursorUp(s32 state)
 {
-    struct PokenavSub8 *searchList = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
+    struct PokenavSub8 *searchList = h_GetSubstructPtr<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     switch (state)
     {
     case 0:
@@ -506,7 +506,7 @@ static u32 LoopedTask_MoveSearchListCursorUp(s32 state)
 
 static u32 LoopedTask_MoveSearchListCursorDown(s32 state)
 {
-    struct PokenavSub8 *searchList = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
+    struct PokenavSub8 *searchList = h_GetSubstructPtr<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     switch (state)
     {
     case 0:
@@ -539,7 +539,7 @@ static u32 LoopedTask_MoveSearchListCursorDown(s32 state)
 
 static u32 LoopedTask_MoveSearchListPageUp(s32 state)
 {
-    struct PokenavSub8 *searchList = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
+    struct PokenavSub8 *searchList = h_GetSubstructPtr<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     switch (state)
     {
     case 0:
@@ -572,7 +572,7 @@ static u32 LoopedTask_MoveSearchListPageUp(s32 state)
 
 static u32 LoopedTask_MoveSearchListPageDown(s32 state)
 {
-    struct PokenavSub8 *searchList = GetSubstructPtr(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
+    struct PokenavSub8 *searchList = h_GetSubstructPtr<PokenavSub8>(POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULT_LIST);
     switch (state)
     {
     case 0:
