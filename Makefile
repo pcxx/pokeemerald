@@ -71,7 +71,7 @@ LIBPATH := -L ../../tools/agbcc/lib
 else
 CC1              = $(CXX)
 # todo remove some flags again
-override CFLAGS += --target=arm-none-eabi -mthumb -O2 -mabi=apcs-gnu -mcpu=arm7tdmi	 -std=c++20 -fpermissive -Wno-narrowing 
+override CFLAGS += --target=arm-none-eabi -mthumb -O2 -mabi=apcs-gnu -mcpu=arm7tdmi	-std=c++20 -Wno-narrowing 
 ROM := pokeemerald_modern.gba
 OBJ_DIR := build/modern
 LIBPATH := -L "$(dir $(shell $(CC) -mthumb -print-file-name=libgcc.a))" -L "$(dir $(shell $(CC) -mthumb -print-file-name=libc.a))"
@@ -237,7 +237,7 @@ $(C_BUILDDIR)/record_mixing.o: CFLAGS += -ffreestanding
 $(C_BUILDDIR)/librfu_intr.o: CC1 := tools/agbcc/bin/agbcc_arm
 $(C_BUILDDIR)/librfu_intr.o: CFLAGS := -O2 -mthumb-interwork -quiet
 else
-$(C_BUILDDIR)/librfu_intr.o: CFLAGS := -mthumb-interwork -O2 -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -fno-toplevel-reorder -Wno-pointer-to-int-cast
+$(C_BUILDDIR)/librfu_intr.o: CFLAGS := --target=arm-none-eabi -O2 -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -std=c++20 -Wno-narrowing 
 endif
 
 ifeq ($(NODEP),1)
