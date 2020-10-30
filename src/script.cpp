@@ -236,8 +236,6 @@ void EnableBothScriptContexts(void)
 
 void ScriptContext2_RunNewScript(const u8 *ptr)
 {
-    // I think this is wrong, at least the types dont make any sense
-    //InitScriptContext(&sScriptContext2, &gScriptCmdTable, &gScriptCmdTableEnd);
     InitScriptContext(&sScriptContext2, gScriptCmdTable, gScriptCmdTableEnd);
     SetupBytecodeScript(&sScriptContext2, ptr);
     while (RunScriptCommand(&sScriptContext2) == TRUE);
