@@ -959,7 +959,7 @@ static void InitDecorationItemsWindow(u8 taskId)
     s16 *data = gTasks[taskId].data;
     AddDecorationWindow(WINDOW_DECORATION_CATEGORY_ITEMS);
     ShowDecorationCategorySummaryWindow(sCurDecorationCategory);
-    sDecorationItemsMenu = AllocZeroed(sizeof(*sDecorationItemsMenu));
+    sDecorationItemsMenu = AllocZeroed<DecorationItemsMenu>();
     sDecorationItemsMenu->scrollIndicatorsTaskId = 0xFF;
     InitDecorationItemsMenuLimits();
     InitDecorationItemsMenuScrollAndCursor();
@@ -2057,7 +2057,7 @@ static u8 AddDecorationIconObjectFromIconTable(u16 tilesTag, u16 paletteTag, u8 
     palette.data = GetDecorationIconPicOrPalette(decor, 1);
     palette.tag = paletteTag;
     LoadCompressedSpritePalette(&palette);
-    template_ = malloc(sizeof(struct SpriteTemplate));
+    template_ = Alloc<SpriteTemplate>();
     *template_ = gItemIconSpriteTemplate;
     template_->tileTag = tilesTag;
     template_->paletteTag = paletteTag;
@@ -2097,7 +2097,7 @@ static u8 AddDecorationIconObjectFromObjectEvent(u16 tilesTag, u16 paletteTag, u
         palette.data = sPlaceDecorationGraphicsDataBuffer.palette;
         palette.tag = paletteTag;
         LoadSpritePalette(&palette);
-        template_ = Alloc(sizeof(struct SpriteTemplate));
+        template_ = Alloc<SpriteTemplate>();
         *template_ = sDecorWhilePlacingSpriteTemplate;
         template_->tileTag = tilesTag;
         template_->paletteTag = paletteTag;
