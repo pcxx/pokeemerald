@@ -566,7 +566,7 @@ void TransferTilesetAnimsBuffer(void)
     int i;
 
     for (i = 0; i < sTilesetDMA3TransferBufferSize; i ++)
-        DmaCopy16(3, sTilesetDMA3TransferBuffer[i].src, sTilesetDMA3TransferBuffer[i].dest, sTilesetDMA3TransferBuffer[i].size);
+        DmaCopy<3>((vu16 *)sTilesetDMA3TransferBuffer[i].src, (vu16 *)sTilesetDMA3TransferBuffer[i].dest, sTilesetDMA3TransferBuffer[i].size);
 
     sTilesetDMA3TransferBufferSize = 0;
 }
