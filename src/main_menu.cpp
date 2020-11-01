@@ -240,7 +240,7 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite*);
 static void Task_NewGameBirchSpeech_WaitForPlayerShrink(u8);
 static void Task_NewGameBirchSpeech_FadePlayerToWhite(u8);
 static void Task_NewGameBirchSpeech_Cleanup(u8);
-static void SpriteCB_Null();
+static void SpriteCB_Null(Sprite *);
 static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8);
 static void MainMenu_FormatSavegamePlayer(void);
 static void MainMenu_FormatSavegamePokedex(void);
@@ -570,9 +570,9 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     SetGpuReg(REG_OFFSET_BG0HOFS, 0);
     SetGpuReg(REG_OFFSET_BG0VOFS, 0);
 
-    DmaFill16(3, 0, (void *)VRAM, VRAM_SIZE);
-    DmaFill32(3, 0, (void *)OAM, OAM_SIZE);
-    DmaFill16(3, 0, (void *)(PLTT + 2), PLTT_SIZE - 2);
+    DmaFill<3>(0, (vu16 *)VRAM, VRAM_SIZE/2);
+    DmaFill<3>(0, (vu32 *)OAM, OAM_SIZE/4);
+    DmaFill<3>(0, (vu16 *)(PLTT + 2), (PLTT_SIZE - 2)/2);
 
     ResetPaletteFade();
     LoadPalette(sMainMenuBgPal, 0, 32);
@@ -1812,9 +1812,9 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     SetGpuReg(REG_OFFSET_BG1VOFS, 0);
     SetGpuReg(REG_OFFSET_BG0HOFS, 0);
     SetGpuReg(REG_OFFSET_BG0VOFS, 0);
-    DmaFill16(3, 0, VRAM, VRAM_SIZE);
-    DmaFill32(3, 0, OAM, OAM_SIZE);
-    DmaFill16(3, 0, PLTT, PLTT_SIZE);
+    DmaFill<3>(0, (vu16 *)VRAM, VRAM_SIZE/2);
+    DmaFill<3>(0, (vu32 *)OAM, OAM_SIZE/4);
+    DmaFill<3>(0, (vu16 *)PLTT, PLTT_SIZE/2);
     ResetPaletteFade();
     LZ77UnCompVram(sBirchSpeechShadowGfx, (u8*)VRAM);
     LZ77UnCompVram(sBirchSpeechBgMap, (u8*)(BG_SCREEN_ADDR(7)));
@@ -1867,7 +1867,7 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     CopyWindowToVram(0, 3);
 }
 
-static void SpriteCB_Null(struct Sprite *sprite)
+static void SpriteCB_Null(Sprite *sprite)
 {
 }
 
