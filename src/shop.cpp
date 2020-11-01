@@ -384,7 +384,7 @@ static void Task_GoToBuyOrSellMenu(u8 taskId)
     if (!gPaletteFade.active)
     {
         DestroyTask(taskId);
-        SetMainCallback2((void *)((u16)data[8] << 16 | (u16)data[9]));
+        SetMainCallback2(reinterpret_cast<MainCallback>(((u16)data[8] << 16 | (u16)data[9])));
     }
 }
 
@@ -447,7 +447,7 @@ static void CB2_InitBuyMenu(void)
         ResetSpriteData();
         ResetTasks();
         ClearScheduledBgCopiesToVram();
-        gShopDataPtr = AllocZeroed(sizeof(struct ShopData));
+        gShopDataPtr = AllocZeroed<ShopData>();
         gShopDataPtr->scrollIndicatorsTaskId = 0xFF;
         gShopDataPtr->itemSpriteIds[0] = 0xFF;
         gShopDataPtr->itemSpriteIds[1] = 0xFF;
@@ -491,8 +491,8 @@ static void BuyMenuBuildListMenuTemplate(void)
     u16 i;
     u16 itemCount;
 
-    gUnknown_02039F74 = Alloc((gMartInfo.itemCount + 1) * sizeof(*gUnknown_02039F74));
-    gUnknown_02039F78 = Alloc((gMartInfo.itemCount + 1) * sizeof(*gUnknown_02039F78));
+    gUnknown_02039F74 = Alloc<ListMenuItem>(gMartInfo.itemCount + 1);
+    gUnknown_02039F78 = Alloc<u8[16]>(gMartInfo.itemCount + 1);
     for (i = 0; i < gMartInfo.itemCount; i++)
         BuyMenuSetListEntry(&gUnknown_02039F74[i], gMartInfo.itemList[i], gUnknown_02039F78[i]);
 

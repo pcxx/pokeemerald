@@ -124,7 +124,7 @@ void SetVBlankHBlankCallbacksToNull(void)
     SetHBlankCallback(NULL);
 }
 
-void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 arg2, u8 arg3, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc)
+void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 arg2, u8 arg3, u8 fontId, u8 textSpeed, const u8 *string, TaskFunc taskFunc)
 {
     gUnknown_0203A140 = windowId;
     DrawDialogFrameWithCustomTileAndPalette(windowId, TRUE, arg2, arg3);
