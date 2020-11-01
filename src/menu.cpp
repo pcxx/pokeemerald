@@ -1846,9 +1846,9 @@ void *malloc_and_decompress(const void *src, u32 *size)
     sizeAsBytes[2] = srcAsBytes[3];
     sizeAsBytes[3] = 0;
 
-    ptr = Alloc(*size);
+    ptr = Alloc<u8>(*size);
     if (ptr)
-        LZ77UnCompWram(src, ptr);
+        LZ77UnCompWram(reinterpret_cast<const u32 *>(src), ptr);
     return ptr;
 }
 
@@ -1869,7 +1869,7 @@ void SetBgTilemapPalette(u8 bgId, u8 left, u8 top, u8 width, u8 height, u8 palet
 {
     u8 i;
     u8 j;
-    u16 *ptr = GetBgTilemapBuffer(bgId);
+    u16 *ptr = reinterpret_cast<u16 *>(GetBgTilemapBuffer(bgId));
 
     for (i = top; i < top + height; i++)
     {
@@ -1884,7 +1884,7 @@ void CopyToBufferFromBgTilemap(u8 bgId, u16 *dest, u8 left, u8 top, u8 width, u8
 {
     u8 i;
     u8 j;
-    const u16 *src = GetBgTilemapBuffer(bgId);
+    const u16 *src = reinterpret_cast<u16 *>( GetBgTilemapBuffer(bgId));
 
     for (i = 0; i < height; i++)
     {
@@ -1901,7 +1901,7 @@ void sub_8199D3C(void *ptr, int delta, int width, int height, bool32 is8BPP)
     int area = width * height;
     if (is8BPP == TRUE)
     {
-        u8 *as8BPP = ptr;
+        u8 *as8BPP = reinterpret_cast<u8 *>(ptr);
         for (i = 0; i < area; i++)
         {
             as8BPP[i] += delta;
@@ -1909,7 +1909,7 @@ void sub_8199D3C(void *ptr, int delta, int width, int height, bool32 is8BPP)
     }
     else
     {
-        u16 *as4BPP = ptr;
+        u16 *as4BPP = reinterpret_cast<u16 *>(ptr);
         for (i = 0; i < area; i++)
         {
             as4BPP[i] = (as4BPP[i] & 0xFC00) | ((as4BPP[i] + delta) & 0x3FF);
@@ -1932,8 +1932,8 @@ void ResetBgPositions(void)
 void sub_8199DF0(u32 bg, u8 a1, int a2, int a3)
 {
     int temp = (!GetBgAttribute(bg, BG_ATTR_PALETTEMODE)) ? 0x20 : 0x40;
-    void *addr = (void *)((GetBgAttribute(bg, BG_ATTR_CHARBASEINDEX) * 0x4000) + (GetBgAttribute(bg, BG_ATTR_BASETILE) + a2) * temp);
-    RequestDma3Fill(a1 << 24 | a1 << 16 | a1 << 8 | a1, addr + VRAM, a3 * temp, 1);
+    void *addr = (void *)(VRAM + (GetBgAttribute(bg, BG_ATTR_CHARBASEINDEX) * 0x4000) + (GetBgAttribute(bg, BG_ATTR_BASETILE) + a2) * temp);
+    RequestDma3Fill(a1 << 24 | a1 << 16 | a1 << 8 | a1, addr, a3 * temp, 1);
 }
 
 void AddTextPrinterParameterized3(u8 windowId, u8 fontId, u8 left, u8 top, const u8 *color, s8 speed, const u8 *str)
@@ -2037,11 +2037,11 @@ void sub_819A080(const struct Bitmap *src, struct Bitmap *dst, u16 srcX, u16 src
         for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++)
         {
             pixelsSrc = src->pixels + ((loopSrcX >> 1) & 3) + ((loopSrcX >> 3) << 5) + (((loopSrcY >> 3) * multiplierSrcY) << 5) + ((u32)(loopSrcY << 0x1d) >> 0x1B);
-            pixelsDst = (void*) dst->pixels + ((loopDstX >> 1) & 3) + ((loopDstX >> 3) << 5) + ((( loopDstY >> 3) * multiplierDstY) << 5) + ((u32)( loopDstY << 0x1d) >> 0x1B);
+            pixelsDst = (u16 *)(dst->pixels + ((loopDstX >> 1) & 3) + ((loopDstX >> 3) << 5) + ((( loopDstY >> 3) * multiplierDstY) << 5) + ((u32)( loopDstY << 0x1d) >> 0x1B));
 
             if ((uintptr_t )pixelsDst & 0x1)
             {
-                pixelsDst = (void*)(pixelsDst) - 1;
+                pixelsDst = (u16*)((u32)(pixelsDst) - 1);
                 if (loopDstX & 0x1)
                 {
                     toOrr = *pixelsDst & 0x0fff;
