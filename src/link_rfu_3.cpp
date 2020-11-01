@@ -926,7 +926,7 @@ void RecordMixTrainerNames(void)
         s32 i, j;
         s32 nextSpace;
         s32 connectedTrainerRecordIndices[5];
-        struct TrainerNameRecord *newRecords = calloc(ARRAY_COUNT(gSaveBlock1Ptr->trainerNameRecords), sizeof(struct TrainerNameRecord));
+        struct TrainerNameRecord *newRecords = AllocZeroed<TrainerNameRecord>(ARRAY_COUNT(gSaveBlock1Ptr->trainerNameRecords));
 
         // Check if we already have a record saved for connected trainers.
         for (i = 0; i < GetLinkPlayerCount(); i++)
