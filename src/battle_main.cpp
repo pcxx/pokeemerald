@@ -1418,7 +1418,7 @@ static void CB2_PreInitMultiBattle(void)
     case 0:
         if (gReceivedRemoteLinkPlayers != 0 && IsLinkTaskFinished())
         {
-            sMultiPartnerPartyBuffer = Alloc(sizeof(struct UnknownPokemonStruct4) * ARRAY_COUNT(gMultiPartnerParty));
+            sMultiPartnerPartyBuffer = Alloc<UnknownPokemonStruct4>(ARRAY_COUNT(gMultiPartnerParty));
             sub_80379F8(0);
             SendBlock(bitmask_all_link_players_but_self(), sMultiPartnerPartyBuffer, sizeof(struct UnknownPokemonStruct4) * ARRAY_COUNT(gMultiPartnerParty));
             gBattleCommunication[MULTIUSE_STATE]++;
@@ -1502,7 +1502,7 @@ static void CB2_PreInitIngamePlayerPartnerBattle(void)
     switch (gBattleCommunication[MULTIUSE_STATE])
     {
     case 0:
-        sMultiPartnerPartyBuffer = Alloc(sizeof(struct UnknownPokemonStruct4) * ARRAY_COUNT(gMultiPartnerParty));
+        sMultiPartnerPartyBuffer = Alloc<UnknownPokemonStruct4>(ARRAY_COUNT(gMultiPartnerParty));
         sub_80379F8(3);
         gBattleCommunication[MULTIUSE_STATE]++;
         *savedCallback = gMain.savedCallback;

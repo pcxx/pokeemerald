@@ -482,7 +482,7 @@ static void CB2_EggHatch_0(void)
     case 0:
         SetGpuReg(REG_OFFSET_DISPCNT, 0);
 
-        sEggHatchData = Alloc(sizeof(struct EggHatchData));
+        sEggHatchData = Alloc<EggHatchData>();
         AllocateMonSpritesGfx();
         sEggHatchData->eggPartyID = gSpecialVar_0x8004;
         sEggHatchData->eggShardVelocityID = 0;
@@ -500,8 +500,8 @@ static void CB2_EggHatch_0(void)
         ChangeBgY(0, 0, 0);
 
         SetBgAttribute(1, BG_ATTR_PRIORITY, 2);
-        SetBgTilemapBuffer(1, Alloc(0x1000));
-        SetBgTilemapBuffer(0, Alloc(0x2000));
+        SetBgTilemapBuffer(1, Alloc<u8>(0x1000));
+        SetBgTilemapBuffer(0, Alloc<u8>(0x2000));
 
         DeactivateAllTextPrinters();
         ResetPaletteFade();

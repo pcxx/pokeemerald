@@ -391,9 +391,9 @@ static void RemoveTrainerHillRecordsWindow(u8 windowId)
 
 static void ClearVramOamPlttRegs(void)
 {
-    DmaClearLarge16(3, (void*)(VRAM), VRAM_SIZE, 0x1000);
-    DmaClear32(3, OAM, OAM_SIZE);
-    DmaClear16(3, PLTT, PLTT_SIZE);
+    DmaClearLarge<3>((vu16*)(VRAM), VRAM_SIZE/2, 0x1000/2);
+    DmaClear<3>((vu32*)OAM, OAM_SIZE/4);
+    DmaClear<3>((vu16*)PLTT, PLTT_SIZE/2);
 
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_BG0CNT, 0);
@@ -485,7 +485,7 @@ static void CB2_ShowTrainerHillRecords(void)
         gMain.state++;
         break;
     case 2:
-        sTilemapBuffer = AllocZeroed(BG_SCREEN_SIZE);
+        sTilemapBuffer = AllocZeroed<u8>(BG_SCREEN_SIZE);
         ResetBgsAndClearDma3BusyFlags(0);
         InitBgsFromTemplates(0, sTrainerHillRecordsBgTemplates, ARRAY_COUNT(sTrainerHillRecordsBgTemplates));
         SetBgTilemapBuffer(3, sTilemapBuffer);

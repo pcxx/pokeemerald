@@ -18,7 +18,7 @@ void STWI_init_all(struct RfuIntrStruct *interruptStruct, IntrFunc *interrupt, b
     if (copyInterruptToRam == TRUE)
     {
         *interrupt = (IntrFunc)interruptStruct->block1;
-        DmaCopy16(3, &IntrSIO32, interruptStruct->block1, sizeof(interruptStruct->block1));
+        DmaCopy<3>((vu16*)&IntrSIO32, (vu16*)interruptStruct->block1, sizeof(interruptStruct->block1));
         gSTWIStatus = &interruptStruct->block2;
     }
     else

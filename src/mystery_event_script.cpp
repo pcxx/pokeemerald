@@ -350,7 +350,7 @@ bool8 MEScrCmd_givepokemon(struct ScriptContext *ctx)
 bool8 MEScrCmd_addtrainer(struct ScriptContext *ctx)
 {
     u32 data = ScriptReadWord(ctx) - ctx->data[1] + ctx->data[0];
-    memcpy((void*)(gSaveBlock2Ptr) + 0xBEC, (void *)data, 0xBC);
+    memcpy((void*)(gSaveBlock2Ptr + 0xBEC), (void *)data, 0xBC);
     ValidateEReaderTrainer();
     StringExpandPlaceholders(gStringVar4, gText_MysteryGiftNewTrainer);
     ctx->data[2] = 2;

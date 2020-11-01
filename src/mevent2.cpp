@@ -66,13 +66,13 @@ bool32 sub_801B078(const struct WonderNews *src)
 
     s_DestroyWonderNews();
     gSaveBlock1Ptr->unk_322C.wonderNews.data = *src;
-    gSaveBlock1Ptr->unk_322C.wonderNews.crc = CalcCRC16WithTable((void *)&gSaveBlock1Ptr->unk_322C.wonderNews.data, sizeof(struct WonderNews));
+    gSaveBlock1Ptr->unk_322C.wonderNews.crc = CalcCRC16WithTable((u8*)&gSaveBlock1Ptr->unk_322C.wonderNews.data, sizeof(struct WonderNews));
     return TRUE;
 }
 
 bool32 ValidateReceivedWonderNews(void)
 {
-    if (CalcCRC16WithTable((void *)&gSaveBlock1Ptr->unk_322C.wonderNews.data, sizeof(struct WonderNews)) != gSaveBlock1Ptr->unk_322C.wonderNews.crc)
+    if (CalcCRC16WithTable((u8 *)&gSaveBlock1Ptr->unk_322C.wonderNews.data, sizeof(struct WonderNews)) != gSaveBlock1Ptr->unk_322C.wonderNews.crc)
         return FALSE;
     if (!sub_801B114(&gSaveBlock1Ptr->unk_322C.wonderNews.data))
         return FALSE;
@@ -145,7 +145,7 @@ bool32 sub_801B21C(const struct WonderCard *data)
 
     DestroyWonderCard();
     memcpy(&gSaveBlock1Ptr->unk_322C.wonderCard.data, data, sizeof(struct WonderCard));
-    gSaveBlock1Ptr->unk_322C.wonderCard.crc = CalcCRC16WithTable((void *)&gSaveBlock1Ptr->unk_322C.wonderCard.data, sizeof(struct WonderCard));
+    gSaveBlock1Ptr->unk_322C.wonderCard.crc = CalcCRC16WithTable((u8 *)&gSaveBlock1Ptr->unk_322C.wonderCard.data, sizeof(struct WonderCard));
     r2 = &gSaveBlock1Ptr->unk_322C.buffer_310.data;
     r1 = &gSaveBlock1Ptr->unk_322C.wonderCard.data;
     r2->unk_06 = r1->unk_02;
@@ -154,7 +154,7 @@ bool32 sub_801B21C(const struct WonderCard *data)
 
 bool32 ValidateReceivedWonderCard(void)
 {
-    if (gSaveBlock1Ptr->unk_322C.wonderCard.crc != CalcCRC16WithTable((void *)&gSaveBlock1Ptr->unk_322C.wonderCard.data, sizeof(struct WonderCard)))
+    if (gSaveBlock1Ptr->unk_322C.wonderCard.crc != CalcCRC16WithTable((u8 *)&gSaveBlock1Ptr->unk_322C.wonderCard.data, sizeof(struct WonderCard)))
         return FALSE;
     if (!sub_801B2CC(&gSaveBlock1Ptr->unk_322C.wonderCard.data))
         return FALSE;

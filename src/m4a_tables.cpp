@@ -3,7 +3,20 @@
 // Some of these functions have different signatures, so we need to make this
 // an array of void pointers or a struct. It's simpler to just make it an array
 // for now.
-void * const gMPlayJumpTableTemplate[] =
+// 
+// That just give me more work - Henny
+
+union mplayFn
+{
+    void (*vmm)(MusicPlayerInfo*, MusicPlayerTrack*);
+    void (*vu32)(u32);
+    void (*vm)(MusicPlayerInfo*);
+    void (*vv)(void*);
+    void (*v)();
+};
+
+
+mplayFn gMPlayJumpTableTemplate[] =
 {
     ply_fine,
     ply_goto,
@@ -35,12 +48,12 @@ void * const gMPlayJumpTableTemplate[] =
     ply_port,
     ply_fine,
     ply_endtie,
-    SampleFreqSet,
+    {.vu32 = SampleFreqSet},
     TrackStop,
-    FadeOutBody,
+    {.vm = FadeOutBody},
     TrkVolPitSet,
-    RealClearChain,
-    SoundMainBTM,
+    {.vv = RealClearChain},
+    {.v = SoundMainBTM},
 };
 
 // This is a table of deltas between sample values in compressed PCM data.

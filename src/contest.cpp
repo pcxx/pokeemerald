@@ -1116,25 +1116,25 @@ static void InitContestResources(void)
 
 static void AllocContestResources(void)
 {
-    gContestResources = AllocZeroed(sizeof(struct ContestResources));
-    gContestResources->contest = AllocZeroed(sizeof(struct Contest));
-    gContestResources->status = AllocZeroed(sizeof(struct ContestantStatus) * CONTESTANT_COUNT);
-    gContestResources->appealResults = AllocZeroed(sizeof(struct ContestAppealMoveResults));
-    gContestResources->aiData = AllocZeroed(sizeof(struct ContestAIInfo));
-    gContestResources->excitement = AllocZeroed(sizeof(struct ContestExcitement) * CONTESTANT_COUNT);
-    gContestResources->gfxState = AllocZeroed(sizeof(struct ContestGraphicsState) * CONTESTANT_COUNT);
-    gContestResources->moveAnim = AllocZeroed(sizeof(struct ContestMoveAnimData));
-    gContestResources->tv = AllocZeroed(sizeof(struct ContestTV) * CONTESTANT_COUNT);
-    gContestResources->unused = AllocZeroed(sizeof(struct ContestUnused));
-    gContestResources->contestBgTilemaps[0] = AllocZeroed(0x1000);
-    gContestResources->contestBgTilemaps[1] = AllocZeroed(0x1000);
-    gContestResources->contestBgTilemaps[2] = AllocZeroed(0x1000);
-    gContestResources->contestBgTilemaps[3] = AllocZeroed(0x1000);
-    gContestResources->boxBlinkTiles1 = AllocZeroed(0x800);
-    gContestResources->boxBlinkTiles2 = AllocZeroed(0x800);
-    gContestResources->field_3c = AllocZeroed(0x2000);
-    gUnknown_0202305C = gContestResources->field_3c;
-    gUnknown_02023060 = gContestResources->contestBgTilemaps[1];
+    gContestResources = AllocZeroed<ContestResources>();
+    gContestResources->contest = AllocZeroed<Contest>();
+    gContestResources->status = AllocZeroed<ContestantStatus>(CONTESTANT_COUNT);
+    gContestResources->appealResults = AllocZeroed<ContestAppealMoveResults>();
+    gContestResources->aiData = AllocZeroed<ContestAIInfo>();
+    gContestResources->excitement = AllocZeroed<ContestExcitement>(CONTESTANT_COUNT);
+    gContestResources->gfxState = AllocZeroed<ContestGraphicsState>(CONTESTANT_COUNT);
+    gContestResources->moveAnim = AllocZeroed<ContestMoveAnimData>();
+    gContestResources->tv = AllocZeroed<ContestTV>(CONTESTANT_COUNT);
+    gContestResources->unused = AllocZeroed<ContestUnused>();
+    gContestResources->contestBgTilemaps[0] = AllocZeroed<u8>(0x1000);
+    gContestResources->contestBgTilemaps[1] = AllocZeroed<u8>(0x1000);
+    gContestResources->contestBgTilemaps[2] = AllocZeroed<u8>(0x1000);
+    gContestResources->contestBgTilemaps[3] = AllocZeroed<u8>(0x1000);
+    gContestResources->boxBlinkTiles1 = AllocZeroed<u8>(0x800);
+    gContestResources->boxBlinkTiles2 = AllocZeroed<u8>(0x800);
+    gContestResources->field_3c = AllocZeroed<u8>(0x2000);
+    gUnknown_0202305C = (u8*) gContestResources->field_3c;
+    gUnknown_02023060 = (u8*) gContestResources->contestBgTilemaps[1];
 }
 
 static void FreeContestResources(void)
@@ -1169,7 +1169,7 @@ void CB2_StartContest(void)
         AllocContestResources();
         AllocateMonSpritesGfx();
         FREE_AND_SET_NULL(gMonSpritesGfxPtr->firstDecompressed);
-        gMonSpritesGfxPtr->firstDecompressed = AllocZeroed(0x4000);
+        gMonSpritesGfxPtr->firstDecompressed = AllocZeroed<u8>(0x4000);
         SetVBlankCallback(NULL);
         InitContestInfoBgs();
         InitContestWindows();
@@ -1302,15 +1302,15 @@ static bool8 SetupContestGraphics(u8 *stateVar)
     case 0:
         gPaletteFade.bufferTransferDisabled = TRUE;
         RequestDma3Fill(0, (void *)VRAM, 0x8000, 1);
-        RequestDma3Fill(0, (void *)VRAM + 0x8000, 0x8000, 1);
-        RequestDma3Fill(0, (void *)VRAM + 0x10000, 0x8000, 1);
+        RequestDma3Fill(0, (void *)(VRAM + 0x8000), 0x8000, 1);
+        RequestDma3Fill(0, (void *)(VRAM + 0x10000), 0x8000, 1);
         break;
     case 1:
         LZDecompressVram(gContestMiscGfx, (void *)VRAM);
         break;
     case 2:
         LZDecompressVram(gContestAudienceGfx, (void *)(BG_SCREEN_ADDR(4)));
-        DmaCopyLarge32(3, (void *)(BG_SCREEN_ADDR(4)), eUnzippedContestAudience_Gfx, 0x2000, 0x1000);
+        DmaCopyLarge<3>((vu32 *)(BG_SCREEN_ADDR(4)), (vu32*)eUnzippedContestAudience_Gfx, 0x2000/4, 0x1000/4);
         break;
     case 3:
         CopyToBgTilemapBuffer(3, gOldContestGfx, 0, 0);
@@ -1320,7 +1320,7 @@ static bool8 SetupContestGraphics(u8 *stateVar)
         CopyToBgTilemapBuffer(2, gUnknown_08C17170, 0, 0);
         CopyBgTilemapBufferToVram(2);
         // This is a bug, and copies random junk. savedJunk is never read.
-        DmaCopy32Defvars(3, gContestResources->contestBgTilemaps[2], eUnknownHeap1A004.savedJunk, sizeof(eUnknownHeap1A004.savedJunk));
+        DmaCopy<3>((vu32*)gContestResources->contestBgTilemaps[2], (vu32*)eUnknownHeap1A004.savedJunk, sizeof(eUnknownHeap1A004.savedJunk)/4);
         break;
     case 5:
         LoadCompressedPalette(gOldContestPalette, 0, 0x200);
@@ -1328,7 +1328,7 @@ static bool8 SetupContestGraphics(u8 *stateVar)
         CpuCopy32(gPlttBufferUnfaded + (5 + gContestPlayerMonIndex) * 16, tempPalette2, 16 * sizeof(u16));
         CpuCopy32(tempPalette2, gPlttBufferUnfaded + 128, 16 * sizeof(u16));
         CpuCopy32(tempPalette1, gPlttBufferUnfaded + (5 + gContestPlayerMonIndex) * 16, 16 * sizeof(u16));
-        DmaCopy32Defvars(3, gPlttBufferUnfaded, eUnknownHeap1A004.cachedWindowPalettes, sizeof(eUnknownHeap1A004.cachedWindowPalettes));
+        DmaCopy<3>((vu32*)gPlttBufferUnfaded, (vu32*)eUnknownHeap1A004.cachedWindowPalettes, sizeof(eUnknownHeap1A004.cachedWindowPalettes)/4);
         LoadContestPalettes();
         break;
     case 6:
@@ -1468,7 +1468,7 @@ static void Task_DisplayAppealNumberText(u8 taskId)
         gBattle_BG0_Y = 0;
         gBattle_BG2_Y = 0;
         ContestDebugDoPrint();
-        DmaCopy32Defvars(3, gPlttBufferUnfaded, eUnknownHeap1A004.unk18204, PLTT_BUFFER_SIZE * 2);
+        DmaCopy<3>((vu32*)gPlttBufferUnfaded, (vu32*)eUnknownHeap1A004.unk18204, (PLTT_BUFFER_SIZE * 2)/4);
         ConvertIntToDecimalStringN(gStringVar1, eContest.appealNumber + 1, STR_CONV_MODE_LEFT_ALIGN, 1);
         if (!Contest_IsMonsTurnDisabled(gContestPlayerMonIndex))
             StringCopy(gDisplayedStringBattle, gText_AppealNumWhichMoveWillBePlayed);
@@ -1667,7 +1667,7 @@ static void Task_HideMoveSelectScreen(u8 taskId)
     }
     Contest_SetBgCopyFlags(0);
     // This seems to be a bug; it should have just copied PLTT_BUFFER_SIZE.
-    DmaCopy32Defvars(3, gPlttBufferFaded, eUnknownHeap1A004.unk18604, PLTT_BUFFER_SIZE * 2);
+    DmaCopy<3>((vu32*)gPlttBufferFaded, (vu32*)eUnknownHeap1A004.unk18604, (PLTT_BUFFER_SIZE * 2)/4);
     LoadPalette(eUnknownHeap1A004.unk18204, 0, PLTT_BUFFER_SIZE * 2);
     gTasks[taskId].data[0] = 0;
     gTasks[taskId].data[1] = 0;
@@ -2554,7 +2554,7 @@ static void Task_WaitForHeartSliders(u8 taskId)
 
 static void sub_80DA348(u8 taskId)
 {
-    DmaCopy32Defvars(3, eUnknownHeap1A004.unk18204, gPlttBufferUnfaded, PLTT_BUFFER_SIZE * 2);
+    DmaCopy<3>((vu32*)eUnknownHeap1A004.unk18204, (vu32*)gPlttBufferUnfaded, (PLTT_BUFFER_SIZE * 2)/4);
     gTasks[taskId].data[0] = 0;
     gTasks[taskId].data[1] = 2;
     gTasks[taskId].func = Task_WaitPrintRoundResult;
@@ -4059,15 +4059,13 @@ static void UpdateBlendTaskContestantData(u8 contestant)
     InitUnusedBlendTaskData(contestant);
 
     palOffset1 = contestant + 5;
-    DmaCopy16Defvars(3,
-                     gPlttBufferUnfaded + palOffset1 * 16 + 10,
-                     gPlttBufferFaded   + palOffset1 * 16 + 10,
-                     2);
+    DmaCopy<3>((vu16*)(gPlttBufferUnfaded + palOffset1 * 16 + 10),
+               (vu16*)(gPlttBufferFaded   + palOffset1 * 16 + 10),
+               2/2);
     palOffset2 = (contestant + 5) * 16 + 12 + contestant;
-    DmaCopy16Defvars(3,
-                     gPlttBufferUnfaded + palOffset2,
-                     gPlttBufferFaded + palOffset2,
-                     2);
+    DmaCopy<3>((vu16*)(gPlttBufferUnfaded + palOffset2),
+               (vu16*)(gPlttBufferFaded + palOffset2),
+               2/2);
 }
 
 // See comments on CreateUnusedBlendTask
@@ -4123,17 +4121,17 @@ static u8 CreateContestantBoxBlinkSprites(u8 contestant)
 
     CopySpriteTiles(0,
                     3,
-                    (void *)VRAM,
+                    (u8 *)VRAM,
                     (u16 *)(BG_SCREEN_ADDR(28) + gContestantTurnOrder[contestant] * 5 * 64 + 0x26),
-                    gContestResources->boxBlinkTiles1);
+                    (u8*)gContestResources->boxBlinkTiles1);
 
     CopySpriteTiles(0,
-                    3, (void *)VRAM,
+                    3, (u8 *)VRAM,
                     (u16 *)(BG_SCREEN_ADDR(28) + gContestantTurnOrder[contestant] * 5 * 64 + 0x36),
-                    gContestResources->boxBlinkTiles2);
+                    (u8*)gContestResources->boxBlinkTiles2);
 
-    CpuFill32(0, gContestResources->boxBlinkTiles1 + 0x500, 0x300);
-    CpuFill32(0, gContestResources->boxBlinkTiles2 + 0x500, 0x300);
+    CpuFill32(0, (void*)((u8*)gContestResources->boxBlinkTiles1 + 0x500), 0x300);
+    CpuFill32(0, (void*)((u8*)gContestResources->boxBlinkTiles2 + 0x500), 0x300);
 
     RequestDma3Copy(gContestResources->boxBlinkTiles1,
                     (u8 *)(OBJ_VRAM0 + gSprites[spriteId1].oam.tileNum * 32),

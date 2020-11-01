@@ -2685,7 +2685,7 @@ static void FieldMoveShowMonOutdoorsEffect_ShrinkBanner(struct Task *task)
 static void FieldMoveShowMonOutdoorsEffect_RestoreBg(struct Task *task)
 {
     u16 bg0cnt = (REG_BG0CNT >> 8) << 11;
-    CpuFill32(0, (void *)VRAM + bg0cnt, 0x800);
+    CpuFill32(0, (void *)(VRAM + bg0cnt), 0x800);
     task->tWinHoriz = DISPLAY_WIDTH + 1;
     task->tWinVert = DISPLAY_HEIGHT + 1;
     task->tWinIn = task->data[11];
@@ -2824,7 +2824,7 @@ static void FieldMoveShowMonIndoorsEffect_End(struct Task *task)
     IntrCallback intrCallback;
     u16 bg0cnt;
     bg0cnt = (REG_BG0CNT >> 8) << 11;
-    CpuFill32(0, (void *)VRAM + bg0cnt, 0x800);
+    CpuFill32(0, (void *)(VRAM + bg0cnt), 0x800);
     LoadWordFromTwoHalfwords((u16 *)&task->data[13], (u32 *)&intrCallback);
     SetVBlankCallback(intrCallback);
     InitTextBoxGfxAndPrinters();

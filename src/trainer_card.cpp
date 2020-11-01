@@ -329,7 +329,7 @@ static void VblankCb_TrainerCard(void)
     TransferPlttBuffer();
     BlinkTimeColon();
     if (sData->allowDMACopy)
-        DmaCopy16(3, &gScanlineEffectRegBuffers[0], &gScanlineEffectRegBuffers[1], 0x140);
+        DmaCopy<3>((vu16*)&gScanlineEffectRegBuffers[0], (vu16*)&gScanlineEffectRegBuffers[1], 0x140/2);
 }
 
 static void HblankCb_TrainerCard(void)
@@ -590,12 +590,12 @@ static void CB2_InitTrainerCard(void)
         gMain.state++;
         break;
     case 1:
-        DmaClear32(3, (void *)OAM, OAM_SIZE);
+        DmaClear<3>((vu32 *)OAM, OAM_SIZE/4);
         gMain.state++;
         break;
     case 2:
         if (!sData->blendColor)
-            DmaClear16(3, (void *)PLTT, PLTT_SIZE);
+            DmaClear<3>((vu16 *)PLTT, PLTT_SIZE/2);
         gMain.state++;
         break;
     case 3:
@@ -1791,7 +1791,7 @@ static bool8 Task_EndCardFlip(struct Task *task)
 
 void ShowPlayerTrainerCard(void (*callback)(void))
 {
-    sData = AllocZeroed(sizeof(*sData));
+    sData = AllocZeroed<TrainerCardData>();
     sData->callback2 = callback;
     if (callback == CB2_ReshowFrontierPass)
         sData->blendColor = RGB_WHITE;
@@ -1810,7 +1810,7 @@ void ShowPlayerTrainerCard(void (*callback)(void))
 
 void ShowTrainerCardInLink(u8 cardId, void (*callback)(void))
 {
-    sData = AllocZeroed(sizeof(*sData));
+    sData = AllocZeroed<TrainerCardData>();
     sData->callback2 = callback;
     sData->isLink = TRUE;
     sData->trainerCard = gTrainerCards[cardId];

@@ -450,8 +450,8 @@ void CB2_InitResetRtcScreen(void)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetVBlankCallback(NULL);
-    DmaClear16(3, PLTT, PLTT_SIZE);
-    DmaFillLarge16(3, 0, (u8 *)VRAM, 0x18000, 0x1000);
+    DmaClear<3>((vu16*)PLTT, PLTT_SIZE/2);
+    DmaFillLarge<3>(0, (vu16 *)VRAM, 0x18000/2, 0x1000/2);
     ResetOamRange(0, 128);
     LoadOam();
     ScanlineEffect_Stop();

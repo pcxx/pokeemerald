@@ -861,7 +861,7 @@ static void AnimSuperpowerRock_Step1(struct Sprite *sprite)
     if (sprite->data[0] != 0)
     {
         var0 = LoadPointerFromVars(sprite->data[4], sprite->data[5]);
-        var0 -= sprite->data[6];
+        var0 = (u8*)var0 - sprite->data[6];
         StorePointerInVars(&sprite->data[4], &sprite->data[5], var0);
 
         var0 = (void *)(((intptr_t)var0) >> 8);
