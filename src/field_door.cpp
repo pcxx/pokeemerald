@@ -19,7 +19,7 @@ struct DoorGraphics
     u8 sound;
     u8 size;
     const void *tiles;
-    const void *palette;
+    const u8 *palette;
 };
 
 struct DoorAnimFrame
@@ -282,9 +282,9 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 static void CopyDoorTilesToVram(const struct DoorGraphics *gfx, const struct DoorAnimFrame *frame)
 {
     if (gfx->size == 2)
-        CpuFastSet(gfx->tiles + frame->offset, (void *)(VRAM + 0x7E00), 0x80);
+        CpuFastSet((void *)((u32)gfx->tiles + frame->offset), (void *)(VRAM + 0x7E00), 0x80);
     else
-        CpuFastSet(gfx->tiles + frame->offset, (void *)(VRAM + 0x7F00), 0x40);
+        CpuFastSet((void *)((u32)gfx->tiles + frame->offset), (void *)(VRAM + 0x7F00), 0x40);
 }
 
 static void door_build_blockdef(u16 *a, u16 b, const u8 *c)
@@ -386,7 +386,7 @@ static bool32 sub_808A5F0(struct DoorGraphics *gfx, struct DoorAnimFrame *frames
 
 static void Task_AnimateDoor(u8 taskId)
 {
-    u16 *taskData = gTasks[taskId].data;
+    s16 *taskData = gTasks[taskId].data;
     struct DoorAnimFrame *frames = (struct DoorAnimFrame *)(taskData[TD_FRAMELIST] << 16 | taskData[TD_FRAMELIST + 1]);
     struct DoorGraphics *gfx = (struct DoorGraphics *)(taskData[TD_GFX] << 16 | taskData[TD_GFX + 1]);
 
