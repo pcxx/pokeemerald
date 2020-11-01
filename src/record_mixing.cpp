@@ -35,6 +35,7 @@
 #include "constants/battle_frontier.h"
 #include "dewford_trend.h"
 
+// TODO there is a lot of bad stuff happening here
 
 // Static type declarations
 
@@ -88,10 +89,10 @@ static PokeNews *sPokeNewsSave;
 static OldMan *sOldManSave;
 static struct EasyChatPair *sEasyChatPairsSave;
 static struct RecordMixingDayCareMail *gUnknown_03001148;
-static void *sBattleTowerSave;
+static EmeraldBattleTowerRecord *sBattleTowerSave;
 static LilycoveLady *sLilycoveLadySave;
-static void *sApprenticesSave;
-static void *sBattleTowerSave_Duplicate;
+static Apprentice *sApprenticesSave;
+static EmeraldBattleTowerRecord *sBattleTowerSave_Duplicate;
 static u32 sRecordStructSize;
 static u8 gUnknown_03001160;
 static u32 filler_03001164;
@@ -260,7 +261,7 @@ static void ReceiveExchangePacket(u32 which)
     if (Link_AnyPartnersPlayingRubyOrSapphire())
     {
         // Ruby/Sapphire
-        sub_80E7B2C((void *)sReceivedRecords->ruby.tvShows);
+        sub_80E7B2C((u8 *)sReceivedRecords->ruby.tvShows);
         ReceiveSecretBasesData(sReceivedRecords->ruby.secretBases, sizeof(struct PlayerRecordsRS), which);
         ReceiveDaycareMailData(&sReceivedRecords->ruby.dayCareMail, sizeof(struct PlayerRecordsRS), which, sReceivedRecords->ruby.tvShows);
         ReceiveBattleTowerData(&sReceivedRecords->ruby.battleTowerRecord, sizeof(struct PlayerRecordsRS), which);
@@ -273,7 +274,7 @@ static void ReceiveExchangePacket(u32 which)
     else
     {
         // Emerald
-        sub_80E7B2C((void *)sReceivedRecords->emerald.tvShows);
+        sub_80E7B2C((u8 *)sReceivedRecords->emerald.tvShows);
         ReceiveSecretBasesData(sReceivedRecords->emerald.secretBases, sizeof(struct PlayerRecordsEmerald), which);
         ReceiveTvShowsData(sReceivedRecords->emerald.tvShows, sizeof(struct PlayerRecordsEmerald), which);
         ReceivePokeNewsData(sReceivedRecords->emerald.pokeNews, sizeof(struct PlayerRecordsEmerald), which);
@@ -319,8 +320,8 @@ static void Task_RecordMixing_Main(u8 taskId)
     switch (tState)
     {
     case 0: // init
-        sSentRecord = malloc(sizeof(union PlayerRecords));
-        sReceivedRecords = malloc(sizeof(union PlayerRecords) * 4);
+        sSentRecord = Alloc<PlayerRecords>();
+        sReceivedRecords = Alloc<PlayerRecords>(4);
         SetLocalLinkPlayerId(gSpecialVar_0x8005);
         VarSet(VAR_TEMP_0, 1);
         gUnknown_03001130 = FALSE;
@@ -492,7 +493,7 @@ static void Task_SendPacket(u8 taskId)
     {
     case 0: // Copy record data to send buffer
         {
-            void *recordData = LoadPtrFromTaskData(&task->data[2]) + task->data[4] * BUFFER_CHUNK_SIZE;
+            void *recordData = (void*)((u8*)LoadPtrFromTaskData((u16 *)(&task->data[2])) + task->data[4] * BUFFER_CHUNK_SIZE);
 
             memcpy(gBlockSendBuffer, recordData, BUFFER_CHUNK_SIZE);
             task->data[0]++;
@@ -536,7 +537,7 @@ static void Task_CopyReceiveBuffer(u8 taskId)
 
             if ((status >> i) & 1)
             {
-                dest = LoadPtrFromTaskData((u16 *)&task->data[5]) + task->data[i + 1] * BUFFER_CHUNK_SIZE + sRecordStructSize * i;
+                dest = (void*)((u8*)LoadPtrFromTaskData((u16 *)&task->data[5]) + task->data[i + 1] * BUFFER_CHUNK_SIZE + sRecordStructSize * i);
                 src = GetPlayerRecvBuffer(i);
                 if ((task->data[i + 1] + 1) * BUFFER_CHUNK_SIZE > sRecordStructSize)
                     memcpy(dest, src, sRecordStructSize - task->data[i + 1] * BUFFER_CHUNK_SIZE);
@@ -632,7 +633,7 @@ static void ReceiveOldManData(OldMan *oldMan, size_t recordSize, u8 which)
     u32 mixIndices[MAX_LINK_PLAYERS];
 
     ShufflePlayerIndices(mixIndices);
-    dest = (void *)oldMan + recordSize * mixIndices[which];
+    dest = (OldMan *)(oldMan + recordSize * mixIndices[which]);
     version = gLinkPlayers[mixIndices[which]].version;
     language = gLinkPlayers[mixIndices[which]].language;
 
@@ -641,7 +642,7 @@ static void ReceiveOldManData(OldMan *oldMan, size_t recordSize, u8 which)
     else
         SanitizeReceivedEmeraldOldMan(dest, version, language);
 
-    memcpy(sOldManSave, (void *)oldMan + recordSize * mixIndices[which], sizeof(OldMan));
+    memcpy(sOldManSave, (void *)(oldMan + recordSize * mixIndices[which]), sizeof(OldMan));
     ResetMauvilleOldManFlag();
 }
 
@@ -655,17 +656,17 @@ static void ReceiveBattleTowerData(void *battleTowerRecord, size_t recordSize, u
     ShufflePlayerIndices(mixIndices);
     if (Link_AnyPartnersPlayingRubyOrSapphire())
     {
-        if (RubyBattleTowerRecordToEmerald((void *)battleTowerRecord + recordSize * mixIndices[which], (void *)battleTowerRecord + recordSize * which) == TRUE)
+        if (RubyBattleTowerRecordToEmerald((RSBattleTowerRecord *)((u8*)battleTowerRecord + recordSize * mixIndices[which]), (EmeraldBattleTowerRecord *)((u8*)battleTowerRecord + recordSize * which)) == TRUE)
         {
-            dest = (void *)battleTowerRecord + recordSize * which;
+            dest = (EmeraldBattleTowerRecord *)((u8*)battleTowerRecord + recordSize * which);
             dest->language = gLinkPlayers[mixIndices[which]].language;
             CalcEmeraldBattleTowerChecksum(dest);
         }
     }
     else
     {
-        memcpy((void *)battleTowerRecord + recordSize * which, (void *)battleTowerRecord + recordSize * mixIndices[which], sizeof(struct EmeraldBattleTowerRecord));
-        dest = (void *)battleTowerRecord + recordSize * which;
+        memcpy((void *)((u8*)battleTowerRecord + recordSize * which), (void *)((u8*)battleTowerRecord + recordSize * mixIndices[which]), sizeof(struct EmeraldBattleTowerRecord));
+        dest = (EmeraldBattleTowerRecord *)((u8*)battleTowerRecord + recordSize * which);
         for (i = 0; i < 4; i ++)
         {
             btPokemon = &dest->party[i];
@@ -674,7 +675,7 @@ static void ReceiveBattleTowerData(void *battleTowerRecord, size_t recordSize, u
         }
         CalcEmeraldBattleTowerChecksum(dest);
     }
-    PutNewBattleTowerRecord((void *)battleTowerRecord + recordSize * which);
+    PutNewBattleTowerRecord((EmeraldBattleTowerRecord *)((u8*)battleTowerRecord + recordSize * which));
 }
 
 static void ReceiveLilycoveLadyData(LilycoveLady *lilycoveLady, size_t recordSize, u8 which)
@@ -683,11 +684,11 @@ static void ReceiveLilycoveLadyData(LilycoveLady *lilycoveLady, size_t recordSiz
     u32 mixIndices[MAX_LINK_PLAYERS];
 
     ShufflePlayerIndices(mixIndices);
-    memcpy((void *)lilycoveLady + recordSize * which, sLilycoveLadySave, sizeof(LilycoveLady));
+    memcpy((void *)((u8*)lilycoveLady + recordSize * which), sLilycoveLadySave, sizeof(LilycoveLady));
 
     if (GetLilycoveLadyId() == 0)
     {
-        dest = malloc(sizeof(LilycoveLady));
+        dest = Alloc<LilycoveLady>();
         if (dest == NULL)
             return;
 
@@ -698,7 +699,7 @@ static void ReceiveLilycoveLadyData(LilycoveLady *lilycoveLady, size_t recordSiz
         dest = NULL;
     }
 
-    memcpy(sLilycoveLadySave, (void *)lilycoveLady + recordSize * mixIndices[which], sizeof(LilycoveLady));
+    memcpy(sLilycoveLadySave, (void *)((u8*)lilycoveLady + recordSize * mixIndices[which]), sizeof(LilycoveLady));
     ResetLilycoveLadyForRecordMix();
     if (dest != NULL)
     {
@@ -718,10 +719,10 @@ static void ExchangeMail(struct RecordMixingDayCareMail *src, size_t recordSize,
     struct RecordMixingDayCareMail *mail1;
     struct RecordMixingDayCareMail *mail2;
 
-    mail1 = (void *)src + recordSize * idxs[which0][0];
+    mail1 = (RecordMixingDayCareMail *)((u8*)src + recordSize * idxs[which0][0]);
     buffer = mail1->mail[idxs[which0][1]];
 
-    mail2 = (void *)src + recordSize * idxs[which1][0];
+    mail2 = (RecordMixingDayCareMail *)((u8*)src + recordSize * idxs[which1][0]);
     mail1->mail[idxs[which0][1]] = mail2->mail[idxs[which1][1]];
     mail2->mail[idxs[which1][1]] = buffer;
 }
@@ -776,7 +777,7 @@ static void ReceiveDaycareMailData(struct RecordMixingDayCareMail *src, size_t r
     {
         u32 language, version;
 
-        _src = (void *)src + i * recordSize;
+        _src = (RecordMixingDayCareMail *)((u8*)src + i * recordSize);
         language = gLinkPlayers[i].language;
         version = gLinkPlayers[i].version & 0xFF;
         for (j = 0; j < _src->numDaycareMons; j ++)
@@ -833,7 +834,7 @@ static void ReceiveDaycareMailData(struct RecordMixingDayCareMail *src, size_t r
     sp34 = 0;
     for (i = 0; i < linkPlayerCount; i++)
     {
-        _src = (void *)src + i * recordSize;
+        _src = (RecordMixingDayCareMail *)((u8*)src + i * recordSize);
         if (_src->numDaycareMons == 0)
             continue;
 
@@ -847,7 +848,7 @@ static void ReceiveDaycareMailData(struct RecordMixingDayCareMail *src, size_t r
     j = 0;
     for (i = 0; i < linkPlayerCount; i++)
     {
-        _src = (void *)src + i * recordSize;
+        _src = (RecordMixingDayCareMail *)((u8*)src + i * recordSize);
         if (sp1c[i][0] == TRUE || sp1c[i][1] == TRUE)
             sp34++;
 
@@ -907,14 +908,14 @@ static void ReceiveDaycareMailData(struct RecordMixingDayCareMail *src, size_t r
         ptr = sp24;
         which0 = gUnknown_0858CFBE[tableId][0];
         which1 = gUnknown_0858CFBE[tableId][1];
-        ExchangeMail(src, recordSize, ptr, which0, which1);
+        ExchangeMail(src, recordSize, (u8(*)[2])ptr, which0, which1);
         which0 = gUnknown_0858CFBE[tableId][2];
         which1 = gUnknown_0858CFBE[tableId][3];
-        ExchangeMail(src, recordSize, ptr, which0, which1);
+        ExchangeMail(src, recordSize, (u8(*)[2])ptr, which0, which1);
         break;
     }
 
-    _src = (void *)src + which * recordSize;
+    _src = (RecordMixingDayCareMail *)((u8*)src + which * recordSize);
     gSaveBlock1Ptr->daycare.mons[0].mail = _src->mail[0];
     gSaveBlock1Ptr->daycare.mons[1].mail = _src->mail[1];
     SeedRng(oldSeed);
@@ -1137,7 +1138,7 @@ static void ReceiveApprenticeData(struct Apprentice *mixApprentice, size_t recor
     u32 apprenticeSaveId;
 
     ShufflePlayerIndices(mixIndices);
-    mixApprenticePtr = (void*)(mixApprentice) + (recordSize * mixIndices[multiplayerId]);
+    mixApprenticePtr = (Apprentice*)((u8*)mixApprentice + (recordSize * mixIndices[multiplayerId]));
     numApprentices = 0;
     apprenticeId = 0;
     for (i = 0; i < 2; i++)
@@ -1179,11 +1180,11 @@ static void sub_80E8578(struct RecordMixingHallRecords *dst, void *hallRecords, 
         if (i >= linkPlayerCount)
             break;
         if (i != arg3)
-            gUnknown_03001168[k++] = hallRecords;
+            gUnknown_03001168[k++] = (PlayerHallRecords*) hallRecords;
 
         if (k == 3)
             break;
-        hallRecords += recordSize;
+        hallRecords = (void*)((u8*)hallRecords + recordSize);
         i++;
     }
 
@@ -1302,7 +1303,7 @@ static void sub_80E8924(struct RecordMixingHallRecords *arg0)
 static void ReceiveRankingHallRecords(struct PlayerHallRecords *hallRecords, size_t recordSize, u32 arg2)
 {
     u8 linkPlayerCount = GetLinkPlayerCount();
-    struct RecordMixingHallRecords *largeStructPtr = AllocZeroed(sizeof(struct RecordMixingHallRecords));
+    struct RecordMixingHallRecords *largeStructPtr = AllocZeroed<RecordMixingHallRecords>();
 
     sub_80E8578(largeStructPtr, hallRecords, recordSize, arg2, linkPlayerCount);
     sub_80E8924(largeStructPtr);
