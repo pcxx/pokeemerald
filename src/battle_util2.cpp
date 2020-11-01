@@ -18,23 +18,23 @@ void AllocateBattleResources(void)
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
         InitTrainerHillBattleStruct();
 
-    gBattleStruct = AllocZeroed(sizeof(*gBattleStruct));
+    gBattleStruct = AllocZeroed<BattleStruct>();
 
-    gBattleResources = AllocZeroed(sizeof(*gBattleResources));
-    gBattleResources->secretBase = AllocZeroed(sizeof(*gBattleResources->secretBase));
-    gBattleResources->flags = AllocZeroed(sizeof(*gBattleResources->flags));
-    gBattleResources->battleScriptsStack = AllocZeroed(sizeof(*gBattleResources->battleScriptsStack));
-    gBattleResources->battleCallbackStack = AllocZeroed(sizeof(*gBattleResources->battleCallbackStack));
-    gBattleResources->beforeLvlUp = AllocZeroed(sizeof(*gBattleResources->beforeLvlUp));
-    gBattleResources->ai = AllocZeroed(sizeof(*gBattleResources->ai));
-    gBattleResources->battleHistory = AllocZeroed(sizeof(*gBattleResources->battleHistory));
-    gBattleResources->AI_ScriptsStack = AllocZeroed(sizeof(*gBattleResources->AI_ScriptsStack));
+    gBattleResources = AllocZeroed<BattleResources>();
+    gBattleResources->secretBase = AllocZeroed<SecretBase>();
+    gBattleResources->flags = AllocZeroed<ResourceFlags>();
+    gBattleResources->battleScriptsStack = AllocZeroed<BattleScriptsStack>();
+    gBattleResources->battleCallbackStack = AllocZeroed<BattleCallbacksStack>();
+    gBattleResources->beforeLvlUp = AllocZeroed<StatsArray>();
+    gBattleResources->ai = AllocZeroed<AI_ThinkingStruct>();
+    gBattleResources->battleHistory = AllocZeroed<BattleHistory>();
+    gBattleResources->AI_ScriptsStack = AllocZeroed<BattleScriptsStack>();
 
-    gLinkBattleSendBuffer = AllocZeroed(BATTLE_BUFFER_LINK_SIZE);
-    gLinkBattleRecvBuffer = AllocZeroed(BATTLE_BUFFER_LINK_SIZE);
+    gLinkBattleSendBuffer = AllocZeroed<u8>(BATTLE_BUFFER_LINK_SIZE);
+    gLinkBattleRecvBuffer = AllocZeroed<u8>(BATTLE_BUFFER_LINK_SIZE);
 
-    gUnknown_0202305C = AllocZeroed(0x2000);
-    gUnknown_02023060 = AllocZeroed(0x1000);
+    gUnknown_0202305C = AllocZeroed<u8>(0x2000);
+    gUnknown_02023060 = AllocZeroed<u8>(0x1000);
 
     if (gBattleTypeFlags & BATTLE_TYPE_SECRET_BASE)
     {

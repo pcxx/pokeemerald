@@ -26,13 +26,15 @@
 // Static type declarations
 
 // Static RAM declarations
-
-static EWRAM_DATA struct {
+struct FieldRegionMapHandler
+{
     MainCallback callback;
     u32 unused;
     struct RegionMap regionMap;
     u16 state;
-} *sFieldRegionMapHandler = NULL;
+};
+
+static EWRAM_DATA FieldRegionMapHandler *sFieldRegionMapHandler = NULL;
 
 // Static ROM declarations
 
@@ -92,7 +94,7 @@ static const struct WindowTemplate sFieldRegionMapWindowTemplates[] =
 void FieldInitRegionMap(MainCallback callback)
 {
     SetVBlankCallback(NULL);
-    sFieldRegionMapHandler = malloc(sizeof(*sFieldRegionMapHandler));
+    sFieldRegionMapHandler = Alloc<FieldRegionMapHandler>();
     sFieldRegionMapHandler->state = 0;
     sFieldRegionMapHandler->callback = callback;
     SetMainCallback2(MCB2_InitRegionMapRegisters);
