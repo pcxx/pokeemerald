@@ -305,6 +305,7 @@ bool32 CanViewRibbonsMenu(void);
 void SetPokenavVBlankCallback(void);
 void SetVBlankCallback_(IntrCallback callback);
 
+// TODO make these not seperate function, but for the the global pokenav variable needs to be rearranged
 template<typename T>
 T *h_GetSubstructPtr(u32 index)
 {
