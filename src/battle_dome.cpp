@@ -2230,7 +2230,7 @@ static void SetDomeData(void)
         }
         break;
     case DOME_DATA_SELECTED_MONS:
-        gSaveBlock2Ptr->frontier.selectedPartyMons[3] = T1_READ_16(gSelectedOrderFromParty);
+        gSaveBlock2Ptr->frontier.selectedPartyMons[3] = read16(gSelectedOrderFromParty);
         break;
     }
 }

@@ -1962,7 +1962,7 @@ static void ScriptCmd_loadspritegfx(void)
     u16 index;
 
     sBattleAnimScriptPtr++;
-    index = T1_READ_16(sBattleAnimScriptPtr);
+    index = read16(sBattleAnimScriptPtr);
     LoadCompressedSpriteSheetUsingHeap(&gBattleAnimPicTable[GET_TRUE_SPRITE_INDEX(index)]);
     LoadCompressedSpritePaletteUsingHeap(&gBattleAnimPaletteTable[GET_TRUE_SPRITE_INDEX(index)]);
     sBattleAnimScriptPtr += 2;
@@ -1976,7 +1976,7 @@ static void ScriptCmd_unloadspritegfx(void)
     u16 index;
 
     sBattleAnimScriptPtr++;
-    index = T1_READ_16(sBattleAnimScriptPtr);
+    index = read16(sBattleAnimScriptPtr);
     FreeSpriteTilesByTag(gBattleAnimPicTable[GET_TRUE_SPRITE_INDEX(index)].tag);
     FreeSpritePaletteByTag(gBattleAnimPicTable[GET_TRUE_SPRITE_INDEX(index)].tag);
     sBattleAnimScriptPtr += 2;
@@ -1992,7 +1992,7 @@ static void ScriptCmd_createsprite(void)
     s16 subpriority;
 
     sBattleAnimScriptPtr++;
-    template_ = (const struct SpriteTemplate *)(T2_READ_32(sBattleAnimScriptPtr));
+    template_ = (const struct SpriteTemplate *)(read32(sBattleAnimScriptPtr));
     sBattleAnimScriptPtr += 4;
 
     argVar = sBattleAnimScriptPtr[0];
@@ -2002,7 +2002,7 @@ static void ScriptCmd_createsprite(void)
     sBattleAnimScriptPtr++;
     for (i = 0; i < argsCount; i++)
     {
-        gBattleAnimArgs[i] = T1_READ_16(sBattleAnimScriptPtr);
+        gBattleAnimArgs[i] = read16(sBattleAnimScriptPtr);
         sBattleAnimScriptPtr += 2;
     }
 
@@ -2047,7 +2047,7 @@ static void ScriptCmd_createvisualtask(void)
 
     sBattleAnimScriptPtr++;
 
-    taskFunc = (TaskFunc)T2_READ_32(sBattleAnimScriptPtr);
+    taskFunc = (TaskFunc)read32(sBattleAnimScriptPtr);
     sBattleAnimScriptPtr += 4;
 
     taskPriority = sBattleAnimScriptPtr[0];
@@ -2058,7 +2058,7 @@ static void ScriptCmd_createvisualtask(void)
 
     for (i = 0; i < numArgs; i++)
     {
-        gBattleAnimArgs[i] = T1_READ_16(sBattleAnimScriptPtr);
+        gBattleAnimArgs[i] = read16(sBattleAnimScriptPtr);
         sBattleAnimScriptPtr += 2;
     }
 
@@ -2156,7 +2156,7 @@ static void ScriptCmd_end(void)
 static void ScriptCmd_playse(void)
 {
     sBattleAnimScriptPtr++;
-    PlaySE(T1_READ_16(sBattleAnimScriptPtr));
+    PlaySE(read16(sBattleAnimScriptPtr));
     sBattleAnimScriptPtr += 2;
 }
 
@@ -2666,7 +2666,7 @@ static void ScriptCmd_call(void)
 {
     sBattleAnimScriptPtr++;
     sBattleAnimScriptRetAddr = sBattleAnimScriptPtr + 4;
-    sBattleAnimScriptPtr = T2_READ_PTR(sBattleAnimScriptPtr);
+    sBattleAnimScriptPtr = readPtr(sBattleAnimScriptPtr);
 }
 
 static void ScriptCmd_return(void)
@@ -2683,7 +2683,7 @@ static void ScriptCmd_setarg(void)
     sBattleAnimScriptPtr++;
     argId = sBattleAnimScriptPtr[0];
     sBattleAnimScriptPtr++;
-    value = T1_READ_16(sBattleAnimScriptPtr);
+    value = read16(sBattleAnimScriptPtr);
     sBattleAnimScriptPtr = addr + 4;
     gBattleAnimArgs[argId] = value;
 }
@@ -2693,7 +2693,7 @@ static void ScriptCmd_choosetwoturnanim(void)
     sBattleAnimScriptPtr++;
     if (gAnimMoveTurn & 1)
         sBattleAnimScriptPtr += 4;
-    sBattleAnimScriptPtr = T2_READ_PTR(sBattleAnimScriptPtr);
+    sBattleAnimScriptPtr = readPtr(sBattleAnimScriptPtr);
 }
 
 static void ScriptCmd_jumpifmoveturn(void)
@@ -2704,7 +2704,7 @@ static void ScriptCmd_jumpifmoveturn(void)
     sBattleAnimScriptPtr++;
 
     if (toCheck == gAnimMoveTurn)
-        sBattleAnimScriptPtr = T2_READ_PTR(sBattleAnimScriptPtr);
+        sBattleAnimScriptPtr = readPtr(sBattleAnimScriptPtr);
     else
         sBattleAnimScriptPtr += 4;
 }
@@ -2712,7 +2712,7 @@ static void ScriptCmd_jumpifmoveturn(void)
 static void ScriptCmd_goto(void)
 {
     sBattleAnimScriptPtr++;
-    sBattleAnimScriptPtr = T2_READ_PTR(sBattleAnimScriptPtr);
+    sBattleAnimScriptPtr = readPtr(sBattleAnimScriptPtr);
 }
 
 // Uses of this function that rely on a TRUE return are expecting inBattle to not be ticked as defined in contest behavior.
@@ -2969,7 +2969,7 @@ static void ScriptCmd_playsewithpan(void)
     s8 pan;
 
     sBattleAnimScriptPtr++;
-    songId = T1_READ_16(sBattleAnimScriptPtr);
+    songId = read16(sBattleAnimScriptPtr);
     pan = sBattleAnimScriptPtr[2];
     PlaySE12WithPanning(songId, BattleAnimAdjustPanning(pan));
     sBattleAnimScriptPtr += 3;
@@ -3000,7 +3000,7 @@ static void ScriptCmd_panse_1B(void)
     u8 taskId;
 
     sBattleAnimScriptPtr++;
-    songNum = T1_READ_16(sBattleAnimScriptPtr);
+    songNum = read16(sBattleAnimScriptPtr);
     currentPanArg = sBattleAnimScriptPtr[2];
     incrementPan = sBattleAnimScriptPtr[3];
     incrementPanArg = sBattleAnimScriptPtr[4];
@@ -3072,7 +3072,7 @@ static void ScriptCmd_panse_26(void)
     u8 taskId;
 
     sBattleAnimScriptPtr++;
-    songId = T1_READ_16(sBattleAnimScriptPtr);
+    songId = read16(sBattleAnimScriptPtr);
     currentPan = sBattleAnimScriptPtr[2];
     targetPan = sBattleAnimScriptPtr[3];
     incrementPan = sBattleAnimScriptPtr[4];
@@ -3099,7 +3099,7 @@ static void ScriptCmd_panse_27(void)
     u8 taskId;
 
     sBattleAnimScriptPtr++;
-    songId = T1_READ_16(sBattleAnimScriptPtr);
+    songId = read16(sBattleAnimScriptPtr);
     currentPanArg = sBattleAnimScriptPtr[2];
     targetPanArg = sBattleAnimScriptPtr[3];
     incrementPanArg = sBattleAnimScriptPtr[4];
@@ -3143,7 +3143,7 @@ static void ScriptCmd_loopsewithpan(void)
     u8 taskId;
 
     sBattleAnimScriptPtr++;
-    songId = T1_READ_16(sBattleAnimScriptPtr);
+    songId = read16(sBattleAnimScriptPtr);
     panningArg = sBattleAnimScriptPtr[2];
     framesToWait = sBattleAnimScriptPtr[3];
     numberOfPlays = sBattleAnimScriptPtr[4];
@@ -3200,7 +3200,7 @@ static void ScriptCmd_waitplaysewithpan(void)
     u8 taskId;
 
     sBattleAnimScriptPtr++;
-    songId = T1_READ_16(sBattleAnimScriptPtr);
+    songId = read16(sBattleAnimScriptPtr);
     panningArg = sBattleAnimScriptPtr[2];
     framesToWait = sBattleAnimScriptPtr[3];
     panning = BattleAnimAdjustPanning(panningArg);
@@ -3235,13 +3235,13 @@ static void ScriptCmd_createsoundtask(void)
     s32 i;
 
     sBattleAnimScriptPtr++;
-    func = (TaskFunc)T2_READ_32(sBattleAnimScriptPtr);
+    func = (TaskFunc)read32(sBattleAnimScriptPtr);
     sBattleAnimScriptPtr += 4;
     numArgs = sBattleAnimScriptPtr[0];
     sBattleAnimScriptPtr++;
     for (i = 0; i < numArgs; i++)
     {
-        gBattleAnimArgs[i] = T1_READ_16(sBattleAnimScriptPtr);
+        gBattleAnimArgs[i] = read16(sBattleAnimScriptPtr);
         sBattleAnimScriptPtr += 2;
     }
     taskId = CreateTask(func, 1);
@@ -3284,10 +3284,10 @@ static void ScriptCmd_jumpargeq(void)
 
     sBattleAnimScriptPtr++;
     argId = sBattleAnimScriptPtr[0];
-    valueToCheck = T1_READ_16(sBattleAnimScriptPtr + 1);
+    valueToCheck = read16(sBattleAnimScriptPtr + 1);
 
     if (valueToCheck == gBattleAnimArgs[argId])
-        sBattleAnimScriptPtr = T2_READ_PTR(sBattleAnimScriptPtr + 3);
+        sBattleAnimScriptPtr = readPtr(sBattleAnimScriptPtr + 3);
     else
         sBattleAnimScriptPtr += 7;
 }
@@ -3296,7 +3296,7 @@ static void ScriptCmd_jumpifcontest(void)
 {
     sBattleAnimScriptPtr++;
     if (IsContest())
-        sBattleAnimScriptPtr = T2_READ_PTR(sBattleAnimScriptPtr);
+        sBattleAnimScriptPtr = readPtr(sBattleAnimScriptPtr);
     else
         sBattleAnimScriptPtr += 4;
 }

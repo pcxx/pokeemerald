@@ -212,7 +212,7 @@ bool8 sub_81D1C44(u8 count)
 {
     u8 i;
 
-    sUnknown_0203CF4C = Alloc(count * sizeof(*sUnknown_0203CF4C) + sizeof(*sUnknown_0203CF4C));
+    sUnknown_0203CF4C = Alloc<ListMenuItem>(count + 1);
     if (sUnknown_0203CF4C == NULL)
         return FALSE;
 

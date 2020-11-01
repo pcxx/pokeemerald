@@ -2773,7 +2773,7 @@ static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
         switch (src[srcID])
         {
         case B_BUFF_STRING: // battle string
-            hword = T1_READ_16(&src[srcID + 1]);
+            hword = read16(&src[srcID + 1]);
             StringAppend(dst, gBattleStringsTable[hword - BATTLESTRINGS_ID_ADDER]);
             srcID += 3;
             break;
@@ -2784,17 +2784,17 @@ static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
                 value = src[srcID + 3];
                 break;
             case 2:
-                value = T1_READ_16(&src[srcID + 3]);
+                value = read16(&src[srcID + 3]);
                 break;
             case 4:
-                value = T1_READ_32(&src[srcID + 3]);
+                value = read32(&src[srcID + 3]);
                 break;
             }
             ConvertIntToDecimalStringN(dst, value, STR_CONV_MODE_LEFT_ALIGN, src[srcID + 2]);
             srcID += src[srcID + 1] + 3;
             break;
         case B_BUFF_MOVE: // move name
-            StringAppend(dst, gMoveNames[T1_READ_16(&src[srcID + 1])]);
+            StringAppend(dst, gMoveNames[read16(&src[srcID + 1])]);
             srcID += 3;
             break;
         case B_BUFF_TYPE: // type name
@@ -2824,7 +2824,7 @@ static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
             srcID += 2;
             break;
         case B_BUFF_SPECIES: // species name
-            GetSpeciesName(dst, T1_READ_16(&src[srcID + 1]));
+            GetSpeciesName(dst, read16(&src[srcID + 1]));
             srcID += 3;
             break;
         case B_BUFF_MON_NICK: // poke nick without prefix
@@ -2844,7 +2844,7 @@ static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
             srcID += 2;
             break;
         case B_BUFF_ITEM: // item name
-            hword = T1_READ_16(&src[srcID + 1]);
+            hword = read16(&src[srcID + 1]);
             if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000))
             {
                 if (hword == ITEM_ENIGMA_BERRY)

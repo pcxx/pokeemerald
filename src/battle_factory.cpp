@@ -722,7 +722,7 @@ void FillFactoryBrainParty(void)
     fixedIV = GetFactoryMonFixedIV(challengeNum + 2, 0);
     monLevel = SetFacilityPtrsGetLevel();
     i = 0;
-    otId = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
+    otId = read32(gSaveBlock2Ptr->playerTrainerId);
 
     while (i != FRONTIER_PARTY_SIZE)
     {

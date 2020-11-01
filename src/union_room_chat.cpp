@@ -898,7 +898,7 @@ static const struct SpriteTemplate sSpriteTemplate_RButtonLabels = {
 
 void EnterUnionRoomChat(void)
 {
-    sChat = Alloc(sizeof(struct UnionRoomChat));
+    sChat = Alloc<UnionRoomChat>();
     InitUnionRoomChat(sChat);
     gKeyRepeatStartDelay = 20;
     SetVBlankCallback(NULL);
@@ -2140,7 +2140,7 @@ static void Task_ReceiveChatMessage(u8 taskId)
 
 static bool8 TryAllocDisplay(void)
 {
-    sDisplay = Alloc(sizeof(struct UnionRoomChatDisplay));
+    sDisplay = Alloc<UnionRoomChatDisplay>();
     if (sDisplay && TryAllocSprites())
     {
         ResetBgsAndClearDma3BusyFlags(0);
@@ -3066,7 +3066,7 @@ static void LoadChatWindowGfx(void)
     u8 *ptr;
 
     LoadPalette(gUnionRoomChat_Background_Pal, 0, 0x20);
-    ptr = DecompressAndCopyTileDataToVram(2, gUnionRoomChat_Background_Gfx, 0, 0, 0);
+    ptr =(u8*) DecompressAndCopyTileDataToVram(2, gUnionRoomChat_Background_Gfx, 0, 0, 0);
     if (ptr)
     {
         CpuFastCopy(&ptr[0x220], sDisplay->unk2128, 0x20);
@@ -3080,7 +3080,7 @@ static void LoadChatWindowGfx(void)
 static void sub_8020680(void)
 {
     LoadPalette(sUnk_Palette1, 0x80, 0x20);
-    RequestDma3Fill(0, (void *)BG_CHAR_ADDR(1) + 0x20, 0x20, 1);
+    RequestDma3Fill(0, (void *)(BG_CHAR_ADDR(1) + 0x20), 0x20, 1);
 }
 
 static void LoadChatMessagesWindow(void)
@@ -3154,7 +3154,7 @@ static bool32 TryAllocSprites(void)
         LoadCompressedSpriteSheet(&sSpriteSheets[i]);
 
     LoadSpritePalette(&sSpritePalette);
-    sSprites = Alloc(sizeof(struct UnionRoomChatSprites));
+    sSprites = Alloc<UnionRoomChatSprites>();
     if (!sSprites)
         return FALSE;
 

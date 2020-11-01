@@ -79,23 +79,25 @@
 // Extracts the lower 16 bits of a 32-bit number
 #define LOHALF(n) ((n) & 0xFFFF)
 
-// There are many quirks in the source code which have overarching behavioral differences from
-// a number of other files. For example, diploma.c seems to declare rodata before each use while
-// other files declare out of order and must be at the beginning. There are also a number of
-// macros which differ from one file to the next due to the method of obtaining the result, such
-// as these below. Because of this, there is a theory (Two Team Theory) that states that these
-// programming projects had more than 1 "programming team" which utilized different macros for
-// each of the files that were worked on.
-#define T1_READ_8(ptr)  ((ptr)[0])
-#define T1_READ_16(ptr) ((ptr)[0] | ((ptr)[1] << 8))
-#define T1_READ_32(ptr) ((ptr)[0] | ((ptr)[1] << 8) | ((ptr)[2] << 16) | ((ptr)[3] << 24))
-#define T1_READ_PTR(ptr) (u8*) T1_READ_32(ptr)
+constexpr u8 read8(const u8 *ptr)
+{
+    return ptr[0];
+}
 
-// T2_READ_8 is a duplicate to remain consistent with each group.
-#define T2_READ_8(ptr)  ((ptr)[0])
-#define T2_READ_16(ptr) ((ptr)[0] + ((ptr)[1] << 8))
-#define T2_READ_32(ptr) ((ptr)[0] + ((ptr)[1] << 8) + ((ptr)[2] << 16) + ((ptr)[3] << 24))
-#define T2_READ_PTR(ptr) (void*) T2_READ_32(ptr)
+constexpr u16 read16(const u8 *ptr)
+{
+    return ptr[0] | (ptr[1] << 8);
+}
+
+constexpr u32 read32(const u8 *ptr)
+{
+    return ptr[0] | (ptr[1] << 8) | (ptr[2] << 16) | (ptr[3] << 24);
+}
+
+static inline u8 *readPtr(const u8 *ptr)
+{
+    return reinterpret_cast<u8 *>(read32(ptr));
+}
 
 // Macros for checking the joypad
 #define TEST_BUTTON(field, button) ((field) & (button))
