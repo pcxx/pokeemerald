@@ -633,7 +633,7 @@ static void Mailbox_DrawMailboxMenu(u8 taskId)
 
 static void Mailbox_ProcessInput(u8 taskId)
 {
-    u16 *data = gTasks[taskId].data;
+    s16 *data = gTasks[taskId].data;
     s32 inputOptionId;
 
     if (!gPaletteFade.active)
@@ -871,7 +871,7 @@ static void Mailbox_Cancel(u8 taskId)
 
 static void sub_816BC14(void)
 {
-    gUnknown_0203BCC4 = AllocZeroed(sizeof(struct Struct203BCC4));
+    gUnknown_0203BCC4 = AllocZeroed<Struct203BCC4>();
     memset(gUnknown_0203BCC4->windowIds, 0xFF, 0x6);
     gUnknown_0203BCC4->unk666 = 0xFF;
     gUnknown_0203BCC4->spriteId = 0xFF;
@@ -1281,7 +1281,7 @@ static void sub_816C690(u8 a)
     sub_8122448(gUnknown_0203BCC4->spriteIds, 7, 128, ((a+1) * 16));
 }
 
-static void sub_816C6BC(u8 windowId, u16 value, u32 mode, u8 x, u8 y, u8 n)
+static void sub_816C6BC(u8 windowId, u16 value, StringConvertMode mode, u8 x, u8 y, u8 n)
 {
     ConvertIntToDecimalStringN(gStringVar1, value, mode, n);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
