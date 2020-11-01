@@ -284,7 +284,7 @@ static void SetRandomQuestionData(void)
         SWAP(questionOrder[rand1], questionOrder[rand2], temp);
     }
 
-    gApprenticePartyMovesData = AllocZeroed(sizeof(*gApprenticePartyMovesData));
+    gApprenticePartyMovesData = AllocZeroed<ApprenticePartyMovesData>();
     gApprenticePartyMovesData->moveCounter = 0;
     for (i = 0; i < NUM_WHICH_MOVE_QUESTIONS; i++)
     {
@@ -995,7 +995,7 @@ static void InitQuestionData(void)
     for (i = 0; i < APPRENTICE_MAX_QUESTIONS && (PLAYER_APPRENTICE.questions[i].questionId != QUESTION_ID_WIN_SPEECH); count++, i++)
         ;
 
-    gApprenticeQuestionData = AllocZeroed(sizeof(*gApprenticeQuestionData));
+    gApprenticeQuestionData = AllocZeroed<ApprenticeQuestionData>();
     if (gSpecialVar_0x8005 == APPRENTICE_QUESTION_WHICH_MON)
     {
         if (PLAYER_APPRENTICE.questionsAnswered < NUM_WHICH_MON_QUESTIONS)
@@ -1304,7 +1304,7 @@ static void Task_ExecuteFuncAfterButtonPress(u8 taskId)
 {
     if (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
     {
-        gApprenticeFunc = (void*)(u32)(((u16)gTasks[taskId].data[0] | (gTasks[taskId].data[1] << 16)));
+        gApprenticeFunc = (void(*)())(u32)(((u16)gTasks[taskId].data[0] | (gTasks[taskId].data[1] << 16)));
         gApprenticeFunc();
         DestroyTask(taskId);
     }
