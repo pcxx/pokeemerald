@@ -152,7 +152,7 @@
 
 #define MAX_RELEARNER_MOVES (MAX_LEVEL_UP_MOVES > 25 ? MAX_LEVEL_UP_MOVES : 25)
 
-static EWRAM_DATA struct
+struct MoveRelearner
 {
     u8 state;
     u8 heartSpriteIds[16];                               /*0x001*/
@@ -166,13 +166,18 @@ static EWRAM_DATA struct
     u8 moveListScrollArrowTask;                          /*0x113*/
     u8 moveDisplayArrowTask;                             /*0x114*/
     u16 scrollOffset;                                    /*0x116*/
-} *sMoveRelearnerStruct = {0};
+};
 
-static EWRAM_DATA struct {
+static EWRAM_DATA MoveRelearner *sMoveRelearnerStruct = {0};
+
+struct MoveRelearnerMenuSate // typo state??
+{
     u16 listOffset;
     u16 listRow;
     bool8 showContestInfo;
-} sMoveRelearnerMenuSate = {0};
+};
+
+static EWRAM_DATA MoveRelearnerMenuSate sMoveRelearnerMenuSate = {0};
 
 static const u16 sMoveRelearnerPaletteData[] = INCBIN_U16("graphics/interface/ui_learn_move.gbapal");
 
@@ -387,7 +392,7 @@ static void CB2_InitLearnMove(void)
     FreeAllSpritePalettes();
     ResetTasks();
     ClearScheduledBgCopiesToVram();
-    sMoveRelearnerStruct = AllocZeroed(sizeof(*sMoveRelearnerStruct));
+    sMoveRelearnerStruct = AllocZeroed<MoveRelearner>();
     sMoveRelearnerStruct->partyMon = gSpecialVar_0x8004;
     SetVBlankCallback(VBlankCB_MoveRelearner);
 
@@ -415,7 +420,7 @@ static void CB2_InitLearnMoveReturnFromSelectMove(void)
     FreeAllSpritePalettes();
     ResetTasks();
     ClearScheduledBgCopiesToVram();
-    sMoveRelearnerStruct = AllocZeroed(sizeof(*sMoveRelearnerStruct));
+    sMoveRelearnerStruct = AllocZeroed<MoveRelearner>();
     sMoveRelearnerStruct->state = MENU_STATE_FADE_FROM_SUMMARY_SCREEN;
     sMoveRelearnerStruct->partyMon = gSpecialVar_0x8004;
     sMoveRelearnerStruct->moveSlot = gSpecialVar_0x8005;
