@@ -998,7 +998,7 @@ bool8 ScrCmd_fadeinbgm(struct ScriptContext *ctx)
 bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
-    const void *movementScript = (const void *)ScriptReadWord(ctx);
+    const u8 *movementScript = reinterpret_cast<u8 *>(ScriptReadWord(ctx));
 
     ScriptMovement_StartObjectMovementScript(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, movementScript);
     sMovingNpcId = localId;
@@ -1008,7 +1008,7 @@ bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
 bool8 ScrCmd_applymovement_at(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
-    const void *movementScript = (const void *)ScriptReadWord(ctx);
+    const u8 *movementScript = reinterpret_cast<u8 *>(ScriptReadWord(ctx));
     u8 mapGroup = ScriptReadByte(ctx);
     u8 mapNum = ScriptReadByte(ctx);
 
@@ -1884,7 +1884,7 @@ bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 
 bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 {
-    const void *ptr = (void *)ScriptReadWord(ctx);
+    const u16 *ptr = reinterpret_cast<u16 *>(ScriptReadWord(ctx));
 
     CreatePokemartMenu(ptr);
     ScriptContext1_Stop();
@@ -1893,7 +1893,7 @@ bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 
 bool8 ScrCmd_pokemartdecoration(struct ScriptContext *ctx)
 {
-    const void *ptr = (void *)ScriptReadWord(ctx);
+    const u16 *ptr = reinterpret_cast<u16 *>(ScriptReadWord(ctx));
 
     CreateDecorationShop1Menu(ptr);
     ScriptContext1_Stop();
@@ -1902,7 +1902,7 @@ bool8 ScrCmd_pokemartdecoration(struct ScriptContext *ctx)
 
 bool8 ScrCmd_pokemartdecoration2(struct ScriptContext *ctx)
 {
-    const void *ptr = (void *)ScriptReadWord(ctx);
+    const u16 *ptr = reinterpret_cast<u16 *>(ScriptReadWord(ctx));
 
     CreateDecorationShop2Menu(ptr);
     ScriptContext1_Stop();
