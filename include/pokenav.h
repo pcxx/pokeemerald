@@ -374,7 +374,7 @@ void SlideMenuHeaderUp(void);
 void PokenavFillPalette(u32 palIndex, u16 fillValue);
 u32 PokenavMainMenuLoopedTaskIsActive(void);
 bool32 WaitForPokenavShutdownFade(void);
-void SetActiveMenuLoopTasks(void *func1, void *func2);
+void SetActiveMenuLoopTasks(void (*createLoopTask)(s32), bool32 (*isLoopTaskActive)());
 void ShutdownPokenav(void);
 
 // pokenav_menu_handler_1.c

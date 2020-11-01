@@ -170,11 +170,11 @@ static const struct SpriteTemplate sCityZoomTextSpriteTemplate =
 
 u32 PokenavCallback_Init_RegionMap(void)
 {
-    struct Pokenav5Struct *state = AllocSubstruct(POKENAV_SUBSTRUCT_REGION_MAP_STATE, sizeof(struct Pokenav5Struct));
+    struct Pokenav5Struct *state = h_AllocSubstruct<Pokenav5Struct>(POKENAV_SUBSTRUCT_REGION_MAP_STATE);
     if (!state)
         return FALSE;
 
-    if (!AllocSubstruct(POKENAV_SUBSTRUCT_REGION_MAP, sizeof(struct RegionMap)))
+    if (!h_AllocSubstruct<RegionMap>(POKENAV_SUBSTRUCT_REGION_MAP))
         return FALSE;
 
     state->zoomDisabled = IsEventIslandMapSecId(gMapHeader.regionMapSectionId);
@@ -195,7 +195,7 @@ void FreeRegionMapSubstruct1(void)
 
 u32 GetRegionMapCallback(void)
 {
-    struct Pokenav5Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_STATE);
+    struct Pokenav5Struct *state = h_GetSubstructPtr<Pokenav5Struct>(POKENAV_SUBSTRUCT_REGION_MAP_STATE);
     return state->callback(state);
 }
 
@@ -235,13 +235,13 @@ static u32 GetExitRegionMapMenuId(struct Pokenav5Struct *state)
 
 bool32 GetZoomDisabled(void)
 {
-    struct Pokenav5Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_STATE);
+    struct Pokenav5Struct *state = h_GetSubstructPtr<Pokenav5Struct>(POKENAV_SUBSTRUCT_REGION_MAP_STATE);
     return state->zoomDisabled;
 }
 
 bool32 OpenPokenavRegionMap(void)
 {
-    struct Pokenav5Struct_2 *state = AllocSubstruct(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM, sizeof(struct Pokenav5Struct_2));
+    struct Pokenav5Struct_2 *state = h_AllocSubstruct<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     if (!state)
         return FALSE;
 
@@ -252,20 +252,20 @@ bool32 OpenPokenavRegionMap(void)
 
 void CreateRegionMapLoopedTask(s32 index)
 {
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     state->loopTaskId = CreateLoopedTask(sRegionMapLoopTaskFuncs[index], 1);
     state->isTaskActiveCB = GetCurrentLoopedTaskActive;
 }
 
 bool32 IsRegionMapLoopedTaskActive(void)
 {
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     return state->isTaskActiveCB();
 }
 
 void FreeRegionMapSubstruct2(void)
 {
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     FreeRegionMapIconResources();
     FreeCityZoomViewGfx();
     RemoveWindow(state->infoWindowId);
@@ -285,7 +285,7 @@ static void VBlankCB_RegionMap(void)
 
 static bool32 GetCurrentLoopedTaskActive(void)
 {
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     return IsLoopedTaskActive(state->loopTaskId);
 }
 
@@ -301,7 +301,7 @@ static u32 LoopedTask_OpenRegionMap(s32 taskState)
 {
     int menuGfxId;
     struct RegionMap *regionMap;
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     switch (taskState)
     {
     case 0:
@@ -311,7 +311,7 @@ static u32 LoopedTask_OpenRegionMap(s32 taskState)
         HideBg(3);
         SetBgMode(1);
         InitBgTemplates(sRegionMapBgTemplates, ARRAY_COUNT(sRegionMapBgTemplates) - 1);
-        regionMap = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP);
+        regionMap = h_GetSubstructPtr<RegionMap>(POKENAV_SUBSTRUCT_REGION_MAP);
         InitRegionMapData(regionMap, &sRegionMapBgTemplates[1], ShouldOpenRegionMapZoomed());
         LoadCityZoomViewGfx();
         return LT_INC_AND_PAUSE;
@@ -375,7 +375,7 @@ static u32 LoopedTask_OpenRegionMap(s32 taskState)
 
 static u32 LoopedTask_UpdateInfoAfterCursorMove(s32 taskState)
 {
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     switch (taskState)
     {
     case 0:
@@ -418,7 +418,7 @@ static u32 LoopedTask_RegionMapZoomOut(s32 taskState)
 
 static u32 LoopedTask_RegionMapZoomIn(s32 taskState)
 {
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     switch (taskState)
     {
     case 0:
@@ -490,7 +490,7 @@ static void LoadCityZoomViewGfx(void)
 static void FreeCityZoomViewGfx(void)
 {
     int i;
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     FreeSpriteTilesByTag(6);
     FreeSpritePaletteByTag(11);
     for (i = 0; i < (int)ARRAY_COUNT(state->cityZoomTextSprites); i++)
@@ -527,7 +527,7 @@ static bool32 TryFreeTempTileDataBuffers(void)
 
 static void UpdateMapSecInfoWindow(struct Pokenav5Struct_2 *state)
 {
-    struct RegionMap *regionMap = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP);
+    struct RegionMap *regionMap = h_GetSubstructPtr<RegionMap>(POKENAV_SUBSTRUCT_REGION_MAP);
     switch (regionMap->mapSecType)
     {
     case MAPSECTYPE_CITY_CANFLY:
@@ -619,7 +619,7 @@ static bool32 IsDecompressCityMapsActive(void)
 
 static u32 LoopedTask_DecompressCityMaps(s32 taskState)
 {
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     if (taskState < NUM_CITY_MAPS)
     {
         LZ77UnCompWram(sPokenavCityMaps[taskState].tilemap, state->cityZoomPics[taskState]);
@@ -662,7 +662,7 @@ static void CreateCityZoomTextSprites(void)
     int i;
     int y;
     struct Sprite *sprite;
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
 
     // When not zoomed in the text is still created but its pushed off screen
     if (!IsRegionMapZoomed())
@@ -722,7 +722,7 @@ static void SpriteCB_CityZoomText(struct Sprite *sprite)
 static void UpdateCityZoomTextPosition(void)
 {
     int i;
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     int y = 132 - (GetBgY(1) >> 8);
     for (i = 0; i < (int)ARRAY_COUNT(state->cityZoomTextSprites); i++)
         state->cityZoomTextSprites[i]->pos1.y = y;
@@ -731,7 +731,7 @@ static void UpdateCityZoomTextPosition(void)
 static void SetCityZoomTextInvisibility(bool32 invisible)
 {
     int i;
-    struct Pokenav5Struct_2 *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct Pokenav5Struct_2 *state = h_GetSubstructPtr<Pokenav5Struct_2>(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     for (i = 0; i < (int)ARRAY_COUNT(state->cityZoomTextSprites); i++)
         state->cityZoomTextSprites[i]->invisible = invisible;
 }

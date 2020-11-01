@@ -306,7 +306,7 @@ bool32 InitPokenavMainMenu(void)
 
 u32 PokenavMainMenuLoopedTaskIsActive(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_h_GetSubstructPtr<PokenavMainMenuResources><PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     return IsLoopedTaskActive(structPtr->currentTaskId);
 }
 
@@ -345,7 +345,7 @@ static u32 LoopedTask_InitPokenavMenu(s32 a0)
         ResetTempTileDataBuffers();
         return LT_INC_AND_CONTINUE;
     case 1:
-        structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+        structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
         DecompressAndCopyTileDataToVram(0, &gPokenavHeader_Gfx, 0, 0, 0);
         SetBgTilemapBuffer(0, structPtr->tilemapBuffer);
         CopyToBgTilemapBuffer(0, &gPokenavHeader_Tilemap, 0, 0);
@@ -371,9 +371,9 @@ static u32 LoopedTask_InitPokenavMenu(s32 a0)
     }
 }
 
-void SetActiveMenuLoopTasks(void *createLoopTask, void *isLoopTaskActive) // Fix types later.
+void SetActiveMenuLoopTasks(void (*createLoopTask)(s32), bool32 (*isLoopTaskActive)())
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     structPtr->loopTask = createLoopTask;
     structPtr->isLoopTaskActiveFunc = isLoopTaskActive;
     structPtr->unused = 0;
@@ -381,32 +381,32 @@ void SetActiveMenuLoopTasks(void *createLoopTask, void *isLoopTaskActive) // Fix
 
 void RunMainMenuLoopedTask(u32 a0)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     structPtr->unused = 0;
     structPtr->loopTask(a0);
 }
 
 u32 IsActiveMenuLoopTaskActive(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     return structPtr->isLoopTaskActiveFunc();
 }
 
 void SlideMenuHeaderUp(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     structPtr->currentTaskId = CreateLoopedTask(LoopedTask_SlideMenuHeaderUp, 4);
 }
 
 void SlideMenuHeaderDown(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     structPtr->currentTaskId = CreateLoopedTask(LoopedTask_SlideMenuHeaderDown, 4);
 }
 
 bool32 MainMenuLoopedTaskIsBusy(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     return IsLoopedTaskActive(structPtr->currentTaskId);
 }
 
@@ -509,7 +509,7 @@ void PokenavCopyPalette(const u16 *src, const u16 *dest, int size, int a3, int a
 
 void PokenavFadeScreen(s32 fadeType)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     switch (fadeType)
     {
@@ -548,7 +548,7 @@ void InitBgTemplates(const struct BgTemplate *templates, int count)
 
 static void InitHelpBar(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     InitWindows(&sHelpBarWindowTemplate[0]);
     structPtr->helpBarWindowId = 0;
@@ -559,7 +559,7 @@ static void InitHelpBar(void)
 
 void PrintHelpBarText(u32 textId)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     DrawHelpBar(structPtr->helpBarWindowId);
     AddTextPrinterParameterized3(structPtr->helpBarWindowId, 1, 0, 1, sHelpBarTextColors, 0, sHelpBarTexts[textId]);
@@ -580,7 +580,7 @@ static void InitPokenavMainMenuResources(void)
 {
     s32 i;
     u8 spriteId;
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     for (i = 0; i < ARRAY_COUNT(gSpinningPokenavSpriteSheet); i++)
         LoadCompressedSpriteSheet(&gSpinningPokenavSpriteSheet[i]);
@@ -593,7 +593,7 @@ static void InitPokenavMainMenuResources(void)
 
 static void CleanupPokenavMainMenuResources(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     DestroySprite(structPtr->spinningPokenav);
     FreeSpriteTilesByTag(0);
@@ -608,7 +608,7 @@ static void SpriteCB_SpinningPokenav(struct Sprite *sprite)
 
 struct Sprite *PauseSpinningPokenavSprite(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     structPtr->spinningPokenav->callback = SpriteCallbackDummy;
     return structPtr->spinningPokenav;
@@ -616,7 +616,7 @@ struct Sprite *PauseSpinningPokenavSprite(void)
 
 void ResumeSpinningPokenavSprite(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     structPtr->spinningPokenav->pos1.x = 220;
     structPtr->spinningPokenav->pos1.y = 12;
@@ -629,7 +629,7 @@ void ResumeSpinningPokenavSprite(void)
 static void InitHoennMapHeaderSprites(void)
 {
     s32 i, spriteId;
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     LoadCompressedSpriteSheet(&sPokenavHoennMapLeftHeaderSpriteSheet);
     AllocSpritePalette(1);
@@ -660,7 +660,7 @@ void LoadLeftHeaderGfxForIndex(u32 menuGfxId)
 
 void UpdateRegionMapRightHeaderTiles(u32 menuGfxId)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     if (menuGfxId == POKENAV_GFX_MAP_MENU_ZOOMED_OUT)
         structPtr->leftHeaderSprites[1]->oam.tileNum = GetSpriteTileStartByTag(2) + 32;
@@ -676,7 +676,7 @@ static void LoadLeftHeaderGfxForMenu(u32 menuGfxId)
     if (menuGfxId >= POKENAV_GFX_SUBMENUS_START)
         return;
 
-    structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     tag = sPokenavMenuLeftHeaderSpriteSheets[menuGfxId].tag;
     size = GetDecompressedDataSize(sPokenavMenuLeftHeaderSpriteSheets[menuGfxId].data);
     LoadPalette(&gPokenavLeftHeader_Pal[tag * 16], (IndexOfSpritePaletteTag(1) * 16) + 0x100, 0x20);
@@ -730,7 +730,7 @@ void HideMainOrSubMenuLeftHeader(u32 id, bool32 onRightSide)
 void SetLeftHeaderSpritesInvisibility(void)
 {
     s32 i;
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     for (i = 0; i < (s32)ARRAY_COUNT(structPtr->leftHeaderSprites); i++)
     {
@@ -741,7 +741,7 @@ void SetLeftHeaderSpritesInvisibility(void)
 
 bool32 AreLeftHeaderSpritesMoving(void)
 {
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     if (structPtr->leftHeaderSprites[0]->callback == SpriteCallbackDummy && structPtr->submenuLeftHeaderSprites[0]->callback == SpriteCallbackDummy)
         return FALSE;
@@ -752,7 +752,7 @@ bool32 AreLeftHeaderSpritesMoving(void)
 static void ShowLeftHeaderSprites(u32 startY, bool32 isOnRightSide)
 {
     s32 start, end, i;
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     if (!isOnRightSide)
         start = -96, end = 32;
@@ -769,7 +769,7 @@ static void ShowLeftHeaderSprites(u32 startY, bool32 isOnRightSide)
 static void ShowLeftHeaderSubmenuSprites(u32 startY, bool32 isOnRightSide)
 {
     s32 start, end, i;
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     if (!isOnRightSide)
         start = -96, end = 16;
@@ -786,7 +786,7 @@ static void ShowLeftHeaderSubmenuSprites(u32 startY, bool32 isOnRightSide)
 static void HideLeftHeaderSprites(bool32 isOnRightSide)
 {
     s32 start, end, i;
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     if (!isOnRightSide)
         start = 32, end = -96;
@@ -802,7 +802,7 @@ static void HideLeftHeaderSprites(bool32 isOnRightSide)
 static void HideLeftHeaderSubmenuSprites(bool32 isOnRightSide)
 {
     s32 start, end, i;
-    struct PokenavMainMenuResources *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
 
     if (!isOnRightSide)
         start = 16, end = -96;
