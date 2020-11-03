@@ -55,7 +55,7 @@ extern const u8 gPointillismPoints[][3];
 
 void ApplyImageProcessingEffects(struct ImageProcessingContext *context)
 {
-    gCanvasPixels = context->canvasPixels;
+    gCanvasPixels = (u16*)context->canvasPixels;
     gCanvasMonPersonality = context->personality;
     gCanvasColumnStart = context->columnStart;
     gCanvasRowStart = context->rowStart;
@@ -769,8 +769,8 @@ void ConvertImageProcessingToGBA(struct ImageProcessingContext *context)
 
     width = context->canvasWidth >> 3;
     height = context->canvasHeight >> 3;
-    src_ = context->canvasPixels;
-    dest_ = context->dest;
+    src_ = (u16*)context->canvasPixels;
+    dest_ = (u16*)context->dest;
 
     if (context->var_16 == 2)
     {
@@ -814,7 +814,7 @@ void ApplyImageProcessingQuantization(struct ImageProcessingContext *context)
 {
     gCanvasPaletteStart = context->paletteStart * 16;
     gCanvasPalette = &context->canvasPalette[gCanvasPaletteStart];
-    gCanvasPixels = context->canvasPixels;
+    gCanvasPixels = (u16*)context->canvasPixels;
     gCanvasColumnStart = context->columnStart;
     gCanvasRowStart = context->rowStart;
     gCanvasColumnEnd = context->columnEnd;

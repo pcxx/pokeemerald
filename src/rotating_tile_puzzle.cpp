@@ -92,7 +92,7 @@ EWRAM_DATA static struct RotatingTilePuzzle *sRotatingTilePuzzle = NULL;
 void InitRotatingTilePuzzle(bool8 isTrickHouse)
 {
     if (sRotatingTilePuzzle == NULL)
-        sRotatingTilePuzzle = AllocZeroed(sizeof(*sRotatingTilePuzzle));
+        sRotatingTilePuzzle = AllocZeroed<RotatingTilePuzzle>();
 
     sRotatingTilePuzzle->isTrickHouse = isTrickHouse;
 }

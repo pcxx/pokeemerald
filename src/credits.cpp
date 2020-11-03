@@ -1159,7 +1159,7 @@ static void sub_8175548(void)
 {
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sBackgroundTemplates, 1);
-    SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
+    SetBgTilemapBuffer(0, AllocZeroed<u8>(BG_SCREEN_SIZE));
     LoadPalette(gUnknown_085E56F0, 0x80, 0x40);
     InitWindows(sWindowTemplates);
     DeactivateAllTextPrinters();
@@ -1241,7 +1241,7 @@ void CB2_StartCreditsSequence(void)
     m4aSongNumStart(MUS_CREDITS);
     SetMainCallback2(CB2_RunCreditsSequence);
     gUnknown_0203BCE5 = 0;
-    sCreditsData = AllocZeroed(sizeof(struct CreditsData));
+    sCreditsData = AllocZeroed<CreditsData>();
 
     DeterminePokemonToShow();
 
@@ -1505,9 +1505,9 @@ static void ResetGpuAndVram(void)
     SetGpuReg(REG_OFFSET_BLDALPHA, 0);
     SetGpuReg(REG_OFFSET_BLDY, 0);
 
-    DmaFill16(3, 0, (void *)VRAM, VRAM_SIZE);
-    DmaFill32(3, 0, (void *)OAM, OAM_SIZE);
-    DmaFill16(3, 0, (void *)(PLTT + 2), PLTT_SIZE - 2);
+    DmaFill<3>(0, (vu16 *)VRAM, VRAM_SIZE/2);
+    DmaFill<3>(0, (vu32 *)OAM, OAM_SIZE/4);
+    DmaFill<3>(0, (vu16 *)(PLTT + 2), (PLTT_SIZE - 2)/2);
 }
 
 static void sub_8175DA0(u8 taskIdB)

@@ -2772,14 +2772,15 @@ static void PlayerHandleDMA3Transfer(void)
     u8 *dst = (u8*)(dstArg);
     u32 size = sizeArg;
 
+    // TODO this is a copy large
     while (1)
     {
         if (size <= 0x1000)
         {
-            DmaCopy16(3, src, dst, size);
+            DmaCopy<3>((vu16*)src, (vu16*)dst, size/2);
             break;
         }
-        DmaCopy16(3, src, dst, 0x1000);
+        DmaCopy<3>((vu16*)src, (vu16*)dst, 0x1000/2);
         src += 0x1000;
         dst += 0x1000;
         size -= 0x1000;

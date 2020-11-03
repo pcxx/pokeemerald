@@ -7,7 +7,7 @@
 
 EWRAM_DATA struct mevent_srv_common * s_mevent_srv_common_ptr = NULL;
 
-static void mevent_srv_init_common(struct mevent_srv_common *, const void *, u32, u32);
+static void mevent_srv_init_common(struct mevent_srv_common *, const mevent_cmd *, u32, u32);
 static void mevent_srv_free_resources(struct mevent_srv_common *);
 static u32 mevent_srv_exec_common(struct mevent_srv_common *);
 
@@ -16,13 +16,13 @@ extern const struct mevent_cmd s_mevent_wonder_card[];
 
 void mevent_srv_init_wnews(void)
 {
-    s_mevent_srv_common_ptr = AllocZeroed(sizeof(struct mevent_srv_common));
+    s_mevent_srv_common_ptr = AllocZeroed<mevent_srv_common>();
     mevent_srv_init_common(s_mevent_srv_common_ptr, s_mevent_wonder_news, 0, 1);
 }
 
 void mevent_srv_new_wcard(void)
 {
-    s_mevent_srv_common_ptr = AllocZeroed(sizeof(struct mevent_srv_common));
+    s_mevent_srv_common_ptr = AllocZeroed<mevent_srv_common>();
     mevent_srv_init_common(s_mevent_srv_common_ptr, s_mevent_wonder_card, 0, 1);
 }
 
@@ -42,14 +42,14 @@ u32 mevent_srv_common_do_exec(u16 * a0)
     return result;
 }
 
-static void mevent_srv_init_common(struct mevent_srv_common * svr, const void * cmdBuffer, u32 sendPlayerNo, u32 recvPlayerNo)
+static void mevent_srv_init_common(struct mevent_srv_common * svr, const mevent_cmd * cmdBuffer, u32 sendPlayerNo, u32 recvPlayerNo)
 {
     svr->unk_00 = 0;
     svr->mainseqno = 0;
-    svr->wonder_card = AllocZeroed(sizeof(struct WonderCard));
-    svr->wonder_news = AllocZeroed(sizeof(struct WonderNews));
-    svr->recvBuffer = AllocZeroed(ME_SEND_BUF_SIZE);
-    svr->mevent_unk1442cc = AllocZeroed(sizeof(struct MEventStruct_Unk1442CC));
+    svr->wonder_card = AllocZeroed<WonderCard>();
+    svr->wonder_news = AllocZeroed<WonderNews>();
+    svr->recvBuffer = AllocZeroed<u8>(ME_SEND_BUF_SIZE);
+    svr->mevent_unk1442cc = AllocZeroed<MEventStruct_Unk1442CC>();
     svr->cmdBuffer = cmdBuffer;
     svr->cmdidx = 0;
     mevent_srv_sub_init(&svr->manager, sendPlayerNo, recvPlayerNo);
@@ -145,7 +145,7 @@ static u32 common_mainseq_4(struct mevent_srv_common * svr)
         // jump
         AGB_ASSERT(cmd->flag == FALSE);
         svr->cmdidx = 0;
-        svr->cmdBuffer = cmd->parameter;
+        svr->cmdBuffer = (mevent_cmd*) cmd->parameter;
         break;
     case 5:
         // get_1442CC
@@ -170,14 +170,14 @@ static u32 common_mainseq_4(struct mevent_srv_common * svr)
         if (svr->param == cmd->flag)
         {
             svr->cmdidx = 0;
-            svr->cmdBuffer = cmd->parameter;
+            svr->cmdBuffer = (mevent_cmd*) cmd->parameter;
         }
         break;
     case 7:
         // check_crc
         AGB_ASSERT(cmd->flag == FALSE);
         ptr = mevent_first_if_not_null_else_second(cmd->parameter, svr->wonder_card);
-        svr->param = sub_801B6EC(ptr, svr->mevent_unk1442cc, ptr);
+        svr->param = sub_801B6EC((u16*)ptr, svr->mevent_unk1442cc, ptr);
         break;
     case 8:
         // read_word
@@ -188,7 +188,7 @@ static u32 common_mainseq_4(struct mevent_srv_common * svr)
     case 9:
         AGB_ASSERT(cmd->flag == FALSE);
         ptr = mevent_first_if_not_null_else_second(cmd->parameter, &svr->sendWord);
-        svr->param = sub_801B708(ptr, svr->mevent_unk1442cc, ptr);
+        svr->param = sub_801B708((u16*)ptr, svr->mevent_unk1442cc, ptr);
         break;
     case 10:
         AGB_ASSERT(cmd->parameter == NULL);
@@ -196,7 +196,7 @@ static u32 common_mainseq_4(struct mevent_srv_common * svr)
         break;
     case 11:
         AGB_ASSERT(cmd->flag == FALSE);
-        svr->param = MEventStruct_Unk1442CC_CompareField_unk_16(svr->mevent_unk1442cc, cmd->parameter);
+        svr->param = MEventStruct_Unk1442CC_CompareField_unk_16(svr->mevent_unk1442cc, (u16*)cmd->parameter);
         break;
     case 12:
         AGB_ASSERT(cmd->flag == FALSE);

@@ -453,7 +453,7 @@ void StartDodrioBerryPicking(u16 a0, void (*callback)(void))
 {
     gUnknown_03000DB0 = FALSE;
 
-    if (gReceivedRemoteLinkPlayers != 0 && (gUnknown_02022C98 = AllocZeroed(sizeof(*gUnknown_02022C98))) != NULL)
+    if (gReceivedRemoteLinkPlayers != 0 && (gUnknown_02022C98 = AllocZeroed<DodrioStruct>()) != NULL)
     {
         sub_8024A1C();
         sub_8024A30(gUnknown_02022C98);
@@ -2757,7 +2757,7 @@ static u32 sub_8027DFC(u32 arg0)
     if ((gRecvCmds[0][0] & 0xFF00) != RFUCMD_SEND_PACKET)
         return 0;
 
-    packet = (void *)&gRecvCmds[arg0][1];
+    packet = (UnkPacket1 *)&gRecvCmds[arg0][1];
     if (packet->id == 1)
         return packet->unk4;
 
@@ -2867,7 +2867,7 @@ static u32 sub_8028164(u32 unused, struct DodrioSubstruct_31A0 *arg0, struct Dod
     if ((gRecvCmds[0][0] & 0xFF00) != RFUCMD_SEND_PACKET)
         return 0;
 
-    packet = (void *)&gRecvCmds[0][1];
+    packet = (UnkPacket2 *)&gRecvCmds[0][1];
     if (packet->id == 2)
     {
         ptr->unkB[0] = packet->unk1_0;
@@ -2944,7 +2944,7 @@ static u32 sub_8028318(u32 arg0, u8 *arg1)
     if ((gRecvCmds[0][0] & 0xFF00) != RFUCMD_SEND_PACKET)
         return 0;
 
-    packet = (void *)&gRecvCmds[arg0][1];
+    packet = (UnkPacket3 *)&gRecvCmds[arg0][1];
     if (packet->id == 3)
     {
         *arg1 = packet->unk4;
@@ -2975,7 +2975,7 @@ static u32 sub_8028374(u32 arg0)
     if ((gRecvCmds[0][0] & 0xFF00) != RFUCMD_SEND_PACKET)
         return 0;
 
-    packet = (void *)&gRecvCmds[arg0][1];
+    packet = (UnkPacket4 *)&gRecvCmds[arg0][1];
     if (packet->id == 4)
         return packet->unk4;
 
@@ -3346,7 +3346,7 @@ static const union AnimCmd *const sSpriteAnimTable_82FB2D4[] =
 
 static void sub_80283A8(void)
 {
-    void *ptr = AllocZeroed(0x3000);
+    void *ptr = AllocZeroed<u8>(0x3000);
     struct SpritePalette pal1 = {gDodrioBerryPkmnPal, 0};
     struct SpritePalette pal2 = {gDodrioBerryShinyPal, 1};
 
@@ -3375,7 +3375,7 @@ static void sub_8028408(struct DodrioSubstruct_318C *arg0, u8 arg1, u8 id, u8 ar
         .callback = sub_80284A8,
     };
 
-    gUnknown_02022C9C[id] = AllocZeroed(4);
+    gUnknown_02022C9C[id] = AllocZeroed<u16>(2);
     *gUnknown_02022C9C[id] = CreateSprite(&sprTemplate, sub_8028F14(arg1, arg3), 136, 3);
     sub_8028654(TRUE, id);
 }
@@ -3508,7 +3508,7 @@ static void sub_80286E4(void)
 static void sub_8028734(void)
 {
     u8 i;
-    void *ptr = AllocZeroed(0x180);
+    void *ptr = AllocZeroed<u8>(0x180);
     struct SpritePalette spPal = {gDodrioBerryStatusPal, 2};
 
     LZ77UnCompWram(gDodrioBerryStatusGfx, ptr);
@@ -3527,7 +3527,7 @@ static void sub_8028734(void)
             .callback = nullsub_15,
         };
 
-        gUnknown_02022CF4 = AllocZeroed(sizeof(*gUnknown_02022CF4));
+        gUnknown_02022CF4 = AllocZeroed<DodrioStruct_2022CF4>();
         LoadSpriteSheet(&spSheet);
         LoadSpritePalette(&spPal);
         for (i = 0; i < 10; i++)
@@ -3622,7 +3622,7 @@ static const u8 sUnused2[] = {0xD4, 0x3E, 0x3F, 0x40, 0x41, 0x42, 0x43, 0x44, 0x
 
 static void sub_8028A34(void)
 {
-    void *ptr = AllocZeroed(0x480);
+    void *ptr = AllocZeroed<u8>(0x480);
     struct SpritePalette sprPal = {gDodrioBerrySpritesPal, 3};
 
     LZ77UnCompWram(gDodrioBerrySpritesGfx, ptr);
@@ -3666,14 +3666,14 @@ static void sub_8028A88(void)
 
     for (i = 0; i < 11; i++)
     {
-        gUnknown_02022CB8[i] = AllocZeroed(4);
+        gUnknown_02022CB8[i] = AllocZeroed<u16>(2);
         x = i * 16;
         *gUnknown_02022CB8[i] = CreateSprite(&sprTemplate1, x + (i * 8), 8, 1);
         sub_8028BF8(i, TRUE);
     }
     for (i = 0; i < 4; i++)
     {
-        gUnknown_02022CE4[i] = AllocZeroed(4);
+        gUnknown_02022CE4[i] = AllocZeroed<u16>(2);
         if (i == 3)
             *gUnknown_02022CE4[i] = CreateSprite(&sprTemplate2, gUnknown_082FB31C[i], 49, 0);
         else
@@ -3765,7 +3765,7 @@ static const s16 gUnknown_082FB356[][2] = {{230, 55}, {30, 74}};
 static void sub_8028D44(void)
 {
     u8 i;
-    void *ptr = AllocZeroed(0x400);
+    void *ptr = AllocZeroed<u8>(0x400);
     struct SpritePalette sprPal = {gDodrioBerryPlatformPal, 6};
 
     LZ77UnCompWram(gDodrioBerryPlatformGfx, ptr);
@@ -3787,7 +3787,7 @@ static void sub_8028D44(void)
         LoadSpritePalette(&sprPal);
         for (i = 0; i < 2; i++)
         {
-            gUnknown_02022CB0[i] = AllocZeroed(4);
+            gUnknown_02022CB0[i] = AllocZeroed<u16>(2);
             *gUnknown_02022CB0[i] = CreateSprite(&sprTemplate, gUnknown_082FB356[i][0], gUnknown_082FB356[i][1], 4);
         }
     }
@@ -4613,9 +4613,9 @@ static u8 sub_802A794(void)
 
 static void sub_802A7A8(void)
 {
-    DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
-    DmaClear32(3,(void *)OAM, OAM_SIZE);
-    DmaClear16(3, (void *)PLTT, PLTT_SIZE);
+    DmaClearLarge<3>((vu16 *)VRAM, VRAM_SIZE/2, 0x1000/2);
+    DmaClear<3>((vu32 *)OAM, OAM_SIZE/4);
+    DmaClear<3>((vu16 *)PLTT, PLTT_SIZE/2);
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, gUnknown_082F7BA4, ARRAY_COUNT(gUnknown_082F7BA4));
