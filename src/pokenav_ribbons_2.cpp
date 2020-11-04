@@ -170,11 +170,11 @@ static const LoopedTask sRibbonsSummaryMenuLoopTaskFuncs[] =
 // code
 bool32 PokenavCallback_Init_RibbonsSummaryMenu(void)
 {
-    struct PokenavSub13 *structPtr = AllocSubstruct(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST, sizeof(struct PokenavSub13));
+    struct PokenavSub13 *structPtr = h_AllocSubstruct<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     if (structPtr == NULL)
         return FALSE;
 
-    structPtr->monList = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_LIST);
+    structPtr->monList = h_GetSubstructPtr<PokenavSub18>(POKENAV_SUBSTRUCT_MON_LIST);
     if (structPtr->monList == NULL)
         return FALSE;
 
@@ -187,7 +187,7 @@ bool32 PokenavCallback_Init_RibbonsSummaryMenu(void)
 
 u32 GetRibbonsSummaryMenuCallback(void)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     return structPtr->callback(structPtr);
 }
 
@@ -332,19 +332,19 @@ bool32 sub_81D0688(struct PokenavSub13 *structPtr)
 
 u32 GetRibbonsSummaryCurrentIndex(void)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     return structPtr->monList->currIndex;
 }
 
 u32 GetRibbonsSummaryMonListCount(void)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     return structPtr->monList->listCount;
 }
 
 static void GetCurrMonInfo1(u8 *nick, u8 *level, u8 *gender)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     struct PokenavSub18 *mons = structPtr->monList;
     struct PokenavMonList *monInfo = &mons->monData[mons->currIndex];
 
@@ -367,7 +367,7 @@ static void GetCurrMonInfo1(u8 *nick, u8 *level, u8 *gender)
 
 static void GetCurrMonInfo2(u16 *species, u32 *personality, u32 *otId)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     struct PokenavSub18 *mons = structPtr->monList;
     struct PokenavMonList *monInfo = &mons->monData[mons->currIndex];
 
@@ -389,7 +389,7 @@ static void GetCurrMonInfo2(u16 *species, u32 *personality, u32 *otId)
 
 static u32 GetCurrMonRibbonCount(void)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     struct PokenavSub18 *mons = structPtr->monList;
     struct PokenavMonList *monInfo = &mons->monData[mons->currIndex];
 
@@ -443,27 +443,27 @@ void sub_81D0814(struct PokenavSub13 *structPtr)
 
 u32 *sub_81D0914(u32 *arg0)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     *arg0 = structPtr->field_10;
     return structPtr->field_14;
 }
 
 u32 *sub_81D092C(u32 *arg0)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     *arg0 = structPtr->field_12;
     return structPtr->field_78;
 }
 
 u16 sub_81D0944(void)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     return structPtr->field_C;
 }
 
 u32 sub_81D0954(void)
 {
-    struct PokenavSub13 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
+    struct PokenavSub13 *structPtr = h_GetSubstructPtr<PokenavSub13>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_LIST);
     int var = structPtr->field_C;
     if (var <= 24)
         return structPtr->field_14[var];
@@ -473,7 +473,7 @@ u32 sub_81D0954(void)
 
 bool32 OpenRibbonsSummaryMenu(void)
 {
-    struct PokenavSub14 *structPtr = AllocSubstruct(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU, sizeof(struct PokenavSub14));
+    struct PokenavSub14 *structPtr = h_AllocSubstruct<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     if (structPtr == NULL)
         return FALSE;
 
@@ -484,20 +484,20 @@ bool32 OpenRibbonsSummaryMenu(void)
 
 void CreateRibbonsSummaryLoopedTask(s32 id)
 {
-    struct PokenavSub14 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
+    struct PokenavSub14 *structPtr = h_GetSubstructPtr<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     structPtr->loopedTaskId = CreateLoopedTask(sRibbonsSummaryMenuLoopTaskFuncs[id], 1);
     structPtr->callback = GetCurrentLoopedTaskActive;
 }
 
 u32 IsRibbonsSummaryLoopedTaskActive(void)
 {
-    struct PokenavSub14 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
+    struct PokenavSub14 *structPtr = h_GetSubstructPtr<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     return structPtr->callback();
 }
 
 void FreeRibbonsSummaryScreen2(void)
 {
-    struct PokenavSub14 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
+    struct PokenavSub14 *structPtr = h_GetSubstructPtr<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     RemoveWindow(structPtr->ribbonCountWindowId);
     RemoveWindow(structPtr->nameWindowId);
     RemoveWindow(structPtr->listIdxWindowId);
@@ -516,13 +516,13 @@ void FreeRibbonsSummaryScreen2(void)
 
 bool32 GetCurrentLoopedTaskActive(void)
 {
-    struct PokenavSub14 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
+    struct PokenavSub14 *structPtr = h_GetSubstructPtr<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     return IsLoopedTaskActive(structPtr->loopedTaskId);
 }
 
 u32 LoopedTask_OpenRibbonsSummaryMenu(s32 state)
 {
-    struct PokenavSub14 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
+    struct PokenavSub14 *structPtr = h_GetSubstructPtr<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     switch (state)
     {
     case 0:
@@ -626,7 +626,7 @@ u32 LoopedTask_ExitRibbonsSummaryMenu(s32 state)
 
 u32 LoopedTask_UpdateRibbonsSummaryInfo(s32 state)
 {
-    struct PokenavSub14 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
+    struct PokenavSub14 *structPtr = h_GetSubstructPtr<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     switch (state)
     {
     case 0:
@@ -666,7 +666,7 @@ u32 LoopedTask_UpdateRibbonsSummaryInfo(s32 state)
 
 u32 LoopedTask_ExpandSelectedRibbon(s32 state)
 {
-    struct PokenavSub14 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
+    struct PokenavSub14 *structPtr = h_GetSubstructPtr<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     switch (state)
     {
     case 0:
@@ -690,7 +690,7 @@ u32 LoopedTask_ExpandSelectedRibbon(s32 state)
 
 u32 LoopedTask_MoveRibbonsCursorExpanded(s32 state)
 {
-    struct PokenavSub14 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
+    struct PokenavSub14 *structPtr = h_GetSubstructPtr<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     switch (state)
     {
     case 0:
@@ -720,7 +720,7 @@ u32 LoopedTask_MoveRibbonsCursorExpanded(s32 state)
 
 u32 LoopedTask_ShrinkExpandedRibbon(s32 state)
 {
-    struct PokenavSub14 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
+    struct PokenavSub14 *structPtr = h_GetSubstructPtr<PokenavSub14>(POKENAV_SUBSTRUCT_RIBBONS_SUMMARY_MENU);
     switch (state)
     {
     case 0:

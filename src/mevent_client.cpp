@@ -190,19 +190,19 @@ static u32 mainseq_4(struct mevent_client * svr)
         svr->flag = 0;
         return 4;
     case 8:
-        sub_801B580(svr->sendBuffer, svr->unk_4C);
+        sub_801B580((MEventStruct_Unk1442CC*)svr->sendBuffer, svr->unk_4C);
         mevent_srv_sub_init_send(&svr->manager, 0x11, svr->sendBuffer, sizeof(struct MEventStruct_Unk1442CC));
         break;
     case 14:
         mevent_client_send_word(svr, 0x13, svr->param);
         break;
     case 10:
-        sub_801B21C(svr->recvBuffer);
+        sub_801B21C((WonderCard*)svr->recvBuffer);
         break;
     case 9:
-        if (!sub_801B1A4(svr->recvBuffer))
+        if (!sub_801B1A4((u8*)svr->recvBuffer))
         {
-            sub_801B078(svr->recvBuffer);
+            sub_801B078((WonderNews*)svr->recvBuffer);
             mevent_client_send_word(svr, 0x13, 0);
         }
         else
@@ -213,10 +213,10 @@ static u32 mainseq_4(struct mevent_client * svr)
         svr->flag = 0;
         break;
     case 16:
-        sub_801B508(svr->recvBuffer);
+        sub_801B508((u16*)svr->recvBuffer);
         break;
     case 17:
-        InitRamScript_NoObjectEvent(svr->recvBuffer, 1000);
+        InitRamScript_NoObjectEvent((u8*)svr->recvBuffer, 1000);
         break;
     case 18:
         memcpy(&gSaveBlock2Ptr->frontier.ereaderTrainer, svr->recvBuffer, 0xbc);
@@ -249,7 +249,7 @@ static u32 mainseq_6(struct mevent_client * svr)
     switch (svr->flag)
     {
     case 0:
-        sub_8153870(svr->recvBuffer);
+        sub_8153870((u8*)svr->recvBuffer);
         ++svr->flag;
         break;
     case 1:
@@ -266,7 +266,7 @@ static u32 mainseq_6(struct mevent_client * svr)
 static u32 mainseq_7(struct mevent_client * svr)
 {
     // exec arbitrary code
-    u32 (*func)(u32 *, struct SaveBlock2 *, struct SaveBlock1 *) = (void *)gDecompressionBuffer;
+    u32 (*func)(u32 *, struct SaveBlock2 *, struct SaveBlock1 *) = (u32 (*)(u32 *, struct SaveBlock2 *, struct SaveBlock1 *))gDecompressionBuffer;
     if (func(&svr->param, gSaveBlock2Ptr, gSaveBlock1Ptr) == 1)
     {
         svr->mainseqno = 4;

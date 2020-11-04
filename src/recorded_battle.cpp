@@ -310,7 +310,7 @@ static bool32 IsRecordedBattleSaveValid(struct RecordedBattleSave *save)
         return FALSE;
     if (save->battleFlags & ILLEGAL_BATTLE_TYPES)
         return FALSE;
-    if (CalcByteArraySum((void*)(save), sizeof(*save) - 4) != save->checksum)
+    if (CalcByteArraySum((u8*)(save), sizeof(*save) - 4) != save->checksum)
         return FALSE;
 
     return TRUE;
@@ -321,9 +321,9 @@ static bool32 RecordedBattleToSave(struct RecordedBattleSave *battleSave, struct
     memset(saveSection, 0, 0x1000);
     memcpy(saveSection, battleSave, sizeof(*battleSave));
 
-    saveSection->checksum = CalcByteArraySum((void*)(saveSection), sizeof(*saveSection) - 4);
+    saveSection->checksum = CalcByteArraySum((u8*)(saveSection), sizeof(*saveSection) - 4);
 
-    if (TryWriteSpecialSaveSection(SECTOR_ID_RECORDED_BATTLE, (void*)(saveSection)) != SAVE_STATUS_OK)
+    if (TryWriteSpecialSaveSection(SECTOR_ID_RECORDED_BATTLE, (u8*)(saveSection)) != SAVE_STATUS_OK)
         return FALSE;
     else
         return TRUE;
@@ -492,7 +492,7 @@ bool32 MoveRecordedBattleToSaveData(void)
 
 static bool32 TryCopyRecordedBattleSaveData(struct RecordedBattleSave *dst, struct SaveSection *saveBuffer)
 {
-    if (TryReadSpecialSaveSection(SECTOR_ID_RECORDED_BATTLE, (void*)(saveBuffer)) != SAVE_STATUS_OK)
+    if (TryReadSpecialSaveSection(SECTOR_ID_RECORDED_BATTLE, (u8*)(saveBuffer)) != SAVE_STATUS_OK)
         return FALSE;
 
     memcpy(dst, saveBuffer, sizeof(struct RecordedBattleSave));

@@ -2541,8 +2541,8 @@ static void AnimPencil_Step(struct Sprite *sprite)
 static void AnimBlendThinRing(struct Sprite *sprite)
 {
     u8 battler = 0;
-    u16 sp0 = 0;
-    u16 sp1 = 0;
+    s16 sp0 = 0;
+    s16 sp1 = 0;
     u8 r4;
 
     if (gBattleAnimArgs[2] == 0)

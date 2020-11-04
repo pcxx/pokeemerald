@@ -87,7 +87,7 @@ static const INIT_PARAM sRfuReqConfigTemplate = {
     .availSlot_flag = 0,
     .mboot_flag = 0,
     .serialNo = 2,
-    .gameName = (void *)&gHostRFUtgtGnameBuffer,
+    .gameName = (u8 *)&gHostRFUtgtGnameBuffer,
     .userName = gHostRFUtgtUnameBuffer,
     .fastSearchParent_flag = TRUE,
     .linkRecovery_enable = FALSE,
@@ -263,7 +263,7 @@ void InitRFU(void)
 
 void InitRFUAPI(void)
 {
-    if (!rfu_initializeAPI((void *)gf_rfu_REQ_api, sizeof gf_rfu_REQ_api, gIntrTable + 1, TRUE))
+    if (!rfu_initializeAPI((u32 *)gf_rfu_REQ_api, sizeof gf_rfu_REQ_api, gIntrTable + 1, TRUE))
     {
         gLinkType = 0;
         ClearSavedLinkPlayers();
@@ -1069,7 +1069,7 @@ static void RfuHandleReceiveCommand(u8 unused)
             }
             break;
         case RFUCMD_SEND_BLOCK_REQ:
-            Rfu_InitBlockSend(sBlockRequests[gRecvCmds[i][1]].address, (u16)sBlockRequests[gRecvCmds[i][1]].size);
+            Rfu_InitBlockSend((u8*)sBlockRequests[gRecvCmds[i][1]].address, (u16)sBlockRequests[gRecvCmds[i][1]].size);
             break;
         case RFUCMD_READY_CLOSE_LINK:
             Rfu.readyCloseLink[i] = TRUE;
@@ -1786,9 +1786,9 @@ static void ReceiveRfuLinkPlayers(const struct SioInfo *sioInfo)
 
 static void ValidateAndReceivePokemonSioInfo(void *recvBuffer)
 {
-    if (strcmp(sASCII_PokemonSioInfo, recvBuffer) == 0)
+    if (strcmp(sASCII_PokemonSioInfo, (char*)recvBuffer) == 0)
     {
-        ReceiveRfuLinkPlayers(recvBuffer);
+        ReceiveRfuLinkPlayers((SioInfo*)recvBuffer);
         CpuFill16(0, recvBuffer, sizeof(struct SioInfo));
         ResetBlockReceivedFlag(0);
     }
@@ -2017,14 +2017,14 @@ void sub_801103C(void)
 void UpdateGameData_GroupLockedIn(bool8 started)
 {
     gHostRFUtgtGnameBuffer.started = started;
-    rfu_REQ_configGameData(0, 2, (void *)&gHostRFUtgtGnameBuffer, gHostRFUtgtUnameBuffer);
+    rfu_REQ_configGameData(0, 2, (u8 *)&gHostRFUtgtGnameBuffer, gHostRFUtgtUnameBuffer);
 }
 
 void UpdateGameData_SetActivity(u8 activity, u32 flags, bool32 started)
 {
     if (activity != ACTIVITY_NONE)
         SetHostRFUtgtGname(activity, flags, started);
-    rfu_REQ_configGameData(0, 2, (void *)&gHostRFUtgtGnameBuffer, gHostRFUtgtUnameBuffer);
+    rfu_REQ_configGameData(0, 2, (u8 *)&gHostRFUtgtGnameBuffer, gHostRFUtgtUnameBuffer);
 }
 
 void sub_80110B8(u32 a0)
@@ -2103,7 +2103,7 @@ static void sub_801120C(u8 msg, u8 paramCount)
         {
             if ((lman.param[0] >> i) & 1)
             {
-                struct GFtgtGname *structPtr = (void *)gRfuLinkStatus->partner[i].gname;
+                struct GFtgtGname *structPtr = (GFtgtGname *)gRfuLinkStatus->partner[i].gname;
                 if (structPtr->activity == GetHostRFUtgtGname()->activity)
                 {
                     Rfu.partnerSendStatuses[i] = RFU_STATUS_OK;
@@ -2269,7 +2269,7 @@ static u8 GetNewChildrenInUnionRoomChat(s32 a0)
     {
         if ((a0 >> i) & 1)
         {
-            struct GFtgtGname *structPtr = (void *)gRfuLinkStatus->partner[i].gname;
+            struct GFtgtGname *structPtr = (GFtgtGname *)gRfuLinkStatus->partner[i].gname;
             if (structPtr->activity == (ACTIVITY_CHAT | IN_UNION_ROOM))
                 ret |= (1 << i);
         }
@@ -2558,9 +2558,10 @@ void InitializeRfuLinkManager_EnterUnionRoom(void)
     Rfu.searchTaskId = CreateTask(Task_LinkRfu_UnionRoomListen, 1);
 }
 
+// TODO there is a global for this
 static u16 ReadU16(const void *ptr)
 {
-    const u8 *ptr_ = ptr;
+    const u8 *ptr_ = (u8*)ptr;
     return (ptr_[1] << 8) | (ptr_[0]);
 }
 
@@ -2753,7 +2754,7 @@ static void sub_801209C(u8 taskId)
         u8 id = GetPartnerIndexByNameAndTrainerID(Rfu.playerName, trainerId);
         if (id != 0xFF)
         {
-            if (!ShouldRejectPartnerConnectionBasedOnActivity(gTasks[taskId].data[1], (void *)gRfuLinkStatus->partner[id].gname))
+            if (!ShouldRejectPartnerConnectionBasedOnActivity(gTasks[taskId].data[1], (GFtgtGname *)gRfuLinkStatus->partner[id].gname))
             {
                 if (gRfuLinkStatus->partner[id].slot != 0xFF && !rfu_LMAN_CHILD_connectParent(gRfuLinkStatus->partner[id].id, 0x5A))
                 {
