@@ -430,9 +430,9 @@ void DoSoftReset(void)
     REG_IME = 0;
     m4aSoundVSyncOff();
     ScanlineEffect_Stop();
-    DmaStop(1);
-    DmaStop(2);
-    DmaStop(3);
+    DmaStop<1>();
+    DmaStop<2>();
+    DmaStop<3>();
     SiiRtcProtect();
     SoftReset(RESET_ALL);
 }

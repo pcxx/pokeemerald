@@ -1465,7 +1465,7 @@ static bool8 Phase2_WeatherDuo_Func7(struct Task *task)
 {
     if (!gPaletteFade.active)
     {
-        DmaStop(0);
+        DmaStop<0>();
         FadeScreenBlack();
         DestroyTask(FindTaskIdByFunc(task->func));
     }
@@ -1568,7 +1568,7 @@ static bool8 Phase2_BigPokeball_Func6(struct Task *task)
     if (task->tData1 == 0)
     {
         SetVBlankCallback(NULL);
-        DmaStop(0);
+        DmaStop<0>();
         FadeScreenBlack();
         DestroyTask(FindTaskIdByFunc(task->func));
     }
@@ -1588,7 +1588,7 @@ static bool8 Phase2_BigPokeball_Func6(struct Task *task)
 
 static void Transition_BigPokeball_Vblank(void)
 {
-    DmaStop(0);
+    DmaStop<0>();
     VBlankCB_BattleTransition();
     if (sTransitionStructPtr->VBlank_DMA)
         DmaCopy<3>((vu16*)gScanlineEffectRegBuffers[0], (vu16*)gScanlineEffectRegBuffers[1], 320/2);
@@ -1893,7 +1893,7 @@ static bool8 Phase2_Clockwise_BlackFade_Func6(struct Task *task)
 
 static bool8 Phase2_Clockwise_BlackFade_Func7(struct Task *task)
 {
-    DmaStop(0);
+    DmaStop<0>();
     FadeScreenBlack();
     DestroyTask(FindTaskIdByFunc(Phase2Task_Clockwise_BlackFade));
     return FALSE;
@@ -1901,7 +1901,7 @@ static bool8 Phase2_Clockwise_BlackFade_Func7(struct Task *task)
 
 static void VBlankCB_Phase2_Clockwise_BlackFade(void)
 {
-    DmaStop(0);
+    DmaStop<0>();
     VBlankCB_BattleTransition();
     if (sTransitionStructPtr->VBlank_DMA != 0)
         DmaCopy<3>((vu16*)gScanlineEffectRegBuffers[0], (vu16*)gScanlineEffectRegBuffers[1], 320/2);
@@ -2050,7 +2050,7 @@ static bool8 Phase2_Wave_Func2(struct Task *task)
 
 static bool8 Phase2_Wave_Func3(struct Task *task)
 {
-    DmaStop(0);
+    DmaStop<0>();
     FadeScreenBlack();
     DestroyTask(FindTaskIdByFunc(Phase2Task_Wave));
     return FALSE;
@@ -2058,7 +2058,7 @@ static bool8 Phase2_Wave_Func3(struct Task *task)
 
 static void VBlankCB_Phase2_Wave(void)
 {
-    DmaStop(0);
+    DmaStop<0>();
     VBlankCB_BattleTransition();
     if (sTransitionStructPtr->VBlank_DMA != 0)
         DmaCopy<3>((vu16*)gScanlineEffectRegBuffers[0], (vu16*)gScanlineEffectRegBuffers[1], 320/2);
@@ -2253,7 +2253,7 @@ static bool8 Phase2_Mugshot_Func6(struct Task *task)
     {
         sTransitionStructPtr->VBlank_DMA = FALSE;
         SetVBlankCallback(NULL);
-        DmaStop(0);
+        DmaStop<0>();
         memset(gScanlineEffectRegBuffers[0], 0, 0x140);
         memset(gScanlineEffectRegBuffers[1], 0, 0x140);
         SetGpuReg(REG_OFFSET_WIN0H, 0xF0);
@@ -2334,7 +2334,7 @@ static bool8 Phase2_Mugshot_Func9(struct Task *task)
 
 static bool8 Phase2_Mugshot_Func10(struct Task *task)
 {
-    DmaStop(0);
+    DmaStop<0>();
     FadeScreenBlack();
     DestroyTask(FindTaskIdByFunc(task->func));
     return FALSE;
@@ -2342,7 +2342,7 @@ static bool8 Phase2_Mugshot_Func10(struct Task *task)
 
 static void VBlankCB0_Phase2_Mugshots(void)
 {
-    DmaStop(0);
+    DmaStop<0>();
     VBlankCB_BattleTransition();
     if (sTransitionStructPtr->VBlank_DMA != 0)
         DmaCopy<3>((vu16*)gScanlineEffectRegBuffers[0], (vu16*)gScanlineEffectRegBuffers[1], 320/2);
@@ -2355,7 +2355,7 @@ static void VBlankCB0_Phase2_Mugshots(void)
 
 static void VBlankCB1_Phase2_Mugshots(void)
 {
-    DmaStop(0);
+    DmaStop<0>();
     VBlankCB_BattleTransition();
     if (sTransitionStructPtr->VBlank_DMA != 0)
         DmaCopy<3>((vu16*)gScanlineEffectRegBuffers[0], (vu16*)gScanlineEffectRegBuffers[1], 320/2);
@@ -2568,7 +2568,7 @@ static bool8 Phase2_Slice_Func2(struct Task *task)
 
 static bool8 Phase2_Slice_Func3(struct Task *task)
 {
-    DmaStop(0);
+    DmaStop<0>();
     FadeScreenBlack();
     DestroyTask(FindTaskIdByFunc(Phase2Task_Slice));
     return FALSE;
@@ -2576,7 +2576,7 @@ static bool8 Phase2_Slice_Func3(struct Task *task)
 
 static void VBlankCB_Phase2_Slice(void)
 {
-    DmaStop(0);
+    DmaStop<0>();
     VBlankCB_BattleTransition();
     REG_WININ = sTransitionStructPtr->WININ;
     REG_WINOUT = sTransitionStructPtr->WINOUT;
@@ -2758,7 +2758,7 @@ static bool8 Phase2_ShredSplit_Func3(struct Task *task)
 
 static bool8 Phase2_ShredSplit_Func4(struct Task *task)
 {
-    DmaStop(0);
+    DmaStop<0>();
     FadeScreenBlack();
     DestroyTask(FindTaskIdByFunc(Phase2Task_ShredSplit));
     return FALSE;
@@ -2805,7 +2805,7 @@ static bool8 Phase2_Blackhole1_Func3(struct Task *task)
 {
     if (task->tFuncState == 1)
     {
-        DmaStop(0);
+        DmaStop<0>();
         SetVBlankCallback(NULL);
         DestroyTask(FindTaskIdByFunc(task->func));
     }
@@ -2873,7 +2873,7 @@ static bool8 Phase2_Blackhole2_Func2(struct Task *task)
     sub_814A014(gScanlineEffectRegBuffers[0], 0x78, 0x50, task->tData1);
     if (task->tData1 == 0xA0)
     {
-        DmaStop(0);
+        DmaStop<0>();
         FadeScreenBlack();
         DestroyTask(FindTaskIdByFunc(task->func));
     }
@@ -2985,7 +2985,7 @@ static bool8 Phase2_RectangularSpiral_Func2(struct Task *task)
 
 static bool8 Phase2_RectangularSpiral_Func3(struct Task *task)
 {
-    DmaStop(0);
+    DmaStop<0>();
     FadeScreenBlack();
     DestroyTask(FindTaskIdByFunc(task->func));
     return FALSE;
@@ -3233,7 +3233,7 @@ static void VBlankCB_Phase2_Rayquaza(void)
 {
     void *dmaSrc;
 
-    DmaStop(0);
+    DmaStop<0>();
     VBlankCB_BattleTransition();
 
     if (sTransitionStructPtr->field_20 == 0)
@@ -3313,7 +3313,7 @@ static bool8 Phase2_WhiteFade_Func4(struct Task *task)
 {
     sTransitionStructPtr->VBlank_DMA = 0;
 
-    DmaStop(0);
+    DmaStop<0>();
     SetVBlankCallback(0);
     SetHBlankCallback(0);
 
@@ -3340,7 +3340,7 @@ static bool8 Phase2_WhiteFade_Func5(struct Task *task)
 
 static void VBlankCB0_Phase2_WhiteFade(void)
 {
-    DmaStop(0);
+    DmaStop<0>();
     VBlankCB_BattleTransition();
     REG_BLDCNT = sTransitionStructPtr->BLDCNT;
     REG_WININ = sTransitionStructPtr->WININ;
@@ -3549,7 +3549,7 @@ static bool8 Phase2_Shards_Func4(struct Task *task)
     }
     else
     {
-        DmaStop(0);
+        DmaStop<0>();
         FadeScreenBlack();
         DestroyTask(FindTaskIdByFunc(Phase2Task_Shards));
         return FALSE;
@@ -3569,7 +3569,7 @@ static bool8 Phase2_Shards_Func5(struct Task *task)
 
 static void VBlankCB_Phase2_Shards(void)
 {
-    DmaStop(0);
+    DmaStop<0>();
     VBlankCB_BattleTransition();
     if (sTransitionStructPtr->VBlank_DMA)
         DmaCopy<3>((vu16*)gScanlineEffectRegBuffers[0], (vu16*)gScanlineEffectRegBuffers[1], 320/2);

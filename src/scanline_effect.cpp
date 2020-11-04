@@ -21,7 +21,7 @@ EWRAM_DATA static bool8 sShouldStopWaveTask = FALSE;
 void ScanlineEffect_Stop(void)
 {
     gScanlineEffect.state = 0;
-    DmaStop(0);
+    DmaStop<0>();
     if (gScanlineEffect.waveTaskId != 0xFF)
     {
         DestroyTask(gScanlineEffect.waveTaskId);
@@ -78,12 +78,12 @@ void ScanlineEffect_InitHBlankDmaTransfer(void)
     else if (gScanlineEffect.state == 3)
     {
         gScanlineEffect.state = 0;
-        DmaStop(0);
+        DmaStop<0>();
         sShouldStopWaveTask = TRUE;
     }
     else
     {
-        DmaStop(0);
+        DmaStop<0>();
         // Set DMA to copy to dest register on each HBlank for the next frame.
         // The HBlank DMA transfers do not occurr during VBlank, so the transfer
         // will begin on the HBlank after the first scanline
