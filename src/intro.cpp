@@ -1092,13 +1092,13 @@ static void Task_IntroLoadPart1Graphics(u8 taskId)
     SetGpuReg(REG_OFFSET_BG0VOFS, 0x28);
     LZ77UnCompVram(gIntro1BGLeavesGfx, (void *)VRAM);
     LZ77UnCompVram(gIntro1BG0_Tilemap, (void *)(BG_CHAR_ADDR(2)));
-    DmaClear16(3, BG_SCREEN_ADDR(17), 0x800);
+    DmaClear<3>((vu16*)BG_SCREEN_ADDR(17), 0x800/2);
     LZ77UnCompVram(gIntro1BG1_Tilemap, (void *)(BG_SCREEN_ADDR(18)));
-    DmaClear16(3, BG_SCREEN_ADDR(19), 0x800);
+    DmaClear<3>((vu16*)BG_SCREEN_ADDR(19), 0x800/2);
     LZ77UnCompVram(gIntro1BG2_Tilemap, (void *)(BG_SCREEN_ADDR(20)));
-    DmaClear16(3, BG_SCREEN_ADDR(21), 0x800);
+    DmaClear<3>((vu16*)BG_SCREEN_ADDR(21), 0x800/2);
     LZ77UnCompVram(gIntro1BG3_Tilemap, (void *)(BG_SCREEN_ADDR(22)));
-    DmaClear16(3, BG_SCREEN_ADDR(23), 0x800);
+    DmaClear<3>((vu16*)BG_SCREEN_ADDR(23), 0x800/2);
     LoadPalette(gIntro1BGPals, 0, sizeof(gIntro1BGPals));
     SetGpuReg(REG_OFFSET_BG3CNT, BGCNT_PRIORITY(3) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(22) | BGCNT_16COLOR | BGCNT_TXT256x512);
     SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(2) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(20) | BGCNT_16COLOR | BGCNT_TXT256x512);

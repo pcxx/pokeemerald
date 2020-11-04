@@ -262,9 +262,9 @@ static void CB2_LoadCableCar(void)
         SetVBlankCallback(NULL);
         SetBgRegs(FALSE);
         ScanlineEffect_Stop();
-        DmaFillLarge16(3, 0, (void *)VRAM, VRAM_SIZE, 0x1000);
-        DmaFill32Defvars(3, 0, (void *)OAM, OAM_SIZE);
-        DmaFill16Defvars(3, 0, (void *)PLTT, PLTT_SIZE);
+        DmaClearLarge<3>((vu16 *)VRAM, VRAM_SIZE/2, 0x1000/2);
+        DmaClear<3>((vu32 *)OAM, OAM_SIZE/4);
+        DmaClear<3>((vu16 *)PLTT, PLTT_SIZE/2);
         sCableCar = AllocZeroed<CableCar>();
         gMain.state++;
         break;
@@ -408,9 +408,9 @@ static void CB2_EndCableCar(void)
     FREE_AND_SET_NULL(sCableCar->treesTilemap);
     FREE_AND_SET_NULL(sCableCar->groundTilemap);
     FREE_AND_SET_NULL(sCableCar);
-    DmaFillLarge16(3, 0, (void *)VRAM, VRAM_SIZE, 0x1000);
-    DmaFill32Defvars(3, 0, (void *)OAM, OAM_SIZE);
-    DmaFill16Defvars(3, 0, (void *)PLTT, PLTT_SIZE);
+    DmaClearLarge<3>((vu16 *)VRAM, VRAM_SIZE/2, 0x1000/2);
+    DmaClear<3>((vu32 *)OAM, OAM_SIZE/4);
+    DmaClear<3>((vu16 *)PLTT, PLTT_SIZE/2);
     WarpIntoMap();
     gFieldCallback = NULL;
     SetMainCallback2(CB2_LoadMap);

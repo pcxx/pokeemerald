@@ -1059,7 +1059,7 @@ static void VBlankCB_Roulette(void)
 
     if (sRoulette->updateGridHighlight)
     {
-        DmaCopy16(3, &sRoulette->tilemapBuffers[2][0xE0], (void *)BG_SCREEN_ADDR(4) + 0x1C0, 0x340);
+        DmaCopy<3>((vu16*)&sRoulette->tilemapBuffers[2][0xE0], (vu16 *)(BG_SCREEN_ADDR(4) + 0x1C0), 0x340/2);
         sRoulette->updateGridHighlight = FALSE;
     }
     switch (sRoulette->selectionRectDrawState)
@@ -1067,16 +1067,16 @@ static void VBlankCB_Roulette(void)
     case SELECT_STATE_DRAW:
         SetBgAttribute(0, BG_ATTR_CHARBASEINDEX, 0);
         ShowBg(0);
-        DmaCopy16(3, &sRoulette->tilemapBuffers[0][0xE0], (void *)BG_SCREEN_ADDR(31) + 0x1C0, 0x340);
+        DmaCopy<3>((vu16*)&sRoulette->tilemapBuffers[0][0xE0], (vu16 *)(BG_SCREEN_ADDR(31) + 0x1C0), 0x340/2);
         sRoulette->selectionRectDrawState = SELECT_STATE_UPDATE;
         break;
     case SELECT_STATE_UPDATE:
-        DmaCopy16(3, &sRoulette->tilemapBuffers[0][0xE0], (void *)BG_SCREEN_ADDR(31) + 0x1C0, 0x340);
+        DmaCopy<3>((vu16*)&sRoulette->tilemapBuffers[0][0xE0], (vu16 *)(BG_SCREEN_ADDR(31) + 0x1C0), 0x340/2);
         break;
     case SELECT_STATE_ERASE:
         SetBgAttribute(0, BG_ATTR_CHARBASEINDEX, 2);
         ShowBg(0);
-        DmaFill16(3, 0, (void *)BG_SCREEN_ADDR(31) + 0x1C0, 0x340);
+        DmaClear<3>((vu16 *)(BG_SCREEN_ADDR(31) + 0x1C0), 0x340/2);
         sRoulette->selectionRectDrawState = SELECT_STATE_WAIT;
     case SELECT_STATE_WAIT:
         break;

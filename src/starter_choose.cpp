@@ -399,9 +399,9 @@ void CB2_ChooseStarter(void)
     ChangeBgX(3, 0, 0);
     ChangeBgY(3, 0, 0);
 
-    DmaFill16(3, 0, VRAM, VRAM_SIZE);
-    DmaFill32(3, 0, OAM, OAM_SIZE);
-    DmaFill16(3, 0, PLTT, PLTT_SIZE);
+    DmaClearLarge<3>((vu16 *)VRAM, VRAM_SIZE/2, 0x1000/2);
+    DmaClear<3>((vu32 *)OAM, OAM_SIZE/4);
+    DmaClear<3>((vu16 *)PLTT, PLTT_SIZE/2);
 
     LZ77UnCompVram(gBirchHelpGfx, (void *)VRAM);
     LZ77UnCompVram(gBirchBagTilemap, (void *)(BG_SCREEN_ADDR(6)));

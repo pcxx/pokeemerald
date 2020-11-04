@@ -3092,8 +3092,8 @@ static void SetTradeSequenceBgGpuRegs(u8 state)
                                      BGCNT_SCREENBASE(18) |
                                      BGCNT_TXT512x256);
         LoadPalette(gTradeGba2_Pal, 16, 0x60);
-        DmaCopyLarge16(3, gTradeGba_Gfx, (void *) BG_CHAR_ADDR(1), 0x1420, 0x1000);
-        DmaCopy16Defvars(3, gUnknown_08331F60, (void *) BG_SCREEN_ADDR(18), 0x1000);
+        DmaCopyLarge<3>((vu16*)gTradeGba_Gfx, (vu16 *) BG_CHAR_ADDR(1), 0x1420/2, 0x1000/2);
+        DmaCopy<3>((vu16*)gUnknown_08331F60, (vu16 *) BG_SCREEN_ADDR(18), 0x1000/2);
         break;
     case 1:
         sTradeData->bg1hofs = 0;
@@ -3112,14 +3112,14 @@ static void SetTradeSequenceBgGpuRegs(u8 state)
 
         if (sTradeData->isCableTrade)
         {
-            DmaCopy16Defvars(3, sTradeTilemap_GbaCable, (void *) BG_SCREEN_ADDR(5), 0x1000);
+            DmaCopy<3>((vu16*)sTradeTilemap_GbaCable, (vu16 *) BG_SCREEN_ADDR(5), 0x1000/2);
         }
         else
         {
-            DmaCopy16Defvars(3, sTradeTilemap_GbaWireless, (void *) BG_SCREEN_ADDR(5), 0x1000);
+            DmaCopy<3>((vu16*) sTradeTilemap_GbaWireless, (vu16 *) BG_SCREEN_ADDR(5), 0x1000/2);
         }
 
-        DmaCopyLarge16(3, gTradeGba_Gfx, (void *) BG_CHAR_ADDR(0), 0x1420, 0x1000);
+        DmaCopyLarge<3>((vu16*) gTradeGba_Gfx, (vu16 *) BG_CHAR_ADDR(0), 0x1420/2, 0x1000/2);
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 |
                                       DISPCNT_OBJ_1D_MAP |
                                       DISPCNT_BG1_ON |
@@ -3143,7 +3143,7 @@ static void SetTradeSequenceBgGpuRegs(u8 state)
                                           DISPCNT_OBJ_1D_MAP |
                                           DISPCNT_BG1_ON |
                                           DISPCNT_OBJ_ON);
-            DmaCopy16Defvars(3, sTradeTilemap_Cable, (void *) BG_SCREEN_ADDR(5), 0x800);
+            DmaCopy<3>((vu16*) sTradeTilemap_Cable, (vu16 *) BG_SCREEN_ADDR(5), 0x800/2);
             BlendPalettes(0x1, 16, RGB_BLACK);
         }
         break;
@@ -3174,15 +3174,15 @@ static void SetTradeSequenceBgGpuRegs(u8 state)
         sTradeData->unk_EA = 1024;
         sTradeData->alpha = 0;
 
-        DmaCopyLarge16(3, sTradeAffine_Gba, (void *) BG_CHAR_ADDR(1), 0x2840, 0x1000);
+        DmaCopyLarge<3>((vu16*)sTradeAffine_Gba, (vu16 *) BG_CHAR_ADDR(1), 0x2840/2, 0x1000/2);
 
         if (sTradeData->isCableTrade)
         {
-            DmaCopy16Defvars(3, sTradeAffineMap_GbaCable, (void *) BG_SCREEN_ADDR(18), 0x100);
+            DmaCopy<3>((vu16*)sTradeAffineMap_GbaCable, (vu16 *) BG_SCREEN_ADDR(18), 0x100/2);
         }
         else
         {
-            DmaCopy16Defvars(3, sTradeAffineMap_GbaWireless, (void *) BG_SCREEN_ADDR(18), 0x100);
+            DmaCopy<3>((vu16 *) sTradeAffineMap_GbaWireless, (vu16 *) BG_SCREEN_ADDR(18), 0x100/2);
         }
         break;
     case 5:
@@ -3207,15 +3207,15 @@ static void SetTradeSequenceBgGpuRegs(u8 state)
         sTradeData->scrY = 80;
         sTradeData->alpha = 0;
 
-        DmaCopyLarge16(3, sTradeAffine_Gba, (void *) BG_CHAR_ADDR(1), 0x2840, 0x1000);
+        DmaCopyLarge<3>((vu16*) sTradeAffine_Gba, (vu16 *) BG_CHAR_ADDR(1), 0x2840/2, 0x1000/2);
 
         if (sTradeData->isCableTrade)
         {
-            DmaCopy16Defvars(3, sTradeAffineMap_GbaCable, (void *) BG_SCREEN_ADDR(18), 0x100);
+            DmaCopy<3>((vu16*) sTradeAffineMap_GbaCable, (vu16 *) BG_SCREEN_ADDR(18), 0x100/2);
         }
         else
         {
-            DmaCopy16Defvars(3, sTradeAffineMap_GbaWireless, (void *) BG_SCREEN_ADDR(18), 0x100);
+            DmaCopy<3>((vu16*)sTradeAffineMap_GbaWireless, (vu16 *) BG_SCREEN_ADDR(18), 0x100/2);
         }
         break;
     case 7:
@@ -3228,8 +3228,8 @@ static void SetTradeSequenceBgGpuRegs(u8 state)
                                      BGCNT_SCREENBASE(18) |
                                      BGCNT_TXT512x256);
         LoadPalette(gTradeGba2_Pal, 16, 0x60);
-        DmaCopyLarge16(3, gTradeGba_Gfx, (void *) BG_CHAR_ADDR(1), 0x1420, 0x1000);
-        DmaCopy16Defvars(3, gUnknown_08331F60, (void *) BG_SCREEN_ADDR(18), 0x1000);
+        DmaCopyLarge<3>((vu16*) gTradeGba_Gfx, (vu16 *) BG_CHAR_ADDR(1), 0x1420/2, 0x1000/2);
+        DmaCopy<3>((vu16*) gUnknown_08331F60, (vu16 *) BG_SCREEN_ADDR(18), 0x1000/2);
         break;
     }
 }

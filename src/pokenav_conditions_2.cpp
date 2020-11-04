@@ -828,7 +828,7 @@ void CreateConditionMonPic(u8 id)
     }
     else
     {
-        DmaCopy16Defvars(3, GetConditionMonPicGfx(id), structPtr->unk181C, 0x800);
+        DmaCopy<3>((vu16*)GetConditionMonPicGfx(id), (vu16*)structPtr->unk181C, 0x800/2);
         LoadPalette(GetConditionMonPal(id), structPtr->monPalIndex, 0x20);
     }
 }

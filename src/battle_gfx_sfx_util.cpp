@@ -957,7 +957,7 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool8 notTransform
 
         src = gMonSpritesGfxPtr->sprites[position];
         dst = (void *)(OBJ_VRAM0 + gSprites[gBattlerSpriteIds[battlerAtk]].oam.tileNum * 32);
-        DmaCopy32(3, src, dst, 0x800);
+        DmaCopy<3>((vu32*) src, (vu32*)dst, 0x800/4);
         paletteOffset = 0x100 + battlerAtk * 16;
         lzPaletteData = GetMonSpritePalFromSpeciesAndPersonality(targetSpecies, otId, personalityValue);
         LZDecompressWram(lzPaletteData, gDecompressionBuffer);
@@ -1007,7 +1007,7 @@ void BattleLoadSubstituteOrMonSpriteGfx(u8 battlerId, bool8 loadMonSprite)
             u8 (*ptr)[4][0x800] = gMonSpritesGfxPtr->sprites[position];
             ptr++;ptr--; // Needed to match.
 
-            DmaCopy32Defvars(3, (*ptr)[0], (*ptr)[i], 0x800);
+            DmaCopy<3>((vu32*) (*ptr)[0],(vu32*) (*ptr)[i], 0x800/4);
         }
 
         palOffset = (battlerId * 16) + 0x100;

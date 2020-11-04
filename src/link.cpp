@@ -254,7 +254,7 @@ void Task_DestroySelf(u8 taskId)
 static void InitLinkTestBG(u8 paletteNum, u8 bgNum, u8 screenBaseBlock, u8 charBaseBlock, u16 a4)
 {
     LoadPalette(sLinkTestDigitsPal, paletteNum * 16, 0x20);
-    DmaCopy16(3, sLinkTestDigitsGfx, (u16 *)BG_CHAR_ADDR(charBaseBlock) + (16 * a4), sizeof sLinkTestDigitsGfx);
+    DmaCopy<3>((vu16*)sLinkTestDigitsGfx, (vu16 *)(BG_CHAR_ADDR(charBaseBlock) + (16 * a4)), sizeof sLinkTestDigitsGfx /2);
     gLinkTestBGInfo.screenBaseBlock = screenBaseBlock;
     gLinkTestBGInfo.paletteNum = paletteNum;
     gLinkTestBGInfo.dummy_8 = a4;
@@ -277,7 +277,7 @@ static void InitLinkTestBG(u8 paletteNum, u8 bgNum, u8 screenBaseBlock, u8 charB
 void sub_80094EC(u8 paletteNum, u8 bgNum, u8 screenBaseBlock, u8 charBaseBlock)
 {
     LoadPalette(sLinkTestDigitsPal, paletteNum * 16, 0x20);
-    DmaCopy16(3, sLinkTestDigitsGfx, (u16 *)BG_CHAR_ADDR(charBaseBlock), sizeof sLinkTestDigitsGfx);
+    DmaCopy<3>((vu16*)sLinkTestDigitsGfx, (vu16 *)BG_CHAR_ADDR(charBaseBlock), sizeof sLinkTestDigitsGfx /2);
     gLinkTestBGInfo.screenBaseBlock = screenBaseBlock;
     gLinkTestBGInfo.paletteNum = paletteNum;
     gLinkTestBGInfo.dummy_8 = 0;

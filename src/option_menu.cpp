@@ -167,9 +167,9 @@ void CB2_InitOptionMenu(void)
         gMain.state++;
         break;
     case 1:
-        DmaClearLarge16(3, (void*)(VRAM), VRAM_SIZE, 0x1000);
-        DmaClear32(3, OAM, OAM_SIZE);
-        DmaClear16(3, PLTT, PLTT_SIZE);
+        DmaClearLarge<3>((vu16 *)VRAM, VRAM_SIZE/2, 0x1000/2);
+        DmaClear<3>((vu32 *)OAM, OAM_SIZE/4);
+        DmaClear<3>((vu16 *)PLTT, PLTT_SIZE/2);
         SetGpuReg(REG_OFFSET_DISPCNT, 0);
         ResetBgsAndClearDma3BusyFlags(0);
         InitBgsFromTemplates(0, sOptionMenuBgTemplates, ARRAY_COUNT(sOptionMenuBgTemplates));

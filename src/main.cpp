@@ -298,7 +298,7 @@ void InitIntrHandlers(void)
     for (i = 0; i < INTR_COUNT; i++)
         gIntrTable[i] = gIntrTableTemplate[i];
 
-    DmaCopy32(3, IntrMain, IntrMain_Buffer, sizeof(IntrMain_Buffer));
+    DmaCopy<3>((vu32*)IntrMain, (vu32*)IntrMain_Buffer, sizeof(IntrMain_Buffer)/4);
 
     INTR_VECTOR = IntrMain_Buffer;
 

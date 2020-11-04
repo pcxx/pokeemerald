@@ -1241,7 +1241,7 @@ static void UpdateMonPic(u8 loadId)
     else
     {
         do {} while(0); // Only needed to match, feel free to remove.
-        DmaCopy16Defvars(3, sMenu->partySheets[loadId], sMenu->curMonTileStart, 0x800);
+        DmaCopy<3>((vu16*) sMenu->partySheets[loadId],(vu16*) sMenu->curMonTileStart, 0x800/2);
         LoadPalette(sMenu->partyPalettes[loadId], sMenu->curMonPalette, 32);
     }
 }

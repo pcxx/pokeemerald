@@ -500,9 +500,9 @@ static void NamingScreen_InitBGs(void)
 {
     u8 i;
 
-    DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
-    DmaClear32(3, (void *)OAM, OAM_SIZE);
-    DmaClear16(3, (void *)PLTT, PLTT_SIZE);
+    DmaClearLarge<3>((vu16 *)VRAM, VRAM_SIZE/2, 0x1000/2);
+    DmaClear<3>((vu32 *)OAM, OAM_SIZE/4);
+    DmaClear<3>((vu16 *)PLTT, PLTT_SIZE/2);
 
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0);
     ResetBgsAndClearDma3BusyFlags(0);

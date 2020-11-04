@@ -64,9 +64,9 @@ void CB2_ShowDiploma(void)
     SetGpuReg(REG_OFFSET_BG0HOFS, DISPCNT_MODE_0);
     SetGpuReg(REG_OFFSET_BG0VOFS, DISPCNT_MODE_0);
     // why doesn't this one use the dma manager either?
-    DmaFill16(3, 0, VRAM, VRAM_SIZE);
-    DmaFill32(3, 0, OAM, OAM_SIZE);
-    DmaFill16(3, 0, PLTT, PLTT_SIZE);
+    DmaClearLarge<3>((vu16 *)VRAM, VRAM_SIZE/2, 0x1000/2);
+    DmaClear<3>((vu32 *)OAM, OAM_SIZE/4);
+    DmaClear<3>((vu16 *)PLTT, PLTT_SIZE/2);
     ScanlineEffect_Stop();
     ResetTasks();
     ResetSpriteData();

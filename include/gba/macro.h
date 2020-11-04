@@ -35,6 +35,8 @@
 
 #define CpuFastCopy(src, dest, size) CpuFastSet(src, dest, ((size)/(32/8) & 0x1FFFFF))
 
+
+// TODO make these u not vu
 template<typename T>
 concept is_u16 = std::is_same<T, vu16>::value;
 

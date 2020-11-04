@@ -210,7 +210,7 @@ static void ShowContestPainting(void)
         break;
     case 1:
         ResetPaletteFade();
-        DmaFillLarge32(3, 0, (void *)BG_VRAM, 0x18000, 0x1000);
+        DmaClearLarge<3>((vu32 *)BG_VRAM, 0x18000/4, 0x1000/4);
         ResetSpriteData();
         gMain.state++;
         break;
@@ -227,7 +227,7 @@ static void ShowContestPainting(void)
     case 4:
         PrintContestPaintingCaption(gUnknown_02039F5D, gUnknown_02039F5C);
         LoadPalette(gUnknown_085B0838, 0, 1 * 2);
-        DmaClear32(3, PLTT, PLTT_SIZE);
+        DmaClear<3>((vu32*)PLTT, PLTT_SIZE/4);
         BeginFastPaletteFade(2);
         SetVBlankCallback(VBlankCB_ContestPainting);
         gContestPaintingState = 0;

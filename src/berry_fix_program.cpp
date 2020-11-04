@@ -261,9 +261,9 @@ static void berry_fix_gpu_set(void)
     SetGpuReg(REG_OFFSET_BG1VOFS, 0);
     SetGpuReg(REG_OFFSET_BLDCNT, 0);
 
-    DmaFill32(3, 0, VRAM, VRAM_SIZE);
-    DmaFill32(3, 0, OAM, OAM_SIZE);
-    DmaFill32(3, 0, PLTT, PLTT_SIZE);
+    DmaClear<3>((vu32*)VRAM, VRAM_SIZE/4);
+    DmaClear<3>((vu32*)OAM, OAM_SIZE/4);
+    DmaClear<3>((vu32*)PLTT, PLTT_SIZE/4);
     ResetBgsAndClearDma3BusyFlags(0);
 
     InitBgsFromTemplates(0, sBerryFixBgTemplates, ARRAY_COUNT(sBerryFixBgTemplates));
@@ -274,7 +274,7 @@ static void berry_fix_gpu_set(void)
     InitWindows(sBerryFixWindowTemplates);
     DeactivateAllTextPrinters();
 
-    DmaCopy32(3, sUnknown_08618138, BG_PLTT + 0x1E0, 0x20);
+    DmaCopy<3>((vu16*)sUnknown_08618138, (vu16*)(BG_PLTT + 0x1E0), 0x20/4);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_1D_MAP);
     FillWindowPixelBuffer(2, PIXEL_FILL(0));
     FillWindowPixelBuffer(3, PIXEL_FILL(0));
