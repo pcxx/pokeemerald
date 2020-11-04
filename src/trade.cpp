@@ -80,7 +80,8 @@ static EWRAM_DATA u8 *sMessageBoxTileBuffers[14] = {NULL};
 
 EWRAM_DATA struct MailStruct gTradeMail[PARTY_SIZE] = {0};
 EWRAM_DATA u8 gSelectedTradeMonPositions[2] = {0};
-static EWRAM_DATA struct {
+
+struct TradeMenuData {
     /*0x0000*/ u8 bg2hofs;
     /*0x0001*/ u8 bg3hofs;
     /*0x0002*/ u8 filler_2[0x28 - 2];
@@ -118,8 +119,10 @@ static EWRAM_DATA struct {
         u8 actionId;
     } queuedActions[4];
     /*0x08F0*/ u16 tilemapBuffer[0x400];
-} *sTradeMenuData = {NULL};
-static EWRAM_DATA struct {
+};
+static EWRAM_DATA TradeMenuData *sTradeMenuData = {NULL};
+
+struct TradeData{
     /*0x00*/ struct Pokemon mon;
     /*0x64*/ u32 timer;
     /*0x68*/ u32 monPersonalities[2];
@@ -163,7 +166,8 @@ static EWRAM_DATA struct {
     /*0xFC*/ u8 wirelessWinTop;
     /*0xFD*/ u8 wirelessWinRight;
     /*0xFE*/ u8 wirelessWinBottom;
-} *sTradeData = {NULL};
+};
+static EWRAM_DATA TradeData *sTradeData = {NULL};
 
 #if !defined(NONMATCHING) && MODERN
 #define static
@@ -363,9 +367,9 @@ static void CB2_CreateTradeMenu(void)
     switch (gMain.state)
     {
     case 0:
-        sTradeMenuData = AllocZeroed(sizeof(*sTradeMenuData));
+        sTradeMenuData = AllocZeroed<TradeMenuData>();
         InitTradeMenu();
-        sMessageBoxAllocBuffer = AllocZeroed(ARRAY_COUNT(sMessageBoxTileBuffers) * 256);
+        sMessageBoxAllocBuffer = AllocZeroed<u8>(ARRAY_COUNT(sMessageBoxTileBuffers) * 256);
 
         for (i = 0; i < (int)ARRAY_COUNT(sMessageBoxTileBuffers); i++)
         {
@@ -2751,7 +2755,7 @@ void CB2_LinkTrade(void)
             gLinkType = LINKTYPE_TRADE_DISCONNECTED;
             CloseLink();
         }
-        sTradeData = AllocZeroed(sizeof(*sTradeData));
+        sTradeData = AllocZeroed<TradeData>();
         AllocateMonSpritesGfx();
         ResetTasks();
         ResetSpriteData();
@@ -2893,9 +2897,9 @@ static void InitTradeBgInternal(void)
     InitBgsFromTemplates(0, sTradeSequenceBgTemplates, ARRAY_COUNT(sTradeSequenceBgTemplates));
     ChangeBgX(0, 0, 0);
     ChangeBgY(0, 0, 0);
-    SetBgTilemapBuffer(0, Alloc(0x800));
-    SetBgTilemapBuffer(1, Alloc(0x800));
-    SetBgTilemapBuffer(3, Alloc(0x800));
+    SetBgTilemapBuffer(0, Alloc<u8>(0x800));
+    SetBgTilemapBuffer(1, Alloc<u8>(0x800));
+    SetBgTilemapBuffer(3, Alloc<u8>(0x800));
     DeactivateAllTextPrinters();
     DecompressAndLoadBgGfxUsingHeap(0, gBattleTextboxTiles, 0, 0, 0);
     LZDecompressWram(gBattleTextboxTilemap, gDecompressionBuffer);
@@ -2922,7 +2926,7 @@ static void CB2_InGameTrade(void)
         StringCopy(gLinkPlayers[1].name, otName);
         gLinkPlayers[0].language = LANGUAGE_ENGLISH;
         gLinkPlayers[1].language = GetMonData(&gEnemyParty[0], MON_DATA_LANGUAGE);
-        sTradeData = AllocZeroed(sizeof(*sTradeData));
+        sTradeData = AllocZeroed<TradeData>();
         AllocateMonSpritesGfx();
         ResetTasks();
         ResetSpriteData();

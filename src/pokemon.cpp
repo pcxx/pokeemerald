@@ -6851,7 +6851,7 @@ struct Unknown_806F160_Struct *sub_806F2AC(u8 id, u8 arg1)
 
     flags = 0;
     id %= 2;
-    structPtr = AllocZeroed(sizeof(*structPtr));
+    structPtr = AllocZeroed<Unknown_806F160_Struct>();
     if (structPtr == NULL)
         return NULL;
 
@@ -6874,8 +6874,8 @@ struct Unknown_806F160_Struct *sub_806F2AC(u8 id, u8 arg1)
         break;
     }
 
-    structPtr->bytes = AllocZeroed(structPtr->size * 0x800 * 4 * structPtr->field_0_0);
-    structPtr->byteArrays = AllocZeroed(structPtr->field_0_0 * 32);
+    structPtr->bytes = AllocZeroed<u8>(structPtr->size * 0x800 * 4 * structPtr->field_0_0);
+    structPtr->byteArrays = AllocZeroed<u8*>(structPtr->field_0_0);
     if (structPtr->bytes == NULL || structPtr->byteArrays == NULL)
     {
         flags |= 1;
@@ -6886,8 +6886,8 @@ struct Unknown_806F160_Struct *sub_806F2AC(u8 id, u8 arg1)
             structPtr->byteArrays[i] = structPtr->bytes + (structPtr->size * (i << 0xD));
     }
 
-    structPtr->templates = AllocZeroed(sizeof(struct SpriteTemplate) * structPtr->field_0_0);
-    structPtr->frameImages = AllocZeroed(sizeof(struct SpriteFrameImage) * structPtr->field_0_0 * structPtr->field_1);
+    structPtr->templates = AllocZeroed<SpriteTemplate>(structPtr->field_0_0);
+    structPtr->frameImages = AllocZeroed<SpriteFrameImage>(structPtr->field_0_0 * structPtr->field_1);
     if (structPtr->templates == NULL || structPtr->frameImages == NULL)
     {
         flags |= 2;

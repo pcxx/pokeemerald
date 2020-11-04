@@ -3602,7 +3602,7 @@ void ReceiveTvShowsData(void *src, u32 size, u8 masterIdx)
     TVShow (*rmBuffer2)[4][25];
     TVShow (*rmBuffer)[4][25];
 
-    rmBuffer2 = malloc(4 * 25 * sizeof(TVShow));
+    rmBuffer2 = Alloc<TVShow>(4 * 25);
     if (rmBuffer2 != NULL)
     {
         for (i = 0; i < 4; i ++)
@@ -3642,7 +3642,7 @@ void ReceiveTvShowsData(void *src, u32 size, u8 masterIdx)
         sub_80EF93C(gSaveBlock1Ptr->tvShows);
         sub_80F0708();
         sub_80F0B64();
-        free(rmBuffer2);
+        Free(rmBuffer2);
     }
 }
 
@@ -4019,7 +4019,7 @@ void ReceivePokeNewsData(void *src, u32 size, u8 masterIdx)
     PokeNews (*rmBuffer2)[4][16];
     PokeNews (*rmBuffer)[4][16];
 
-    rmBuffer2 = malloc(4 * 16 * sizeof(PokeNews));
+    rmBuffer2 = Alloc<TVShow>(4 * 16);
     if (rmBuffer2 != NULL)
     {
         for (i = 0; i < 4; i ++)
@@ -4044,7 +4044,7 @@ void ReceivePokeNewsData(void *src, u32 size, u8 masterIdx)
         }
         sub_80F0EEC();
         sub_80F0F24();
-        free(rmBuffer2);
+        Free(rmBuffer2);
     }
 }
 
@@ -4164,7 +4164,7 @@ static void sub_80F0F64(TVShow *show, u32 language)
     int i;
     TVShow **r4;
 
-    r4 = calloc(11, sizeof(TVShow *));
+    r4 = AllocZeroed<TVShow*>(11);
     for (i = 0; i < LAST_TVSHOW_IDX; i ++)
     {
         switch (show[i].common.kind)
@@ -4221,7 +4221,7 @@ static void sub_80F0F64(TVShow *show, u32 language)
                 break;
         }
     }
-    free(r4);
+    Free(r4);
 }
 
 void sub_80F1208(TVShow *shows)

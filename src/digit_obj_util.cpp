@@ -75,11 +75,11 @@ bool32 DigitObjUtil_Init(u32 count)
     if (sOamWork != NULL)
         DigitObjUtil_Free();
 
-    sOamWork = Alloc(sizeof(*sOamWork));
+    sOamWork = Alloc<DigitPrinterAlloc>();
     if (sOamWork == NULL)
         return FALSE;
 
-    sOamWork->array = Alloc(sizeof(struct DigitPrinter) * count);
+    sOamWork->array = Alloc<DigitPrinter>(count);
     if (sOamWork->array == NULL)
     {
         Free(sOamWork);

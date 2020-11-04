@@ -379,7 +379,7 @@ void CB2_ReturnToPyramidBagMenu(void)
 
 void GoToBattlePyramidBagMenu(u8 a0, void (*callback)(void))
 {
-    gPyramidBagResources = AllocZeroed(sizeof(*gPyramidBagResources));
+    gPyramidBagResources = AllocZeroed<PyramidBagResources>();
 
     if (a0 != 4)
         gPyramidBagCursorData.unk4 = a0;
@@ -1354,8 +1354,8 @@ void TryStoreHeldItemsInPyramidBag(void)
 {
     u8 i;
     struct Pokemon *party = gPlayerParty;
-    u16 *newItems = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
-    u8 *newQuantities = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
+    u16 *newItems = Alloc<u16>(PYRAMID_BAG_ITEMS_COUNT);
+    u8 *newQuantities = Alloc<u8>(PYRAMID_BAG_ITEMS_COUNT);
     u16 heldItem;
 
     memcpy(newItems, gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode], PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
@@ -1488,7 +1488,7 @@ static void sub_81C6E38(u8 itemSpriteArrayId)
 static void sub_81C6E98(void)
 {
     struct SpritePalette spritePalette;
-    u16 *palPtr = Alloc(0x40);
+    u16 *palPtr = Alloc<u16>(0x40/2);
 
     LZDecompressWram(gBattleFrontierGfx_PyramidBag_Pal, palPtr);
     spritePalette.data = palPtr + (gSaveBlock2Ptr->frontier.lvlMode * 16);

@@ -1339,7 +1339,7 @@ static u8 ListMenuAddRedOutlineCursorObject(struct CursorStruct *cursor)
     data->tileTag = cursor->tileTag;
     data->palTag = cursor->palTag;
     data->subspriteTable.subspriteCount = ListMenuGetRedOutlineCursorSpriteCount(cursor->rowWidth, cursor->rowHeight);
-    data->subspriteTable.subsprites = data->subspritesPtr = Alloc(data->subspriteTable.subspriteCount * 4);
+    data->subspriteTable.subsprites = data->subspritesPtr = Alloc<Subsprite>(data->subspriteTable.subspriteCount);
     ListMenuSetUpRedOutlineCursorSpriteOamTable(cursor->rowWidth, cursor->rowHeight, data->subspritesPtr);
 
     spriteTemplate = gDummySpriteTemplate;

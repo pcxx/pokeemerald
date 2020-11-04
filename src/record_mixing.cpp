@@ -363,8 +363,8 @@ static void Task_RecordMixing_Main(u8 taskId)
     case 5:
         if (!gTasks[data[10]].isActive)
         {
-            free(sReceivedRecords);
-            free(sSentRecord);
+            Free(sReceivedRecords);
+            Free(sSentRecord);
             sub_808729C();
             if (gWirelessCommType != 0)
             {
@@ -704,7 +704,7 @@ static void ReceiveLilycoveLadyData(LilycoveLady *lilycoveLady, size_t recordSiz
     if (dest != NULL)
     {
         QuizLadyClearQuestionForRecordMix(dest);
-        free(dest);
+        Free(dest);
     }
 }
 

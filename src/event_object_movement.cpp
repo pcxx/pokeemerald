@@ -1505,14 +1505,14 @@ u8 AddPseudoObjectEvent(u16 graphicsId, void (*callback)(struct Sprite *), s16 x
     struct Sprite *sprite;
     u8 spriteId;
 
-    spriteTemplate = malloc(sizeof(struct SpriteTemplate));
+    spriteTemplate = Alloc<SpriteTemplate>();
     MakeObjectTemplateFromObjectEventGraphicsInfo(graphicsId, callback, spriteTemplate, &subspriteTables);
     if (spriteTemplate->paletteTag != 0xFFFF)
     {
         LoadObjectEventPalette(spriteTemplate->paletteTag);
     }
     spriteId = CreateSprite(spriteTemplate, x, y, subpriority);
-    free(spriteTemplate);
+    Free(spriteTemplate);
 
     if (spriteId != MAX_SPRITES && subspriteTables != NULL)
     {
@@ -8816,7 +8816,7 @@ u8 MovementAction_StoreAndLockAnim_Step0(struct ObjectEvent *objectEvent, struct
     bool8 ableToStore = FALSE;
     if (gLockedAnimObjectEvents == NULL)
     {
-        gLockedAnimObjectEvents = AllocZeroed(sizeof(struct LockedAnimObjectEvents));
+        gLockedAnimObjectEvents = AllocZeroed<LockedAnimObjectEvents>();
         gLockedAnimObjectEvents->objectEventIds[0] = objectEvent->localId;
         gLockedAnimObjectEvents->count = 1;
         ableToStore = TRUE;

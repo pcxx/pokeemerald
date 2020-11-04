@@ -1534,7 +1534,7 @@ void GenerateBattlePyramidFloorLayout(u16 *backupMapData, bool8 setPlayerPositio
     int y, x;
     int i;
     u8 entranceSquareId, exitSquareId;
-    u8 *floorLayoutOffsets = AllocZeroed(16);
+    u8 *floorLayoutOffsets = AllocZeroed<u8>(16);
 
     GetPyramidFloorLayoutOffsets(floorLayoutOffsets);
     GetPyramidEntranceAndExitSquareIds(&entranceSquareId, &exitSquareId);
@@ -1579,7 +1579,7 @@ void GenerateBattlePyramidFloorLayout(u16 *backupMapData, bool8 setPlayerPositio
         }
     }
     RunOnLoadMapScript();
-    free(floorLayoutOffsets);
+    Free(floorLayoutOffsets);
 }
 
 void LoadBattlePyramidObjectEventTemplates(void)
@@ -1662,7 +1662,7 @@ static void SetPyramidObjectPositionsUniformly(u8 objType)
     int squareId;
     u32 bits = 0;
     u8 id = GetPyramidFloorTemplateId();
-    u8 *floorLayoutOffsets = AllocZeroed(16);
+    u8 *floorLayoutOffsets = AllocZeroed<u8>(16);
 
     GetPyramidFloorLayoutOffsets(floorLayoutOffsets);
     squareId = gSaveBlock2Ptr->frontier.pyramidRandoms[2] % 16;
@@ -1708,7 +1708,7 @@ static void SetPyramidObjectPositionsUniformly(u8 objType)
         } while (!(bits & 4) && TrySetPyramidObjectEventPositionInSquare(objType, floorLayoutOffsets, squareId, objectStartIndex + i));
         bits &= 1;
     }
-    free(floorLayoutOffsets);
+    Free(floorLayoutOffsets);
 }
 
 static bool8 SetPyramidObjectPositionsInAndNearSquare(u8 objType, u8 squareId)
@@ -1720,7 +1720,7 @@ static bool8 SetPyramidObjectPositionsInAndNearSquare(u8 objType, u8 squareId)
     int numPlacedObjects = 0;
     int numObjects;
     u8 id = GetPyramidFloorTemplateId();
-    u8 *floorLayoutOffsets = AllocZeroed(16);
+    u8 *floorLayoutOffsets = AllocZeroed<u8>(16);
 
     GetPyramidFloorLayoutOffsets(floorLayoutOffsets);
     if (objType == OBJ_TRAINERS)
@@ -1770,7 +1770,7 @@ static bool8 SetPyramidObjectPositionsInAndNearSquare(u8 objType, u8 squareId)
 
         r7 &= 1;
     }
-    // free(floorLayoutOffsets); BUG: floorLayoutOffsets memory not freed
+    // Free(floorLayoutOffsets); BUG: floorLayoutOffsets memory not freed
 
     return (numObjects / 2) > numPlacedObjects;
 }
@@ -1784,7 +1784,7 @@ static bool8 SetPyramidObjectPositionsNearSquare(u8 objType, u8 squareId)
     int r8 = 0;
     int numObjects;
     u8 id = GetPyramidFloorTemplateId();
-    u8 *floorLayoutOffsets = AllocZeroed(16);
+    u8 *floorLayoutOffsets = AllocZeroed<u8>(16);
 
     GetPyramidFloorLayoutOffsets(floorLayoutOffsets);
     if (objType == OBJ_TRAINERS)
@@ -1822,7 +1822,7 @@ static bool8 SetPyramidObjectPositionsNearSquare(u8 objType, u8 squareId)
         if (r8 == 4)
             break;
     }
-    // free(floorLayoutOffsets); BUG: floorLayoutOffsets memory not freed
+    // Free(floorLayoutOffsets); BUG: floorLayoutOffsets memory not freed
 
     return (numObjects / 2) > numPlacedObjects;
 }

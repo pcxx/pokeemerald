@@ -164,10 +164,10 @@ void ReceiveEasyChatPairsData(struct EasyChatPair *a, size_t size, u8 unused)
     u16 i, j, r3, players;
     struct EasyChatPair *buffer1, *buffer2, *src, *dst, *foo_of_buffer2;
 
-    buffer1 = Alloc(0x100);
+    buffer1 = Alloc<EasyChatPair>(0x20);
     if(buffer1 != NULL)
     {
-        buffer2 = Alloc(0x100);
+        buffer2 = Alloc<EasyChatPair>(0x20);
         if(buffer2 == NULL)
         {
             Free(buffer1);

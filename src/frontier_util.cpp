@@ -2297,7 +2297,7 @@ static void Fill1PRecords(struct RankingHall1P *dst, s32 hallFacilityId, s32 lvl
         record1P[highestId].winStreak = 0;
     }
 
-    free(playerHallRecords);
+    Free(playerHallRecords);
 }
 
 static void Fill2PRecords(struct RankingHall2P *dst, s32 lvlMode)
@@ -2331,7 +2331,7 @@ static void Fill2PRecords(struct RankingHall2P *dst, s32 lvlMode)
         record2P[highestId].winStreak = 0;
     }
 
-    free(playerHallRecords);
+    Free(playerHallRecords);
 }
 
 static void PrintHallRecords(s32 hallFacilityId, s32 lvlMode)
@@ -2427,7 +2427,7 @@ void SaveGameFrontier(void)
     for (i = 0; i < PARTY_SIZE; i++)
         gPlayerParty[i] = monsParty[i];
 
-    free(monsParty);
+    Free(monsParty);
 }
 
 // Frontier Brain functions.

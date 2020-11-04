@@ -641,7 +641,7 @@ void ShowPokedexAreaScreen(u16 species, u8 *screenSwitchState)
 {
     u8 taskId;
 
-    sPokedexAreaScreen = AllocZeroed(sizeof(*sPokedexAreaScreen));
+    sPokedexAreaScreen = AllocZeroed<PokeDexAreaScreen>();
     sPokedexAreaScreen->species = species;
     sPokedexAreaScreen->screenSwitchState = screenSwitchState;
     screenSwitchState[0] = 0;

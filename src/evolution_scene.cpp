@@ -243,7 +243,7 @@ void EvolutionScene(struct Pokemon* mon, u16 speciesToEvolve, bool8 canStopEvo, 
 
     gReservedSpritePaletteCount = 4;
 
-    sEvoStructPtr = AllocZeroed(sizeof(struct EvoInfo));
+    sEvoStructPtr = AllocZeroed<EvoInfo>();
     AllocateMonSpritesGfx();
 
     GetMonData(mon, MON_DATA_NICKNAME, name);
@@ -479,7 +479,7 @@ void TradeEvolutionScene(struct Pokemon* mon, u16 speciesToEvolve, u8 preEvoSpri
     personality = GetMonData(mon, MON_DATA_PERSONALITY);
     trainerId = GetMonData(mon, MON_DATA_OT_ID);
 
-    sEvoStructPtr = AllocZeroed(sizeof(struct EvoInfo));
+    sEvoStructPtr = AllocZeroed<EvoInfo>();
     sEvoStructPtr->preEvoSpriteID = preEvoSpriteID;
 
     DecompressPicFromTable_2(&gMonFrontPicTable[speciesToEvolve],
@@ -1455,7 +1455,7 @@ static void InitMovingBackgroundTask(bool8 isLink)
 {
     u8 innerBgId, outerBgId;
 
-    sEvoMovingBgPtr = AllocZeroed(0x640);
+    sEvoMovingBgPtr = AllocZeroed<u16>(0x640/2);
     InitMovingBgValues(sEvoMovingBgPtr);
 
     if (!isLink)

@@ -405,7 +405,7 @@ void StartPokemonJump(u16 partyIndex, MainCallback callback)
 
     if (gReceivedRemoteLinkPlayers)
     {
-        gUnknown_02022CFC = Alloc(sizeof(struct PokemonJump1));
+        gUnknown_02022CFC = Alloc<PokemonJump1>();
         if (gUnknown_02022CFC)
         {
             ResetTasks();
@@ -2527,8 +2527,8 @@ static void sub_802C9D4(struct PokemonJump2 *arg0, struct PokemonJump1_MonInfo *
     u8 spriteId;
 
     spriteTemplate = gUnknown_082FBE40;
-    buffer = Alloc(0x2000);
-    unusedBuffer = Alloc(0x800);
+    buffer = Alloc<u8>(0x2000);
+    unusedBuffer = Alloc<u8>(0x800);
     if (multiplayerId == sub_802C8BC())
         subpriority = 3;
     else

@@ -1966,7 +1966,7 @@ void BufferPokedexRatingForMatchCall(u8 *destStr)
     u8 *str;
     u8 dexRatingLevel;
 
-    u8 *buffer = Alloc(0x3E8);
+    u8 *buffer = Alloc<u8>(0x3E8);
     if (!buffer)
     {
         destStr[0] = EOS;

@@ -1423,7 +1423,7 @@ static bool8 EasyChat_AllocateResources(u8 type, u16 *words, u8 displayedPersonT
     u8 templateId;
     int i;
 
-    sEasyChatScreen = malloc(sizeof(*sEasyChatScreen));
+    sEasyChatScreen = Alloc<EasyChatScreen>();
     if (sEasyChatScreen == NULL)
         return FALSE;
 
@@ -3652,7 +3652,7 @@ static bool8 sub_811CE54(void)
 
 static bool8 sub_811CE94(void)
 {
-    sUnknown_0203A11C = Alloc(sizeof(*sUnknown_0203A11C));
+    sUnknown_0203A11C = Alloc<Unk203A11C>();
     if (!sUnknown_0203A11C)
         return FALSE;
 
@@ -5286,7 +5286,7 @@ void InitEasyChatPhrases(void)
 
 static bool8 sub_811F28C(void)
 {
-    sUnknown_0203A120 = Alloc(sizeof(*sUnknown_0203A120));
+    sUnknown_0203A120 = Alloc<Unk203A120>();
     if (!sUnknown_0203A120)
         return FALSE;
 

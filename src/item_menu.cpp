@@ -577,7 +577,7 @@ void QuizLadyOpenBagMenu(void)
 
 void GoToBagMenu(u8 location, u8 pocket, void ( *postExitMenuMainCallback2)())
 {
-    gBagMenu = AllocZeroed(sizeof(struct BagMenuStruct));
+    gBagMenu = AllocZeroed<BagMenuStruct>();
     if (gBagMenu == NULL)
     {
         SetMainCallback2(postExitMenuMainCallback2);
@@ -807,8 +807,8 @@ u8 CreateBagInputHandlerTask(u8 location)
 
 void AllocateBagItemListBuffers(void)
 {
-    sListBuffer1 = Alloc(sizeof(struct ListBuffer1));
-    sListBuffer2 = Alloc(sizeof(struct ListBuffer2));
+    sListBuffer1 = Alloc<ListBuffer1>();
+    sListBuffer2 = Alloc<ListBuffer2>();
 }
 
 void LoadBagItemListBuffers(u8 pocketId)
@@ -2208,7 +2208,7 @@ void PrepareBagForWallyTutorial(void)
 {
     u32 i;
 
-    sTempWallyBag = AllocZeroed(sizeof(struct TempWallyStruct));
+    sTempWallyBag = AllocZeroed<TempWallyStruct>();
     memcpy(sTempWallyBag->bagPocket_Items, gSaveBlock1Ptr->bagPocket_Items, sizeof(gSaveBlock1Ptr->bagPocket_Items));
     memcpy(sTempWallyBag->bagPocket_PokeBalls, gSaveBlock1Ptr->bagPocket_PokeBalls, sizeof(gSaveBlock1Ptr->bagPocket_PokeBalls));
     sTempWallyBag->pocket = gBagPositionStruct.pocket;

@@ -535,7 +535,7 @@ static bool8 TransitionToPokeblockFeedScene(void)
     switch (gMain.state)
     {
     case 0:
-        sPokeblockFeed = AllocZeroed(sizeof(*sPokeblockFeed));
+        sPokeblockFeed = AllocZeroed<PokeblockFeedStruct>();
         SetVBlankHBlankCallbacksToNull();
         ClearScheduledBgCopiesToVram();
         gMain.state++;

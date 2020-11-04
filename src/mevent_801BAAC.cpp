@@ -154,7 +154,7 @@ bool32 InitWonderCardResources(struct WonderCard * r5, struct MEventBuffer_3430_
 {
     if (r5 == NULL || r6 == NULL)
         return FALSE;
-    sWonderCardData = AllocZeroed(sizeof(struct UnkStruct_203F3C8));
+    sWonderCardData = AllocZeroed<UnkStruct_203F3C8>();
     if (sWonderCardData == NULL)
         return FALSE;
     sWonderCardData->unk_0000 = *r5;
@@ -546,7 +546,7 @@ bool32 InitWonderNewsResources(const struct WonderNews * a0)
 {
     if (a0 == NULL)
         return FALSE;
-    sWonderNewsData = AllocZeroed(sizeof(struct UnkStruct_203F3CC));
+    sWonderNewsData = AllocZeroed<UnkStruct_203F3CC>();
     if (sWonderNewsData == NULL)
         return FALSE;
     sWonderNewsData->unk_0000 = *a0;

@@ -289,7 +289,7 @@ void TryStartMirageTowerPulseBlendEffect(void)
      || !FlagGet(FLAG_MIRAGE_TOWER_VISIBLE))
         return;
 
-    sMirageTowerPulseBlend = AllocZeroed(sizeof(*sMirageTowerPulseBlend));
+    sMirageTowerPulseBlend = AllocZeroed<MirageTowerPulseBlend>();
     InitPulseBlend(&sMirageTowerPulseBlend->pulseBlend);
     InitPulseBlendPaletteSettings(&sMirageTowerPulseBlend->pulseBlend, &gMirageTowerPulseBlendSettings);
     MarkUsedPulseBlendPalettes(&sMirageTowerPulseBlend->pulseBlend, 0x1, TRUE);
@@ -512,8 +512,8 @@ static void InitMirageTowerShake(u8 taskId)
         gTasks[taskId].data[0]++;
         break;
     case 1:
-        sMirageTowerGfxBuffer = (u8 *)AllocZeroed(MIRAGE_TOWER_GFX_LENGTH);
-        sMirageTowerTilemapBuffer = (u8 *)AllocZeroed(BG_SCREEN_SIZE);
+        sMirageTowerGfxBuffer = AllocZeroed<u8>(MIRAGE_TOWER_GFX_LENGTH);
+        sMirageTowerTilemapBuffer = AllocZeroed<u8>(BG_SCREEN_SIZE);
         ChangeBgX(0, 0, 0);
         ChangeBgY(0, 0, 0);
         gTasks[taskId].data[0]++;
@@ -538,7 +538,7 @@ static void InitMirageTowerShake(u8 taskId)
         gTasks[taskId].data[0]++;
         break;
     case 6:
-        sBgShakeOffsets = Alloc(sizeof(*sBgShakeOffsets));
+        sBgShakeOffsets = Alloc<BgRegOffsets>();
         zero = 0;
         sBgShakeOffsets->bgHOFS = 2;
         sBgShakeOffsets->bgVOFS = zero;
@@ -560,7 +560,7 @@ static void DoMirageTowerDisintegration(u8 taskId)
     switch (gTasks[taskId].data[0])
     {
     case 1:
-        sUnknown_0203CF10 = AllocZeroed(OUTER_BUFFER_LENGTH * sizeof(struct Struct203CF10));
+        sUnknown_0203CF10 = AllocZeroed<Struct203CF10>(OUTER_BUFFER_LENGTH);
         break;
     case 3:
         if (gTasks[taskId].data[3] <= (OUTER_BUFFER_LENGTH - 1))
@@ -568,7 +568,7 @@ static void DoMirageTowerDisintegration(u8 taskId)
             if (gTasks[taskId].data[1] > 1)
             {
                 index = gTasks[taskId].data[3];
-                sUnknown_0203CF10[index].buffer = Alloc(INNER_BUFFER_LENGTH);
+                sUnknown_0203CF10[index].buffer = Alloc<u8>(INNER_BUFFER_LENGTH);
                 for (i = 0; i <= (INNER_BUFFER_LENGTH - 1); i++)
                     sUnknown_0203CF10[index].buffer[i] = i;
                 for (i = 0; i <= (INNER_BUFFER_LENGTH - 1); i++)
@@ -645,10 +645,10 @@ static void DoFossilFallAndSink(u8 taskId)
     switch (gTasks[taskId].data[0])
     {
     case 1:
-        sUnknown_0203CF0C = AllocZeroed(sizeof(*sUnknown_0203CF0C));
-        sUnknown_0203CF0C->frameImageTiles = AllocZeroed(ROOT_FOSSIL_GFX_LENGTH);
-        sUnknown_0203CF0C->frameImage = AllocZeroed(sizeof(*sUnknown_0203CF0C->frameImage));
-        sUnknown_0203CF0C->unkC = AllocZeroed(ROOT_FOSSIL_GFX_RANDOMIZER_LENGTH * sizeof(u16));
+        sUnknown_0203CF0C = AllocZeroed<Struct203CF0C>();
+        sUnknown_0203CF0C->frameImageTiles = AllocZeroed<u8>(ROOT_FOSSIL_GFX_LENGTH);
+        sUnknown_0203CF0C->frameImage = AllocZeroed<DynamicSpriteFrameImage>();
+        sUnknown_0203CF0C->unkC = AllocZeroed<u16>(ROOT_FOSSIL_GFX_RANDOMIZER_LENGTH);
         sUnknown_0203CF0C->unk10 = 0;
         break;
     case 2:

@@ -61,7 +61,7 @@ struct MultiNameFlyDest
 
 static EWRAM_DATA struct RegionMap *gRegionMap = NULL;
 
-static EWRAM_DATA struct {
+struct FlyMap {
     void (*callback)(void);
     u16 state;
     u16 mapSecId;
@@ -69,7 +69,8 @@ static EWRAM_DATA struct {
     u8 tileBuffer[0x1c0];
     u8 nameBuffer[0x26]; // never read
     bool8 choseFlyLocation;
-} *sFlyMap = NULL;
+};
+static EWRAM_DATA FlyMap *sFlyMap = NULL;
 
 static bool32 gUnknown_03001180;
 
@@ -1657,7 +1658,7 @@ void CB2_OpenFlyMap(void)
         SetGpuReg(REG_OFFSET_BG2HOFS, 0);
         SetGpuReg(REG_OFFSET_BG3HOFS, 0);
         SetGpuReg(REG_OFFSET_BG3VOFS, 0);
-        sFlyMap = malloc(sizeof(*sFlyMap));
+        sFlyMap = Alloc<FlyMap>();
         if (sFlyMap == NULL)
         {
             SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
@@ -2017,7 +2018,7 @@ static void CB_ExitFlyMap(void)
             }
             if (sFlyMap != NULL)
             {
-                free(sFlyMap);
+                Free(sFlyMap);
                 sFlyMap = NULL;
             }
             FreeAllWindowBuffers();

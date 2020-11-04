@@ -1109,10 +1109,10 @@ static void CB2_InitSelectScreen(void)
         gMain.state++;
         break;
     case 1:
-        sSelectMenuTilesetBuffer = Alloc(0x440);
-        sSelectMonCardBgTilesetBuffer = AllocZeroed(0x440);
-        sSelectMenuTilemapBuffer = Alloc(0x800);
-        sSelectMonCardBgTilemapBuffer = AllocZeroed(0x800);
+        sSelectMenuTilesetBuffer = Alloc<u8>(0x440);
+        sSelectMonCardBgTilesetBuffer = AllocZeroed<u8>(0x440);
+        sSelectMenuTilemapBuffer = Alloc<u8>(0x800);
+        sSelectMonCardBgTilemapBuffer = AllocZeroed<u8>(0x800);
         ChangeBgX(0, 0, 0);
         ChangeBgY(0, 0, 0);
         ChangeBgX(1, 0, 0);
@@ -1236,7 +1236,7 @@ static void Select_InitMonsData(void)
     if (sFactorySelectScreen != NULL)
         return;
 
-    sFactorySelectScreen = AllocZeroed(sizeof(*sFactorySelectScreen));
+    sFactorySelectScreen = AllocZeroed<FactorySelectMonsStruct>();
     sFactorySelectScreen->cursorPos = 0;
     sFactorySelectScreen->selectingMonsState = 1;
     sFactorySelectScreen->fromSummaryScreen = FALSE;
@@ -1426,7 +1426,7 @@ static void Task_FromSelectScreenToSummaryScreen(u8 taskId)
         DestroyTask(taskId);
         sFactorySelectScreen->fromSummaryScreen = TRUE;
         currMonId = sFactorySelectScreen->cursorPos;
-        sFactorySelectMons = AllocZeroed(sizeof(struct Pokemon) * SELECTABLE_MONS_COUNT);
+        sFactorySelectMons = AllocZeroed<Pokemon>(SELECTABLE_MONS_COUNT);
         for (i = 0; i < SELECTABLE_MONS_COUNT; i++)
             sFactorySelectMons[i] = sFactorySelectScreen->mons[i].monData;
         ShowPokemonSummaryScreen(1, sFactorySelectMons, currMonId, SELECTABLE_MONS_COUNT - 1, CB2_InitSelectScreen);
@@ -3086,7 +3086,7 @@ static void Swap_InitStruct(void)
 {
     if (sFactorySwapScreen == NULL)
     {
-        sFactorySwapScreen = AllocZeroed(sizeof(*sFactorySwapScreen));
+        sFactorySwapScreen = AllocZeroed<FactorySwapMonsStruct>();
         sFactorySwapScreen->cursorPos = 0;
         sFactorySwapScreen->unk30 = FALSE;
         sFactorySwapScreen->fromSummaryScreen = FALSE;
@@ -3116,10 +3116,10 @@ static void CB2_InitSwapScreen(void)
         gMain.state++;
         break;
     case 1:
-        sSwapMenuTilesetBuffer = Alloc(0x440);
-        sSwapMonCardBgTilesetBuffer = AllocZeroed(0x440);
-        sSwapMenuTilemapBuffer = Alloc(0x800);
-        sSwapMonCardBgTilemapBuffer = AllocZeroed(0x800);
+        sSwapMenuTilesetBuffer = Alloc<u8>(0x440);
+        sSwapMonCardBgTilesetBuffer = AllocZeroed<u8>(0x440);
+        sSwapMenuTilemapBuffer = Alloc<u8>(0x800);
+        sSwapMonCardBgTilemapBuffer = AllocZeroed<u8>(0x800);
         ChangeBgX(0, 0, 0);
         ChangeBgY(0, 0, 0);
         ChangeBgX(1, 0, 0);

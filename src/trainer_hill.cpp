@@ -331,7 +331,7 @@ void InitTrainerHillBattleStruct(void)
     s32 i, j;
 
     SetUpDataStruct();
-    sRoomTrainers = AllocZeroed(sizeof(*sRoomTrainers));
+    sRoomTrainers = AllocZeroed<TrHillRoomTrainers>();
 
     for (i = 0; i < 2; i++)
     {
@@ -355,7 +355,7 @@ static void SetUpDataStruct(void)
 {
     if (sHillData == NULL)
     {
-        sHillData = AllocZeroed(sizeof(struct TrHillStruct2));
+        sHillData = AllocZeroed<TrHillStruct2>();
         sHillData->floorId = gMapHeader.mapLayoutId - LAYOUT_TRAINER_HILL_1F;
         CpuCopy32(sDataPerTag[gSaveBlock1Ptr->trainerHill.tag], &sHillData->tag, sizeof(sHillData->tag) + 4 * sizeof(struct TrHillFloor));
         nullsub_2();

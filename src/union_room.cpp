@@ -378,9 +378,10 @@ static void Task_TryBecomeLinkLeader(u8 taskId)
         data->state = LL_STATE_INIT2;
         break;
     case LL_STATE_INIT2:
-        data->field_4 = AllocZeroed(4 * sizeof(struct UnkStruct_x1C));
-        data->field_0 = AllocZeroed(5 * sizeof(struct UnkStruct_x20));
-        data->field_8 = AllocZeroed(5 * sizeof(struct UnkStruct_x20));
+        // these mallocate arrays with less than their max capacity???
+        data->field_4 = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(4);
+        data->field_0 = (UnkStruct_Main0*)AllocZeroed<UnkStruct_x20>(5);
+        data->field_8 = AllocZeroed<UnkStruct_Main8>();
         ClearUnkStruct_x1CArray(data->field_4, 4);
         ClearUnkStruct_x20Array(data->field_0->arr, 5);
         LinkRfu3_SetGnameUnameFromStaticBuffers(&data->field_0->arr[0].gname_uname.gname, data->field_0->arr[0].gname_uname.playerName);
@@ -959,8 +960,8 @@ static void Task_TryJoinLinkGroup(u8 taskId)
         SetWirelessCommType1();
         OpenLink();
         InitializeRfuLinkManager_JoinGroup();
-        data->field_4 = AllocZeroed(4 * sizeof(struct UnkStruct_x1C));
-        data->field_0 = AllocZeroed(16 * sizeof(struct UnkStruct_x20));
+        data->field_4 = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(4); // allocates 1 less than main struct
+        data->field_0 = (UnkStruct_Main0*)AllocZeroed<UnkStruct_x20>(16); // allocates twice the memory
         data->state = LG_STATE_CHOOSE_LEADER_MSG;
         break;
     case LG_STATE_CHOOSE_LEADER_MSG:
@@ -1284,8 +1285,8 @@ static void Task_ListenToWireless(u8 taskId)
         OpenLink();
         InitializeRfuLinkManager_JoinGroup();
         sub_80111B0(TRUE);
-        data->field_4 = AllocZeroed(4 * sizeof(struct UnkStruct_x1C));
-        data->field_0 = AllocZeroed(16 * sizeof(struct UnkStruct_x20));
+        data->field_4 = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(4); // allocates 1 less than main struct
+        data->field_0 = (UnkStruct_Main0*)AllocZeroed<UnkStruct_x20>(16); // allocates twice the memory
         data->state = 2;
         break;
     case 2:
@@ -1852,9 +1853,9 @@ static void Task_MEvent_Leader(u8 taskId)
         data->state = 1;
         break;
     case 1:
-        data->field_4 = AllocZeroed(4 * sizeof(struct UnkStruct_x1C));
-        data->field_0 = AllocZeroed(5 * sizeof(struct UnkStruct_x20));
-        data->field_8 = AllocZeroed(5 * sizeof(struct UnkStruct_x20));
+        data->field_4 = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(4);
+        data->field_0 = (UnkStruct_Main0*)AllocZeroed<UnkStruct_x20>(5);
+        data->field_8 = AllocZeroed<UnkStruct_Main8>();
         ClearUnkStruct_x1CArray(data->field_4, 4);
         ClearUnkStruct_x20Array(data->field_0->arr, 5);
         LinkRfu3_SetGnameUnameFromStaticBuffers(&data->field_0->arr[0].gname_uname.gname, data->field_0->arr[0].gname_uname.playerName);
@@ -2055,8 +2056,8 @@ static void Task_CardOrNewsWithFriend(u8 taskId)
         SetWirelessCommType1();
         OpenLink();
         InitializeRfuLinkManager_JoinGroup();
-        data->field_4 = AllocZeroed(4 * sizeof(struct UnkStruct_x1C));
-        data->field_0 = AllocZeroed(16 * sizeof(struct UnkStruct_x20));
+        data->field_4 = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(4); // allocates 1 less than main struct
+        data->field_0 = (UnkStruct_Main0*)AllocZeroed<UnkStruct_x20>(16); // allocates twice the memory
         data->state = 1;
         break;
     case 1:
@@ -2224,8 +2225,8 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
         SetWirelessCommType1();
         OpenLink();
         InitializeRfuLinkManager_JoinGroup();
-        data->field_4 = AllocZeroed(4 * sizeof(struct UnkStruct_x1C));
-        data->field_0 = AllocZeroed(16 * sizeof(struct UnkStruct_x20));
+        data->field_4 = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(4); // allocates 1 less than main struct
+        data->field_0 = (UnkStruct_Main0*)AllocZeroed<UnkStruct_x20>(16); // allocates twice the memory
         data->state = 1;
         break;
     case 1:
@@ -2385,7 +2386,7 @@ void RunUnionRoom(void)
     // dumb line needed to match
     sWirelessLinkMain.uRoom = sWirelessLinkMain.uRoom;
 
-    uroom = AllocZeroed(sizeof(*sWirelessLinkMain.uRoom));
+    uroom = AllocZeroed<WirelessLink_URoom>();
     sWirelessLinkMain.uRoom = uroom;
     sURoom = uroom;
 
@@ -2443,10 +2444,10 @@ static void Task_RunUnionRoom(u8 taskId)
     switch (uroom->state)
     {
     case UR_STATE_INIT:
-        uroom->field_4 = AllocZeroed(RFU_CHILD_MAX * sizeof(struct UnkStruct_x1C));
-        uroom->field_C = AllocZeroed(RFU_CHILD_MAX * sizeof(struct UnkStruct_x1C));
-        uroom->field_0 = AllocZeroed(8 * sizeof(struct UnkStruct_x20));
-        uroom->field_8 = AllocZeroed(sizeof(struct UnkStruct_x20));
+        uroom->field_4 = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(RFU_CHILD_MAX);
+        uroom->field_C = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(RFU_CHILD_MAX);
+        uroom->field_0 = AllocZeroed<UnkStruct_Main0>();
+        uroom->field_8 = (UnkStruct_Main0*)AllocZeroed<UnkStruct_x20>();
         ClearUnkStruct_x20Array(uroom->field_0->arr, ARRAY_COUNT(uroom->field_0->arr));
         gPlayerCurrActivity = IN_UNION_ROOM;
         uroom->searchTaskId = CreateTask_SearchForChildOrParent(uroom->field_C, uroom->field_4, LINK_GROUP_UNION_ROOM_RESUME);
@@ -3245,7 +3246,7 @@ void InitUnionRoom(void)
     sUnionRoomPlayerName[0] = EOS;
     CreateTask(Task_InitUnionRoom, 0);
     sWirelessLinkMain.uRoom = sWirelessLinkMain.uRoom; // Needed to match.
-    sWirelessLinkMain.uRoom = data = AllocZeroed(sizeof(struct WirelessLink_URoom));
+    sWirelessLinkMain.uRoom = data = AllocZeroed<WirelessLink_URoom>();
     sURoom = sWirelessLinkMain.uRoom;
     data->state = 0;
     data->textState = 0;
@@ -3274,13 +3275,13 @@ static void Task_InitUnionRoom(u8 taskId)
         data->state = 2;
         break;
     case 2:
-        data->field_4 = AllocZeroed(4 * sizeof(struct UnkStruct_x1C));
+        data->field_4 = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(4);
         ClearUnkStruct_x1CArray(data->field_4, 4);
-        data->field_C = AllocZeroed(4 * sizeof(struct UnkStruct_x1C));
+        data->field_C = (UnkStruct_Main4*)AllocZeroed<UnkStruct_x1C>(4);
         ClearUnkStruct_x1CArray(data->field_C, 4);
-        data->field_0 = AllocZeroed(8 * sizeof(struct UnkStruct_x20));
+        data->field_0 = AllocZeroed<UnkStruct_Main0>();
         ClearUnkStruct_x20Array(data->field_0->arr, 8);
-        data->field_8 = AllocZeroed(sizeof(struct UnkStruct_x20));
+        data->field_8 = (UnkStruct_Main0*)AllocZeroed<UnkStruct_x20>();
         ClearUnkStruct_x20Array(&data->field_8->arr[0], 1);
         data->searchTaskId = CreateTask_SearchForChildOrParent(data->field_C, data->field_4, 10);
         data->state = 3;
@@ -3311,12 +3312,12 @@ static void Task_InitUnionRoom(u8 taskId)
         }
         break;
     case 4:
-        free(data->field_8);
-        free(data->field_0);
-        free(data->field_C);
-        free(data->field_4);
+        Free(data->field_8);
+        Free(data->field_0);
+        Free(data->field_C);
+        Free(data->field_4);
         DestroyTask(data->searchTaskId);
-        free(sWirelessLinkMain.uRoom);
+        Free(sWirelessLinkMain.uRoom);
         LinkRfu_Shutdown();
         DestroyTask(taskId);
         break;

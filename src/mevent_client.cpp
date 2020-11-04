@@ -18,7 +18,7 @@ extern const struct mevent_client_cmd gUnknown_082F2598[];
 
 void mevent_client_do_init(u32 arg)
 {
-    s_mevent_client_ptr = AllocZeroed(sizeof(struct mevent_client));
+    s_mevent_client_ptr = AllocZeroed<mevent_client>();
     mevent_client_init(s_mevent_client_ptr, 1, 0);
     s_mevent_client_ptr->unk_4C = arg;
 }
@@ -59,10 +59,10 @@ static void mevent_client_init(struct mevent_client * svr, u32 sendPlayerNo, u32
     svr->unk_00 = 0;
     svr->mainseqno = 0;
     svr->flag = 0;
-    svr->sendBuffer = AllocZeroed(ME_SEND_BUF_SIZE);
-    svr->recvBuffer = AllocZeroed(ME_SEND_BUF_SIZE);
-    svr->cmdBuffer = AllocZeroed(ME_SEND_BUF_SIZE);
-    svr->buffer = AllocZeroed(0x40);
+    svr->sendBuffer = AllocZeroed<u8>(ME_SEND_BUF_SIZE);
+    svr->recvBuffer = AllocZeroed<u8>(ME_SEND_BUF_SIZE);
+    svr->cmdBuffer = (mevent_client_cmd*) AllocZeroed<u8>(ME_SEND_BUF_SIZE);
+    svr->buffer = AllocZeroed<u8>(0x40);
     mevent_srv_sub_init(&svr->manager, sendPlayerNo, recvPlayerNo);
 }
 

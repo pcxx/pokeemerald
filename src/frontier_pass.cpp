@@ -566,7 +566,7 @@ static u32 AllocateFrontierPassData(void (*callback)(void))
     if (sPassData != NULL)
         return 1;
 
-    sPassData = AllocZeroed(sizeof(*sPassData));
+    sPassData = AllocZeroed<FrontierPassData>();
     if (sPassData == NULL)
         return 2;
 
@@ -613,7 +613,7 @@ static u32 AllocateFrontierPassGfx(void)
     if (sPassGfx != NULL)
         return 1;
 
-    sPassGfx = AllocZeroed(sizeof(*sPassGfx));
+    sPassGfx = AllocZeroed<FrontierPassGfx>();
     if (sPassGfx == NULL)
         return 2;
 
@@ -1296,7 +1296,7 @@ static void ShowFrontierMap(void (*callback)(void))
     if (sMapData != NULL)
         SetMainCallback2(callback); // This line doesn't make sense at all, since it gets overwritten later anyway.
 
-    sMapData = AllocZeroed(sizeof(*sMapData));
+    sMapData = AllocZeroed<FrontierMapData>();
     sMapData->callback = callback;
     ResetTasks();
     CreateTask(Task_HandleFrontierMap, 0);

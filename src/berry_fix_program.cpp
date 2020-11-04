@@ -175,7 +175,7 @@ void CB2_InitBerryFixProgram(void)
     ResetTasks();
     ScanlineEffect_Stop();
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
-    berry_fix_mb_manager = AllocZeroed(0x50);
+    berry_fix_mb_manager = AllocZeroed<berryfix_t>();
     berry_fix_mb_manager->state = 0;
     berry_fix_mb_manager->unk1 = 6;
     SetMainCallback2(berry_fix_main);

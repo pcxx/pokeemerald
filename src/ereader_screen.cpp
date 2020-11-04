@@ -226,7 +226,7 @@ void task_add_00_ereader(void)
     data->unk4 = 0;
     data->unk6 = 0;
     data->unkE = 0;
-    data->unk10 = AllocZeroed(0x40);
+    data->unk10 = AllocZeroed<u8>(0x40);
 }
 
 static void sub_81D505C(u16 *arg0)

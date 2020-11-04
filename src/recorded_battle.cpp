@@ -70,7 +70,7 @@ struct RecordedBattleSave
     u8 apprenticeLanguage;
     u8 battleRecord[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE];
     u32 checksum;
-};
+};// size 0xf80
 
 EWRAM_DATA u32 gRecordedBattleRngSeed = 0;
 EWRAM_DATA u32 gBattlePalaceMoveSelectionRngValue = 0;
@@ -298,7 +298,7 @@ static u8 sub_8185278(u8 *arg0, u8 *arg1, u8 *arg2)
 
 bool32 CanCopyRecordedBattleSaveData(void)
 {
-    struct RecordedBattleSave *dst = AllocZeroed(sizeof(struct RecordedBattleSave));
+    struct RecordedBattleSave *dst = AllocZeroed<RecordedBattleSave>();
     bool32 ret = CopyRecordedBattleFromSave(dst);
     Free(dst);
     return ret;
@@ -337,8 +337,8 @@ bool32 MoveRecordedBattleToSaveData(void)
     u8 saveAttempts;
 
     saveAttempts = 0;
-    battleSave = AllocZeroed(sizeof(struct RecordedBattleSave));
-    savSection = AllocZeroed(0x1000);
+    battleSave = AllocZeroed<RecordedBattleSave>();
+    savSection = (RecordedBattleSave*)AllocZeroed<u8>(0x1000);// this allocates some extra space
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
@@ -485,8 +485,8 @@ bool32 MoveRecordedBattleToSaveData(void)
             break;
     }
 
-    free(battleSave);
-    free(savSection);
+    Free(battleSave);
+    Free(savSection);
     return ret;
 }
 
@@ -505,7 +505,7 @@ static bool32 TryCopyRecordedBattleSaveData(struct RecordedBattleSave *dst, stru
 
 static bool32 CopyRecordedBattleFromSave(struct RecordedBattleSave *dst)
 {
-    struct SaveSection *savBuffer = AllocZeroed(sizeof(struct SaveSection));
+    struct SaveSection *savBuffer = AllocZeroed<SaveSection>();
     bool32 ret = TryCopyRecordedBattleSaveData(dst, savBuffer);
     Free(savBuffer);
 
@@ -609,7 +609,7 @@ static void SetVariablesForRecordedBattle(struct RecordedBattleSave *src)
 
 void PlayRecordedBattle(void (*CB2_After)(void))
 {
-    struct RecordedBattleSave *battleSave = AllocZeroed(sizeof(struct RecordedBattleSave));
+    struct RecordedBattleSave *battleSave = AllocZeroed<RecordedBattleSave>();
     if (CopyRecordedBattleFromSave(battleSave) == TRUE)
     {
         u8 taskId;

@@ -396,7 +396,7 @@ static bool8 IsWideLetter(u8);
 
 void DoNamingScreen(u8 templateNum, u8 *destBuffer, u16 monSpecies, u16 monGender, u32 monPersonality, MainCallback returnCallback)
 {
-    sNamingScreen = Alloc(sizeof(struct NamingScreenData));
+    sNamingScreen = Alloc<NamingScreenData>();
     if (!sNamingScreen)
     {
         SetMainCallback2(returnCallback);

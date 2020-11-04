@@ -2154,7 +2154,7 @@ static void Cb2_EnterPSS(u8 boxOption)
 {
     ResetTasks();
     sCurrentBoxOption = boxOption;
-    sPSSData = Alloc(sizeof(struct PokemonStorageSystemData));
+    sPSSData = Alloc<PokemonStorageSystemData>();
     if (sPSSData == NULL)
     {
         SetMainCallback2(Cb2_ExitPSS);
@@ -2174,7 +2174,7 @@ static void Cb2_EnterPSS(u8 boxOption)
 static void Cb2_ReturnToPSS(void)
 {
     ResetTasks();
-    sPSSData = Alloc(sizeof(struct PokemonStorageSystemData));
+    sPSSData = Alloc<PokemonStorageSystemData>();
     if (sPSSData == NULL)
     {
         SetMainCallback2(Cb2_ExitPSS);
@@ -7970,7 +7970,7 @@ static const struct WindowTemplate gUnknown_0857BB1C =
     .baseBlock = 0xA,
 };
 
-EWRAM_DATA static struct
+struct MoveMonsData
 {
     u8 field_0;
     u8 state;
@@ -7988,12 +7988,12 @@ EWRAM_DATA static struct
     u16 bgY;
     u16 field_10;
     struct BoxPokemon boxMons[IN_BOX_COUNT];
-}
-*sMoveMonsPtr = NULL;
+};
+EWRAM_DATA static MoveMonsData *sMoveMonsPtr = NULL;
 
 static bool8 sub_80D0164(void)
 {
-    sMoveMonsPtr = Alloc(sizeof(*sMoveMonsPtr));
+    sMoveMonsPtr = Alloc<MoveMonsData>();
     if (sMoveMonsPtr != NULL)
     {
         sPSSData->field_2200 = AddWindow8Bit(&gUnknown_0857BB1C);
@@ -9607,7 +9607,7 @@ static void sub_80D259C(u8 count)
 {
     u16 i;
 
-    gUnknown_02039D84 = Alloc(sizeof(*gUnknown_02039D84) * count);
+    gUnknown_02039D84 = Alloc<UnkStruct_2039D84>(count);
     gUnknown_02039D88 = (gUnknown_02039D84 == NULL) ? 0 : count;
     for (i = 0; i < gUnknown_02039D88; i++)
     {

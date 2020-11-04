@@ -868,7 +868,7 @@ void StartBerryCrush(MainCallback callback)
         return;
     }
 
-    gUnknown_02022C90 = AllocZeroed(sizeof(*gUnknown_02022C90));
+    gUnknown_02022C90 = AllocZeroed<BerryCrushGame>();
     if (!gUnknown_02022C90)
     {
         SetMainCallback2(callback);

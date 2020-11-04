@@ -480,7 +480,7 @@ static bool32 TryWriteTrainerHill_r(struct EReaderTrainerHillSet *ttdata, struct
 
 bool32 TryWriteTrainerHill(struct EReaderTrainerHillSet *arg0)
 {
-    void *var0 = AllocZeroed(0x1000);
+    void *var0 = AllocZeroed<u8>(0x1000);
     bool32 result = TryWriteTrainerHill_r(arg0, var0);
     Free(var0);
     return result;
@@ -500,7 +500,7 @@ static bool32 TryReadTrainerHill_r(struct EReaderTrainerHillSet *dst, u8 *buffer
 
 static bool32 TryReadTrainerHill(struct EReaderTrainerHillSet *arg0)
 {
-    u8 *var0 = AllocZeroed(0x1000);
+    u8 *var0 = AllocZeroed<u8>(0x1000);
     bool32 result = TryReadTrainerHill_r(arg0, var0);
     Free(var0);
     return result;
@@ -508,7 +508,7 @@ static bool32 TryReadTrainerHill(struct EReaderTrainerHillSet *arg0)
 
 bool32 ReadTrainerHillAndValidate(void)
 {
-    struct EReaderTrainerHillSet *var0 = AllocZeroed(0x1000);
+    struct EReaderTrainerHillSet *var0 = (EReaderTrainerHillSet*)AllocZeroed<u8>(0x1000);// this allocates more than just the struct
     bool32 result = TryReadTrainerHill(var0);
     Free(var0);
     return result;

@@ -4,11 +4,12 @@
 #include "main.h"
 #include "digit_obj_util.h"
 
-static EWRAM_DATA struct
+struct WorkData
 {
     u8 count;
     struct ConfettiUtil *array;
-} *sWork = NULL;
+};
+static EWRAM_DATA WorkData *sWork = NULL;
 
 static void sub_81520A8(void *dest, u16 value, u8 left, u8 top, u8 width, u8 height) // Unused.
 {
@@ -54,10 +55,10 @@ bool32 ConfettiUtil_Init(u8 count)
     if (count > 64)
         count = 64;
 
-    sWork = AllocZeroed(sizeof(*sWork));
+    sWork = AllocZeroed<WorkData>();
     if (sWork == NULL)
         return FALSE;
-    sWork->array = AllocZeroed(count * sizeof(struct ConfettiUtil));
+    sWork->array = AllocZeroed<ConfettiUtil>(count);
     if (sWork->array == NULL)
     {
         FREE_AND_SET_NULL(sWork);

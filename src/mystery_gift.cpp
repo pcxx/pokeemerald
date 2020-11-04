@@ -394,10 +394,10 @@ bool32 HandleMysteryGiftOrEReaderSetup(s32 mg_or_ereader)
         ChangeBgX(3, 0, 0);
         ChangeBgY(3, 0, 0);
 
-        SetBgTilemapBuffer(3, Alloc(0x800));
-        SetBgTilemapBuffer(2, Alloc(0x800));
-        SetBgTilemapBuffer(1, Alloc(0x800));
-        SetBgTilemapBuffer(0, Alloc(0x800));
+        SetBgTilemapBuffer(3, Alloc<u8>(0x800));
+        SetBgTilemapBuffer(2, Alloc<u8>(0x800));
+        SetBgTilemapBuffer(1, Alloc<u8>(0x800));
+        SetBgTilemapBuffer(0, Alloc<u8>(0x800));
 
         bgid_upload_textbox_1(3);
         InitWindows(sMainWindows);
@@ -1131,7 +1131,7 @@ void task_add_00_mystery_gift(void)
     data->unk4 = 0;
     data->unk6 = 0;
     data->prevPromptWindowId = 0;
-    data->buffer = AllocZeroed(0x40);
+    data->buffer = AllocZeroed<u8>(0x40);
 }
 
 void task00_mystery_gift(u8 taskId)

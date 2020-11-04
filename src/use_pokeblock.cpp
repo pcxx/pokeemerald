@@ -414,7 +414,7 @@ static const struct SpritePalette sSpritePalette_Condition =
 // When first opening the selection screen
 void ChooseMonToGivePokeblock(struct Pokeblock *pokeblock, void (*callback)(void))
 {
-    sMenu = AllocZeroed(sizeof(*sMenu));
+    sMenu = AllocZeroed<UsePokeblockMenu>();
     sInfo = &sMenu->info;
     sInfo->pokeblock = pokeblock;
     sInfo->exitCallback = callback;
@@ -425,7 +425,7 @@ void ChooseMonToGivePokeblock(struct Pokeblock *pokeblock, void (*callback)(void
 // When returning to the selection screen after feeding a pokeblock to a mon
 static void CB2_ReturnAndChooseMonToGivePokeblock(void)
 {
-    sMenu = AllocZeroed(sizeof(*sMenu));
+    sMenu = AllocZeroed<UsePokeblockMenu>();
     sInfo = &sMenu->info;
     sInfo->pokeblock = sPokeblock;
     sInfo->exitCallback = sExitCallback;
@@ -1329,9 +1329,9 @@ static bool8 LoadUsePokeblockMenuGfx(void)
         SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(11, 4));
         break;
     case 1:
-        sGraph_Gfx = Alloc(6656);
-        sGraph_Tilemap = Alloc(1280);
-        sMonFrame_TilemapPtr = Alloc(1280);
+        sGraph_Gfx = Alloc<u8>(6656);
+        sGraph_Tilemap = Alloc<u8>(1280);
+        sMonFrame_TilemapPtr = Alloc<u8>(1280);
         break;
     case 2:
         LZ77UnCompVram(sMonFrame_Tilemap, sMonFrame_TilemapPtr);

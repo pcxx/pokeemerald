@@ -264,7 +264,7 @@ bool8 AddBagItem(u16 itemId, u16 count)
         u8 pocket = ItemId_GetPocket(itemId) - 1;
 
         itemPocket = &gBagPockets[pocket];
-        newItems = AllocZeroed(itemPocket->capacity * sizeof(struct ItemSlot));
+        newItems = AllocZeroed<ItemSlot>(itemPocket->capacity);
         memcpy(newItems, itemPocket->itemSlots, itemPocket->capacity * sizeof(struct ItemSlot));
 
         if (pocket != BERRIES_POCKET)
@@ -504,7 +504,7 @@ bool8 AddPCItem(u16 itemId, u16 count)
     struct ItemSlot *newItems;
 
     // Copy PC items
-    newItems = AllocZeroed(sizeof(gSaveBlock1Ptr->pcItems));
+    newItems = AllocZeroed<ItemSlot>(50);
     memcpy(newItems, gSaveBlock1Ptr->pcItems, sizeof(gSaveBlock1Ptr->pcItems));
 
     // Use any item slots that already contain this item
@@ -748,8 +748,8 @@ bool8 AddPyramidBagItem(u16 itemId, u16 count)
     u16 *items = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
     u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
 
-    u16 *newItems = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
-    u8 *newQuantities = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
+    u16 *newItems = Alloc<u16>(PYRAMID_BAG_ITEMS_COUNT);
+    u8 *newQuantities = Alloc<u18>(PYRAMID_BAG_ITEMS_COUNT);
 
     memcpy(newItems, items, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
     memcpy(newQuantities, quantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
@@ -831,8 +831,8 @@ bool8 RemovePyramidBagItem(u16 itemId, u16 count)
     }
     else
     {
-        u16 *newItems = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
-        u8 *newQuantities = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
+        u16 *newItems = Alloc<u16>(PYRAMID_BAG_ITEMS_COUNT);
+        u8 *newQuantities = Alloc<u8>(PYRAMID_BAG_ITEMS_COUNT);
 
         memcpy(newItems, items, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
         memcpy(newQuantities, quantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));

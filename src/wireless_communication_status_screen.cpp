@@ -170,12 +170,12 @@ void ShowWirelessCommunicationScreen(void)
 static void CB2_InitWirelessCommunicationScreen(void)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
-    sStatusScreen = AllocZeroed(sizeof(struct WirelessCommunicationStatusScreen));
+    sStatusScreen = AllocZeroed<WirelessCommunicationStatusScreen>();
     SetVBlankCallback(NULL);
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
-    SetBgTilemapBuffer(1, Alloc(0x800));
-    SetBgTilemapBuffer(0, Alloc(0x800));
+    SetBgTilemapBuffer(1, Alloc<u8>(0x800));
+    SetBgTilemapBuffer(0, Alloc<u8>(0x800));
     DecompressAndLoadBgGfxUsingHeap(1, sBgTiles_Gfx, 0, 0, 0);
     CopyToBgTilemapBuffer(1, sBgTiles_Tilemap, 0, 0);
     InitWindows(sWindowTemplates);
