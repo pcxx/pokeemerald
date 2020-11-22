@@ -1428,8 +1428,8 @@ static void FadeScreenToWhite_Step(u8 taskId)
 
 static void AnimSpikes(struct Sprite *sprite)
 {
-    u16 x;
-    u16 y;
+    s16 x;
+    s16 y;
 
     InitSpritePosToAnimAttacker(sprite, TRUE);
     SetAverageBattlerPositions(gBattleAnimTarget, FALSE, &x, &y);
@@ -1982,7 +1982,7 @@ static void TormentAttacker_Step(u8 taskId)
     case 4:
         for (i = 0, j = 0; i < MAX_SPRITES; i++)
         {
-            if (gSprites[i]._template == &gThoughtBubbleSpriteTemplate)
+            if (gSprites[i].template_ == &gThoughtBubbleSpriteTemplate)
             {
                 gSprites[i].data[0] = taskId;
                 gSprites[i].data[1] = 6;
@@ -2290,7 +2290,7 @@ void AnimTask_TransformMon(u8 taskId)
         else
             position = GetBattlerPosition(gBattleAnimAttacker);
 
-        src = gMonSpritesGfxPtr->sprites[position] + (gBattleMonForms[gBattleAnimAttacker] << 11);
+        src = (u8*)gMonSpritesGfxPtr->sprites[position] + (gBattleMonForms[gBattleAnimAttacker] << 11);
         dest = animBg.bgTiles;
         CpuCopy32(src, dest, 0x800);
         LoadBgTiles(1, animBg.bgTiles, 0x800, animBg.tilesOffset);

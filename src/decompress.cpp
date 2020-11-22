@@ -46,7 +46,7 @@ void LoadCompressedSpritePalette(const struct CompressedSpritePalette *src)
     struct SpritePalette dest;
 
     LZ77UnCompWram(src->data, gDecompressionBuffer);
-    dest.data = (void*) gDecompressionBuffer;
+    dest.data = (u16*) gDecompressionBuffer;
     dest.tag = src->tag;
     LoadSpritePalette(&dest);
 }
@@ -56,7 +56,7 @@ void LoadCompressedSpritePaletteOverrideBuffer(const struct CompressedSpritePale
     struct SpritePalette dest;
 
     LZ77UnCompWram(a->data, buffer);
-    dest.data = buffer;
+    dest.data = (u16*)buffer;
     dest.tag = a->tag;
     LoadSpritePalette(&dest);
 }
@@ -105,12 +105,12 @@ void LoadSpecialPokePic(const struct CompressedSpriteSheet *src, void *dest, s32
         LZ77UnCompWram(src->data, dest);
 
     DuplicateDeoxysTiles(dest, species);
-    DrawSpindaSpots(species, personality, dest, isFrontPic);
+    DrawSpindaSpots(species, personality, (u8*)dest, isFrontPic);
 }
 
 void Unused_LZDecompressWramIndirect(const void **src, void *dest)
 {
-    LZ77UnCompWram(*src, dest);
+    LZ77UnCompWram((u32*)*src, dest);
 }
 
 void sub_803471C(s32 object_size, s32 object_count, u8 *src_tiles, u8 *dest_tiles)
@@ -287,7 +287,7 @@ bool8 LoadCompressedSpritePaletteUsingHeap(const struct CompressedSpritePalette 
 
     buffer = AllocZeroed<u8>(*((u32*)(&src->data[0])) >> 8);
     LZ77UnCompWram(src->data, buffer);
-    dest.data = buffer;
+    dest.data = (u16*)buffer;
     dest.tag = src->tag;
 
     LoadSpritePalette(&dest);
@@ -327,7 +327,7 @@ void LoadSpecialPokePic_2(const struct CompressedSpriteSheet *src, void *dest, s
         LZ77UnCompWram(src->data, dest);
 
     DuplicateDeoxysTiles(dest, species);
-    DrawSpindaSpots(species, personality, dest, isFrontPic);
+    DrawSpindaSpots(species, personality, (u8*)dest, isFrontPic);
 }
 
 void HandleLoadSpecialPokePic_2(const struct CompressedSpriteSheet *src, void *dest, s32 species, u32 personality) // a copy of HandleLoadSpecialPokePic
@@ -384,11 +384,11 @@ void LoadSpecialPokePic_DontHandleDeoxys(const struct CompressedSpriteSheet *src
     else
         LZ77UnCompWram(src->data, dest);
 
-    DrawSpindaSpots(species, personality, dest, isFrontPic);
+    DrawSpindaSpots(species, personality, (u8*)dest, isFrontPic);
 }
 
 static void DuplicateDeoxysTiles(void *pointer, s32 species)
 {
     if (species == SPECIES_DEOXYS)
-        CpuCopy32(pointer + 0x800, pointer, 0x800);
+        CpuCopy32((u8*)pointer + 0x800, pointer, 0x800);
 }

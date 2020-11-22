@@ -1461,7 +1461,7 @@ static void UpdateDomeConfetti(struct ConfettiUtil *util)
 static void Task_DoDomeConfetti(u8 taskId)
 {
     u32 id = 0;
-    u16 *data = gTasks[taskId].data;
+    u16 *data = (u16*)gTasks[taskId].data;
 
     switch (tState)
     {

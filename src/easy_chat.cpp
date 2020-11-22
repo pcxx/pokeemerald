@@ -3937,7 +3937,7 @@ static void sub_811D60C(void)
     u8 frameId;
     u16 *tilemap;
 
-    tilemap = GetBgTilemapBuffer(3);
+    tilemap = (u16*)GetBgTilemapBuffer(3);
     frameId = GetEasyChatScreenFrameId();
     switch (sPhraseFrameDimensions[frameId].footerId)
     {

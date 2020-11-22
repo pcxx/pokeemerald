@@ -156,7 +156,7 @@ void ToggleBg2(bool8 showBg);
 // code
 bool32 OpenPartyConditionMenu(void)
 {
-    struct Pokenav7Struct *structPtr = AllocSubstruct(POKENAV_SUBSTRUCT_MON_MARK_MENU, sizeof(struct Pokenav7Struct));
+    struct Pokenav7Struct *structPtr = h_AllocSubstruct<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     if (structPtr == NULL)
         return FALSE;
@@ -170,26 +170,26 @@ bool32 OpenPartyConditionMenu(void)
 
 void CreatePartyConditionLoopedTask(s32 id)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
     structPtr->loopedTaskId = CreateLoopedTask(sPartyConditionLoopedTaskFuncs[id], 1);
     structPtr->callback = GetPartyConditionLoopedTaskActive;
 }
 
 u32 IsPartyConditionLoopedTaskActive(void)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
     return structPtr->callback();
 }
 
 u32 GetPartyConditionLoopedTaskActive(void)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
     return IsLoopedTaskActive(structPtr->loopedTaskId);
 }
 
 u32 LoopedTask_OpenPartyConditionGraph(s32 state)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     switch (state)
     {
@@ -339,7 +339,7 @@ u32 LoopedTask_OpenPartyConditionGraph(s32 state)
 
 u32 LoopedTask_ExitPartyConditionMenu(s32 state)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     switch (state)
     {
@@ -372,7 +372,7 @@ u32 LoopedTask_ExitPartyConditionMenu(s32 state)
 
 u32 LoopedTask_TransitionMons(s32 state)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
     struct ConditionGraph *unkPtr = GetConditionGraphDataPtr();
 
     switch (state)
@@ -429,7 +429,7 @@ u32 LoopedTask_TransitionMons(s32 state)
 
 u32 LoopedTask_MoveCursorNoTransition(s32 state)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     switch (state)
     {
@@ -473,7 +473,7 @@ u32 LoopedTask_MoveCursorNoTransition(s32 state)
 
 u32 LoopedTask_SlideMonOut(s32 state)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     switch (state)
     {
@@ -559,7 +559,7 @@ bool32 UpdateConditionGraphWindows(u8 mode, u16 bufferIndex, bool8 winMode)
 {
     u8 text[32];
     const u8 *str;
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     switch (mode)
     {
@@ -626,7 +626,7 @@ bool32 UpdateConditionGraphWindows(u8 mode, u16 bufferIndex, bool8 winMode)
 
 void CopyUnusedConditionWindowsToVram(void)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     CopyWindowToVram(structPtr->unusedWindowId1, 3);
     CopyWindowToVram(structPtr->unusedWindowId2, 3);
@@ -661,7 +661,7 @@ void CreateMonMarkingsOrPokeballIndicators(void)
     struct SpriteSheet sprSheet;
     struct Sprite *sprite;
     u16 i, spriteId;
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     LoadConditionSelectionIcons(sprSheets, &sprTemplate, sprPals);
     if (IsConditionMenuSearchMode() == TRUE)
@@ -769,7 +769,7 @@ void sub_81CEBF4(struct Pokenav7Struct *structPtr)
 
 void FreePartyConditionSubstruct2(void)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     RemoveWindow(structPtr->nameGenderWindowId);
     if (IsConditionMenuSearchMode() == TRUE)
@@ -791,7 +791,7 @@ void FreePartyConditionSubstruct2(void)
 
 void MonPicGfxSpriteCallback(struct Sprite *sprite)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
     sprite->pos1.x = structPtr->monTransitionX + 38;
 }
 
@@ -801,13 +801,13 @@ void CreateConditionMonPic(u8 id)
     struct SpriteSheet sprSheet;
     struct SpritePalette sprPal;
     u8 spriteId;
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     if (structPtr->monPicSpriteId == 0xFF)
     {
         LoadConditionMonPicTemplate(&sprSheet, &sprTemplate, &sprPal);
         sprSheet.data = GetConditionMonPicGfx(id);
-        sprPal.data = GetConditionMonPal(id);
+        sprPal.data = (u16*)GetConditionMonPal(id);
         structPtr->monPalIndex = LoadSpritePalette(&sprPal);
         structPtr->monGfxTileStart = LoadSpriteSheet(&sprSheet);
         spriteId = CreateSprite(&sprTemplate, 38, 104, 0);
@@ -822,7 +822,7 @@ void CreateConditionMonPic(u8 id)
         {
             structPtr->monPicSpriteId = spriteId;
             gSprites[structPtr->monPicSpriteId].callback = MonPicGfxSpriteCallback;
-            structPtr->unk181C = (void*)(VRAM) + 0x10000 + (structPtr->monGfxTileStart * 32);
+            structPtr->unk181C = (void*)(VRAM + 0x10000 + (structPtr->monGfxTileStart * 32));
             structPtr->monPalIndex = (structPtr->monPalIndex * 16) + 0x100;
         }
     }
@@ -876,7 +876,7 @@ void sub_81CEEC8(void)
 
 u8 GetMonMarkingsData(void)
 {
-    struct Pokenav7Struct *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_MARK_MENU);
+    struct Pokenav7Struct *structPtr = h_GetSubstructPtr<Pokenav7Struct>(POKENAV_SUBSTRUCT_MON_MARK_MENU);
 
     if (IsConditionMenuSearchMode() == 1)
         return structPtr->monMarks.markings;

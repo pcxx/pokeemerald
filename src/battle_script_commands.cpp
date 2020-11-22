@@ -3647,7 +3647,7 @@ static void Cmd_jumpifbyte(void)
 static void Cmd_jumpifhalfword(void)
 {
     u8 caseID = gBattlescriptCurrInstr[1];
-    const u16* memHword = readPtr(gBattlescriptCurrInstr + 2);
+    const u16* memHword = (u16*)readPtr(gBattlescriptCurrInstr + 2);
     u16 value = read16(gBattlescriptCurrInstr + 6);
     const u8* jumpPtr = readPtr(gBattlescriptCurrInstr + 8);
 
@@ -3685,7 +3685,7 @@ static void Cmd_jumpifhalfword(void)
 static void Cmd_jumpifword(void)
 {
     u8 caseID = gBattlescriptCurrInstr[1];
-    const u32* memWord = readPtr(gBattlescriptCurrInstr + 2);
+    const u32* memWord = (u32*)readPtr(gBattlescriptCurrInstr + 2);
     u32 value = read32(gBattlescriptCurrInstr + 6);
     const u8* jumpPtr = readPtr(gBattlescriptCurrInstr + 10);
 
@@ -3828,7 +3828,7 @@ static void Cmd_orbyte(void)
 
 static void Cmd_orhalfword(void)
 {
-    u16* memHword = readPtr(gBattlescriptCurrInstr + 1);
+    u16* memHword = (u16*)readPtr(gBattlescriptCurrInstr + 1);
     u16 val = read16(gBattlescriptCurrInstr + 5);
 
     *memHword |= val;
@@ -3837,7 +3837,7 @@ static void Cmd_orhalfword(void)
 
 static void Cmd_orword(void)
 {
-    u32* memWord = readPtr(gBattlescriptCurrInstr + 1);
+    u32* memWord = (u32*)readPtr(gBattlescriptCurrInstr + 1);
     u32 val = read32(gBattlescriptCurrInstr + 5);
 
     *memWord |= val;
@@ -3853,7 +3853,7 @@ static void Cmd_bicbyte(void)
 
 static void Cmd_bichalfword(void)
 {
-    u16* memHword = readPtr(gBattlescriptCurrInstr + 1);
+    u16* memHword = (u16*)readPtr(gBattlescriptCurrInstr + 1);
     u16 val = read16(gBattlescriptCurrInstr + 5);
 
     *memHword &= ~val;
@@ -3862,7 +3862,7 @@ static void Cmd_bichalfword(void)
 
 static void Cmd_bicword(void)
 {
-    u32* memWord = readPtr(gBattlescriptCurrInstr + 1);
+    u32* memWord = (u32*)readPtr(gBattlescriptCurrInstr + 1);
     u32 val = read32(gBattlescriptCurrInstr + 5);
 
     *memWord &= ~val;
@@ -3963,7 +3963,7 @@ static void Cmd_playanimation(void)
     const u16* argumentPtr;
 
     gActiveBattler = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
-    argumentPtr = readPtr(gBattlescriptCurrInstr + 3);
+    argumentPtr = (u16*)readPtr(gBattlescriptCurrInstr + 3);
 
     if (gBattlescriptCurrInstr[2] == B_ANIM_STATS_CHANGE
         || gBattlescriptCurrInstr[2] == B_ANIM_SNATCH_MOVE
@@ -4006,7 +4006,7 @@ static void Cmd_playanimation2(void) // animation Id is stored in the first poin
 
     gActiveBattler = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
     animationIdPtr = readPtr(gBattlescriptCurrInstr + 2);
-    argumentPtr = readPtr(gBattlescriptCurrInstr + 6);
+    argumentPtr = (u16*)readPtr(gBattlescriptCurrInstr + 6);
 
     if (*animationIdPtr == B_ANIM_STATS_CHANGE
         || *animationIdPtr == B_ANIM_SNATCH_MOVE
@@ -7935,7 +7935,7 @@ static void Cmd_painsplitdmgcalc(void)
     {
         s32 hpDiff = (gBattleMons[gBattlerAttacker].hp + gBattleMons[gBattlerTarget].hp) / 2;
         s32 painSplitHp = gBattleMoveDamage = gBattleMons[gBattlerTarget].hp - hpDiff;
-        u8* storeLoc = (void*)(&gBattleScripting.painSplitHp);
+        u8* storeLoc = (u8*)(&gBattleScripting.painSplitHp);
 
         storeLoc[0] = (painSplitHp);
         storeLoc[1] = (painSplitHp & 0x0000FF00) >> 8;

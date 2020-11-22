@@ -294,7 +294,7 @@ bool32 InitPokenavMainMenu(void)
 {
     struct PokenavMainMenuResources *structPtr;
 
-    structPtr = AllocSubstruct(POKENAV_SUBSTRUCT_MAIN_MENU, sizeof(struct PokenavMainMenuResources));
+    structPtr = h_AllocSubstruct<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     if (structPtr == NULL)
         return FALSE;
 
@@ -306,7 +306,7 @@ bool32 InitPokenavMainMenu(void)
 
 u32 PokenavMainMenuLoopedTaskIsActive(void)
 {
-    struct PokenavMainMenuResources *structPtr = h_h_GetSubstructPtr<PokenavMainMenuResources><PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
+    struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
     return IsLoopedTaskActive(structPtr->currentTaskId);
 }
 
@@ -374,7 +374,7 @@ static u32 LoopedTask_InitPokenavMenu(s32 a0)
 void SetActiveMenuLoopTasks(void (*createLoopTask)(s32), bool32 (*isLoopTaskActive)())
 {
     struct PokenavMainMenuResources *structPtr = h_GetSubstructPtr<PokenavMainMenuResources>(POKENAV_SUBSTRUCT_MAIN_MENU);
-    structPtr->loopTask = createLoopTask;
+    structPtr->loopTask = reinterpret_cast<decltype(structPtr->loopTask)>(createLoopTask);
     structPtr->isLoopTaskActiveFunc = isLoopTaskActive;
     structPtr->unused = 0;
 }
@@ -681,7 +681,7 @@ static void LoadLeftHeaderGfxForMenu(u32 menuGfxId)
     size = GetDecompressedDataSize(sPokenavMenuLeftHeaderSpriteSheets[menuGfxId].data);
     LoadPalette(&gPokenavLeftHeader_Pal[tag * 16], (IndexOfSpritePaletteTag(1) * 16) + 0x100, 0x20);
     LZ77UnCompWram(sPokenavMenuLeftHeaderSpriteSheets[menuGfxId].data, gDecompressionBuffer);
-    RequestDma3Copy(gDecompressionBuffer, (void *)OBJ_VRAM0 + (GetSpriteTileStartByTag(2) * 32), size, 1);
+    RequestDma3Copy(gDecompressionBuffer, (u8 *)OBJ_VRAM0 + (GetSpriteTileStartByTag(2) * 32), size, 1);
     structPtr->leftHeaderSprites[1]->oam.tileNum = GetSpriteTileStartByTag(2) + sPokenavMenuLeftHeaderSpriteSheets[menuGfxId].size;
 
     if (menuGfxId == POKENAV_GFX_MAP_MENU_ZOOMED_OUT || menuGfxId == POKENAV_GFX_MAP_MENU_ZOOMED_IN)
@@ -701,7 +701,7 @@ static void LoadLeftHeaderGfxForSubMenu(u32 menuGfxId)
     size = GetDecompressedDataSize(sPokenavSubMenuLeftHeaderSpriteSheets[menuGfxId].data);
     LoadPalette(&gPokenavLeftHeader_Pal[tag * 16], (IndexOfSpritePaletteTag(2) * 16) + 0x100, 0x20);
     LZ77UnCompWram(sPokenavSubMenuLeftHeaderSpriteSheets[menuGfxId].data, &gDecompressionBuffer[0x1000]);
-    RequestDma3Copy(&gDecompressionBuffer[0x1000], (void *)VRAM + 0x10800 + (GetSpriteTileStartByTag(2) * 32), size, 1);
+    RequestDma3Copy(&gDecompressionBuffer[0x1000], (u8 *)VRAM + 0x10800 + (GetSpriteTileStartByTag(2) * 32), size, 1);
 }
 
 void ShowLeftHeaderGfx(u32 menuGfxId, bool32 isMain, bool32 isOnRightSide)

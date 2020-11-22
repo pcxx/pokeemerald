@@ -363,7 +363,7 @@ static void VBlankCB_ContestPainting(void)
 static void InitContestMonPixels(u16 species, u8 whichSprite)
 {
     const void *pal = GetMonSpritePalFromSpeciesAndPersonality(species, gContestPaintingWinner->trainerId, gContestPaintingWinner->personality);
-    LZDecompressVram(pal, gContestPaintingMonPalette);
+    LZDecompressVram((u32*)pal, gContestPaintingMonPalette);
     if (whichSprite == 0)
     {
         HandleLoadSpecialPokePic_DontHandleDeoxys(
@@ -371,7 +371,7 @@ static void InitContestMonPixels(u16 species, u8 whichSprite)
             gMonSpritesGfxPtr->sprites[1],
             species,
             gContestPaintingWinner->personality);
-        _InitContestMonPixels(gMonSpritesGfxPtr->sprites[1], gContestPaintingMonPalette, (void *)gContestMonPixels);
+        _InitContestMonPixels((u8*)gMonSpritesGfxPtr->sprites[1], gContestPaintingMonPalette, (u16 (*)[64][64])gContestMonPixels);
     }
     else
     {
@@ -380,7 +380,7 @@ static void InitContestMonPixels(u16 species, u8 whichSprite)
             gMonSpritesGfxPtr->sprites[0],
             species,
             gContestPaintingWinner->personality);
-        _InitContestMonPixels(gMonSpritesGfxPtr->sprites[0], gContestPaintingMonPalette, (void *)gContestMonPixels);
+        _InitContestMonPixels((u8*)gMonSpritesGfxPtr->sprites[0], gContestPaintingMonPalette, (u16 (*)[64][64])gContestMonPixels);
     }
 }
 
@@ -545,8 +545,8 @@ static u8 GetImageEffectForContestWinner(u8 contestWinnerId)
 
 static void AllocPaintingResources(void)
 {
-    gContestPaintingMonPalette = AllocZeroed<u16>(OBJ_PLTT_SIZE)/2;
-    gContestMonPixels = AllocZeroed<u16>(0x2000/2);
+    gContestPaintingMonPalette = AllocZeroed<u16>(OBJ_PLTT_SIZE/2);
+    gContestMonPixels = reinterpret_cast<decltype(gContestMonPixels)>(AllocZeroed<u16>(0x2000/2));
 }
 
 static void DoContestPaintingImageProcessing(u8 imageEffect)

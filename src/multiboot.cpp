@@ -439,7 +439,8 @@ static int MultiBootHandShake(struct MultiBootParam *mp)
 NAKED
 static void MultiBootWaitCycles(u32 cycles)
 {
-    asm_unified("\
+    // TODO removed the .syntax stuff... this needs some looking into
+    asm("\
     mov  r2, pc\n\
     lsrs r2, 24\n\
     movs r1, 12\n\

@@ -241,7 +241,7 @@ static void InitTransitionStructVars(void);
 static void FadeScreenBlack(void);
 static void CreatePhase1Task(s16 a0, s16 a1, s16 a2, s16 a3, s16 a4);
 static void sub_814A014(u16 *a0, s16 a1, s16 a2, s16 a3);
-static void sub_8149F98(s16 *array, s16 sinAdd, s16 index, s16 indexIncrementer, s16 amplitude, s16 arrSize);
+static void sub_8149F98(u16 *array, s16 sinAdd, s16 index, s16 indexIncrementer, s16 amplitude, s16 arrSize);
 static void GetBg0TilemapDst(u16 **tileset);
 static void sub_814A1AC(s16 *a0, s16 a1, s16 a2, s16 a3, s16 a4, s16 a5, s16 a6);
 static bool8 sub_814A228(s16 *a0, bool8 a1, bool8 a2);
@@ -1602,13 +1602,13 @@ static void Transition_BigPokeball_Vblank(void)
 static void VBlankCB0_Phase2_BigPokeball(void)
 {
     Transition_BigPokeball_Vblank();
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_BG0HOFS, 0xA2400001);
+    DmaSet<0>((vu16*)gScanlineEffectRegBuffers[1], &REG_BG0HOFS, 0xA2400001);
 }
 
 static void VBlankCB1_Phase2_BigPokeball(void)
 {
     Transition_BigPokeball_Vblank();
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
+    DmaSet<0>((vu16*)gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
 }
 
 static void Phase2Task_PokeballsTrail(u8 taskId)
@@ -1909,7 +1909,7 @@ static void VBlankCB_Phase2_Clockwise_BlackFade(void)
     REG_WINOUT = sTransitionStructPtr->WINOUT;
     REG_WIN0V = sTransitionStructPtr->WIN0V;
     REG_WIN0H = gScanlineEffectRegBuffers[1][0];
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
+    DmaSet<0>((vu16*)gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
 }
 
 static void Phase2Task_Ripple(u8 taskId)
@@ -2065,7 +2065,7 @@ static void VBlankCB_Phase2_Wave(void)
     REG_WININ = sTransitionStructPtr->WININ;
     REG_WINOUT = sTransitionStructPtr->WINOUT;
     REG_WIN0V = sTransitionStructPtr->WIN0V;
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
+    DmaSet<0>((vu16*)gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
 }
 
 static void Phase2Task_Sidney(u8 taskId)
@@ -2350,7 +2350,7 @@ static void VBlankCB0_Phase2_Mugshots(void)
     REG_WININ = sTransitionStructPtr->WININ;
     REG_WINOUT = sTransitionStructPtr->WINOUT;
     REG_WIN0V = sTransitionStructPtr->WIN0V;
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
+    DmaSet<0>((vu16*)gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
 }
 
 static void VBlankCB1_Phase2_Mugshots(void)
@@ -2360,7 +2360,7 @@ static void VBlankCB1_Phase2_Mugshots(void)
     if (sTransitionStructPtr->VBlank_DMA != 0)
         DmaCopy<3>((vu16*)gScanlineEffectRegBuffers[0], (vu16*)gScanlineEffectRegBuffers[1], 320/2);
     REG_BLDCNT = sTransitionStructPtr->BLDCNT;
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_BLDY, 0xA2400001);
+    DmaSet<0>((vu16*)gScanlineEffectRegBuffers[1], &REG_BLDY, 0xA2400001);
 }
 
 static void HBlankCB_Phase2_Mugshots(void)
@@ -2583,7 +2583,7 @@ static void VBlankCB_Phase2_Slice(void)
     REG_WIN0V = sTransitionStructPtr->WIN0V;
     if (sTransitionStructPtr->VBlank_DMA)
         DmaCopy<3>((vu16*)gScanlineEffectRegBuffers[0], (vu16*)gScanlineEffectRegBuffers[1], 320/2);
-    DmaSet(0, &gScanlineEffectRegBuffers[1][160], &REG_WIN0H, 0xA2400001);
+    DmaSet<0>((vu16*)&gScanlineEffectRegBuffers[1][160], &REG_WIN0H, 0xA2400001);
 }
 
 static void HBlankCB_Phase2_Slice(void)
@@ -3243,7 +3243,7 @@ static void VBlankCB_Phase2_Rayquaza(void)
     else
         dmaSrc = gScanlineEffectRegBuffers[0];
 
-    DmaSet(0, dmaSrc, &REG_BG0VOFS, 0xA2400001);
+    DmaSet<0>((vu16*)dmaSrc, &REG_BG0VOFS, 0xA2400001);
 }
 
 static void Phase2Task_WhiteFade(u8 taskId)
@@ -3348,7 +3348,7 @@ static void VBlankCB0_Phase2_WhiteFade(void)
     REG_WIN0V = sTransitionStructPtr->WIN0V;
     if (sTransitionStructPtr->VBlank_DMA)
         DmaCopy<3>((vu16*)gScanlineEffectRegBuffers[0], (vu16*)gScanlineEffectRegBuffers[1], 320/2);
-    DmaSet(0, &gScanlineEffectRegBuffers[1][160], &REG_WIN0H, 0xA2400001);
+    DmaSet<0>((vu16*)&gScanlineEffectRegBuffers[1][160], &REG_WIN0H, 0xA2400001);
 }
 
 static void VBlankCB1_Phase2_WhiteFade(void)
@@ -3577,7 +3577,7 @@ static void VBlankCB_Phase2_Shards(void)
     REG_WINOUT = sTransitionStructPtr->WINOUT;
     REG_WIN0V = sTransitionStructPtr->WIN0V;
     REG_WIN0H = gScanlineEffectRegBuffers[1][0];
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
+    DmaSet<0>((vu16*)gScanlineEffectRegBuffers[1], &REG_WIN0H, 0xA2400001);
 }
 
 // sub-task for phase2
@@ -3712,7 +3712,7 @@ static void FadeScreenBlack(void)
     BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
 }
 
-static void sub_8149F98(s16 *array, s16 sinAdd, s16 index, s16 indexIncrementer, s16 amplitude, s16 arrSize)
+static void sub_8149F98(u16 *array, s16 sinAdd, s16 index, s16 indexIncrementer, s16 amplitude, s16 arrSize)
 {
     u8 i;
     for (i = 0; arrSize > 0; arrSize--, i++, index += indexIncrementer)

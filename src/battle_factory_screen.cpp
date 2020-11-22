@@ -2369,7 +2369,7 @@ static void Task_HandleSwapScreenYesNo(u8 taskId)
                     gTasks[taskId].data[1] = 1;
                     hiPtr = gTasks[taskId].data[6];
                     loPtr = gTasks[taskId].data[7];
-                    gTasks[taskId].func = (void*)((hiPtr << 16) | loPtr);
+                    gTasks[taskId].func = (TaskFunc)((hiPtr << 16) | loPtr);
                 }
                 else
                 {
@@ -2377,7 +2377,7 @@ static void Task_HandleSwapScreenYesNo(u8 taskId)
                     sub_819EA64(4);
                     hiPtr = gTasks[taskId].data[6];
                     loPtr = gTasks[taskId].data[7];
-                    gTasks[taskId].func = (void*)((hiPtr << 16) | loPtr);
+                    gTasks[taskId].func = (TaskFunc)((hiPtr << 16) | loPtr);
                 }
             }
             else if (JOY_NEW(B_BUTTON))
@@ -2387,7 +2387,7 @@ static void Task_HandleSwapScreenYesNo(u8 taskId)
                 sub_819EA64(4);
                 hiPtr = gTasks[taskId].data[6];
                 loPtr = gTasks[taskId].data[7];
-                gTasks[taskId].func = (void*)((hiPtr << 16) | loPtr);
+                gTasks[taskId].func = (TaskFunc)((hiPtr << 16) | loPtr);
             }
             else if (JOY_REPEAT(DPAD_UP))
             {
@@ -2920,7 +2920,7 @@ static void sub_819D588(u8 taskId)
             gTasks[taskId].data[0] = gTasks[taskId].data[5];
             loPtr = gTasks[taskId].data[6];
             hiPtr = gTasks[taskId].data[7];
-            gTasks[taskId].func = (void *)((loPtr << 0x10) | (hiPtr));
+            gTasks[taskId].func = (TaskFunc)((loPtr << 0x10) | (hiPtr));
         }
         break;
     }
@@ -3022,7 +3022,7 @@ static void sub_819D770(u8 taskId)
         gTasks[taskId].data[0] = gTasks[taskId].data[5];
         loPtr = gTasks[taskId].data[6];
         hiPtr = gTasks[taskId].data[7];
-        gTasks[taskId].func = (void *)((loPtr << 0x10) | (hiPtr));
+        gTasks[taskId].func = (TaskFunc)((loPtr << 0x10) | (hiPtr));
         break;
     }
 }

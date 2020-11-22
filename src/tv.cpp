@@ -3602,12 +3602,12 @@ void ReceiveTvShowsData(void *src, u32 size, u8 masterIdx)
     TVShow (*rmBuffer2)[4][25];
     TVShow (*rmBuffer)[4][25];
 
-    rmBuffer2 = Alloc<TVShow>(4 * 25);
+    rmBuffer2 = reinterpret_cast<decltype(rmBuffer2)>(Alloc<TVShow>(4 * 25));
     if (rmBuffer2 != NULL)
     {
         for (i = 0; i < 4; i ++)
         {
-            memcpy((*rmBuffer2)[i], src + i * size, sizeof((*rmBuffer2)[i]));
+            memcpy((*rmBuffer2)[i], (u8*)src + i * size, sizeof((*rmBuffer2)[i]));
         }
         rmBuffer = rmBuffer2;
         for (i = 0; i < GetLinkPlayerCount(); i ++)
@@ -4019,12 +4019,12 @@ void ReceivePokeNewsData(void *src, u32 size, u8 masterIdx)
     PokeNews (*rmBuffer2)[4][16];
     PokeNews (*rmBuffer)[4][16];
 
-    rmBuffer2 = Alloc<TVShow>(4 * 16);
+    rmBuffer2 = reinterpret_cast<decltype(rmBuffer2)>(Alloc<PokeNews>(4 * 16));
     if (rmBuffer2 != NULL)
     {
         for (i = 0; i < 4; i ++)
         {
-            memcpy((*rmBuffer2)[i], src + i * size, sizeof((*rmBuffer2)[i]));
+            memcpy((*rmBuffer2)[i], (u8*)src + i * size, sizeof((*rmBuffer2)[i]));
         }
         rmBuffer = rmBuffer2;
         switch (masterIdx)

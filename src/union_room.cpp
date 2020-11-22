@@ -351,7 +351,7 @@ void TryBecomeLinkLeader(void)
     struct WirelessLink_Leader *data;
 
     taskId = CreateTask(Task_TryBecomeLinkLeader, 0);
-    sWirelessLinkMain.leader = data = (void*)(gTasks[taskId].data);
+    sWirelessLinkMain.leader = data = (WirelessLink_Leader*)(gTasks[taskId].data);
     sLeader = data;
 
     data->state = LL_STATE_INIT;
@@ -937,7 +937,7 @@ void TryJoinLinkGroup(void)
     struct WirelessLink_Group *data;
 
     taskId = CreateTask(Task_TryJoinLinkGroup, 0);
-    sWirelessLinkMain.group = data = (void*)(gTasks[taskId].data);
+    sWirelessLinkMain.group = data = (WirelessLink_Group*)(gTasks[taskId].data);
     sGroup = data;
 
     data->state = LG_STATE_INIT;
@@ -1263,7 +1263,7 @@ u8 CreateTask_ListenToWireless(void)
     struct WirelessLink_Group *data;
 
     taskId = CreateTask(Task_ListenToWireless, 0);
-    sWirelessLinkMain.group = data = (void*)(gTasks[taskId].data);
+    sWirelessLinkMain.group = data = (WirelessLink_Group*)(gTasks[taskId].data);
 
     data->state = 0;
     data->textState = 0;
@@ -1589,7 +1589,7 @@ static void CB2_TransitionToCableClub(void)
 
 static void CreateTrainerCardInBuffer(void *dest, bool32 setWonderCard)
 {
-    u16 *argAsU16Ptr = dest;
+    u16 *argAsU16Ptr = (u16*)dest;
 
     TrainerCard_GenerateCardForPlayer((struct TrainerCard *)argAsU16Ptr);
     if (setWonderCard)
@@ -1826,7 +1826,7 @@ void MEvent_CreateTask_Leader(u32 activity)
     struct WirelessLink_Leader *data;
 
     taskId = CreateTask(Task_MEvent_Leader, 0);
-    sWirelessLinkMain.leader = data = (void*)(gTasks[taskId].data);
+    sWirelessLinkMain.leader = data = (WirelessLink_Leader*)(gTasks[taskId].data);
 
     data->state = 0;
     data->textState = 0;
@@ -2034,7 +2034,7 @@ void MEvent_CreateTask_CardOrNewsWithFriend(u32 activity)
     struct WirelessLink_Group *data;
 
     taskId = CreateTask(Task_CardOrNewsWithFriend, 0);
-    sWirelessLinkMain.group = data = (void*)(gTasks[taskId].data);
+    sWirelessLinkMain.group = data = (WirelessLink_Group*)(gTasks[taskId].data);
     sGroup = data;
 
     data->state = 0;
@@ -2203,7 +2203,7 @@ void MEvent_CreateTask_CardOrNewsOverWireless(u32 activity)
     struct WirelessLink_Group *data;
 
     taskId = CreateTask(Task_CardOrNewsOverWireless, 0);
-    sWirelessLinkMain.group = data = (void*)(gTasks[taskId].data);
+    sWirelessLinkMain.group = data = (WirelessLink_Group*)(gTasks[taskId].data);
     sGroup = data;
 
     data->state = 0;
@@ -3418,7 +3418,7 @@ static void Task_SearchForChildOrParent(u8 taskId)
 {
     s32 i, j;
     struct WirelessGnameUnamePair gname_uname;
-    struct UnkStruct_Main4 **ptr = (void*) gTasks[taskId].data;
+    struct UnkStruct_Main4 **ptr = (UnkStruct_Main4 **) gTasks[taskId].data;
     bool8 isParent;
 
     for (i = 0; i < RFU_CHILD_MAX; i++)
@@ -3455,7 +3455,7 @@ static void Task_SearchForChildOrParent(u8 taskId)
 static u8 CreateTask_SearchForChildOrParent(struct UnkStruct_Main4 * main4_parent, struct UnkStruct_Main4 * main4_child, u32 linkGroup)
 {
     u8 taskId = CreateTask(Task_SearchForChildOrParent, 0);
-    struct UnkStruct_Main4 ** data = (void *)gTasks[taskId].data;
+    struct UnkStruct_Main4 ** data = (UnkStruct_Main4 **)gTasks[taskId].data;
     data[0] = main4_parent;
     data[1] = main4_child;
     gTasks[taskId].data[4] = linkGroup;
@@ -3465,7 +3465,7 @@ static u8 CreateTask_SearchForChildOrParent(struct UnkStruct_Main4 * main4_paren
 static void Task_ListenForPartnersWithCompatibleSerialNos(u8 taskId)
 {
     s32 i, j;
-    struct UnkStruct_Main4 **ptr = (void*) gTasks[taskId].data;
+    struct UnkStruct_Main4 **ptr = (UnkStruct_Main4 **) gTasks[taskId].data;
 
     for (i = 0; i < RFU_CHILD_MAX; i++)
     {
@@ -3510,7 +3510,7 @@ static bool32 HasWonderCardOrNewsByLinkGroup(struct GFtgtGname *gname, s16 linkG
 static void Task_ListenForPartnersWithSerial7F7D(u8 taskId)
 {
     s32 i;
-    struct UnkStruct_Main4 **ptr = (void*) gTasks[taskId].data;
+    struct UnkStruct_Main4 **ptr = (UnkStruct_Main4 **) gTasks[taskId].data;
 
     for (i = 0; i < RFU_CHILD_MAX; i++)
     {
@@ -3525,7 +3525,7 @@ static void Task_ListenForPartnersWithSerial7F7D(u8 taskId)
 static u8 CreateTask_ListenForPartnersWithCompatibleSerialNos(struct UnkStruct_Main4 * main4, u32 linkGroup)
 {
     u8 taskId = CreateTask(Task_ListenForPartnersWithCompatibleSerialNos, 0);
-    struct UnkStruct_Main4 **ptr = (void*) gTasks[taskId].data;
+    struct UnkStruct_Main4 **ptr = (UnkStruct_Main4 **) gTasks[taskId].data;
     ptr[0] = main4;
     gTasks[taskId].data[2] = linkGroup;
     return taskId;
@@ -3534,7 +3534,7 @@ static u8 CreateTask_ListenForPartnersWithCompatibleSerialNos(struct UnkStruct_M
 static u8 CreateTask_ListenForPartnersWithSerial7F7D(struct UnkStruct_Main4 * main4, u32 linkGroup)
 {
     u8 taskId = CreateTask(Task_ListenForPartnersWithSerial7F7D, 0);
-    struct UnkStruct_Main4 **ptr = (void*) gTasks[taskId].data;
+    struct UnkStruct_Main4 **ptr = (UnkStruct_Main4 **) gTasks[taskId].data;
     ptr[0] = main4;
     gTasks[taskId].data[2] = linkGroup;
     return taskId;

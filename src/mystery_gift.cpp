@@ -1119,7 +1119,7 @@ static bool32 PrintMGSendStatus(u8 * state, u16 * arg1, u8 arg2, u32 msgId)
 void task_add_00_mystery_gift(void)
 {
     u8 taskId = CreateTask(task00_mystery_gift, 0);
-    struct MysteryGiftTaskData * data = (void *)gTasks[taskId].data;
+    struct MysteryGiftTaskData * data = (MysteryGiftTaskData *)gTasks[taskId].data;
     data->state = 0;
     data->textState = 0;
     data->unkA = 0;
@@ -1136,7 +1136,7 @@ void task_add_00_mystery_gift(void)
 
 void task00_mystery_gift(u8 taskId)
 {
-    struct MysteryGiftTaskData *data = (void *)gTasks[taskId].data;
+    struct MysteryGiftTaskData *data = (MysteryGiftTaskData *)gTasks[taskId].data;
     u32 sp0, flag;
     const u8 *r1;
 
@@ -1305,7 +1305,7 @@ void task00_mystery_gift(u8 taskId)
         }
         break;
     case  9:
-        flag = mevent_message_print_and_prompt_yes_no(&data->textState, &data->curPromptWindowId, FALSE, mevent_client_get_buffer());
+        flag = mevent_message_print_and_prompt_yes_no(&data->textState, &data->curPromptWindowId, FALSE, (u8*)mevent_client_get_buffer());
         switch (flag)
         {
         case 0:
@@ -1326,7 +1326,7 @@ void task00_mystery_gift(u8 taskId)
         }
         break;
     case 10:
-        if (MG_PrintTextOnWindow1AndWaitButton(&data->textState, mevent_client_get_buffer()))
+        if (MG_PrintTextOnWindow1AndWaitButton(&data->textState, (u8*)mevent_client_get_buffer()))
         {
             mevent_client_inc_flag();
             data->state = 7;

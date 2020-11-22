@@ -414,7 +414,7 @@ static const struct SpritePalette sSpritePalette_Condition =
 // When first opening the selection screen
 void ChooseMonToGivePokeblock(struct Pokeblock *pokeblock, void (*callback)(void))
 {
-    sMenu = AllocZeroed<UsePokeblockMenu>();
+    sMenu = AllocZeroed<struct UsePokeblockMenu>();
     sInfo = &sMenu->info;
     sInfo->pokeblock = pokeblock;
     sInfo->exitCallback = callback;
@@ -425,7 +425,7 @@ void ChooseMonToGivePokeblock(struct Pokeblock *pokeblock, void (*callback)(void
 // When returning to the selection screen after feeding a pokeblock to a mon
 static void CB2_ReturnAndChooseMonToGivePokeblock(void)
 {
-    sMenu = AllocZeroed<UsePokeblockMenu>();
+    sMenu = AllocZeroed<struct UsePokeblockMenu>();
     sInfo = &sMenu->info;
     sInfo->pokeblock = sPokeblock;
     sInfo->exitCallback = sExitCallback;
@@ -1234,7 +1234,7 @@ static void UpdateMonPic(u8 loadId)
             sMenu->curMonSpriteId = spriteId;
             gSprites[sMenu->curMonSpriteId].callback = SpriteCB_MonPic;
             gSprites[sMenu->curMonSpriteId].pos2.y -= 34;
-            sMenu->curMonTileStart = (void*)(OBJ_VRAM0 + (sMenu->curMonSheet * 32));
+            sMenu->curMonTileStart = (u8*)(OBJ_VRAM0 + (sMenu->curMonSheet * 32));
             sMenu->curMonPalette = (sMenu->curMonPalette * 16) + 0x100;
         }
     }
