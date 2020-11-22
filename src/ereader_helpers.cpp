@@ -481,7 +481,7 @@ static bool32 TryWriteTrainerHill_r(struct EReaderTrainerHillSet *ttdata, struct
 bool32 TryWriteTrainerHill(struct EReaderTrainerHillSet *arg0)
 {
     void *var0 = AllocZeroed<u8>(0x1000);
-    bool32 result = TryWriteTrainerHill_r(arg0, var0);
+    bool32 result = TryWriteTrainerHill_r(arg0, (TrHillTag*)var0);
     Free(var0);
     return result;
 }

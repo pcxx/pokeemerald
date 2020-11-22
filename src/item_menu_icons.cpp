@@ -552,7 +552,7 @@ void sub_80D4FEC(u8 arg0)
     sub_8122448(&gBagMenu->spriteId[4], 136, 120, (arg0 + 1) * 16);
 }
 
-static void sub_80D5018(void *mem0, void *mem1)
+static void sub_80D5018(u8 *mem0, u8 *mem1)
 {
     u8 i, j;
 

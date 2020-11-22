@@ -4017,7 +4017,7 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
 
 void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
 {
-    const u8 *data = dataArg;
+    const u8 *data = (u8*)dataArg;
 
     switch (field)
     {
@@ -4061,7 +4061,7 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
 
 void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
 {
-    const u8 *data = dataArg;
+    const u8 *data = (u8*)dataArg;
 
     struct PokemonSubstruct0 *substruct0 = NULL;
     struct PokemonSubstruct1 *substruct1 = NULL;
@@ -6601,7 +6601,7 @@ static void Task_AnimateAfterDelay(u8 taskId)
 {
     if (--gTasks[taskId].data[3] == 0)
     {
-        LaunchAnimationTaskForFrontSprite(READ_PTR_FROM_TASK(taskId, 0), gTasks[taskId].data[2]);
+        LaunchAnimationTaskForFrontSprite((Sprite*)READ_PTR_FROM_TASK(taskId, 0), gTasks[taskId].data[2]);
         DestroyTask(taskId);
     }
 }
@@ -6610,7 +6610,7 @@ static void Task_PokemonSummaryAnimateAfterDelay(u8 taskId)
 {
     if (--gTasks[taskId].data[3] == 0)
     {
-        StartMonSummaryAnimation(READ_PTR_FROM_TASK(taskId, 0), gTasks[taskId].data[2]);
+        StartMonSummaryAnimation((Sprite*)READ_PTR_FROM_TASK(taskId, 0), gTasks[taskId].data[2]);
         SummaryScreen_SetUnknownTaskId(0xFF);
         DestroyTask(taskId);
     }
@@ -6883,7 +6883,7 @@ struct Unknown_806F160_Struct *sub_806F2AC(u8 id, u8 arg1)
     else
     {
         for (i = 0; i < structPtr->field_0_0; i++)
-            structPtr->byteArrays[i] = structPtr->bytes + (structPtr->size * (i << 0xD));
+            structPtr->byteArrays[i] = (u8*)structPtr->bytes + (structPtr->size * (i << 0xD));
     }
 
     structPtr->templates = AllocZeroed<SpriteTemplate>(structPtr->field_0_0);

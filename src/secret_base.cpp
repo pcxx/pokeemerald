@@ -499,7 +499,7 @@ bool8 CurMapIsSecretBase(void)
 void InitSecretBaseAppearance(bool8 hidePC)
 {
     u16 secretBaseId;
-    u16 x, y;
+    s16 x, y;
     u8 *decorations;
     u8 *decorPos;
 
@@ -953,7 +953,7 @@ static void FinalizeRegistryMenu(u8 taskId)
 static void AddRegistryMenuScrollArrows(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    data[8] = AddScrollIndicatorArrowPairParameterized(SCROLL_ARROW_UP, 0xbc, 0x0c, 0x94, data[0] - data[3], 0x13f8, 0x13f8, &data[2]);
+    data[8] = AddScrollIndicatorArrowPairParameterized(SCROLL_ARROW_UP, 0xbc, 0x0c, 0x94, data[0] - data[3], 0x13f8, 0x13f8, (u16*)&data[2]);
 }
 
 static void HandleRegistryMenuInput(u8 taskId)
@@ -1639,16 +1639,18 @@ void sub_80EAEF4(struct SecretBaseRecordMixer *mixers)
     sub_80EABA4(&mixers[2], 0);
 }
 
-#define INIT_SECRET_BASE_RECORD_MIXER(linkId1, linkId2, linkId3)        \
-            mixers[0].secretBases = secretBases + linkId1 * recordSize; \
-            mixers[0].version = gLinkPlayers[linkId1].version & 0xFF;   \
-            mixers[0].language = gLinkPlayers[linkId1].language;        \
-            mixers[1].secretBases = secretBases + linkId2 * recordSize; \
-            mixers[1].version = gLinkPlayers[linkId2].version & 0xFF;   \
-            mixers[1].language = gLinkPlayers[linkId2].language;        \
-            mixers[2].secretBases = secretBases + linkId3 * recordSize; \
-            mixers[2].version = gLinkPlayers[linkId3].version & 0xFF;   \
-            mixers[2].language = gLinkPlayers[linkId3].language;
+constexpr void initSecretBaseRecordMixer(SecretBaseRecordMixer *mixers, u8 *secretBases, size_t recordSize, u32 linkId1, u32 linkId2, u32 linkId3)
+{
+    mixers[0].secretBases = (SecretBase*)(secretBases + linkId1 * recordSize);
+    mixers[0].version = gLinkPlayers[linkId1].version & 0xFF;
+    mixers[0].language = gLinkPlayers[linkId1].language;
+    mixers[1].secretBases = (SecretBase*)(secretBases + linkId2 * recordSize);
+    mixers[1].version = gLinkPlayers[linkId2].version & 0xFF;
+    mixers[1].language = gLinkPlayers[linkId2].language;
+    mixers[2].secretBases = (SecretBase*)(secretBases + linkId3 * recordSize);
+    mixers[2].version = gLinkPlayers[linkId3].version & 0xFF;
+    mixers[2].language = gLinkPlayers[linkId3].language;
+}
 
 void ReceiveSecretBasesData(void *secretBases, size_t recordSize, u8 linkIdx)
 {
@@ -1660,27 +1662,27 @@ void ReceiveSecretBasesData(void *secretBases, size_t recordSize, u8 linkIdx)
         switch (GetLinkPlayerCount())
         {
         case 2:
-            memset(secretBases + 2 * recordSize, 0, recordSize);
-            memset(secretBases + 3 * recordSize, 0, recordSize);
+            memset((u8*)secretBases + 2 * recordSize, 0, recordSize);
+            memset((u8*)secretBases + 3 * recordSize, 0, recordSize);
             break;
         case 3:
-            memset(secretBases + 3 * recordSize, 0, recordSize);
+            memset((u8*)secretBases + 3 * recordSize, 0, recordSize);
             break;
         }
 
         switch (linkIdx)
         {
         case 0:
-            INIT_SECRET_BASE_RECORD_MIXER(1, 2, 3)
+            initSecretBaseRecordMixer(mixers, (u8*)secretBases, recordSize, 1, 2, 3);
             break;
         case 1:
-            INIT_SECRET_BASE_RECORD_MIXER(2, 3, 0)
+            initSecretBaseRecordMixer(mixers, (u8*)secretBases, recordSize, 2, 3, 0);
             break;
         case 2:
-            INIT_SECRET_BASE_RECORD_MIXER(3, 0, 1)
+            initSecretBaseRecordMixer(mixers, (u8*)secretBases, recordSize, 3, 0, 1);
             break;
         case 3:
-            INIT_SECRET_BASE_RECORD_MIXER(0, 1, 2)
+            initSecretBaseRecordMixer(mixers, (u8*)secretBases, recordSize, 0, 1, 2);
             break;
         }
 

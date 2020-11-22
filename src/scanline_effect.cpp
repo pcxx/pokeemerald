@@ -87,7 +87,7 @@ void ScanlineEffect_InitHBlankDmaTransfer(void)
         // Set DMA to copy to dest register on each HBlank for the next frame.
         // The HBlank DMA transfers do not occurr during VBlank, so the transfer
         // will begin on the HBlank after the first scanline
-        DmaSet(0, gScanlineEffect.dmaSrcBuffers[gScanlineEffect.srcBuffer], gScanlineEffect.dmaDest, gScanlineEffect.dmaControl);
+        DmaSet<0>((vu16*)gScanlineEffect.dmaSrcBuffers[gScanlineEffect.srcBuffer], (vu16*)gScanlineEffect.dmaDest, gScanlineEffect.dmaControl);
         // Manually set the reg for the first scanline
         gScanlineEffect.setFirstScanlineReg();
         // Swap current buffer

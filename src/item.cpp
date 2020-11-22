@@ -749,7 +749,7 @@ bool8 AddPyramidBagItem(u16 itemId, u16 count)
     u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
 
     u16 *newItems = Alloc<u16>(PYRAMID_BAG_ITEMS_COUNT);
-    u8 *newQuantities = Alloc<u18>(PYRAMID_BAG_ITEMS_COUNT);
+    u8 *newQuantities = Alloc<u8>(PYRAMID_BAG_ITEMS_COUNT);
 
     memcpy(newItems, items, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
     memcpy(newQuantities, quantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));

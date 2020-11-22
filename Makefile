@@ -71,7 +71,7 @@ LIBPATH := -L ../../tools/agbcc/lib
 else
 CC1              = $(CXX)
 # todo remove some flags again
-override CFLAGS += --target=arm-none-eabi -mthumb -O2 -mabi=apcs-gnu -mcpu=arm7tdmi	-std=c++20 -Wno-narrowing -Wno-c99-designator
+override CFLAGS += --target=arm-none-eabi -mthumb -O2 -mabi=apcs-gnu -mcpu=arm7tdmi	-std=c++20 -Wno-narrowing -Wno-c99-designator -Wno-deprecated-anon-enum-enum-conversion -Wno-deprecated-volatile
 ROM := pokeemerald_modern.gba
 OBJ_DIR := build/modern
 LIBPATH := -L "$(dir $(shell $(CC) -mthumb -print-file-name=libgcc.a))" -L "$(dir $(shell $(CC) -mthumb -print-file-name=libc.a))"

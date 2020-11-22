@@ -1570,10 +1570,10 @@ void DrawTextWindowAndBufferTiles(const u8 *string, void *dst, u8 zero1, u8 zero
         for (i = tileBytesToBuffer; i != 0; i--)
         {
             CpuCopy16(tileData1, dst, 0x80);
-            CpuCopy16(tileData2, dst + 0x80, 0x80);
+            CpuCopy16(tileData2, (u8*)dst + 0x80, 0x80);
             tileData1 += 0x80;
             tileData2 += 0x80;
-            dst += 0x100;
+            dst = (u8*)dst+ 0x100;
         }
     }
 
@@ -1605,7 +1605,7 @@ void sub_80C6EAC(const u8 *string, void *dst, u16 arg2, u8 arg3, u8 clr2, u8 clr
     txtColor[2] = clr3;
     AddTextPrinterParameterized4(windowId, 1, 0, 2, 0, 0, txtColor, -1, string);
     CpuCopy16(tileData1, dst, var);
-    CpuCopy16(tileData2, dst + arg2, var);
+    CpuCopy16(tileData2, (u8*)dst + arg2, var);
     RemoveWindow(windowId);
 }
 
@@ -1722,7 +1722,7 @@ static void sub_80C71A4(u16 *dest, u16 dest_left, u16 dest_top, u16 width, u16 h
     dest += dest_top * 0x20 + dest_left;
     width *= 2;
     for (i = 0; i < height; dest += 0x20, i++)
-        Dma3FillLarge16_(0, dest, width);
+        DmaClearLarge<3>((vu16*)dest, width, MAX_DMA_BLOCK_SIZE/2);
 }
 
 static void Task_PokemonStorageSystemPC(u8 taskId)
@@ -1860,11 +1860,11 @@ static void CreatePCMenu(u8 whichMenu, s16 *windowIdPtr)
 {
     s16 windowId;
     struct WindowTemplate winTemplate = gUnknown_085716E8;
-    winTemplate.width = GetMaxWidthInMenuTable((void *)gUnknown_085716C0, ARRAY_COUNT(gUnknown_085716C0));
+    winTemplate.width = GetMaxWidthInMenuTable((MenuAction *)gUnknown_085716C0, ARRAY_COUNT(gUnknown_085716C0));
     windowId = AddWindow(&winTemplate);
 
     DrawStdWindowFrame(windowId, FALSE);
-    PrintMenuTable(windowId, ARRAY_COUNT(gUnknown_085716C0), (void *)gUnknown_085716C0);
+    PrintMenuTable(windowId, ARRAY_COUNT(gUnknown_085716C0), (MenuAction *)gUnknown_085716C0);
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(windowId, ARRAY_COUNT(gUnknown_085716C0), whichMenu);
     *windowIdPtr = windowId;
 }
@@ -2112,7 +2112,7 @@ static void sub_80C7BE4(void)
     AddTextPrinterParameterized3(windowId, 1, center, 17, sBoxInfoTextColors, TEXT_SPEED_FF, numBoxMonsText);
 
     winTileData = GetWindowAttribute(windowId, WINDOW_TILE_DATA);
-    CpuCopy32((void *)winTileData, (void *)OBJ_VRAM0 + 0x100 + (GetSpriteTileStartByTag(gUnknown_02039D04->unk_0240) * 32), 0x400);
+    CpuCopy32((void *)winTileData, (void *)(OBJ_VRAM0 + 0x100 + (GetSpriteTileStartByTag(gUnknown_02039D04->unk_0240) * 32)), 0x400);
 
     RemoveWindow(windowId);
 }
@@ -3986,7 +3986,7 @@ static void sub_80CA154(void)
     sPSSData->field_D94->subpriority = 1;
     sPSSData->field_D94->pos1.x = 40;
     sPSSData->field_D94->pos1.y = 150;
-    sPSSData->field_DA0 = (void*) OBJ_VRAM0 + 32 * GetSpriteTileStartByTag(TAG_TILE_10);
+    sPSSData->field_DA0 = (u16*) (OBJ_VRAM0 + 32 * GetSpriteTileStartByTag(TAG_TILE_10));
 }
 
 static void sub_80CA1C4(void)
@@ -4074,7 +4074,7 @@ static void LoadCursorMonSprite(void)
 
         sPSSData->cursorMonSprite = &gSprites[spriteId];
         sPSSData->field_223A = palSlot * 16 + 0x100;
-        sPSSData->field_223C = (void*) OBJ_VRAM0 + tileStart * 32;
+        sPSSData->field_223C = (u16*) (OBJ_VRAM0 + tileStart * 32);
     } while (0);
 
     if (sPSSData->cursorMonSprite == NULL)
@@ -5167,7 +5167,7 @@ static u16 sub_80CC124(u16 species)
     sPSSData->field_B58[i] = species;
     sPSSData->field_B08[i]++;
     var = 16 * i;
-    CpuCopy32(GetMonIconTiles(species, TRUE), (void*)(OBJ_VRAM0) + var * 32, 0x200);
+    CpuCopy32(GetMonIconTiles(species, TRUE), (void*)(OBJ_VRAM0 + var * 32), 0x200);
 
     return var;
 }
@@ -5409,7 +5409,7 @@ static void LoadWallpaperGfx(u8 boxId, s8 direction)
         else
             CpuCopy16(wallpaperGfx->palettes, &gPlttBufferUnfaded[(sPSSData->field_2D2 * 32) + 0x40], 0x40);
 
-        sPSSData->wallpaperTiles = malloc_and_decompress(wallpaperGfx->tiles, &size1);
+        sPSSData->wallpaperTiles = (u8*)malloc_and_decompress(wallpaperGfx->tiles, &size1);
         LoadBgTiles(2, sPSSData->wallpaperTiles, size1, sPSSData->field_2D2 << 8);
     }
     else
@@ -5427,7 +5427,7 @@ static void LoadWallpaperGfx(u8 boxId, s8 direction)
         else
             CpuCopy16(sPSSData->field_792, &gPlttBufferUnfaded[(sPSSData->field_2D2 * 32) + 0x40], 0x40);
 
-        sPSSData->wallpaperTiles = malloc_and_decompress(wallpaperGfx->tiles, &size1);
+        sPSSData->wallpaperTiles = (u8*)malloc_and_decompress(wallpaperGfx->tiles, &size1);
         iconGfx = malloc_and_decompress(gFriendsIcons[GetWaldaWallpaperIconId()], &size2);
         CpuCopy32(iconGfx, sPSSData->wallpaperTiles + 0x800, size2);
         Free(iconGfx);
@@ -5470,7 +5470,7 @@ static void sub_80CCA3C(const void *tilemap, s8 direction, u8 arg2)
 static void sub_80CCAE0(void *arg0)
 {
     u16 i;
-    u16 *dest = arg0;
+    u16 *dest = (u16*)arg0;
     s16 r3 = ((sPSSData->bg2_X / 8) + 30) & 0x3F;
 
     if (r3 <= 31)
@@ -6807,7 +6807,7 @@ static void SetCursorMonData(void *pokemon, u8 mode)
     {
         struct BoxPokemon *boxMon = (struct BoxPokemon *)pokemon;
 
-        sPSSData->cursorMonSpecies = GetBoxMonData(pokemon, MON_DATA_SPECIES2);
+        sPSSData->cursorMonSpecies = GetBoxMonData(boxMon, MON_DATA_SPECIES2);
         if (sPSSData->cursorMonSpecies != SPECIES_NONE)
         {
             u32 otId = GetBoxMonData(boxMon, MON_DATA_OT_ID);
@@ -7900,7 +7900,7 @@ static void AddMenu(void)
     sPSSData->field_CB0 = AddWindow(&sPSSData->menuWindow);
     ClearWindowTilemap(sPSSData->field_CB0);
     DrawStdFrameWithCustomTileAndPalette(sPSSData->field_CB0, FALSE, 11, 14);
-    PrintMenuTable(sPSSData->field_CB0, sPSSData->menuItemsCount, (void*)sPSSData->menuItems);
+    PrintMenuTable(sPSSData->field_CB0, sPSSData->menuItemsCount, (MenuAction*)sPSSData->menuItems);
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(sPSSData->field_CB0, sPSSData->menuItemsCount, 0);
     ScheduleBgCopyTilemapToVram(0);
     sPSSData->field_CAE = 0;
@@ -8620,7 +8620,7 @@ static void sub_80D0C60(void)
         {
             spriteSheet.tag = TAG_TILE_7 + i;
             LoadCompressedSpriteSheet(&spriteSheet);
-            sPSSData->field_2204[i].tiles = GetSpriteTileStartByTag(spriteSheet.tag) * 32 + (void*)(OBJ_VRAM0);
+            sPSSData->field_2204[i].tiles = (u8*)(GetSpriteTileStartByTag(spriteSheet.tag) * 32 + OBJ_VRAM0);
             sPSSData->field_2204[i].palIndex = AllocSpritePalette(TAG_PAL_DACB + i);
             sPSSData->field_2204[i].palIndex *= 16;
             sPSSData->field_2204[i].palIndex += 0x100;
@@ -9058,12 +9058,12 @@ static void sub_80D1740(u8 id, bool8 arg1)
 
 static const u32 *GetItemIconPic(u16 itemId)
 {
-    return GetItemIconPicOrPalette(itemId, 0);
+    return (u32*)GetItemIconPicOrPalette(itemId, 0);
 }
 
 static const u32 *GetItemIconPalette(u16 itemId)
 {
-    return GetItemIconPicOrPalette(itemId, 1);
+    return (u32*)GetItemIconPicOrPalette(itemId, 1);
 }
 
 static void PrintItemDescription(void)
@@ -9345,7 +9345,7 @@ void SetBoxMonNickAt(u8 boxId, u8 boxPosition, const u8 *nick)
 u32 GetAndCopyBoxMonDataAt(u8 boxId, u8 boxPosition, s32 request, void *dst)
 {
     if (boxId < TOTAL_BOXES_COUNT && boxPosition < IN_BOX_COUNT)
-        return GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], request, dst);
+        return GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], request, (u8*)dst);
     else
         return 0;
 }
@@ -9767,8 +9767,8 @@ static void sub_80D2960(u8 id)
 {
     s32 i;
     u32 adder = gUnknown_02039D84[id].field_2A * gUnknown_02039D84[id].field_20;
-    const void *tiles = (gUnknown_02039D84[id].field_18 + (adder * gUnknown_02039D84[id].field_0[0].field_A))
-                      + (gUnknown_02039D84[id].field_2A * gUnknown_02039D84[id].field_0[0].field_8);
+    const void *tiles = (void*)( ((u8*)gUnknown_02039D84[id].field_18 + (adder * gUnknown_02039D84[id].field_0[0].field_A))
+                      + (gUnknown_02039D84[id].field_2A * gUnknown_02039D84[id].field_0[0].field_8));
 
     for (i = 0; i < gUnknown_02039D84[id].field_0[0].field_6; i++)
     {
@@ -9778,7 +9778,7 @@ static void sub_80D2960(u8 id)
                                   gUnknown_02039D84[id].field_0[0].field_A + i,
                                   gUnknown_02039D84[id].field_0[0].field_4,
                                   1);
-        tiles += adder;
+        tiles = (void*)((u8*)tiles+ adder);
     }
 }
 
@@ -9786,8 +9786,8 @@ static void sub_80D29F8(u8 id)
 {
     s32 i;
     u32 adder = gUnknown_02039D84[id].field_2A * gUnknown_02039D84[id].field_24;
-    const void *tiles = (gUnknown_02039D84[id].field_1C + (adder * gUnknown_02039D84[id].field_0[1].field_2))
-                      + (gUnknown_02039D84[id].field_2A * gUnknown_02039D84[id].field_0[1].field_0);
+    const void *tiles =(void*)( ((u8*)gUnknown_02039D84[id].field_1C + (adder * gUnknown_02039D84[id].field_0[1].field_2))
+                      + (gUnknown_02039D84[id].field_2A * gUnknown_02039D84[id].field_0[1].field_0));
 
     for (i = 0; i < gUnknown_02039D84[id].field_0[1].field_6; i++)
     {
@@ -9797,7 +9797,7 @@ static void sub_80D29F8(u8 id)
                                   gUnknown_02039D84[id].field_0[1].field_A + i,
                                   gUnknown_02039D84[id].field_0[1].field_4,
                                   1);
-        tiles += adder;
+        tiles = (void*)((u8*)tiles+ adder);
     }
 }
 
@@ -9865,7 +9865,7 @@ static bool8 sub_80D2BC0(void *dest, u16 dLeft, u16 dTop, u16 width, u16 height)
 
     unkStruct = &gUnknown_02039D8C->unk_00[gUnknown_02039D8C->unk_04++];
     unkStruct->unk_08 = width * 2;
-    unkStruct->unk_04 = dest + ((dTop * 32) + dLeft) * 2;
+    unkStruct->unk_04 = (u8*)dest + ((dTop * 32) + dLeft) * 2;
     unkStruct->newField = height;
     unkStruct->unk_0c = sub_80D2C1C;
     return TRUE;
@@ -9877,7 +9877,7 @@ static void sub_80D2C1C(struct UnkStruct_2000028 *unkStruct)
 
     for (i = 0; i < unkStruct->newField; i++)
     {
-        Dma3FillLarge_(0, unkStruct->unk_04, unkStruct->unk_08, 16);
+        DmaClearLarge<3>((vu16*)unkStruct->unk_04, unkStruct->unk_08, MAX_DMA_BLOCK_SIZE/3);
         unkStruct->unk_04 += 64;
     }
 }

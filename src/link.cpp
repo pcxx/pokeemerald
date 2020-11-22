@@ -961,7 +961,7 @@ static bool32 InitBlockSend(const void *src, size_t size)
     sBlockSend.pos = 0;
     if (size > BLOCK_BUFFER_SIZE)
     {
-        sBlockSend.src = src;
+        sBlockSend.src = (u8*)src;
     }
     else
     {
@@ -1062,7 +1062,7 @@ bool8 SendBlock(u8 unused, const void *src, u16 size)
 {
     if (gWirelessCommType == TRUE)
     {
-        return Rfu_InitBlockSend(src, size);
+        return Rfu_InitBlockSend((u8*)src, size);
     }
     return InitBlockSend(src, size);
 }

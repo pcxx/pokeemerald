@@ -368,10 +368,11 @@ extern const struct PokemonCrySong gPokemonCrySongTemplate;
 
 extern const struct ToneData voicegroup000;
 
-extern char gNumMusicPlayers[];
-extern char gMaxLines[];
+// TODO this is stupid
+extern char gNumMusicPlayers[]; // = 4, what the F?
+extern char gMaxLines[]; // = 0, what the F?
 
-#define NUM_MUSIC_PLAYERS ((u16)gNumMusicPlayers)
+#define NUM_MUSIC_PLAYERS ((u32)gNumMusicPlayers)
 #define MAX_LINES ((u32)gMaxLines)
 
 u32 umul3232H32(u32 multiplier, u32 multiplicand);

@@ -398,7 +398,7 @@ static bool32 UpdateCommunicationCounts(u32 * groupCounts, u32 * prevGroupCounts
 {
     bool32 activitiesChanged = FALSE;
     u32 groupCountBuffer[NUM_GROUPTYPES] = {0, 0, 0, 0};
-    struct UnkStruct_x20 ** data = (void *)gTasks[taskId].data;
+    struct UnkStruct_x20 ** data = (UnkStruct_x20 **)gTasks[taskId].data;
     s32 i;
 
     for (i = 0; i < NUM_TASK_DATA; i++)

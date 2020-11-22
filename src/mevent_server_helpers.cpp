@@ -118,20 +118,20 @@ static bool32 mevent_receive_func(struct mevent_srv_sub * svr)
                 size_t blocksiz = svr->recvCounter * 252;
                 if (svr->recvSize - blocksiz <= 252)
                 {
-                    mevent_recv_block(svr->recvPlayerNo, svr->recvBfr + blocksiz, svr->recvSize - blocksiz);
+                    mevent_recv_block(svr->recvPlayerNo, (u8*)svr->recvBfr + blocksiz, svr->recvSize - blocksiz);
                     ++svr->recvCounter;
                     ++svr->seqno;
                 }
                 else
                 {
-                    mevent_recv_block(svr->recvPlayerNo, svr->recvBfr + blocksiz, 252);
+                    mevent_recv_block(svr->recvPlayerNo, (u8*)svr->recvBfr + blocksiz, 252);
                     ++svr->recvCounter;
                 }
                 mevent_reset_recv(svr->recvPlayerNo);
             }
             break;
         case 2:
-            if (CalcCRC16WithTable(svr->recvBfr, svr->recvSize) != svr->recvCRC)
+            if (CalcCRC16WithTable((u8*)svr->recvBfr, svr->recvSize) != svr->recvCRC)
             {
                 LinkRfu_FatalError();
                 return FALSE;
@@ -159,7 +159,7 @@ static bool32 mevent_send_func(struct mevent_srv_sub * svr)
             {
                 header.ident = svr->sendIdent;
                 header.size = svr->sendSize;
-                header.crc = CalcCRC16WithTable(svr->sendBfr, svr->sendSize);
+                header.crc = CalcCRC16WithTable((u8*)svr->sendBfr, svr->sendSize);
                 svr->sendCRC = header.crc;
                 svr->sendCounter = 0;
                 SendBlock(0, &header, sizeof(header));
@@ -176,13 +176,13 @@ static bool32 mevent_send_func(struct mevent_srv_sub * svr)
                     blocksiz = 252 * svr->sendCounter;
                     if (svr->sendSize - blocksiz <= 252)
                     {
-                        SendBlock(0, svr->sendBfr + blocksiz, svr->sendSize - blocksiz);
+                        SendBlock(0, (u8*)svr->sendBfr + blocksiz, svr->sendSize - blocksiz);
                         ++svr->sendCounter;
                         ++svr->seqno;
                     }
                     else
                     {
-                        SendBlock(0, svr->sendBfr + blocksiz, 252);
+                        SendBlock(0, (u8*)svr->sendBfr + blocksiz, 252);
                         ++svr->sendCounter;
                     }
                 }
@@ -191,7 +191,7 @@ static bool32 mevent_send_func(struct mevent_srv_sub * svr)
         case 2:
             if (IsLinkTaskFinished())
             {
-                if (CalcCRC16WithTable(svr->sendBfr, svr->sendSize) != svr->sendCRC)
+                if (CalcCRC16WithTable((u8*)svr->sendBfr, svr->sendSize) != svr->sendCRC)
                     LinkRfu_FatalError();
                 else
                     ++svr->seqno;

@@ -359,7 +359,7 @@ bool32 OpenPokenavMenuNotInitial(void)
 
 static struct Pokenav2Struct * OpenPokenavMenu(void)
 {
-    struct Pokenav2Struct * state = AllocSubstruct(2, sizeof(struct Pokenav2Struct));
+    struct Pokenav2Struct * state = h_AllocSubstruct<Pokenav2Struct>(2);
 
     if (state != NULL)
     {
@@ -373,20 +373,20 @@ static struct Pokenav2Struct * OpenPokenavMenu(void)
 
 void CreateMenuHandlerLoopedTask(s32 ltIdx)
 {
-    struct Pokenav2Struct * state = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * state = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     state->loopedTaskId = CreateLoopedTask(sMenuHandlerLoopTaskFuncs[ltIdx], 1);
     state->isTaskActiveCB = GetCurrentLoopedTaskActive;
 }
 
 bool32 IsMenuHandlerLoopedTaskActive(void)
 {
-    struct Pokenav2Struct * state = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * state = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     return state->isTaskActiveCB();
 }
 
 void FreeMenuHandlerSubstruct2(void)
 {
-    struct Pokenav2Struct * unk = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * unk = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
 
     DestroyMovingDotsBgTask();
     RemoveWindow(unk->optionDescWindowId);
@@ -397,14 +397,14 @@ void FreeMenuHandlerSubstruct2(void)
 
 static bool32 GetCurrentLoopedTaskActive(void)
 {
-    struct Pokenav2Struct * unk = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * unk = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
 
     return IsLoopedTaskActive(unk->loopedTaskId);
 }
 
 static u32 LoopedTask_OpenMenu(s32 state)
 {
-    struct Pokenav2Struct * unk = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * unk = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
 
     switch (state)
     {
@@ -772,7 +772,7 @@ static void FreeAndDestroyMainMenuSprites(void)
 static void CreateMenuOptionSprites(void)
 {
     s32 i, j;
-    struct Pokenav2Struct * unk = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * unk = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
 
     for (i = 0; i < MAX_POKENAV_MENUITEMS; i++)
     {
@@ -789,7 +789,7 @@ static void CreateMenuOptionSprites(void)
 static void DestroyMenuOptionSprites(void)
 {
     s32 i, j;
-    struct Pokenav2Struct * unk = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * unk = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
 
     for (i = 0; i < MAX_POKENAV_MENUITEMS; i++)
     {
@@ -810,7 +810,7 @@ static void sub_81CA0C8(void)
 static void DrawOptionLabelGfx(const u16 *const *tiles, s32 yPos, s32 deltaY)
 {
     s32 i, j;
-    struct Pokenav2Struct * unk = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * unk = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     s32 sp04 = GetSpriteTileStartByTag(3);
 
     for (i = 0; i < MAX_POKENAV_MENUITEMS; i++)
@@ -844,7 +844,7 @@ static void DrawOptionLabelGfx(const u16 *const *tiles, s32 yPos, s32 deltaY)
 static void SetupCurrentMenuOptionsGfx(void)
 {
     s32 i;
-    struct Pokenav2Struct *icons = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct *icons = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     s32 r8 = GetPokenavCursorPos();
     s32 r7 = 0;
     s32 r2;
@@ -873,7 +873,7 @@ static void SetupCurrentMenuOptionsGfx(void)
 static void SetMenuOptionGfxParams_CursorMoved(void)
 {
     s32 i;
-    struct Pokenav2Struct *icons = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct *icons = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     s32 prevPos = GetPokenavCursorPos();
     s32 newPos;
 
@@ -898,7 +898,7 @@ static void SetMenuOptionGfxParams_CursorMoved(void)
 static void SetupPokenavMenuOptions(void)
 {
     s32 i;
-    struct Pokenav2Struct *optionIcons = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct *optionIcons = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
 
     for (i = 0; i < MAX_POKENAV_MENUITEMS; i++)
     {
@@ -915,7 +915,7 @@ static void SetupPokenavMenuOptions(void)
 static bool32 AreMenuOptionSpritesMoving(void)
 {
     s32 i;
-    struct Pokenav2Struct *icons = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct *icons = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
 
     for (i = 0; i < MAX_POKENAV_MENUITEMS; i++)
     {
@@ -948,7 +948,7 @@ static void SetMenuOptionGfxParamsInactive(struct Sprite ** sprites, s32 x, s32 
 static void SetMenuOptionGfxParamsActive(struct Sprite ** sprites)
 {
     s32 i;
-    struct Pokenav2Struct * unk = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * unk = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     u8 taskId;
 
     for (i = 0; i < 4; i++)
@@ -1080,7 +1080,7 @@ static void sub_81CA580(u8 taskId)
             data[4]++;
             if (data[4] == 12)
             {
-                ((struct Pokenav2Struct *)GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS))->otherIconsInMotion--;
+                ((struct Pokenav2Struct *)h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS))->otherIconsInMotion--;
                 SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0x00, 0x10));
                 DestroyTask(taskId);
             }
@@ -1093,7 +1093,7 @@ static void sub_81CA580(u8 taskId)
 
 static void CreateMatchCallBlueLightSprite(void)
 {
-    struct Pokenav2Struct * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * ptr = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     u8 spriteId = CreateSprite(&sMatchCallBlueLightSpriteTemplate, 0x10, 0x60, 4);
     ptr->blueLightSpriteId = &gSprites[spriteId];
     if (PlayerHasTrainerRematches())
@@ -1104,7 +1104,7 @@ static void CreateMatchCallBlueLightSprite(void)
 
 static void DestroyRematchBlueLightSpriteId(void)
 {
-    struct Pokenav2Struct *ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct *ptr = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     DestroySprite(ptr->blueLightSpriteId);
 }
 
@@ -1120,7 +1120,7 @@ static void SpriteCB_BlinkingBlueLight(struct Sprite * sprite)
 
 static void AddOptionDescriptionWindow(void)
 {
-    struct Pokenav2Struct * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * ptr = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
 
     ptr->optionDescWindowId = AddWindow(&sOptionDescWindowTemplate);
     PutWindowTilemap(ptr->optionDescWindowId);
@@ -1130,7 +1130,7 @@ static void AddOptionDescriptionWindow(void)
 
 static void PrintCurrentOptionDescription(void)
 {
-    struct Pokenav2Struct * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * ptr = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     int menuItem = GetCurrentMenuItemId();
     const u8 * s = sPageDescriptions[menuItem];
     u32 width = GetStringWidth(1, s, -1);
@@ -1142,7 +1142,7 @@ static void PrintCurrentOptionDescription(void)
 // Can occur by obtaining a mon with a ribbon and then releasing all ribbon winners
 static void PrintNoRibbonWinners(void)
 {
-    struct Pokenav2Struct * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * ptr = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     const u8 * s = gText_NoRibbonWinners;
     u32 width = GetStringWidth(1, s, -1);
     FillWindowPixelBuffer(ptr->optionDescWindowId, PIXEL_FILL(6));
@@ -1156,13 +1156,13 @@ static bool32 IsDma3ManagerBusyWithBgCopy_(void)
 
 static void CreateMovingBgDotsTask(void)
 {
-    struct Pokenav2Struct * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * ptr = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     ptr->bg3ScrollTaskId = CreateTask(Task_MoveBgDots, 2);
 }
 
 static void DestroyMovingDotsBgTask(void)
 {
-    struct Pokenav2Struct * ptr = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_ICONS);
+    struct Pokenav2Struct * ptr = h_GetSubstructPtr<Pokenav2Struct>(POKENAV_SUBSTRUCT_MENU_ICONS);
     DestroyTask(ptr->bg3ScrollTaskId);
 }
 

@@ -275,7 +275,7 @@ static const struct SpriteTemplate sTrainerPicSpriteTemplate =
 
 bool32 OpenMatchCall(void)
 {
-    struct Pokenav4Struct *state = AllocSubstruct(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN, sizeof(struct Pokenav4Struct));
+    struct Pokenav4Struct *state = h_AllocSubstruct<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     if (!state)
         return FALSE;
 
@@ -287,20 +287,20 @@ bool32 OpenMatchCall(void)
 
 void CreateMatchCallLoopedTask(s32 index)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     state->loopTaskId = CreateLoopedTask(sMatchCallLoopTaskFuncs[index], 1);
     state->isTaskActiveCB = GetCurrentLoopedTaskActive;
 }
 
 bool32 IsMatchCallLoopedTaskActive(void)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     return state->isTaskActiveCB();
 }
 
 void FreeMatchCallSubstruct2(void)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     RemoveMatchCallSprites();
     sub_81CBC1C();
     RemoveWindow(state->infoBoxWindowId);
@@ -311,13 +311,13 @@ void FreeMatchCallSubstruct2(void)
 
 static bool32 GetCurrentLoopedTaskActive(void)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     return IsLoopedTaskActive(state->loopTaskId);
 }
 
 static u32 LoopedTask_OpenMatchCall(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -390,7 +390,7 @@ static u32 LoopedTask_OpenMatchCall(s32 taskState)
 
 u32 MatchCallListCursorDown(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -427,7 +427,7 @@ u32 MatchCallListCursorDown(s32 taskState)
 
 u32 MatchCallListCursorUp(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -464,7 +464,7 @@ u32 MatchCallListCursorUp(s32 taskState)
 
 u32 MatchCallListPageDown(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -501,7 +501,7 @@ u32 MatchCallListPageDown(s32 taskState)
 
 u32 MatchCallListPageUp(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -538,7 +538,7 @@ u32 MatchCallListPageUp(s32 taskState)
 
 u32 SelectMatchCallEntry(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -561,7 +561,7 @@ u32 MoveMatchCallOptionsCursor(s32 taskState)
     u16 cursorPos;
 
     PlaySE(SE_SELECT);
-    state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     cursorPos = GetMatchCallOptionCursorPos();
     UpdateCursorGfxPos(state, cursorPos);
     return LT_FINISH;
@@ -569,7 +569,7 @@ u32 MoveMatchCallOptionsCursor(s32 taskState)
 
 u32 CancelMatchCallSelection(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -588,7 +588,7 @@ u32 CancelMatchCallSelection(s32 taskState)
 
 u32 DoMatchCallMessage(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -620,7 +620,7 @@ u32 DoMatchCallMessage(s32 taskState)
 
 u32 DoTrainerCloseByMessage(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -646,7 +646,7 @@ u32 DoTrainerCloseByMessage(s32 taskState)
 
 u32 sub_81CB888(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     u32 result = LT_INC_AND_PAUSE;
 
     switch (taskState)
@@ -710,7 +710,7 @@ u32 sub_81CB888(s32 taskState)
 
 u32 ShowCheckPage(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -741,7 +741,7 @@ u32 ShowCheckPageDown(s32 taskState)
 {
     int topId;
     int delta;
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -778,7 +778,7 @@ u32 ShowCheckPageDown(s32 taskState)
 
 u32 ExitCheckPage(s32 taskState)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -806,7 +806,7 @@ u32 ShowCheckPageUp(s32 taskState)
 {
     int topId;
     int delta;
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
     case 0:
@@ -911,7 +911,7 @@ static void sub_81CBC64(u8 taskId)
 static void TryDrawRematchPokeballIcon(u16 windowId, u32 rematchId, u32 arg2)
 {
     u8 bg = GetWindowAttribute(windowId, WINDOW_BG);
-    u16 *tilemap = GetBgTilemapBuffer(bg);
+    u16 *tilemap = (u16*)GetBgTilemapBuffer(bg);
     tilemap += arg2 * 0x40 + 0x1D;
     if (ShouldDrawRematchPokeballIcon(rematchId))
     {
@@ -928,7 +928,7 @@ static void TryDrawRematchPokeballIcon(u16 windowId, u32 rematchId, u32 arg2)
 void ClearRematchPokeballIcon(u16 windowId, u32 arg0)
 {
     u8 bg = GetWindowAttribute(windowId, WINDOW_BG);
-    u16 *tilemap = GetBgTilemapBuffer(bg);
+    u16 *tilemap = (u16*)GetBgTilemapBuffer(bg);
     tilemap += arg0 * 0x40 + 0x1D;
     tilemap[0] = 0x5002;
     tilemap[0x20] = 0x5002;
@@ -1151,7 +1151,7 @@ static void sub_81CC214(void)
     int i;
     u8 paletteNum;
     struct SpriteSheet spriteSheet;
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
 
     for (i = 0; i < ARRAY_COUNT(gUnknown_08622810); i++)
         LoadCompressedSpriteSheet(&gUnknown_08622810[i]);
@@ -1170,7 +1170,7 @@ static void sub_81CC214(void)
 
 static void RemoveMatchCallSprites(void)
 {
-    struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
+    struct Pokenav4Struct *state = h_GetSubstructPtr<Pokenav4Struct>(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     if (state->optionsCursorSprite)
         DestroySprite(state->optionsCursorSprite);
     if (state->trainerPicSprite)

@@ -22,7 +22,7 @@ static void sub_81520A8(void *dest, u16 value, u8 left, u8 top, u8 width, u8 hei
     {
         for (x = left, j = 0; j < width; j++)
         {
-            *(u16 *)((dest) + (y * 64 + x * 2)) = value;
+            *(u16 *)(((u8*)dest) + (y * 64 + x * 2)) = value;
             x = (x + 1) % 32;
         }
         y = (y + 1) % 32;
@@ -39,7 +39,7 @@ static void sub_8152134(void *dest, const u16 *src, u8 left, u8 top, u8 width, u
     {
         for (x = left, j = 0; j < width; j++)
         {
-            *(u16 *)((dest) + (y * 64 + x * 2)) = *(_src++);
+            *(u16 *)(((u8*)dest) + (y * 64 + x * 2)) = *(_src++);
             x = (x + 1) % 32;
         }
         y = (y + 1) % 32;

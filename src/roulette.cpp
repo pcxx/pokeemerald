@@ -1096,7 +1096,7 @@ static void InitRouletteBgAndWindows(void)
     InitWindows(sWindowTemplates);
     InitTextBoxGfxAndPrinters();
     sTextWindowId = 0;
-    sRoulette->gridTilemap = malloc_and_decompress(sGrid_Tilemap, &size);
+    sRoulette->gridTilemap = (u16*)malloc_and_decompress(sGrid_Tilemap, &size);
 }
 
 static void FreeRoulette(void)

@@ -65,6 +65,7 @@ void SetBgAffine(u8 bg, s32 srcCenterX, s32 srcCenterY, s16 dispCenterX, s16 dis
 u8 Unused_AdjustBgMosaic(u8 a1, u8 a2);
 void SetBgTilemapBuffer(u8 bg, void *tilemap);
 void UnsetBgTilemapBuffer(u8 bg);
+// TODO does this ever not return a u16*
 void* GetBgTilemapBuffer(u8 bg);
 void CopyToBgTilemapBuffer(u8 bg, const void *src, u16 mode, u16 destOffset);
 void CopyBgTilemapBufferToVram(u8 bg);

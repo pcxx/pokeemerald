@@ -762,7 +762,7 @@ void sub_8115F94(u8 taskId)
 
     if (gTasks[taskId].data[2] & 0x1)
     {
-        paletteIndex = IndexOfSpritePaletteTag(gSprites[gHealthboxSpriteIds[attackerBattler]]._template->paletteTag);
+        paletteIndex = IndexOfSpritePaletteTag(gSprites[gHealthboxSpriteIds[attackerBattler]].template_->paletteTag);
         selectedPalettes |= (1 << paletteIndex) << 16;
     }
     
@@ -793,16 +793,16 @@ static void AnimShakeMonOrBattleTerrain(struct Sprite *sprite)
     switch (gBattleAnimArgs[3])
     {
     case 0:
-        StoreSpriteCallbackInData6(sprite, (void *)&gBattle_BG3_X);
+        StoreSpriteCallbackInData6(sprite, (void (*)(Sprite *))&gBattle_BG3_X);
         break;
     case 1:
-        StoreSpriteCallbackInData6(sprite, (void *)&gBattle_BG3_Y);
+        StoreSpriteCallbackInData6(sprite, (void (*)(Sprite *))&gBattle_BG3_Y);
         break;
     case 2:
-        StoreSpriteCallbackInData6(sprite, (void *)&gSpriteCoordOffsetX);
+        StoreSpriteCallbackInData6(sprite, (void (*)(Sprite *))&gSpriteCoordOffsetX);
         break;
     default:
-        StoreSpriteCallbackInData6(sprite, (void *)&gSpriteCoordOffsetY);
+        StoreSpriteCallbackInData6(sprite, (void (*)(Sprite *))&gSpriteCoordOffsetY);
         break;
     }
 

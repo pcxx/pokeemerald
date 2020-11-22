@@ -2203,24 +2203,6 @@ static const struct SpritePalette gUnknown_082FBE30[] =
     {gPkmnJumpPal2, 6},
 };
 
-// Forward declarations.
-static const struct OamData sOamData_82FBEC8;
-static const struct SpriteTemplate gUnknown_082FBF78;
-static const struct SpriteTemplate gUnknown_082FBF90;
-static const struct SpriteTemplate gUnknown_082FBFA8;
-static const struct SpriteTemplate gUnknown_082FBFC0;
-
-static const struct SpriteTemplate gUnknown_082FBE40 =
-{
-    .tileTag = 0,
-    .paletteTag = 0,
-    .oam = &sOamData_82FBEC8,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
-};
-
 static const s16 gUnknown_082FBE58[][10] =
 {
     {0x60, 0x60, 0x60, 0x72, 0x78, 0x78, 0x78, 0x72, 0x60, 0x60},
@@ -2230,14 +2212,6 @@ static const s16 gUnknown_082FBE58[][10] =
 };
 
 static const s16 gUnknown_082FBEA8[] = {0x10, 0x28, 0x48, 0x68, 0x88, 0xa8, 0xc8, 0xe0};
-
-static const struct SpriteTemplate *const gUnknown_082FBEB8[] =
-{
-    &gUnknown_082FBF78,
-    &gUnknown_082FBF90,
-    &gUnknown_082FBFA8,
-    &gUnknown_082FBFC0,
-};
 
 static const struct OamData sOamData_82FBEC8 =
 {
@@ -2254,6 +2228,17 @@ static const struct OamData sOamData_82FBEC8 =
     .priority = 2,
     .paletteNum = 0,
     .affineParam = 0
+};
+
+static const struct SpriteTemplate gUnknown_082FBE40 =
+{
+    .tileTag = 0,
+    .paletteTag = 0,
+    .oam = &sOamData_82FBEC8,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
 
 static const struct OamData sOamData_82FBED0 =
@@ -2441,6 +2426,14 @@ static const struct SpriteTemplate gUnknown_082FBFC0 =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate *const gUnknown_082FBEB8[] =
+{
+    &gUnknown_082FBF78,
+    &gUnknown_082FBF90,
+    &gUnknown_082FBFA8,
+    &gUnknown_082FBFC0,
 };
 
 static const struct OamData sOamData_82FBFD8 =
@@ -2951,7 +2944,7 @@ static void sub_802D12C(u8 taskId)
 {
     if (!gUnknown_02022D00->unk0)
     {
-        void (*func)(void) = (void *)(GetWordTaskArg(taskId, 0));
+        void (*func)() = (void (*)())(GetWordTaskArg(taskId, 0));
 
         func();
     }
@@ -3513,7 +3506,7 @@ static void sub_802DD08(void)
     ptr->xDelta = 8;
     ptr->x = 108;
     ptr->y = 6;
-    ptr->spriteSheet = (void*) &gUnknown_082FE1EC;
+    ptr->spriteSheet = (SpriteSheet*) &gUnknown_082FE1EC;
     ptr->spritePal = &gUnknown_082FE1F4;
 
     DigitObjUtil_Init(2);

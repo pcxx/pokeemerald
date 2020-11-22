@@ -59,24 +59,24 @@ void ProcessDma3Requests(void)
         switch (gDma3Requests[gDma3RequestCursor].mode)
         {
         case DMA_REQUEST_COPY32: // regular 32-bit copy
-            Dma3CopyLarge32_(gDma3Requests[gDma3RequestCursor].src,
-                             gDma3Requests[gDma3RequestCursor].dest,
-                             gDma3Requests[gDma3RequestCursor].size);
+            DmaCopyLarge<3>((vu32*)gDma3Requests[gDma3RequestCursor].src,
+                             (vu32*)gDma3Requests[gDma3RequestCursor].dest,
+                             gDma3Requests[gDma3RequestCursor].size/4);
             break;
         case DMA_REQUEST_FILL32: // repeat a single 32-bit value across RAM
-            Dma3FillLarge32_(gDma3Requests[gDma3RequestCursor].value,
-                             gDma3Requests[gDma3RequestCursor].dest,
-                             gDma3Requests[gDma3RequestCursor].size);
+            DmaFillLarge<3>((vu32)gDma3Requests[gDma3RequestCursor].value,
+                             (vu32*)gDma3Requests[gDma3RequestCursor].dest,
+                             gDma3Requests[gDma3RequestCursor].size/4);
             break;
         case DMA_REQUEST_COPY16:    // regular 16-bit copy
-            Dma3CopyLarge16_(gDma3Requests[gDma3RequestCursor].src,
-                             gDma3Requests[gDma3RequestCursor].dest,
-                             gDma3Requests[gDma3RequestCursor].size);
+            DmaCopyLarge<3>((vu16*)gDma3Requests[gDma3RequestCursor].src,
+                             (vu16*)gDma3Requests[gDma3RequestCursor].dest,
+                             gDma3Requests[gDma3RequestCursor].size/2);
             break;
         case DMA_REQUEST_FILL16: // repeat a single 16-bit value across RAM
-            Dma3FillLarge16_(gDma3Requests[gDma3RequestCursor].value,
-                             gDma3Requests[gDma3RequestCursor].dest,
-                             gDma3Requests[gDma3RequestCursor].size);
+            DmaFillLarge<3>((vu16)gDma3Requests[gDma3RequestCursor].value,
+                             (vu16*)gDma3Requests[gDma3RequestCursor].dest,
+                             gDma3Requests[gDma3RequestCursor].size/2);
             break;
         }
 

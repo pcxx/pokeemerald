@@ -716,9 +716,9 @@ static bool32 InitFrontierPass(void)
         DeactivateAllTextPrinters();
         break;
     case 6:
-        sPassGfx->unk20 = malloc_and_decompress(gUnknown_085712F8, &sizeOut);
-        sPassGfx->unk24 = malloc_and_decompress(gUnknown_08571060, &sizeOut);
-        sPassGfx->unk28 = malloc_and_decompress(gUnknown_085712C0, &sizeOut);
+        sPassGfx->unk20 = (u8*)malloc_and_decompress(gUnknown_085712F8, &sizeOut);
+        sPassGfx->unk24 = (u8*)malloc_and_decompress(gUnknown_08571060, &sizeOut);
+        sPassGfx->unk28 = (u8*)malloc_and_decompress(gUnknown_085712C0, &sizeOut);
         DecompressAndCopyTileDataToVram(1, gUnknown_08DE08C8, 0, 0, 0);
         DecompressAndCopyTileDataToVram(2, gUnknown_08DE2084, 0, 0, 0);
         break;

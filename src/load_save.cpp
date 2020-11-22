@@ -77,9 +77,9 @@ void SetSaveBlocksPointers(u16 offset)
 
     offset = (offset + Random()) & (SAVEBLOCK_MOVE_RANGE - 4);
 
-    gSaveBlock2Ptr = (void*)(&gSaveblock2) + offset;
-    *sav1_LocalVar = (void*)(&gSaveblock1) + offset;
-    gPokemonStoragePtr = (void*)(&gPokemonStorage) + offset;
+    gSaveBlock2Ptr = (SaveBlock2*)((u8*)(&gSaveblock2) + offset);
+    *sav1_LocalVar = (SaveBlock1*)((u8*)(&gSaveblock1) + offset);
+    gPokemonStoragePtr = (PokemonStorage*)((u8*)(&gPokemonStorage) + offset);
 
     SetBagItemsPointers();
     SetDecorationInventoriesPointers();
@@ -87,7 +87,7 @@ void SetSaveBlocksPointers(u16 offset)
 
 void MoveSaveBlocks_ResetHeap(void)
 {
-    void *vblankCB, *hblankCB;
+    IntrCallback vblankCB, hblankCB;
     u32 encryptionKey;
     struct SaveBlock2 *saveBlock2Copy;
     struct SaveBlock1 *saveBlock1Copy;

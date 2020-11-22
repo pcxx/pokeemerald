@@ -175,7 +175,7 @@ static u8 HandleWriteSector(u16 sectorId, const struct SaveSectionLocation *loca
     sector %= SECTOR_SAVE_SLOT_LENGTH;
     sector += SECTOR_SAVE_SLOT_LENGTH * (gSaveCounter % 2);
 
-    data = location[sectorId].data;
+    data = (u8*)location[sectorId].data;
     size = location[sectorId].size;
 
     // clear save section.
@@ -298,7 +298,7 @@ static u8 ClearSaveData_2(u16 sectorId, const struct SaveSectionLocation *locati
     sector %= SECTOR_SAVE_SLOT_LENGTH;
     sector += SECTOR_SAVE_SLOT_LENGTH * (gSaveCounter % 2);
 
-    data = location[sectorId].data;
+    data = (u8*)location[sectorId].data;
     size = location[sectorId].size;
 
     // clear temp save section.
@@ -625,11 +625,12 @@ static u16 CalculateChecksum(const void *data, u16 size)
 {
     u16 i;
     u32 checksum = 0;
+    u32 * data_ = (u32*) data;
 
     for (i = 0; i < (size / 4); i++)
     {
-        checksum += *((u32 *)data);
-        data += sizeof(u32);
+        checksum += *data_;
+        data_++;
     }
 
     return ((checksum >> 16) + checksum);
@@ -639,18 +640,18 @@ static void UpdateSaveAddresses(void)
 {
     int i = 0;
 
-    gRamSaveSectionLocations[i].data = (void*)(gSaveBlock2Ptr) + sSaveSectionOffsets[i].toAdd;
+    gRamSaveSectionLocations[i].data = (u8*)(gSaveBlock2Ptr) + sSaveSectionOffsets[i].toAdd;
     gRamSaveSectionLocations[i].size = sSaveSectionOffsets[i].size;
 
     for (i = SECTOR_ID_SAVEBLOCK1_START; i <= SECTOR_ID_SAVEBLOCK1_END; i++)
     {
-        gRamSaveSectionLocations[i].data = (void*)(gSaveBlock1Ptr) + sSaveSectionOffsets[i].toAdd;
+        gRamSaveSectionLocations[i].data = (u8*)(gSaveBlock1Ptr) + sSaveSectionOffsets[i].toAdd;
         gRamSaveSectionLocations[i].size = sSaveSectionOffsets[i].size;
     }
 
     for (; i <= SECTOR_ID_PKMN_STORAGE_END; i++) //i = SECTOR_ID_PKMN_STORAGE_START; in the initialization clause does not match
     {
-        gRamSaveSectionLocations[i].data = (void*)(gPokemonStoragePtr) + sSaveSectionOffsets[i].toAdd;
+        gRamSaveSectionLocations[i].data = (u8*)(gPokemonStoragePtr) + sSaveSectionOffsets[i].toAdd;
         gRamSaveSectionLocations[i].size = sSaveSectionOffsets[i].size;
     }
 }
@@ -890,7 +891,7 @@ u32 TryWriteSpecialSaveSection(u8 sector, u8* src)
     savData = &gSaveDataBuffer.data[4];
     for (; i <= size; i++)
         savData[i] = src[i];
-    if (ProgramFlashSectorAndVerify(sector, savDataBuffer) != 0)
+    if (ProgramFlashSectorAndVerify(sector, (u8*)savDataBuffer) != 0)
         return SAVE_STATUS_ERROR;
     return SAVE_STATUS_OK;
 }

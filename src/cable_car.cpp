@@ -265,7 +265,7 @@ static void CB2_LoadCableCar(void)
         DmaClearLarge<3>((vu16 *)VRAM, VRAM_SIZE/2, 0x1000/2);
         DmaClear<3>((vu32 *)OAM, OAM_SIZE/4);
         DmaClear<3>((vu16 *)PLTT, PLTT_SIZE/2);
-        sCableCar = AllocZeroed<CableCar>();
+        sCableCar = AllocZeroed<struct CableCar>(); // there is a method of the same name CableCar
         gMain.state++;
         break;
     case 1:
@@ -294,10 +294,10 @@ static void CB2_LoadCableCar(void)
             LoadCompressedSpriteSheet(&sSpriteSheets[i]);
 
         LoadSpritePalettes(sSpritePalettes);
-        sCableCar->groundTilemap = malloc_and_decompress(sGround_Tilemap, &sizeOut);
-        sCableCar->treesTilemap = malloc_and_decompress(sTrees_Tilemap, &sizeOut);
-        sCableCar->bgMountainsTilemap = malloc_and_decompress(sBgMountains_Tilemap, &sizeOut);
-        sCableCar->pylonStemTilemap = malloc_and_decompress(sPylonStems_Tilemap, &sizeOut);
+        sCableCar->groundTilemap = (u16*)malloc_and_decompress(sGround_Tilemap, &sizeOut);
+        sCableCar->treesTilemap = (u16*)malloc_and_decompress(sTrees_Tilemap, &sizeOut);
+        sCableCar->bgMountainsTilemap = (u16*)malloc_and_decompress(sBgMountains_Tilemap, &sizeOut);
+        sCableCar->pylonStemTilemap = (u8*)malloc_and_decompress(sPylonStems_Tilemap, &sizeOut);
         sCableCar->pylonHookTilemapEntries = sPylonHook_TilemapEntries;
         DecompressAndCopyTileDataToVram(0, gCableCarBg_Gfx, 0, 0, 0);
         gMain.state++;

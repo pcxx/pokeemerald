@@ -1000,7 +1000,7 @@ static void sub_8020FA0(u8 taskId)
 #define PLAYER_UNK14(game, i)                        \
     ((u8 *)(game)                                    \
     + offsetof(struct BerryCrushGame, unk68)         \
-    + offsetof(struct BerryCrushGame_68_x, unk30)    \
+    + offsetof(BerryCrushGame_68::BerryCrushGame_68_x, unk30)    \
     + sizeof(struct BerryCrushGame_Player) * (i))
 
 void sub_8020FC4(struct BerryCrushGame *arg0)
@@ -2808,7 +2808,7 @@ static u32 sub_8023CAC(struct BerryCrushGame *r7, __attribute__((unused)) u8 *r1
         memset(
             &r7->unk68,
             0,
-            sizeof(struct BerryCrushGame_68_x_SubStruct)
+            sizeof(BerryCrushGame_68::BerryCrushGame_68_x::BerryCrushGame_68_x_SubStruct)
         );
         r7->unk68.as_four_players.unk00.unk04 = r7->unk28;
         r7->unk68.as_four_players.unk00.unk06 = r7->unk18 / (r7->unk28 / 60);
@@ -2924,7 +2924,7 @@ static u32 sub_8023CAC(struct BerryCrushGame *r7, __attribute__((unused)) u8 *r1
         SendBlock(
             0,
             &r7->unk68,
-            sizeof(struct BerryCrushGame_68_x_SubStruct)
+            sizeof(BerryCrushGame_68::BerryCrushGame_68_x::BerryCrushGame_68_x_SubStruct)
         );
         break;
     case 5:
@@ -2938,12 +2938,12 @@ static u32 sub_8023CAC(struct BerryCrushGame *r7, __attribute__((unused)) u8 *r1
         memset(
             &r7->unk68,
             0,
-            sizeof(struct BerryCrushGame_68_x_SubStruct)
+            sizeof(BerryCrushGame_68::BerryCrushGame_68_x::BerryCrushGame_68_x_SubStruct)
         );
         memcpy(
             &r7->unk68,
             gBlockRecvBuffer,
-            sizeof(struct BerryCrushGame_68_x_SubStruct)
+            sizeof(BerryCrushGame_68::BerryCrushGame_68_x::BerryCrushGame_68_x_SubStruct)
         );
         ResetBlockReceivedFlags();
         r7->unk10 = 0;

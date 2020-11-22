@@ -945,8 +945,8 @@ static void SetTradePartyMonsVisible(void)
 // why not just use memcpy?
 static void Trade_Memcpy(void *dataDest, const void *dataSrc, u32 count)
 {
-    u8 *dest = dataDest;
-    const u8 *src = dataSrc;
+    u8 *dest = (u8*)dataDest;
+    const u8 *src = (u8*)dataSrc;
     u32 i;
 
     for (i = 0; i < count; i++)
@@ -1110,9 +1110,9 @@ static bool8 BufferTradeParties(void)
     return FALSE;
 }
 
-static void PrintAndBufferIsThisTradeOkay(void)
+static void PrintAndBufferIsThisTradeOkay()
 {
-    DrawTextWindowAndBuffer6Bytes(sText_IsThisTradeOkay, (void *)(OBJ_VRAM0 + (sTradeMenuData->bottomTextTileStart * 32)), 24);
+    DrawTextWindowAndBuffer6Bytes(sText_IsThisTradeOkay, (u8 *)(OBJ_VRAM0 + (sTradeMenuData->bottomTextTileStart * 32)), 24);
 }
 
 // mpId is unused
@@ -1399,7 +1399,7 @@ static void TradeMenuProcessInput(void)
         {
             CreateYesNoMenu(&sTradeYesNoWindowTemplate, 1, 14, 0);
             sTradeMenuData->tradeMenuFunc = TRADEMENUFUNC_CANCEL_TRADE_PROMPT;
-            DrawTextWindowAndBuffer6Bytes(sTradeActionTexts[TRADE_TEXT_CANCEL_TRADE], (void *)(OBJ_VRAM0 + sTradeMenuData->bottomTextTileStart * 32), 24);
+            DrawTextWindowAndBuffer6Bytes(sTradeActionTexts[TRADE_TEXT_CANCEL_TRADE], (u8 *)(OBJ_VRAM0 + sTradeMenuData->bottomTextTileStart * 32), 24);
         }
     }
 }
@@ -1409,7 +1409,7 @@ static void TradeMenuChooseMon(void)
     PrintNicknamesForTradeMenu();
     sTradeMenuData->tradeMenuFunc = TRADEMENUFUNC_MAIN_MENU;
     gSprites[sTradeMenuData->cursorSpriteIdx].invisible = FALSE;
-    DrawTextWindowAndBuffer6Bytes(sTradeActionTexts[TRADE_TEXT_CHOOSE_MON], (void *)(OBJ_VRAM0 + sTradeMenuData->bottomTextTileStart * 32), 24);
+    DrawTextWindowAndBuffer6Bytes(sTradeActionTexts[TRADE_TEXT_CHOOSE_MON], (u8 *)(OBJ_VRAM0 + sTradeMenuData->bottomTextTileStart * 32), 24);
 }
 
 static void TradeMenuProcessInput_SelectedMon(void)
@@ -2042,7 +2042,7 @@ static void RedrawTradeMenuParty(u8 whichParty)
     DrawTradeMenuPartyInfo(whichParty);
     PrintPartyNicknamesForTradeMenu(whichParty);
     ResetTradeMenuPartyPositions(whichParty);
-    DrawTextWindowAndBuffer6Bytes(sTradeActionTexts[TRADE_TEXT_CHOOSE_MON], (void *)(OBJ_VRAM0 + (sTradeMenuData->bottomTextTileStart * 32)), 24);
+    DrawTextWindowAndBuffer6Bytes(sTradeActionTexts[TRADE_TEXT_CHOOSE_MON], (u8 *)(OBJ_VRAM0 + (sTradeMenuData->bottomTextTileStart * 32)), 24);
     sTradeMenuData->drawPartyState[whichParty] = 0;
 }
 

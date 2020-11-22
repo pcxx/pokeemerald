@@ -823,12 +823,12 @@ void LoadBagItemListBuffers(u8 pocketId)
         {
             GetItemName(sListBuffer2->name[i], pocket->itemSlots[i].itemId);
             subBuffer = sListBuffer1->subBuffers;
-            subBuffer[i].name = sListBuffer2->name[i];
+            subBuffer[i].name = (u8*)sListBuffer2->name[i];
             subBuffer[i].id = i;
         }
-        StringCopy(sListBuffer2->name[i], gText_CloseBag);
+        StringCopy((u8*)sListBuffer2->name[i], gText_CloseBag);
         subBuffer = sListBuffer1->subBuffers;
-        subBuffer[i].name = sListBuffer2->name[i];
+        subBuffer[i].name = (u8*)sListBuffer2->name[i];
         subBuffer[i].id = LIST_CANCEL;
     }
     else
@@ -837,7 +837,7 @@ void LoadBagItemListBuffers(u8 pocketId)
         {
             GetItemName(sListBuffer2->name[i], pocket->itemSlots[i].itemId);
             subBuffer = sListBuffer1->subBuffers;
-            subBuffer[i].name = sListBuffer2->name[i];
+            subBuffer[i].name = (u8*)sListBuffer2->name[i];
             subBuffer[i].id = i;
         }
     }
@@ -856,21 +856,21 @@ void GetItemName(s8 *dest, u16 itemId)
             if (itemId >= ITEM_HM01)
             {
                 ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_HM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 1);
-                StringExpandPlaceholders(dest, gText_ClearTo11Var1Clear5Var2);
+                StringExpandPlaceholders((u8*)dest, gText_ClearTo11Var1Clear5Var2);
             }
             else
             {
                 ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_TM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
-                StringExpandPlaceholders(dest, gText_NumberVar1Clear7Var2);
+                StringExpandPlaceholders((u8*)dest, gText_NumberVar1Clear7Var2);
             }
             break;
         case BERRIES_POCKET:
             ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_CHERI_BERRY + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
             CopyItemName(itemId, gStringVar2);
-            StringExpandPlaceholders(dest, gText_NumberVar1Clear7Var2);
+            StringExpandPlaceholders((u8*)dest, gText_NumberVar1Clear7Var2);
             break;
         default:
-            CopyItemName(itemId, dest);
+            CopyItemName(itemId, (u8*)dest);
             break;
     }
 }

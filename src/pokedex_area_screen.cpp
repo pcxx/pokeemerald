@@ -236,13 +236,13 @@ static const struct PokedexAreaMapTemplate sPokedexAreaMapTemplate =
     .unk = 2,
 };
 
-static const u8 sAreaMarkerTiles[];
+static const u8 sAreaMarkerTiles[] = INCBIN_U8("graphics/pokedex/area_marker.4bpp");
 static const struct SpriteSheet sAreaMarkerSpriteSheet =
 {
     sAreaMarkerTiles, 0x80, 2
 };
 
-static const u16 sAreaMarkerPalette[];
+static const u16 sAreaMarkerPalette[] = INCBIN_U16("graphics/pokedex/area_marker.gbapal");
 static const struct SpritePalette sAreaMarkerSpritePalette =
 {
     sAreaMarkerPalette, 2
@@ -266,8 +266,6 @@ static const struct SpriteTemplate sAreaMarkerSpriteTemplate =
     SpriteCallbackDummy
 };
 
-static const u16 sAreaMarkerPalette[] = INCBIN_U16("graphics/pokedex/area_marker.gbapal");
-static const u8 sAreaMarkerTiles[] = INCBIN_U8("graphics/pokedex/area_marker.4bpp");
 
 static const struct SpritePalette sAreaUnknownSpritePalette =
 {

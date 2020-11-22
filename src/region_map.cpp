@@ -1133,7 +1133,7 @@ static void RegionMap_InitializeStateBasedOnSSTidalLocation(void)
 
     y = 0;
     x = 0;
-    switch (GetSSTidalLocation(&mapGroup, &mapNum, &xOnMap, &yOnMap))
+    switch (GetSSTidalLocation((s8*)&mapGroup, (s8*)&mapNum, &xOnMap, &yOnMap))
     {
     case SS_TIDAL_LOCATION_SLATEPORT:
         gRegionMap->mapSecId = MAPSEC_SLATEPORT_CITY;

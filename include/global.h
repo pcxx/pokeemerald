@@ -496,7 +496,7 @@ struct SecretBaseParty
     u16 heldItems[PARTY_SIZE];
     u8 levels[PARTY_SIZE];
     u8 EVs[PARTY_SIZE];
-};
+}; // size 0x6c
 
 struct SecretBase
 {
@@ -514,7 +514,7 @@ struct SecretBase
     /*0x1AAE*/ u8 decorations[DECOR_MAX_SECRET_BASE];
     /*0x1ABE*/ u8 decorationPositions[DECOR_MAX_SECRET_BASE];
     /*0x1AD0*/ struct SecretBaseParty party;
-};
+}; // size 0xa0
 
 #include "constants/game_stat.h"
 #include "global.fieldmap.h"
