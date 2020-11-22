@@ -112,9 +112,26 @@ typedef void (*AffineAnimCmdFunc)(u8 matrixNum, struct Sprite *);
 #define AFFINE_ANIM_END 0x7FFF
 
 // forward declarations
-const union AnimCmd * const gDummySpriteAnimTable[];
-const union AffineAnimCmd * const gDummySpriteAffineAnimTable[];
-const struct SpriteTemplate gDummySpriteTemplate;
+static const union AnimCmd sDummyAnim = { ANIM_END };
+
+const union AnimCmd * const gDummySpriteAnimTable[] = { &sDummyAnim };
+
+static const union AffineAnimCmd sDummyAffineAnim = { AFFINE_ANIM_END };
+
+const union AffineAnimCmd * const gDummySpriteAffineAnimTable[] = { &sDummyAffineAnim };
+
+const struct OamData gDummyOamData = DUMMY_OAM_DATA;
+
+const struct SpriteTemplate gDummySpriteTemplate =
+{
+    .tileTag = 0,
+    .paletteTag = 0xFFFF,
+    .oam = &gDummyOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
 
 // Unreferenced data. Also unreferenced in R/S.
 static const u8 sUnknownData[24] =
@@ -189,27 +206,6 @@ static const struct Sprite sDummySprite =
     .subspriteTableNum = 0,
     .subspriteMode = 0,
     .subpriority = 0xFF
-};
-
-const struct OamData gDummyOamData = DUMMY_OAM_DATA;
-
-static const union AnimCmd sDummyAnim = { ANIM_END };
-
-const union AnimCmd * const gDummySpriteAnimTable[] = { &sDummyAnim };
-
-static const union AffineAnimCmd sDummyAffineAnim = { AFFINE_ANIM_END };
-
-const union AffineAnimCmd * const gDummySpriteAffineAnimTable[] = { &sDummyAffineAnim };
-
-const struct SpriteTemplate gDummySpriteTemplate =
-{
-    .tileTag = 0,
-    .paletteTag = 0xFFFF,
-    .oam = &gDummyOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
 };
 
 static const AnimFunc sAnimFuncs[] =
@@ -823,7 +819,7 @@ void RequestSpriteFrameImageCopy(u16 index, u16 tileNum, const struct SpriteFram
 {
     if (sSpriteCopyRequestCount < MAX_SPRITE_COPY_REQUESTS)
     {
-        sSpriteCopyRequests[sSpriteCopyRequestCount].src = images[index].data;
+        sSpriteCopyRequests[sSpriteCopyRequestCount].src = (u8*)images[index].data;
         sSpriteCopyRequests[sSpriteCopyRequestCount].dest = (u8 *)OBJ_VRAM0 + TILE_SIZE_4BPP * tileNum;
         sSpriteCopyRequests[sSpriteCopyRequestCount].size = images[index].size;
         sSpriteCopyRequestCount++;

@@ -298,7 +298,7 @@ u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 
 
         if (state == WRITING_DIGITS)
         {
-            char *out = dest++;
+            char *out = (char*)(dest++);
 
             if (digit <= 0xF)
                 c = sDigits[digit];
@@ -311,7 +311,7 @@ u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 
         {
             char *out;
             state = WRITING_DIGITS;
-            out = dest++;
+            out = (char*)(dest++);
 
             if (digit <= 0xF)
                 c = sDigits[digit];

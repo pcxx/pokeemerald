@@ -264,9 +264,9 @@ endif
 
 $(GFLIB_BUILDDIR)/%.o : $(GFLIB_SUBDIR)/%.cpp $$(c_dep)
 	@$(CPP) $(CPPFLAGS) $< -o $(GFLIB_BUILDDIR)/$*.i
-	@$(PREPROC) $(GFLIB_BUILDDIR)/$*.i charmap.txt | clang++ $(CFLAGS) -o $(GFLIB_BUILDDIR)/$*.s -x c++ -
+	@$(PREPROC) $(GFLIB_BUILDDIR)/$*.i charmap.txt | clang++ $(CFLAGS) -S -o $(GFLIB_BUILDDIR)/$*.s -x c++ -
 	@echo -e ".text\n\t.align\t2, 0\n" >> $(GFLIB_BUILDDIR)/$*.s
-	$(AS) $(ASFLAGS) -o $@ $(GFLIB_BUILDDIR)/$*.s
+	clang++ $(CFLAGS) -c -o $@ $(GFLIB_BUILDDIR)/$*.s
 
 ifeq ($(NODEP),1)
 $(C_BUILDDIR)/%.o: c_asm_dep :=

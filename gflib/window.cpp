@@ -39,7 +39,7 @@ bool16 InitWindows(const struct WindowTemplate *templates)
     for (i = 0; i < 0x4; ++i)
     {
         if (GetBgTilemapBuffer(i) != NULL)
-            gUnknown_03002F70[i] = nullsub_8;
+            gUnknown_03002F70[i] = (void*)nullsub_8;
         else
             gUnknown_03002F70[i] = NULL;
     }
@@ -65,7 +65,7 @@ bool16 InitWindows(const struct WindowTemplate *templates)
 
             if (attrib != 0xFFFF)
             {
-                allocatedTilemapBuffer = AllocZeroed(attrib);
+                allocatedTilemapBuffer = AllocZeroed<u8>(attrib);
 
                 if (allocatedTilemapBuffer == NULL)
                 {
@@ -81,7 +81,7 @@ bool16 InitWindows(const struct WindowTemplate *templates)
             }
         }
 
-        allocatedTilemapBuffer = AllocZeroed((u16)(0x20 * (templates[i].width * templates[i].height)));
+        allocatedTilemapBuffer = AllocZeroed<u8>((u16)(0x20 * (templates[i].width * templates[i].height)));
 
         if (allocatedTilemapBuffer == NULL)
         {
@@ -143,7 +143,7 @@ u16 AddWindow(const struct WindowTemplate *template_)
 
         if (attrib != 0xFFFF)
         {
-            allocatedTilemapBuffer = AllocZeroed(attrib);
+            allocatedTilemapBuffer = AllocZeroed<u8>(attrib);
 
             if (allocatedTilemapBuffer == NULL)
                 return 0xFF;
@@ -156,7 +156,7 @@ u16 AddWindow(const struct WindowTemplate *template_)
         }
     }
 
-    allocatedTilemapBuffer = AllocZeroed((u16)(0x20 * (template_->width * template_->height)));
+    allocatedTilemapBuffer = AllocZeroed<u8>((u16)(0x20 * (template_->width * template_->height)));
 
     if (allocatedTilemapBuffer == NULL)
     {
@@ -447,7 +447,7 @@ void CopyToWindowPixelBuffer(u8 windowId, const void *src, u16 size, u16 tileOff
     if (size != 0)
         CpuCopy16(src, gWindows[windowId].tileData + (0x20 * tileOffset), size);
     else
-        LZ77UnCompWram(src, gWindows[windowId].tileData + (0x20 * tileOffset));
+        LZ77UnCompWram((u32*)src, gWindows[windowId].tileData + (0x20 * tileOffset));
 }
 
 // Sets all pixels within the window to the fillValue color.
@@ -621,7 +621,7 @@ u16 AddWindow8Bit(const struct WindowTemplate *template_)
         if (attribute != 0xFFFF)
         {
             s32 i;
-            memAddress = Alloc(attribute);
+            memAddress = Alloc<u8>(attribute);
             if (memAddress == NULL)
                 return 0xFF;
             for (i = 0; i < attribute; i++) // if we're going to zero out the memory anyway, why not call AllocZeroed?
@@ -630,7 +630,7 @@ u16 AddWindow8Bit(const struct WindowTemplate *template_)
             SetBgTilemapBuffer(bgLayer, memAddress);
         }
     }
-    memAddress = Alloc((u16)(0x40 * (template_->width * template_->height)));
+    memAddress = Alloc<u8>((u16)(0x40 * (template_->width * template_->height)));
     if (memAddress == NULL)
     {
         if (GetNumActiveWindowsOnBg8Bit(bgLayer) == 0 && gUnknown_03002F70[bgLayer] != nullsub_9)

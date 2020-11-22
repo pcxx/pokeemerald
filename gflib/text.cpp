@@ -419,8 +419,8 @@ void RestoreTextColors(u8 *fgColor, u8 *bgColor, u8 *shadowColor)
 void DecompressGlyphTile(const void *src_, void *dest_)
 {
     u32 temp;
-    const u16 *src = src_;
-    u32 *dest = dest_;
+    const u16 *src = (u16*)src_;
+    u32 *dest = (u32*)dest_;
 
     temp = *(src++);
     *(dest)++ = ((gFontHalfRowLookupTable[gFontHalfRowOffsets[temp & 0xFF]]) << 16) | (gFontHalfRowLookupTable[gFontHalfRowOffsets[temp >> 8]]);

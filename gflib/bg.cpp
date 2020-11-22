@@ -44,7 +44,8 @@ static u32 sDmaBusyBitfield[4];
 
 u32 gUnneededFireRedVariable;
 
-static const struct BgConfig sZeroedBgControlStruct = { 0 };
+// TODO properly initialize everything to 0
+static const BgControl::BgConfig sZeroedBgControlStruct = { 0 };
 
 void ResetBgs(void)
 {
@@ -66,8 +67,8 @@ u8 GetBgMode(void)
 
 void ResetBgControlStructs(void)
 {
-    struct BgConfig* bgConfigs = &sGpuBgConfigs.configs[0];
-    struct BgConfig zeroedConfig = sZeroedBgControlStruct;
+    BgControl::BgConfig* bgConfigs = &sGpuBgConfigs.configs[0];
+    BgControl::BgConfig zeroedConfig = sZeroedBgControlStruct;
     int i;
 
     for (i = 0; i < 4; i++)
@@ -880,9 +881,9 @@ void CopyToBgTilemapBuffer(u8 bg, const void *src, u16 mode, u16 destOffset)
     if (IsInvalidBg32(bg) || IsTileMapOutsideWram(bg))
         return;
     if (mode != 0)
-        CpuCopy16(src, (void *)(sGpuBgConfigs2[bg].tilemap + (destOffset * 2)), mode);
+        CpuCopy16(src, (void *)((u8*)sGpuBgConfigs2[bg].tilemap + (destOffset * 2)), mode);
     else
-        LZ77UnCompWram(src, (void *)(sGpuBgConfigs2[bg].tilemap + (destOffset * 2)));
+        LZ77UnCompWram((u32*)src, (void *)((u8*)sGpuBgConfigs2[bg].tilemap + (destOffset * 2)));
 }
 
 void CopyBgTilemapBufferToVram(u8 bg)
@@ -918,7 +919,7 @@ void CopyToBgTilemapBufferRect(u8 bg, const void *src, u8 destX, u8 destY, u8 wi
     {
     case 0:
     {
-        const u16 *srcCopy = src;
+        const u16 *srcCopy = (u16*)src;
         for (destY16 = destY; destY16 < (destY + height); destY16++)
         {
             for (destX16 = destX; destX16 < (destX + width); destX16++)
@@ -930,7 +931,7 @@ void CopyToBgTilemapBufferRect(u8 bg, const void *src, u8 destX, u8 destY, u8 wi
     }
     case 1:
     {
-        const u8 *srcCopy = src;
+        const u8 *srcCopy = (u8*)src;
         mode = GetBgMetricAffineMode(bg, 0x1);
         for (destY16 = destY; destY16 < (destY + height); destY16++)
         {
@@ -953,7 +954,6 @@ void CopyRectToBgTilemapBufferRect(u8 bg, const void *src, u8 srcX, u8 srcY, u8 
 {
     u16 screenWidth, screenHeight, screenSize;
     u16 var;
-    const void *srcPtr;
     u16 i, j;
 
     if (!IsInvalidBg32(bg) && !IsTileMapOutsideWram(bg))
@@ -964,31 +964,35 @@ void CopyRectToBgTilemapBufferRect(u8 bg, const void *src, u8 srcX, u8 srcY, u8 
         switch (GetBgType(bg))
         {
         case 0:
-            srcPtr = src + ((srcY * srcWidth) + srcX) * 2;
+        {
+            const u16 *srcPtr = (u16*)src + ((srcY * srcWidth) + srcX);
             for (i = destX; i < (destX + rectWidth); i++)
             {
                 for (j = srcHeight; j < (srcHeight + destY); j++)
                 {
                     u16 index = GetTileMapIndexFromCoords(j, i, screenSize, screenWidth, screenHeight);
-                    CopyTileMapEntry(srcPtr, sGpuBgConfigs2[bg].tilemap + (index * 2), rectHeight, palette1, tileOffset);
+                    CopyTileMapEntry(srcPtr, (u16*)sGpuBgConfigs2[bg].tilemap + index, rectHeight, palette1, tileOffset);
                     srcPtr += 2;
                 }
-                srcPtr += (srcWidth - destY) * 2;
+                srcPtr += srcWidth - destY;
             }
             break;
+        }
         case 1:
-            srcPtr = src + ((srcY * srcWidth) + srcX);
+        {
+            const u8 *srcPtr = (u8*)src + ((srcY * srcWidth) + srcX);
             var = GetBgMetricAffineMode(bg, 0x1);
             for (i = destX; i < (destX + rectWidth); i++)
             {
                 for (j = srcHeight; j < (srcHeight + destY); j++)
                 {
-                    *(u8*)(sGpuBgConfigs2[bg].tilemap + ((var * i) + j)) = *(u8*)(srcPtr) + palette1;
+                    *(u8*)((u8*)sGpuBgConfigs2[bg].tilemap + ((var * i) + j)) = *(u8*)(srcPtr) + palette1;
                     srcPtr++;
                 }
                 srcPtr += (srcWidth - destY);
             }
             break;
+        }
         }
     }
 }

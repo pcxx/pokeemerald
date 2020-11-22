@@ -61,22 +61,26 @@ void ProcessDma3Requests(void)
         case DMA_REQUEST_COPY32: // regular 32-bit copy
             DmaCopyLarge<3>((vu32*)gDma3Requests[gDma3RequestCursor].src,
                              (vu32*)gDma3Requests[gDma3RequestCursor].dest,
-                             gDma3Requests[gDma3RequestCursor].size/4);
+                             gDma3Requests[gDma3RequestCursor].size/4,
+                             MAX_DMA_BLOCK_SIZE/4);
             break;
         case DMA_REQUEST_FILL32: // repeat a single 32-bit value across RAM
             DmaFillLarge<3>((vu32)gDma3Requests[gDma3RequestCursor].value,
                              (vu32*)gDma3Requests[gDma3RequestCursor].dest,
-                             gDma3Requests[gDma3RequestCursor].size/4);
+                             gDma3Requests[gDma3RequestCursor].size/4,
+                             MAX_DMA_BLOCK_SIZE/4);
             break;
         case DMA_REQUEST_COPY16:    // regular 16-bit copy
             DmaCopyLarge<3>((vu16*)gDma3Requests[gDma3RequestCursor].src,
                              (vu16*)gDma3Requests[gDma3RequestCursor].dest,
-                             gDma3Requests[gDma3RequestCursor].size/2);
+                             gDma3Requests[gDma3RequestCursor].size/2,
+                             MAX_DMA_BLOCK_SIZE/2);
             break;
         case DMA_REQUEST_FILL16: // repeat a single 16-bit value across RAM
             DmaFillLarge<3>((vu16)gDma3Requests[gDma3RequestCursor].value,
                              (vu16*)gDma3Requests[gDma3RequestCursor].dest,
-                             gDma3Requests[gDma3RequestCursor].size/2);
+                             gDma3Requests[gDma3RequestCursor].size/2,
+                             MAX_DMA_BLOCK_SIZE/2);
             break;
         }
 
@@ -105,8 +109,8 @@ s16 RequestDma3Copy(const void *src, void *dest, u16 size, u8 mode)
     {
         if (gDma3Requests[cursor].size == 0) // an empty request was found.
         {
-            gDma3Requests[cursor].src = src;
-            gDma3Requests[cursor].dest = dest;
+            gDma3Requests[cursor].src = (u8*)src;
+            gDma3Requests[cursor].dest = (u8*)dest;
             gDma3Requests[cursor].size = size;
 
             if (mode == 1)
@@ -137,7 +141,7 @@ s16 RequestDma3Fill(s32 value, void *dest, u16 size, u8 mode)
     {
         if (gDma3Requests[cursor].size == 0) // an empty request was found.
         {
-            gDma3Requests[cursor].dest = dest;
+            gDma3Requests[cursor].dest = (u8*)dest;
             gDma3Requests[cursor].size = size;
             gDma3Requests[cursor].mode = mode;
             gDma3Requests[cursor].value = value;
