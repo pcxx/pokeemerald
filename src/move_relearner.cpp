@@ -368,7 +368,7 @@ static void VBlankCB_MoveRelearner(void)
 }
 
 // Script arguments: The pokemon to teach is in VAR_0x8004
-void TeachMoveRelearnerMove(void)
+extern "C" void TeachMoveRelearnerMove(void)
 {
     ScriptContext2_Enable();
     CreateTask(Task_WaitForFadeOut, 10);

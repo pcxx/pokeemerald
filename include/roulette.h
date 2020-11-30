@@ -1,6 +1,6 @@
 #ifndef GUARD_ROULETTE_H
 #define GUARD_ROULETTE_H
 
-void PlayRoulette(void);
+extern "C" void PlayRoulette(void);
 
 #endif // GUARD_ROULETTE_H

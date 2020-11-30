@@ -275,7 +275,7 @@ static const u8 sTrainerPartySlots[][PARTY_SIZE / 2] =
 };
 
 // code
-void CallTrainerHillFunction(void)
+extern "C" void CallTrainerHillFunction(void)
 {
     SetUpDataStruct();
     sHillFunctions[gSpecialVar_0x8004]();

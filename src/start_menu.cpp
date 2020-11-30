@@ -851,7 +851,7 @@ static u8 RunSaveCallback(void)
     return sSaveDialogCallback();
 }
 
-void SaveGame(void)
+extern "C" void SaveGame(void)
 {
     InitSave();
     CreateTask(SaveGameTask, 0x50);
@@ -1367,7 +1367,7 @@ static void Task_WaitForBattleTowerLinkSave(u8 taskId)
 
 #define tPartialSave data[2]
 
-void SaveForBattleTowerLink(void)
+extern "C" void SaveForBattleTowerLink(void)
 {
     u8 taskId = CreateTask(Task_LinkSave, 5);
     gTasks[taskId].tPartialSave = TRUE;

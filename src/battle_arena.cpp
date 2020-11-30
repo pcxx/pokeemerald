@@ -502,7 +502,7 @@ static const u16 sLongStreakPrizeItems[] =
 };
 
 // code
-void CallBattleArenaFunction(void)
+extern "C" void CallBattleArenaFunction(void)
 {
     sArenaFunctions[gSpecialVar_0x8004]();
 }

@@ -10,7 +10,7 @@
 #include "constants/heal_locations.h"
 #include "constants/tv.h"
 
-int GameClear(void)
+extern "C" int GameClear(void)
 {
     int i;
     bool32 ribbonGet;
@@ -86,7 +86,7 @@ int GameClear(void)
     return 0;
 }
 
-bool8 SetCB2WhiteOut(void)
+extern "C" bool8 SetCB2WhiteOut(void)
 {
     SetMainCallback2(CB2_WhiteOut);
     return FALSE;

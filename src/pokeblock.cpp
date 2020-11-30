@@ -465,7 +465,7 @@ void OpenPokeblockCaseInBattle(void)
     OpenPokeblockCase(PBLOCK_CASE_BATTLE, CB2_SetUpReshowBattleScreenAfterMenu2);
 }
 
-void OpenPokeblockCaseOnFeeder(void)
+extern "C" void OpenPokeblockCaseOnFeeder(void)
 {
     OpenPokeblockCase(PBLOCK_CASE_FEEDER, CB2_ReturnToField);
 }
@@ -1316,7 +1316,7 @@ u8 GetPokeblocksFeel(const struct Pokeblock *pokeblock)
     return feel;
 }
 
-s8 GetFirstFreePokeblockSlot(void)
+extern "C" s8 GetFirstFreePokeblockSlot(void)
 {
     u8 i;
 

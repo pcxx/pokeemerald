@@ -383,7 +383,7 @@ static void AddHatchedMonToParty(u8 id)
     CalculateMonStats(mon);
 }
 
-void ScriptHatchMon(void)
+extern "C" void ScriptHatchMon(void)
 {
     AddHatchedMonToParty(gSpecialVar_0x8004);
 }
@@ -406,7 +406,7 @@ static bool8 _CheckDaycareMonReceivedMail(struct DayCare *daycare, u8 daycareId)
     return FALSE;
 }
 
-bool8 CheckDaycareMonReceivedMail(void)
+extern "C" bool8 CheckDaycareMonReceivedMail(void)
 {
     return _CheckDaycareMonReceivedMail(&gSaveBlock1Ptr->daycare, gSpecialVar_0x8004);
 }
@@ -457,7 +457,7 @@ static void VBlankCB_EggHatch(void)
     TransferPlttBuffer();
 }
 
-void EggHatch(void)
+extern "C" void EggHatch(void)
 {
     ScriptContext2_Enable();
     CreateTask(Task_EggHatch, 10);
@@ -880,7 +880,7 @@ u8 GetEggCyclesToSubtract(void)
     return 1;
 }
 
-u16 CountPartyAliveNonEggMons(void)
+extern "C" u16 CountPartyAliveNonEggMons(void)
 {
     u16 aliveNonEggMonsCount = CountStorageNonEggMons();
     aliveNonEggMonsCount += CountPartyAliveNonEggMonsExcept(PARTY_SIZE);

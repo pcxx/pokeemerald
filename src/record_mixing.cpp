@@ -169,7 +169,7 @@ static const u8 gUnknown_0858CFBE[3][4] =
 
 #define BUFFER_CHUNK_SIZE 200
 
-void RecordMixingPlayerSpotTriggered(void)
+extern "C" void RecordMixingPlayerSpotTriggered(void)
 {
     CreateTask_EnterCableClubSeat(Task_RecordMixing_Main);
 }

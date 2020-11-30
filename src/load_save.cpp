@@ -161,7 +161,7 @@ void ClearContinueGameWarpStatus2(void)
     gSaveBlock2Ptr->specialSaveWarpFlags &= ~CONTINUE_GAME_WARP;
 }
 
-void SavePlayerParty(void)
+extern "C" void SavePlayerParty(void)
 {
     int i;
 
@@ -171,7 +171,7 @@ void SavePlayerParty(void)
         gSaveBlock1Ptr->playerParty[i] = gPlayerParty[i];
 }
 
-void LoadPlayerParty(void)
+extern "C" void LoadPlayerParty(void)
 {
     int i;
 
@@ -209,7 +209,7 @@ void LoadSerializedGame(void)
     LoadObjectEvents();
 }
 
-void LoadPlayerBag(void)
+extern "C" void LoadPlayerBag(void)
 {
     int i;
 

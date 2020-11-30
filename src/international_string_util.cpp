@@ -217,7 +217,7 @@ int sub_81DB604(u8 *str)
         return LANGUAGE_ENGLISH;
 }
 
-void sub_81DB620(int windowId, int columnStart, int rowStart, int numFillTiles, int numRows)
+extern "C" void sub_81DB620(int windowId, int columnStart, int rowStart, int numFillTiles, int numRows)
 {
     u8 *windowTileData;
     int fillSize, windowRowSize, rowsToFill;

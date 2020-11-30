@@ -82,7 +82,7 @@ static void CreateInitialRoamerMon(bool16 createLatios)
     sRoamerLocation[MAP_NUM] = sRoamerLocations[Random() % (ARRAY_COUNT(sRoamerLocations) - 1)][0];
 }
 
-void InitRoamer(void)
+extern "C" void InitRoamer(void)
 {
     ClearRoamerData();
     ClearRoamerLocationData();

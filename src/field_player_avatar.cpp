@@ -1166,7 +1166,7 @@ u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y)
     return FALSE;
 }
 
-u8 GetPlayerFacingDirection(void)
+extern "C" u8 GetPlayerFacingDirection(void)
 {
     return gObjectEvents[gPlayerAvatar.objectEventId].facingDirection;
 }

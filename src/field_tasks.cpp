@@ -519,7 +519,7 @@ static bool32 IsIcePuzzleCoordVisited(s16 x, s16 y)
         return FALSE;
 }
 
-void SetSootopolisGymCrackedIceMetatiles(void)
+extern "C" void SetSootopolisGymCrackedIceMetatiles(void)
 {
     s32 x, y;
     s32 width = gMapHeader.mapLayout->width;

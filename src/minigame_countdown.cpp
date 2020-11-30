@@ -289,7 +289,7 @@ static void sub_802EAB0(u8 taskId)
 #define tSpriteId2   data[8]
 #define tSpriteId3   data[9]
 
-void StartMinigameCountdown(s16 tilesTag, s16 palTag, s16 x, s16 y, u8 subpriority)
+extern "C" void StartMinigameCountdown(s16 tilesTag, s16 palTag, s16 x, s16 y, u8 subpriority)
 {
     u8 taskId = CreateTask(Task_MinigameCountdown, 80);
     gTasks[taskId].tTilesTag = tilesTag;

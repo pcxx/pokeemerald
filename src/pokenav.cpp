@@ -331,7 +331,7 @@ void CB2_InitPokeNav(void)
     }
 }
 
-void OpenPokenavForTutorial(void)
+extern "C" void OpenPokenavForTutorial(void)
 {
     SetMainCallback2(CB2_InitPokenavForTutorial);
     FadeScreen(FADE_TO_BLACK, 0);

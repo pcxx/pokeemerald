@@ -205,7 +205,7 @@ bool8 sub_80D47D4(void)
     return TRUE;
 }
 
-void ShowMapNamePopup(void)
+extern "C" void ShowMapNamePopup(void)
 {
     if (FlagGet(FLAG_HIDE_MAP_NAME_POPUP) != TRUE)
     {

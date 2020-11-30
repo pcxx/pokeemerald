@@ -151,7 +151,7 @@ static bool8 HasEnoughBerryPowder_(u32 cost)
         return TRUE;
 }
 
-bool8 HasEnoughBerryPowder(void)
+extern "C" bool8 HasEnoughBerryPowder(void)
 {
     u32 *powder = &gSaveBlock2Ptr->berryCrush.berryPowderAmount;
     if (DecryptBerryPowder(powder) < gSpecialVar_0x8004)
@@ -186,7 +186,7 @@ static bool8 TakeBerryPowder_(u32 cost)
     return TRUE;
 }
 
-bool8 TakeBerryPowder(void)
+extern "C" bool8 TakeBerryPowder(void)
 {
     u32 *powder = &gSaveBlock2Ptr->berryCrush.berryPowderAmount;
     if (!HasEnoughBerryPowder_(gSpecialVar_0x8004))
@@ -215,13 +215,13 @@ static void DrawPlayerPowderAmount(u8 windowId, u16 baseTileOffset, u8 paletteNu
     PrintBerryPowderAmount(windowId, amount, 26, 17, 0);
 }
 
-void PrintPlayerBerryPowderAmount(void)
+extern "C" void PrintPlayerBerryPowderAmount(void)
 {
     u32 amount = GetBerryPowder();
     PrintBerryPowderAmount(sBerryPowderVendorWindowId, amount, 26, 17, 0);
 }
 
-void DisplayBerryPowderVendorMenu(void)
+extern "C" void DisplayBerryPowderVendorMenu(void)
 {
     struct WindowTemplate template_;
     SetWindowTemplateFields(&template_, 0, 1, 1, 7, 4, 15, 0x1C);
@@ -232,7 +232,7 @@ void DisplayBerryPowderVendorMenu(void)
     DrawPlayerPowderAmount(sBerryPowderVendorWindowId, 0x21D, 13, GetBerryPowder());
 }
 
-void RemoveBerryPowderVendorMenu(void)
+extern "C" void RemoveBerryPowderVendorMenu(void)
 {
     ClearWindowTilemap(sBerryPowderVendorWindowId);
     ClearStdWindowAndFrameToTransparent(sBerryPowderVendorWindowId, TRUE);

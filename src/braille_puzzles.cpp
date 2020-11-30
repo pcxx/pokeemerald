@@ -97,7 +97,7 @@ void DoBrailleDigEffect(void)
     ScriptContext2_Disable();
 }
 
-bool8 CheckRelicanthWailord(void)
+extern "C" bool8 CheckRelicanthWailord(void)
 {
     // Emerald change: why did they flip it?
     // First comes Wailord
@@ -113,7 +113,7 @@ bool8 CheckRelicanthWailord(void)
 
 // THEORY: this was caused by block commenting out all of the older R/S braille functions but leaving the call to it itself, which creates the nullsub.
 // the code is shown below to show what this might look like.
-void ShouldDoBrailleRegirockEffectOld(void)
+extern "C" void ShouldDoBrailleRegirockEffectOld(void)
 {
     /*
         if (!FlagGet(FLAG_SYS_REGIROCK_PUZZLE_COMPLETED) && (gSaveBlock1.location.mapGroup == MAP_GROUP_DESERT_RUINS && gSaveBlock1.location.mapNum == MAP_ID_DESERT_RUINS))
@@ -192,7 +192,7 @@ void UseFlyAncientTomb_Finish(void)
     */
 }
 
-void DoSealedChamberShakingEffect1(void)
+extern "C" void DoSealedChamberShakingEffect1(void)
 {
     u8 taskId = CreateTask(SealedChamberShakingEffect, 9);
 
@@ -204,7 +204,7 @@ void DoSealedChamberShakingEffect1(void)
     SetCameraPanningCallback(0);
 }
 
-void DoSealedChamberShakingEffect2(void)
+extern "C" void DoSealedChamberShakingEffect2(void)
 {
     u8 taskId = CreateTask(SealedChamberShakingEffect, 9);
 
@@ -424,7 +424,7 @@ extern "C" bool8 FldEff_UsePuzzleEffect(void)
     return FALSE;
 }
 
-bool8 ShouldDoBrailleRegicePuzzle(void)
+extern "C" bool8 ShouldDoBrailleRegicePuzzle(void)
 {
     u8 i;
 

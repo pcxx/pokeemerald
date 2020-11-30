@@ -731,7 +731,7 @@ static void CreateChooseAnswerTask(bool8 noBButton, u8 answers, u8 windowId)
 #undef tWrapAround
 #undef tWindowId
 
-void CallApprenticeFunction(void)
+extern "C" void CallApprenticeFunction(void)
 {
     sApprenticeFunctions[gSpecialVar_0x8004]();
 }

@@ -10,12 +10,12 @@ u8 gFlashTimeoutFlag;
 u8 (*PollFlashStatus)(u8 *);
 u16 (*WaitForFlashWrite)(u8 phase, u8 *addr, u8 lastData);
 u16 (*ProgramFlashSector)(u16 sectorNum, u8 *src);
-extern const struct FlashType *gFlash;
+extern const struct FlashType *gFlash = NULL;
 u16 (*ProgramFlashByte)(u16 sectorNum, u32 offset, u8 data);
 u16 gFlashNumRemainingBytes;
 u16 (*EraseFlashChip)();
 u16 (*EraseFlashSector)(u16 sectorNum);
-extern const u16 *gFlashMaxTime;
+extern const u16 *gFlashMaxTime = NULL;
 
 void SetReadFlash1(u16 *dest);
 

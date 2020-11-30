@@ -39,7 +39,7 @@ void UpdateMirageRnd(u16 days)
     SetMirageRnd(rnd);
 }
 
-bool8 IsMirageIslandPresent(void)
+extern "C" bool8 IsMirageIslandPresent(void)
 {
     u16 rnd = GetMirageRnd() >> 16;
     int i;
@@ -51,7 +51,7 @@ bool8 IsMirageIslandPresent(void)
     return FALSE;
 }
 
-void UpdateShoalTideFlag(void)
+extern "C" void UpdateShoalTideFlag(void)
 {
     static const u8 tide[] =
     {
@@ -100,12 +100,12 @@ static void Task_WaitWeather(u8 taskId)
     }
 }
 
-void WaitWeather(void)
+extern "C" void WaitWeather(void)
 {
     CreateTask(Task_WaitWeather, 80);
 }
 
-void InitBirchState(void)
+extern "C" void InitBirchState(void)
 {
     *GetVarPointer(VAR_BIRCH_STATE) = 0;
 }

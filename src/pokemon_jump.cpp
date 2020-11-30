@@ -2157,7 +2157,7 @@ bool32 IsSpeciesAllowedInPokemonJump(u16 species)
     return GetPokemonJumpSpeciesIdx(species) > -1;
 }
 
-void IsPokemonJumpSpeciesInParty(void)
+extern "C" void IsPokemonJumpSpeciesInParty(void)
 {
     int i;
 
@@ -3863,7 +3863,7 @@ static void sub_802E3A8(void)
         pokeJump->field6++;
 }
 
-void ShowPokemonJumpRecords(void)
+extern "C" void ShowPokemonJumpRecords(void)
 {
     u8 taskId = CreateTask(Task_ShowPokemonJumpRecords, 0);
     Task_ShowPokemonJumpRecords(taskId);

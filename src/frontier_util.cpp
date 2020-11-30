@@ -783,7 +783,7 @@ static const u8 *const *const sFrontierBrainPlayerWonTexts[] =
 };
 
 // code
-void CallFrontierUtilFunc(void)
+extern "C" void CallFrontierUtilFunc(void)
 {
     sFrontierUtilFuncs[gSpecialVar_0x8004]();
 }
@@ -2362,7 +2362,7 @@ static void PrintHallRecords(s32 hallFacilityId, s32 lvlMode)
     }
 }
 
-void ShowRankingHallRecordsWindow(void)
+extern "C" void ShowRankingHallRecordsWindow(void)
 {
     gRecordsWindowId = AddWindow(&sRankingHallRecordsWindowTemplate);
     DrawStdWindowFrame(gRecordsWindowId, FALSE);
@@ -2372,7 +2372,7 @@ void ShowRankingHallRecordsWindow(void)
     CopyWindowToVram(gRecordsWindowId, 3);
 }
 
-void ScrollRankingHallRecordsWindow(void)
+extern "C" void ScrollRankingHallRecordsWindow(void)
 {
     FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
     PrintHallRecords(gSpecialVar_0x8005, FRONTIER_LVL_OPEN);

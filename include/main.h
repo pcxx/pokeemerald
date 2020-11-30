@@ -55,7 +55,7 @@ extern u8 gLinkVSyncDisabled;
 extern u32 IntrMain_Buffer[];
 extern s8 gPcmDmaCounter;
 
-void AgbMain(void);
+extern "C" void AgbMain(void);
 void SetMainCallback2(MainCallback callback);
 void InitKeys(void);
 void SetVBlankCallback(IntrCallback callback);
@@ -65,7 +65,7 @@ void SetSerialCallback(IntrCallback callback);
 void InitFlashTimer(void);
 void SetTrainerHillVBlankCounter(u32 *var);
 void ClearTrainerHillVBlankCounter(void);
-void DoSoftReset(void);
+extern "C" void DoSoftReset(void);
 void ClearPokemonCrySongs(void);
 void RestoreSerialTimer3IntrHandlers(void);
 void StartTimer1(void);

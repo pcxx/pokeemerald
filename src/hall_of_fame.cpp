@@ -1406,7 +1406,7 @@ static bool8 CreateHofConfettiSprite(void)
 #define CONFETTI_EXTRA_Y  1
 #define CONFETTI_TASK_ID  7
 
-void DoDomeConfetti(void)
+extern "C" void DoDomeConfetti(void)
 {
     u8 taskId;
 

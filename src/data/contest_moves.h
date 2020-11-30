@@ -3196,7 +3196,7 @@ const bool8 gComboStarterLookupTable[] =
     TRUE
 };
 
-void (*const gContestEffectFuncs[])(void) =
+extern void (*const gContestEffectFuncs[])(void) =
 {
     ContestEffect_HighlyAppealing,
     ContestEffect_UserMoreEasilyStartled,

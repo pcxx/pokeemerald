@@ -230,7 +230,7 @@ static const u8 sUnused_082ED224[] = {0x00, 0xFF, 0xFE, 0xFF, 0x00};
 
 // .text
 
-bool8 IsWirelessAdapterConnected(void)
+extern "C" bool8 IsWirelessAdapterConnected(void)
 {
     SetWirelessCommType1();
     InitRFUAPI();
@@ -395,7 +395,7 @@ void OpenLink(void)
     }
 }
 
-void CloseLink(void)
+extern "C" void CloseLink(void)
 {
     gReceivedRemoteLinkPlayers = FALSE;
     if (gWirelessCommType)
@@ -1905,7 +1905,7 @@ bool32 sub_800B504(void)
 }
 
 // Unused
-u8 GetWirelessCommType(void)
+extern "C" u8 GetWirelessCommType(void)
 {
     return gWirelessCommType;
 }

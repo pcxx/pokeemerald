@@ -7,8 +7,8 @@ bool32 GetSafariZoneFlag(void);
 void SetSafariZoneFlag(void);
 void ResetSafariZoneFlag(void);
 
-void EnterSafariMode(void);
-void ExitSafariMode(void);
+extern "C" void EnterSafariMode(void);
+extern "C" void ExitSafariMode(void);
 
 bool8 SafariZoneTakeStep(void);
 void SafariZoneRetirePrompt(void);

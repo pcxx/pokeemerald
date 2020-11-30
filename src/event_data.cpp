@@ -65,7 +65,7 @@ void DisableNationalPokedex(void)
     FlagClear(FLAG_SYS_NATIONAL_DEX);
 }
 
-void EnableNationalPokedex(void)
+extern "C" void EnableNationalPokedex(void)
 {
     u16 *nationalDexVar = GetVarPointer(VAR_NATIONAL_DEX);
     gSaveBlock2Ptr->pokedex.nationalMagic = 0xDA;

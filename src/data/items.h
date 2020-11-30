@@ -1,4 +1,4 @@
-const struct Item gItems[] =
+extern const struct Item gItems[] =
 {
     [ITEM_NONE] =
     {

@@ -69,7 +69,7 @@ struct PokenavSub17
     u32 loopedTaskId;
 };
 
-extern void sub_81DB620(u32 windowId, u32 a1, u32 a2, u32 a3, u32 a4);
+extern "C" void sub_81DB620(u32 windowId, u32 a1, u32 a2, u32 a3, u32 a4);
 
 void sub_81C82E4(struct PokenavSub17 *matchCall);
 bool32 CopyPokenavListMenuTemplate(struct PokenavSub17Substruct *a0, const struct BgTemplate *a1, struct PokenavListTemplate *a2, s32 a3);
@@ -87,7 +87,7 @@ void sub_81C8D4C(struct MatchCallWindowState *a0, struct PokenavSub17Substruct *
 void sub_81C8CB4(struct MatchCallWindowState *a0, struct PokenavSub17Substruct *a1);
 void sub_81C8B70(struct PokenavListMenuWindow *a0, s32 a1, s32 a2);
 void sub_81C8568(s32 a0, struct PokenavSub17Substruct *a1);
-void sub_81C83AC(void * a0, u32 a1, u32 a2, u32 a3, u32 a4, struct PokenavSub17Substruct *a5);
+extern "C" void sub_81C83AC(PokenavMatchCallEntries * a0, u32 a1, u32 a2, u32 a3, u32 a4, struct PokenavSub17Substruct *a5);
 void sub_81C837C(struct MatchCallWindowState *a0, struct PokenavSub17Substruct *a1);
 void sub_81C835C(struct PokenavListMenuWindow *a0);
 u32 LoopedTask_sub_81C8254(s32 state);
@@ -199,7 +199,7 @@ void sub_81C837C(struct MatchCallWindowState *state, struct PokenavSub17Substruc
     sub_81C83AC(state->unk10, state->windowTopIndex, arg2, state->unkC, 0, a1);
 }
 
-void sub_81C83AC(PokenavMatchCallEntries * a0, u32 a1, u32 a2, u32 a3, u32 a4, struct PokenavSub17Substruct *list)
+extern "C" void sub_81C83AC(PokenavMatchCallEntries * a0, u32 a1, u32 a2, u32 a3, u32 a4, struct PokenavSub17Substruct *list)
 {
     if (a2 == 0)
         return;

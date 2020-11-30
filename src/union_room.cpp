@@ -345,7 +345,7 @@ static bool32 IsActivityWithVariableGroupSize(u32 caseId)
     }
 }
 
-void TryBecomeLinkLeader(void)
+extern "C" void TryBecomeLinkLeader(void)
 {
     u8 taskId;
     struct WirelessLink_Leader *data;
@@ -931,7 +931,7 @@ static u8 sub_8013398(struct UnkStruct_Main0 *arg0)
     return playerCount;
 }
 
-void TryJoinLinkGroup(void)
+extern "C" void TryJoinLinkGroup(void)
 {
     u8 taskId;
     struct WirelessLink_Group *data;
@@ -2376,7 +2376,7 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
     }
 }
 
-void RunUnionRoom(void)
+extern "C" void RunUnionRoom(void)
 {
     struct WirelessLink_URoom *uroom;
 
@@ -3239,7 +3239,7 @@ static bool32 UnionRoom_HandleContactFromOtherPlayer(struct WirelessLink_URoom *
     return TRUE;
 }
 
-void InitUnionRoom(void)
+extern "C" void InitUnionRoom(void)
 {
     struct WirelessLink_URoom *data;
 
@@ -3324,7 +3324,7 @@ static void Task_InitUnionRoom(u8 taskId)
     }
 }
 
-bool16 BufferUnionRoomPlayerName(void)
+extern "C" bool16 BufferUnionRoomPlayerName(void)
 {
     if (sUnionRoomPlayerName[0] != EOS)
     {
@@ -4328,7 +4328,7 @@ static void ResetUnionRoomTrade(struct UnionRoomTrade *uroomTrade)
     uroomTrade->personality = 0;
 }
 
-void Script_ResetUnionRoomTrade(void)
+extern "C" void Script_ResetUnionRoomTrade(void)
 {
     ResetUnionRoomTrade(&sUnionRoomTrade);
 }

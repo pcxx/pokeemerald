@@ -8,10 +8,10 @@ struct GcmbStruct
     u8 filler3[0x2C - 0x3];
 };
 
-void GameCubeMultiBoot_Main(struct GcmbStruct *pStruct);
-void GameCubeMultiBoot_ExecuteProgram(struct GcmbStruct *pStruct);
-void GameCubeMultiBoot_Init(struct GcmbStruct *pStruct);
-void GameCubeMultiBoot_HandleSerialInterrupt(struct GcmbStruct *pStruct);
-void GameCubeMultiBoot_Quit(void);
+extern "C" void GameCubeMultiBoot_Main(struct GcmbStruct *pStruct);
+extern "C" void GameCubeMultiBoot_ExecuteProgram(struct GcmbStruct *pStruct);
+extern "C" void GameCubeMultiBoot_Init(struct GcmbStruct *pStruct);
+extern "C" void GameCubeMultiBoot_HandleSerialInterrupt(struct GcmbStruct *pStruct);
+extern "C" void GameCubeMultiBoot_Quit(void);
 
 #endif // GUARD_LIBGCNMULTIBOOT_H

@@ -57,7 +57,7 @@ struct TrHillTag
 
 extern u32 *gTrainerHillVBlankCounter;
 
-void CallTrainerHillFunction(void);
+extern "C" void CallTrainerHillFunction(void);
 void ResetTrainerHillResults(void);
 u8 GetTrainerHillOpponentClass(u16 trainerId);
 void GetTrainerHillTrainerName(u8 *dst, u16 trainerId);

@@ -1931,7 +1931,7 @@ static void AddContestTextPrinter(int windowId, u8 *str, int x)
     PutWindowTilemap(windowId);
 }
 
-void TryEnterContestMon(void)
+extern "C" void TryEnterContestMon(void)
 {
     u8 eligibility = GetContestEntryEligibility(&gPlayerParty[gContestMonPartyIndex]);
 
@@ -1945,7 +1945,7 @@ void TryEnterContestMon(void)
     gSpecialVar_Result = eligibility;
 }
 
-u16 HasMonWonThisContestBefore(void)
+extern "C" u16 HasMonWonThisContestBefore(void)
 {
     u16 hasRankRibbon = FALSE;
     struct Pokemon *mon = &gPlayerParty[gContestMonPartyIndex];
@@ -1976,7 +1976,7 @@ u16 HasMonWonThisContestBefore(void)
     return hasRankRibbon;
 }
 
-void GiveMonContestRibbon(void)
+extern "C" void GiveMonContestRibbon(void)
 {
     u8 ribbonData;
 
@@ -2050,7 +2050,7 @@ void BufferContestantMonNickname(void)
 }
 
 // Unused script special
-void GetContestMonConditionRanking(void)
+extern "C" void GetContestMonConditionRanking(void)
 {
     u8 i, rank;
 
@@ -2063,19 +2063,19 @@ void GetContestMonConditionRanking(void)
     gSpecialVar_0x8004 = rank;
 }
 
-void GetContestMonCondition(void)
+extern "C" void GetContestMonCondition(void)
 {
     gSpecialVar_0x8004 = gContestMonRound1Points[gSpecialVar_0x8006];
 }
 
-void GetContestWinnerId(void)
+extern "C" void GetContestWinnerId(void)
 {
     u8 i;
     GET_CONTEST_WINNER_ID(i);
     gSpecialVar_0x8005 = i;
 }
 
-void BufferContestWinnerTrainerName(void)
+extern "C" void BufferContestWinnerTrainerName(void)
 {
     u8 i;
     GET_CONTEST_WINNER_ID(i);
@@ -2083,7 +2083,7 @@ void BufferContestWinnerTrainerName(void)
     sub_81DB5AC(gStringVar3);
 }
 
-void BufferContestWinnerMonName(void)
+extern "C" void BufferContestWinnerMonName(void)
 {
     u8 i;
     GET_CONTEST_WINNER_ID(i);
@@ -2132,7 +2132,7 @@ void ShowContestResults(void)
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
 }
 
-void GetContestPlayerId(void)
+extern "C" void GetContestPlayerId(void)
 {
     gSpecialVar_0x8004 = gContestPlayerMonIndex;
 }
@@ -2263,7 +2263,7 @@ static void Task_LinkContest_WaitDisconnect(u8 taskId)
     }
 }
 
-void SetContestTrainerGfxIds(void)
+extern "C" void SetContestTrainerGfxIds(void)
 {
     gSaveBlock1Ptr->vars[VAR_OBJ_GFX_ID_0 - VARS_START] = gContestMons[0].trainerGfxId;
     gSaveBlock1Ptr->vars[VAR_OBJ_GFX_ID_1 - VARS_START] = gContestMons[1].trainerGfxId;
@@ -2271,7 +2271,7 @@ void SetContestTrainerGfxIds(void)
 }
 
 // Unused
-void sub_80F8814(void)
+extern "C" void sub_80F8814(void)
 {
     u16 var1;
     u8 var0 = gSpecialVar_0x8005;
@@ -2294,7 +2294,7 @@ void sub_80F8814(void)
     gSpecialVar_0x8004 = var1;
 }
 
-void BufferContestTrainerAndMonNames(void)
+extern "C" void BufferContestTrainerAndMonNames(void)
 {
     BufferContestantTrainerName();
     BufferContestantMonNickname();
@@ -2302,7 +2302,7 @@ void BufferContestTrainerAndMonNames(void)
 }
 
 // Unused
-void DoesContestCategoryHaveWinner(void)
+extern "C" void DoesContestCategoryHaveWinner(void)
 {
     int contestWinner;
     switch (gSpecialVar_ContestCategory)
@@ -2331,12 +2331,12 @@ void DoesContestCategoryHaveWinner(void)
         gSpecialVar_0x8004 = TRUE;
 }
 
-void SaveMuseumContestPainting(void)
+extern "C" void SaveMuseumContestPainting(void)
 {
     sub_80DEDA8(0xFF);
 }
 
-void ShouldReadyContestArtist(void)
+extern "C" void ShouldReadyContestArtist(void)
 {
     if (gContestFinalStandings[gContestPlayerMonIndex] == 0
      && gSpecialVar_ContestRank == CONTEST_RANK_MASTER
@@ -2350,7 +2350,7 @@ void ShouldReadyContestArtist(void)
     }
 }
 
-u8 CountPlayerContestPaintings(void)
+extern "C" u8 CountPlayerContestPaintings(void)
 {
     int i;
     u8 count = 0;
@@ -2365,7 +2365,7 @@ u8 CountPlayerContestPaintings(void)
 }
 
 // Unused
-void sub_80F8970(void)
+extern "C" void sub_80F8970(void)
 {
     s16 conditions[CONTESTANT_COUNT];
     int i, j;
@@ -2438,13 +2438,13 @@ static void ExitContestWinnerPainting(void)
     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
-void ShowContestWinnerPainting(void)
+extern "C" void ShowContestWinnerPainting(void)
 {
     SetMainCallback2(CB2_ContestPainting);
     gMain.savedCallback = ExitContestWinnerPainting;
 }
 
-void SetLinkContestPlayerGfx(void)
+extern "C" void SetLinkContestPlayerGfx(void)
 {
     int i;
 
@@ -2469,7 +2469,7 @@ void SetLinkContestPlayerGfx(void)
     }
 }
 
-void LoadLinkContestPlayerPalettes(void)
+extern "C" void LoadLinkContestPlayerPalettes(void)
 {
     int i;
     u8 objectEventId;
@@ -2504,7 +2504,7 @@ void LoadLinkContestPlayerPalettes(void)
     }
 }
 
-bool8 GiveMonArtistRibbon(void)
+extern "C" bool8 GiveMonArtistRibbon(void)
 {
     u8 hasArtistRibbon;
 
@@ -2527,12 +2527,12 @@ bool8 GiveMonArtistRibbon(void)
     }
 }
 
-bool8 IsContestDebugActive(void)
+extern "C" bool8 IsContestDebugActive(void)
 {
     return FALSE; // gUnknown_0203856C in pokeruby
 }
 
-void ShowContestEntryMonPic(void)
+extern "C" void ShowContestEntryMonPic(void)
 {
     const struct CompressedSpritePalette *palette;
     u32 personality, otId;
@@ -2581,7 +2581,7 @@ void ShowContestEntryMonPic(void)
     }
 }
 
-void HideContestEntryMonPic(void)
+extern "C" void HideContestEntryMonPic(void)
 {
     u8 taskId = FindTaskIdByFunc(Task_ShowContestEntryMonPic);
     if (taskId != 0xFF)
@@ -2625,7 +2625,7 @@ static void Task_ShowContestEntryMonPic(u8 taskId)
     }
 }
 
-void GetContestMultiplayerId(void)
+extern "C" void GetContestMultiplayerId(void)
 {
     if ((gLinkContestFlags & LINK_CONTEST_FLAG_IS_LINK)
         && gNumLinkContestPlayers == CONTESTANT_COUNT
@@ -2635,7 +2635,7 @@ void GetContestMultiplayerId(void)
         gSpecialVar_Result = MAX_LINK_PLAYERS;
 }
 
-void GenerateContestRand(void)
+extern "C" void GenerateContestRand(void)
 {
     u16 random;
     u16 *result;
@@ -2660,7 +2660,7 @@ u16 GetContestRand(void)
     return gContestRngValue >> 16;
 }
 
-bool8 LinkContestWaitForConnection(void)
+extern "C" bool8 LinkContestWaitForConnection(void)
 {
     if (gLinkContestFlags & LINK_CONTEST_FLAG_IS_WIRELESS)
     {
@@ -2697,7 +2697,7 @@ static void Task_LinkContestWaitForConnection(u8 taskId)
     }
 }
 
-void LinkContestTryShowWirelessIndicator(void)
+extern "C" void LinkContestTryShowWirelessIndicator(void)
 {
     if (gLinkContestFlags & LINK_CONTEST_FLAG_IS_WIRELESS)
     {
@@ -2709,7 +2709,7 @@ void LinkContestTryShowWirelessIndicator(void)
     }
 }
 
-void LinkContestTryHideWirelessIndicator(void)
+extern "C" void LinkContestTryHideWirelessIndicator(void)
 {
     if (gLinkContestFlags & LINK_CONTEST_FLAG_IS_WIRELESS)
     {
@@ -2718,7 +2718,7 @@ void LinkContestTryHideWirelessIndicator(void)
     }
 }
 
-bool8 IsContestWithRSPlayer(void)
+extern "C" bool8 IsContestWithRSPlayer(void)
 {
     if (gLinkContestFlags & LINK_CONTEST_FLAG_HAS_RS_PLAYER)
         return TRUE;
@@ -2726,12 +2726,12 @@ bool8 IsContestWithRSPlayer(void)
         return FALSE;
 }
 
-void ClearLinkContestFlags(void)
+extern "C" void ClearLinkContestFlags(void)
 {
     gLinkContestFlags = 0;
 }
 
-bool8 IsWirelessContest(void)
+extern "C" bool8 IsWirelessContest(void)
 {
     if (gLinkContestFlags & LINK_CONTEST_FLAG_IS_WIRELESS)
         return TRUE;

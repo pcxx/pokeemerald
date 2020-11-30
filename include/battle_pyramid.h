@@ -1,7 +1,7 @@
 #ifndef GUARD_BATTLE_PYRAMID_H
 #define GUARD_BATTLE_PYRAMID_H
 
-void CallBattlePyramidFunction(void);
+extern "C" void CallBattlePyramidFunction(void);
 u16 LocalIdToPyramidTrainerId(u8 localId);
 bool8 GetBattlePyramidTrainerFlag(u8 eventId);
 void MarkApproachingPyramidTrainersAsBattled(void);

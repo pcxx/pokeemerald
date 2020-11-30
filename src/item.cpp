@@ -165,7 +165,7 @@ bool8 CheckBagHasItem(u16 itemId, u16 count)
     return FALSE;
 }
 
-bool8 HasAtLeastOneBerry(void)
+extern "C" bool8 HasAtLeastOneBerry(void)
 {
     u16 i;
 
@@ -583,7 +583,7 @@ void CompactPCItems(void)
     }
 }
 
-void SwapRegisteredBike(void)
+extern "C" void SwapRegisteredBike(void)
 {
     switch (gSaveBlock1Ptr->registeredItem)
     {

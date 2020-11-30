@@ -354,7 +354,7 @@ static void sub_81C4F10(void)
     GoToBattlePyramidBagMenu(1, CB2_SetUpReshowBattleScreenAfterMenu2);
 }
 
-void ChooseItemsToTossFromPyramidBag(void)
+extern "C" void ChooseItemsToTossFromPyramidBag(void)
 {
     ScriptContext2_Enable();
     FadeScreen(FADE_TO_BLACK, 0);
@@ -1350,7 +1350,7 @@ static void sub_81C6A14(u8 taskId)
     SetTaskToMainPyramidBagInputHandler(taskId);
 }
 
-void TryStoreHeldItemsInPyramidBag(void)
+extern "C" void TryStoreHeldItemsInPyramidBag(void)
 {
     u8 i;
     struct Pokemon *party = gPlayerParty;

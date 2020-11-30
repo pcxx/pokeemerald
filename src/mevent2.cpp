@@ -152,7 +152,7 @@ bool32 sub_801B21C(const struct WonderCard *data)
     return TRUE;
 }
 
-bool32 ValidateReceivedWonderCard(void)
+extern "C" bool32 ValidateReceivedWonderCard(void)
 {
     if (gSaveBlock1Ptr->unk_322C.wonderCard.crc != CalcCRC16WithTable((u8 *)&gSaveBlock1Ptr->unk_322C.wonderCard.data, sizeof(struct WonderCard)))
         return FALSE;

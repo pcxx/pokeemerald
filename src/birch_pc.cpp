@@ -4,7 +4,7 @@
 #include "pokedex.h"
 #include "strings.h"
 
-bool16 ScriptGetPokedexInfo(void)
+extern "C" bool16 ScriptGetPokedexInfo(void)
 {
     if (gSpecialVar_0x8004 == 0) // is national dex not present?
     {
@@ -82,7 +82,7 @@ const u8 *GetPokedexRatingText(u16 count)
     return gBirchDexRatingText_LessThan10;
 }
 
-void ShowPokedexRatingMessage(void)
+extern "C" void ShowPokedexRatingMessage(void)
 {
     ShowFieldMessage(GetPokedexRatingText(gSpecialVar_0x8004));
 }

@@ -1237,7 +1237,7 @@ static void sub_811A4D0(MainCallback callback)
     SetMainCallback2(callback);
 }
 
-void ShowEasyChatScreen(void)
+extern "C" void ShowEasyChatScreen(void)
 {
     int i;
     u16 *words;
@@ -1354,7 +1354,7 @@ static void CB2_QuizLadyQuestion(void)
     gMain.state ++;
 }
 
-void QuizLadyShowQuizQuestion(void)
+extern "C" void QuizLadyShowQuizQuestion(void)
 {
     SetMainCallback2(CB2_QuizLadyQuestion);
 }
@@ -5083,7 +5083,7 @@ u16 GetRandomEasyChatWordFromUnlockedGroup(u16 groupId)
     return GetRandomEasyChatWordFromGroup(groupId);
 }
 
-void ShowEasyChatProfile(void)
+extern "C" void ShowEasyChatProfile(void)
 {
     u16 *easyChatWords;
     int columns, rows;
@@ -5126,7 +5126,7 @@ void ShowEasyChatProfile(void)
 }
 
 // The phrase that a man in Dewford Hall suggests has a "deep link" to the current trendy phrase
-void BufferDeepLinkPhrase(void)
+extern "C" void BufferDeepLinkPhrase(void)
 {
     int groupId = Random() & 1 ? EC_GROUP_HOBBIES : EC_GROUP_LIFESTYLE;
     u16 easyChatWord = GetRandomEasyChatWordFromUnlockedGroup(groupId);

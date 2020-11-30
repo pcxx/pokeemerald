@@ -312,7 +312,7 @@ static void Task_HandleMultichoiceGridInput(u8 taskId)
 
 #undef tWindowId
 
-bool16 ScriptMenu_CreatePCMultichoice(void)
+extern "C" bool16 ScriptMenu_CreatePCMultichoice(void)
 {
     if (FuncIsActiveTask(Task_HandleMultichoiceInput) == TRUE)
     {
@@ -383,7 +383,7 @@ void ScriptMenu_DisplayPCStartupPrompt(void)
     AddTextPrinterParameterized2(0, 1, gText_WhichPCShouldBeAccessed, 0, NULL, 2, 1, 3);
 }
 
-bool8 ScriptMenu_CreateLilycoveSSTidalMultichoice(void)
+extern "C" bool8 ScriptMenu_CreateLilycoveSSTidalMultichoice(void)
 {
     if (FuncIsActiveTask(Task_HandleMultichoiceInput) == TRUE)
     {
@@ -538,7 +538,7 @@ static void CreateLilycoveSSTidalMultichoice(void)
     }
 }
 
-void GetLilycoveSSTidalSelection(void)
+extern "C" void GetLilycoveSSTidalSelection(void)
 {
     if (gSpecialVar_Result != MULTI_B_PRESSED)
     {
@@ -670,7 +670,7 @@ static void DrawLinkServicesMultichoiceMenu(u8 multichoiceId)
     }
 }
 
-bool16 ScriptMenu_CreateStartMenuForPokenavTutorial(void)
+extern "C" bool16 ScriptMenu_CreateStartMenuForPokenavTutorial(void)
 {
     if (FuncIsActiveTask(Task_HandleMultichoiceInput) == TRUE)
     {

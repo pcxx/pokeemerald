@@ -286,7 +286,7 @@ bool8 Drought_Finish(void)
     return FALSE;
 }
 
-void StartDroughtWeatherBlend(void)
+extern "C" void StartDroughtWeatherBlend(void)
 {
     CreateTask(UpdateDroughtBlend, 0x50);
 }

@@ -11,7 +11,7 @@
 static void ReshowPCMenuAfterHallOfFamePC(void);
 static void Task_WaitForPaletteFade(u8);
 
-void AccessHallOfFamePC(void)
+extern "C" void AccessHallOfFamePC(void)
 {
     SetMainCallback2(CB2_DoHallOfFamePC);
     ScriptContext2_Enable();

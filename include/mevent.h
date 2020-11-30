@@ -44,7 +44,7 @@ bool32 WonderNews_Test_Unk_02(void);
 bool32 sub_801B1A4(const u8 *src);
 void DestroyWonderCard(void);
 bool32 sub_801B21C(const struct WonderCard *data);
-bool32 ValidateReceivedWonderCard(void);
+extern "C" bool32 ValidateReceivedWonderCard(void);
 bool32 WonderCard_Test_Unk_08_6(void);
 u16 GetWonderCardFlagID(void);
 void WonderCard_ResetInternalReceivedFlag(struct WonderCard *buffer);

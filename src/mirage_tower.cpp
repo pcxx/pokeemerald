@@ -312,7 +312,7 @@ void ClearMirageTowerPulseBlendEffect(void)
     FREE_AND_SET_NULL(sMirageTowerPulseBlend);
 }
 
-void SetMirageTowerVisibility(void)
+extern "C" void SetMirageTowerVisibility(void)
 {
     u16 rand;
     bool8 visible;
@@ -338,7 +338,7 @@ void SetMirageTowerVisibility(void)
     FlagClear(FLAG_MIRAGE_TOWER_VISIBLE);
 }
 
-void StartPlayerDescendMirageTower(void)
+extern "C" void StartPlayerDescendMirageTower(void)
 {
     CreateTask(PlayerDescendMirageTower, 8);
 }
@@ -402,7 +402,7 @@ static void IncrementCeilingCrumbleFinishedCount(void)
         gTasks[taskId].data[0]++;
 }
 
-void DoMirageTowerCeilingCrumble(void)
+extern "C" void DoMirageTowerCeilingCrumble(void)
 {
     LoadSpriteSheets(gMirageTowerCeilingCrumbleSpriteSheets);
     CreateCeilingCrumbleSprites();
@@ -465,17 +465,17 @@ static void SetInvisibleMirageTowerMetatiles(void)
     DrawWholeMapView();
 }
 
-void StartMirageTowerDisintegration(void)
+extern "C" void StartMirageTowerDisintegration(void)
 {
     CreateTask(DoMirageTowerDisintegration, 9);
 }
 
-void StartMirageTowerShake(void)
+extern "C" void StartMirageTowerShake(void)
 {
     CreateTask(InitMirageTowerShake, 9);
 }
 
-void StartMirageTowerFossilFallAndSink(void)
+extern "C" void StartMirageTowerFossilFallAndSink(void)
 {
     CreateTask(DoFossilFallAndSink, 9);
 }

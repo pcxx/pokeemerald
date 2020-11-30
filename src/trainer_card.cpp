@@ -655,7 +655,7 @@ static bool8 HasAllFrontierSymbols(void)
     return TRUE;
 }
 
-u32 CountPlayerTrainerStars(void)
+extern "C" u32 CountPlayerTrainerStars(void)
 {
     u8 stars = 0;
 

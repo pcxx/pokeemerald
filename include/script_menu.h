@@ -14,7 +14,7 @@ u8 CreateWindowFromRect(u8 x, u8 y, u8 width, u8 height);
 void ClearToTransparentAndRemoveWindow(u8 windowId);
 int DisplayTextAndGetWidth(const u8* str, int width);
 int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width);
-bool16 ScriptMenu_CreatePCMultichoice(void);
+extern "C" bool16 ScriptMenu_CreatePCMultichoice(void);
 void ScriptMenu_DisplayPCStartupPrompt(void);
 
 #endif //GUARD_SCRIPT_MENU_H

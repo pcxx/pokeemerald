@@ -2579,7 +2579,7 @@ static u8 sub_8027A48(u8 id)
     return gUnknown_02022C98->unk34[id];
 }
 
-void IsDodrioInParty(void)
+extern "C" void IsDodrioInParty(void)
 {
     int i;
     for (i = 0; i < PARTY_SIZE; i++)
@@ -2595,7 +2595,7 @@ void IsDodrioInParty(void)
     gSpecialVar_Result = FALSE;
 }
 
-void ShowDodrioBerryPickingRecords(void)
+extern "C" void ShowDodrioBerryPickingRecords(void)
 {
     u8 taskId = CreateTask(Task_ShowDodrioBerryPickingRecords, 0);
     Task_ShowDodrioBerryPickingRecords(taskId);

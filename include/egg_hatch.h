@@ -1,10 +1,10 @@
 #ifndef GUARD_EGG_HATCH_H
 #define GUARD_EGG_HATCH_H
 
-void ScriptHatchMon(void);
-bool8 CheckDaycareMonReceivedMail(void);
-void EggHatch(void);
+extern "C" void ScriptHatchMon(void);
+extern "C" bool8 CheckDaycareMonReceivedMail(void);
+extern "C" void EggHatch(void);
 u8 GetEggCyclesToSubtract(void);
-u16 CountPartyAliveNonEggMons(void);
+extern "C" u16 CountPartyAliveNonEggMons(void);
 
 #endif // GUARD_EGG_HATCH_H

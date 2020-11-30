@@ -109,7 +109,7 @@ static void Task_TryFieldPoisonWhiteOut(u8 taskId)
     }
 }
 
-void TryFieldPoisonWhiteOut(void)
+extern "C" void TryFieldPoisonWhiteOut(void)
 {
     CreateTask(Task_TryFieldPoisonWhiteOut, 80);
     ScriptContext1_Stop();

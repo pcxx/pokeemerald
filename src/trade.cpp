@@ -4413,7 +4413,7 @@ static void sub_807E6AC(struct Sprite *sprite)
     }
 }
 
-u16 GetInGameTradeSpeciesInfo(void)
+extern "C" u16 GetInGameTradeSpeciesInfo(void)
 {
     const struct InGameTrade *inGameTrade = &sIngameTrades[gSpecialVar_0x8004];
     StringCopy(gStringVar1, gSpeciesNames[inGameTrade->requestedSpecies]);
@@ -4497,14 +4497,14 @@ static void SetInGameTradeMail(struct MailStruct *mail, const struct InGameTrade
     mail->itemId = trade->heldItem;
 }
 
-u16 GetTradeSpecies(void)
+extern "C" u16 GetTradeSpecies(void)
 {
     if (GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_IS_EGG))
         return SPECIES_NONE;
     return GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_SPECIES);
 }
 
-void CreateInGameTradePokemon(void)
+extern "C" void CreateInGameTradePokemon(void)
 {
     _CreateInGameTradePokemon(gSpecialVar_0x8005, gSpecialVar_0x8004);
 }
@@ -4741,7 +4741,7 @@ static void CB2_FreeTradeData(void)
     UpdatePaletteFade();
 }
 
-void DoInGameTradeScene(void)
+extern "C" void DoInGameTradeScene(void)
 {
     ScriptContext2_Enable();
     CreateTask(Task_InGameTrade, 10);

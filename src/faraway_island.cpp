@@ -363,7 +363,7 @@ bool8 ShouldMewShakeGrass(struct ObjectEvent *objectEvent)
     return FALSE;
 }
 
-void SetMewAboveGrass(void)
+extern "C" void SetMewAboveGrass(void)
 {
     s16 x;
     s16 y;
@@ -405,7 +405,7 @@ void SetMewAboveGrass(void)
     }
 }
 
-void DestroyMewEmergingGrassSprite(void)
+extern "C" void DestroyMewEmergingGrassSprite(void)
 {
     if (sGrassSpriteId != MAX_SPRITES)
         DestroySprite(&gSprites[sGrassSpriteId]);

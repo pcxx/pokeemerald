@@ -1141,7 +1141,7 @@ bool32 MatchCall_HasRematchId(u32 idx)
     return FALSE;
 }
 
-void SetMatchCallRegisteredFlag(void)
+extern "C" void SetMatchCallRegisteredFlag(void)
 {
     int r0 = GetRematchIdxByTrainerIdx(gSpecialVar_0x8004);
     if (r0 >= 0)

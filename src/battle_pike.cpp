@@ -540,7 +540,7 @@ static bool8 (* const sStatusInflictionScreenFlashFuncs[])(struct Task *) =
 static const u32 sWinStreakFlags[] = {STREAK_PIKE_50, STREAK_PIKE_OPEN};
 
 // code
-void CallBattlePikeFunction(void)
+extern "C" void CallBattlePikeFunction(void)
 {
     sBattlePikeFunctions[gSpecialVar_0x8004]();
 }

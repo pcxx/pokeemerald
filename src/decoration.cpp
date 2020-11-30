@@ -1268,7 +1268,7 @@ void ShowDecorationOnMap(u16 mapX, u16 mapY, u16 decoration)
     }
 }
 
-void SetDecoration(void)
+extern "C" void SetDecoration(void)
 {
     u8 i;
     u8 j;
@@ -2163,7 +2163,7 @@ static void ClearDecorationContextIndex(u8 idx)
 // gSpecialVar_Result: TRUE if all iterations complete.
 // gSpecialVar_0x8005: flagId of decoration (if any).
 // gSpecialVar_0x8006: localId of decoration object event (if any).
-void PutAwayDecorationIteration(void)
+extern "C" void PutAwayDecorationIteration(void)
 {
     u16 i;
 
@@ -2189,7 +2189,7 @@ void PutAwayDecorationIteration(void)
 }
 
 // Unused
-void GetObjectEventLocalIdByFlag(void)
+extern "C" void GetObjectEventLocalIdByFlag(void)
 {
     u8 i;
 

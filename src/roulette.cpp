@@ -3469,7 +3469,7 @@ static void Task_PrintRouletteEntryMsg(u8 taskId)
     }
 }
 
-void PlayRoulette(void)
+extern "C" void PlayRoulette(void)
 {
     u8 taskId;
     ScriptContext2_Enable();

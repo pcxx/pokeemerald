@@ -1,4 +1,4 @@
-const struct PokedexEntry gPokedexEntries[] =
+extern const struct PokedexEntry gPokedexEntries[] =
 {
     [NATIONAL_DEX_NONE] =
     {

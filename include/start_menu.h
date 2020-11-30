@@ -7,9 +7,9 @@ void ShowReturnToFieldStartMenu(void);
 void Task_ShowStartMenu(u8 taskId);
 void ShowStartMenu(void);
 void ShowBattlePyramidStartMenu(void);
-void SaveGame(void);
+extern "C" void SaveGame(void);
 void CB2_SetUpSaveAfterLinkBattle(void);
-void SaveForBattleTowerLink(void);
+extern "C" void SaveForBattleTowerLink(void);
 void HideStartMenu(void);
 void AppendToList(u8* list, u8* pos, u8 newEntry);
 

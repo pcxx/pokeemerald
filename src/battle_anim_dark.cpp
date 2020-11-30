@@ -784,7 +784,7 @@ extern "C" void AnimTask_InitMementoShadow(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void sub_8114470(u8 taskId)
+extern "C" void sub_8114470(u8 taskId)
 {
     u8 toBG2 = GetBattlerSpriteBGPriorityRank(gBattleAnimAttacker) ^ 1 ? 1 : 0;
     sub_80A477C(toBG2);
@@ -979,7 +979,7 @@ extern "C" void AnimTask_SetGreyscaleOrOriginalPal(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void GetIsDoomDesireHitTurn(u8 taskId)
+extern "C" void GetIsDoomDesireHitTurn(u8 taskId)
 {
     if (gAnimMoveTurn < 2)
         gBattleAnimArgs[ARG_RET_ID] = FALSE;

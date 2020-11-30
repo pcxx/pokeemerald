@@ -104,7 +104,7 @@ void static (*const sSlateportTentFuncs[])(void) =
 static const u16 sSlateportTentRewards[] = {ITEM_FULL_HEAL};
 
 // code
-void CallVerdanturfTentFunction(void)
+extern "C" void CallVerdanturfTentFunction(void)
 {
     sVerdanturfTentFuncs[gSpecialVar_0x8004]();
 }
@@ -166,7 +166,7 @@ static void GiveVerdanturfTentPrize(void)
     }
 }
 
-void CallFallarborTentFunction(void)
+extern "C" void CallFallarborTentFunction(void)
 {
     sFallarborTentFuncs[gSpecialVar_0x8004]();
 }
@@ -221,7 +221,7 @@ static void BufferFallarborTentTrainerName(void)
     GetFrontierTrainerName(gStringVar1, gTrainerBattleOpponent_A);
 }
 
-void CallSlateportTentFunction(void)
+extern "C" void CallSlateportTentFunction(void)
 {
     sSlateportTentFuncs[gSpecialVar_0x8004]();
 }

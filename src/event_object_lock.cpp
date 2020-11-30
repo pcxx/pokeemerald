@@ -108,12 +108,12 @@ void UnionRoom_UnlockPlayerAndChatPartner(void)
     UnfreezeObjectEvents();
 }
 
-void Script_FacePlayer(void)
+extern "C" void Script_FacePlayer(void)
 {
     ObjectEventFaceOppositeDirection(&gObjectEvents[gSelectedObjectEvent], gSpecialVar_Facing);
 }
 
-void Script_ClearHeldMovement(void)
+extern "C" void Script_ClearHeldMovement(void)
 {
     ObjectEventClearHeldMovementIfActive(&gObjectEvents[gSelectedObjectEvent]);
 }

@@ -473,7 +473,7 @@ static void sub_80B0828(void)
 }
 
 // Initiates battle where Wally catches Ralts
-void StartWallyTutorialBattle(void)
+extern "C" void StartWallyTutorialBattle(void)
 {
     CreateMaleMon(&gEnemyParty[0], SPECIES_RALTS, 5);
     ScriptContext2_Enable();
@@ -494,7 +494,7 @@ void BattleSetup_StartScriptedWildBattle(void)
     TryUpdateGymLeaderRematchFromWild();
 }
 
-void BattleSetup_StartLatiBattle(void)
+extern "C" void BattleSetup_StartLatiBattle(void)
 {
     ScriptContext2_Enable();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
@@ -506,7 +506,7 @@ void BattleSetup_StartLatiBattle(void)
     TryUpdateGymLeaderRematchFromWild();
 }
 
-void BattleSetup_StartLegendaryBattle(void)
+extern "C" void BattleSetup_StartLegendaryBattle(void)
 {
     ScriptContext2_Enable();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
@@ -545,7 +545,7 @@ void BattleSetup_StartLegendaryBattle(void)
     TryUpdateGymLeaderRematchFromWild();
 }
 
-void StartGroudonKyogreBattle(void)
+extern "C" void StartGroudonKyogreBattle(void)
 {
     ScriptContext2_Enable();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
@@ -562,7 +562,7 @@ void StartGroudonKyogreBattle(void)
     TryUpdateGymLeaderRematchFromWild();
 }
 
-void StartRegiBattle(void)
+extern "C" void StartRegiBattle(void)
 {
     u8 transitionId;
     u16 species;
@@ -910,7 +910,7 @@ u8 GetSpecialBattleTransition(s32 id)
     return sBattleTransitionTable_BattleFrontier[var % ARRAY_COUNT(sBattleTransitionTable_BattleFrontier)];
 }
 
-void ChooseStarter(void)
+extern "C" void ChooseStarter(void)
 {
     SetMainCallback2(CB2_ChooseStarter);
     gMain.savedCallback = CB2_GiveStarter;
@@ -1220,19 +1220,19 @@ bool32 GetTrainerFlagFromScriptPointer(const u8 *data)
     return FlagGet(TRAINER_FLAGS_START + flag);
 }
 
-void SetUpTrainerMovement(void)
+extern "C" void SetUpTrainerMovement(void)
 {
     struct ObjectEvent *objectEvent = &gObjectEvents[gSelectedObjectEvent];
 
     SetTrainerMovementType(objectEvent, GetTrainerFacingDirectionMovementType(objectEvent->facingDirection));
 }
 
-u8 GetTrainerBattleMode(void)
+extern "C" u8 GetTrainerBattleMode(void)
 {
     return sTrainerBattleMode;
 }
 
-bool8 GetTrainerFlag(void)
+extern "C" bool8 GetTrainerFlag(void)
 {
     if (InBattlePyramid())
         return GetBattlePyramidTrainerFlag(gSelectedObjectEvent);
@@ -1367,7 +1367,7 @@ static void CB2_EndRematchBattle(void)
     }
 }
 
-void BattleSetup_StartRematchBattle(void)
+extern "C" void BattleSetup_StartRematchBattle(void)
 {
     gBattleTypeFlags = BATTLE_TYPE_TRAINER;
     gMain.savedCallback = CB2_EndRematchBattle;
@@ -1375,7 +1375,7 @@ void BattleSetup_StartRematchBattle(void)
     ScriptContext1_Stop();
 }
 
-void ShowTrainerIntroSpeech(void)
+extern "C" void ShowTrainerIntroSpeech(void)
 {
     if (InBattlePyramid())
     {
@@ -1432,12 +1432,12 @@ const u8 *BattleSetup_GetTrainerPostBattleScript(void)
     return EventScript_TryGetTrainerScript;
 }
 
-void ShowTrainerCantBattleSpeech(void)
+extern "C" void ShowTrainerCantBattleSpeech(void)
 {
     ShowFieldMessage(GetTrainerCantBattleSpeech());
 }
 
-void SetUpTrainerEncounterMusic(void)
+extern "C" void SetUpTrainerEncounterMusic(void)
 {
     u16 trainerId;
     u16 music;
@@ -1835,7 +1835,7 @@ u16 GetLastBeatenRematchTrainerId(u16 trainerId)
     return GetLastBeatenRematchTrainerIdFromTable(gRematchTable, trainerId);
 }
 
-bool8 ShouldTryRematchBattle(void)
+extern "C" bool8 ShouldTryRematchBattle(void)
 {
     if (IsFirstTrainerIdReadyForRematch(gRematchTable, gTrainerBattleOpponent_A))
         return TRUE;
@@ -1843,7 +1843,7 @@ bool8 ShouldTryRematchBattle(void)
     return WasSecondRematchWon(gRematchTable, gTrainerBattleOpponent_A);
 }
 
-bool8 IsTrainerReadyForRematch(void)
+extern "C" bool8 IsTrainerReadyForRematch(void)
 {
     return IsTrainerReadyForRematch_(gRematchTable, gTrainerBattleOpponent_A);
 }
@@ -1854,7 +1854,7 @@ static void HandleRematchVarsOnBattleEnd(void)
     SetBattledTrainersFlags();
 }
 
-void ShouldTryGetTrainerScript(void)
+extern "C" void ShouldTryGetTrainerScript(void)
 {
     if (sNoOfPossibleTrainerRetScripts > 1)
     {

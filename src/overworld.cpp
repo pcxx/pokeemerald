@@ -1130,7 +1130,7 @@ void Overworld_ResetMapMusic(void)
     ResetMapMusic();
 }
 
-void Overworld_PlaySpecialMapMusic(void)
+extern "C" void Overworld_PlaySpecialMapMusic(void)
 {
     u16 music = GetCurrLocationDefaultMusic();
 

@@ -191,7 +191,7 @@ static void StorePokemonInEmptyDaycareSlot(struct Pokemon *mon, struct DayCare *
     StorePokemonInDaycare(mon, &daycare->mons[slotId]);
 }
 
-void StoreSelectedPokemonInDaycare(void)
+extern "C" void StoreSelectedPokemonInDaycare(void)
 {
     u8 monId = GetCursorSelectionMonId();
     StorePokemonInEmptyDaycareSlot(&gPlayerParty[monId], &gSaveBlock1Ptr->daycare);
@@ -282,7 +282,7 @@ static u16 TakeSelectedPokemonMonFromDaycareShiftSlots(struct DayCare *daycare, 
     return species;
 }
 
-u16 TakePokemonFromDaycare(void)
+extern "C" u16 TakePokemonFromDaycare(void)
 {
     return TakeSelectedPokemonMonFromDaycareShiftSlots(&gSaveBlock1Ptr->daycare, gSpecialVar_0x8004);
 }
@@ -330,7 +330,7 @@ static u16 GetDaycareCostForMon(struct DayCare *daycare, u8 slotId)
     return GetDaycareCostForSelectedMon(&daycare->mons[slotId]);
 }
 
-void GetDaycareCost(void)
+extern "C" void GetDaycareCost(void)
 {
     gSpecialVar_0x8005 = GetDaycareCostForMon(&gSaveBlock1Ptr->daycare, gSpecialVar_0x8004);
 }
@@ -341,7 +341,7 @@ static void Debug_AddDaycareSteps(u16 numSteps)
     gSaveBlock1Ptr->daycare.mons[1].steps += numSteps;
 }
 
-u8 GetNumLevelsGainedFromDaycare(void)
+extern "C" u8 GetNumLevelsGainedFromDaycare(void)
 {
     if (GetBoxMonData(&gSaveBlock1Ptr->daycare.mons[gSpecialVar_0x8004].mon, MON_DATA_SPECIES) != 0)
         return GetNumLevelsGainedForDaycareMon(&gSaveBlock1Ptr->daycare.mons[gSpecialVar_0x8004]);
@@ -720,7 +720,7 @@ static void RemoveEggFromDayCare(struct DayCare *daycare)
     daycare->stepCounter = 0;
 }
 
-void RejectEggFromDayCare(void)
+extern "C" void RejectEggFromDayCare(void)
 {
     RemoveEggFromDayCare(&gSaveBlock1Ptr->daycare);
 }
@@ -868,7 +868,7 @@ static void SetInitialEggData(struct Pokemon *mon, u16 species, struct DayCare *
     SetMonData(mon, MON_DATA_LANGUAGE, &language);
 }
 
-void GiveEggFromDaycare(void)
+extern "C" void GiveEggFromDaycare(void)
 {
     _GiveEggFromDaycare(&gSaveBlock1Ptr->daycare);
 }
@@ -954,18 +954,18 @@ static void _GetDaycareMonNicknames(struct DayCare *daycare)
     }
 }
 
-u16 GetSelectedMonNicknameAndSpecies(void)
+extern "C" u16 GetSelectedMonNicknameAndSpecies(void)
 {
     GetBoxMonNickname(&gPlayerParty[GetCursorSelectionMonId()].box, gStringVar1);
     return GetBoxMonData(&gPlayerParty[GetCursorSelectionMonId()].box, MON_DATA_SPECIES);
 }
 
-void GetDaycareMonNicknames(void)
+extern "C" void GetDaycareMonNicknames(void)
 {
     _GetDaycareMonNicknames(&gSaveBlock1Ptr->daycare);
 }
 
-u8 GetDaycareState(void)
+extern "C" u8 GetDaycareState(void)
 {
     u8 numMons;
     if (IsEggPending(&gSaveBlock1Ptr->daycare))
@@ -1076,7 +1076,7 @@ static u8 GetDaycareCompatibilityScoreFromSave(void)
     return GetDaycareCompatibilityScore(&gSaveBlock1Ptr->daycare);
 }
 
-void SetDaycareCompatibilityString(void)
+extern "C" void SetDaycareCompatibilityString(void)
 {
     u8 whichString;
     u8 relationshipScore;
@@ -1265,7 +1265,7 @@ static void Task_HandleDaycareLevelMenuInput(u8 taskId)
     }
 }
 
-void ShowDaycareLevelMenu(void)
+extern "C" void ShowDaycareLevelMenu(void)
 {
     struct ListMenuTemplate menuTemplate;
     u8 windowId;
@@ -1289,7 +1289,7 @@ void ShowDaycareLevelMenu(void)
 #undef tMenuListTaskId
 #undef tWindowId
 
-void ChooseSendDaycareMon(void)
+extern "C" void ChooseSendDaycareMon(void)
 {
     ChooseMonForDaycare();
     gMain.savedCallback = CB2_ReturnToField;

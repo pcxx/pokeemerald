@@ -243,10 +243,10 @@ extern bool8 gLinkVSyncDisabled;
 extern u32 gLinkStatus;
 
 
-bool8 IsWirelessAdapterConnected(void);
+extern "C" bool8 IsWirelessAdapterConnected(void);
 void Task_DestroySelf(u8 taskId);
 void OpenLink(void);
-void CloseLink(void);
+extern "C" void CloseLink(void);
 u16 LinkMain2(const u16 *);
 void sub_8007B14(void);
 bool32 sub_8007B24(void);

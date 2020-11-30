@@ -132,7 +132,7 @@ void PlayNewMapMusic(u16 songNum)
     sMapMusicState = 1;
 }
 
-void StopMapMusic(void)
+extern "C" void StopMapMusic(void)
 {
     sCurrentMapMusic = 0;
     sNextMapMusic = 0;

@@ -927,7 +927,7 @@ static u8 RotatingGate_GetRotationInfo(u8 direction, s16 x, s16 y)
     return ptr[y * 4 + x];
 }
 
-void RotatingGate_InitPuzzle(void)
+extern "C" void RotatingGate_InitPuzzle(void)
 {
     if (GetCurrentMapRotatingGatePuzzleType())
     {
@@ -936,7 +936,7 @@ void RotatingGate_InitPuzzle(void)
     }
 }
 
-void RotatingGatePuzzleCameraUpdate(u16 deltaX, u16 deltaY)
+extern "C" void RotatingGatePuzzleCameraUpdate(u16 deltaX, u16 deltaY)
 {
     if (GetCurrentMapRotatingGatePuzzleType())
     {
@@ -945,7 +945,7 @@ void RotatingGatePuzzleCameraUpdate(u16 deltaX, u16 deltaY)
     }
 }
 
-void RotatingGate_InitPuzzleAndGraphics(void)
+extern "C" void RotatingGate_InitPuzzleAndGraphics(void)
 {
     if (GetCurrentMapRotatingGatePuzzleType())
     {

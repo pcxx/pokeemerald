@@ -626,7 +626,7 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
     return FALSE;
 }
 
-void RockSmashWildEncounter(void)
+extern "C" void RockSmashWildEncounter(void)
 {
     u16 headerId = GetCurrentMapWildMonHeaderId();
 

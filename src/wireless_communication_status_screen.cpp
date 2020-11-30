@@ -162,7 +162,7 @@ static void VBlankCB_WirelessCommunicationScreen(void)
     TransferPlttBuffer();
 }
 
-void ShowWirelessCommunicationScreen(void)
+extern "C" void ShowWirelessCommunicationScreen(void)
 {
     SetMainCallback2(CB2_InitWirelessCommunicationScreen);
 }

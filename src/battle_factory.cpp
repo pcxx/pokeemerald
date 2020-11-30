@@ -182,7 +182,7 @@ static const u16 sInitialRentalMonRanges[][2] =
 };
 
 // code
-void CallBattleFactoryFunction(void)
+extern "C" void CallBattleFactoryFunction(void)
 {
     sBattleFactoryFunctions[gSpecialVar_0x8004]();
 }

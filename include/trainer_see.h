@@ -18,13 +18,13 @@ extern u8 gApproachingTrainerId;
 
 bool8 CheckForTrainersWantingBattle(void);
 void sub_80B4578(struct ObjectEvent *var);
-void EndTrainerApproach(void);
-void TryPrepareSecondApproachingTrainer(void);
+extern "C" void EndTrainerApproach(void);
+extern "C" void TryPrepareSecondApproachingTrainer(void);
 extern "C" u8 FldEff_ExclamationMarkIcon(void);
 extern "C" u8 FldEff_QuestionMarkIcon(void);
 extern "C" u8 FldEff_HeartIcon(void);
 u8 GetCurrentApproachingTrainerObjectEventId(void);
 u8 GetChosenApproachingTrainerObjectEventId(u8 arrayId);
-void PlayerFaceTrainerAfterBattle(void);
+extern "C" void PlayerFaceTrainerAfterBattle(void);
 
 #endif // GUARD_TRAINER_SEE_H

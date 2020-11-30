@@ -311,14 +311,14 @@ void NewGameInitPCItems(void)
         AddPCItem(NEW_GAME_PC_ITEMS(i, PC_ITEM_ID), NEW_GAME_PC_ITEMS(i, PC_QUANTITY)) == TRUE; i++);
 }
 
-void BedroomPC(void)
+extern "C" void BedroomPC(void)
 {
     gPcItemMenuOptionOrder = gBedroomPC_OptionOrder;
     gPcItemMenuOptionsNum = 4;
     DisplayItemMessageOnField(CreateTask(TaskDummy, 0), gText_WhatWouldYouLike, InitPlayerPCMenu);
 }
 
-void PlayerPC(void)
+extern "C" void PlayerPC(void)
 {
     gPcItemMenuOptionOrder = gPlayerPC_OptionOrder;
     gPcItemMenuOptionsNum = 3;

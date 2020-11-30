@@ -1037,7 +1037,7 @@ static void InitBerryBlenderWindows(void)
 
 // gSpecialVar_0x8004 is the number of NPC opponents
 // Set to 0 indicates it's a link blender
-void DoBerryBlending(void)
+extern "C" void DoBerryBlending(void)
 {
     if (sBerryBlender == NULL)
         sBerryBlender = AllocZeroed<BerryBlender>();
@@ -3748,7 +3748,7 @@ static bool8 PrintBlendingRanking(void)
     return FALSE;
 }
 
-void ShowBerryBlenderRecordWindow(void)
+extern "C" void ShowBerryBlenderRecordWindow(void)
 {
     s32 i;
     s32 xPos, yPos;

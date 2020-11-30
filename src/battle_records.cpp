@@ -315,7 +315,7 @@ static void PrintLinkBattleRecord(struct LinkBattleRecord *record, u8 y, s32 lan
     }
 }
 
-void ShowLinkBattleRecords(void)
+extern "C" void ShowLinkBattleRecords(void)
 {
     s32 i, x;
 
@@ -340,7 +340,7 @@ void ShowLinkBattleRecords(void)
     CopyWindowToVram(gRecordsWindowId, 3);
 }
 
-void RemoveRecordsWindow(void)
+extern "C" void RemoveRecordsWindow(void)
 {
     ClearStdWindowAndFrame(gRecordsWindowId, FALSE);
     RemoveWindow(gRecordsWindowId);
@@ -465,7 +465,7 @@ static void MainCB2_TrainerHillRecords(void)
     UpdatePaletteFade();
 }
 
-void ShowTrainerHillRecords(void)
+extern "C" void ShowTrainerHillRecords(void)
 {
     SetVBlankCallback(NULL);
     SetMainCallback2(CB2_ShowTrainerHillRecords);

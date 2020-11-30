@@ -19,7 +19,7 @@ void BufferApprenticeChallengeText(u8 saveApprenticeId);
 void Apprentice_EnableBothScriptContexts(void);
 void ResetApprenticeStruct(struct Apprentice *apprentice);
 void ResetAllApprenticeData(void);
-void CallApprenticeFunction(void);
+extern "C" void CallApprenticeFunction(void);
 const u8 *GetApprenticeNameInLanguage(u32 apprenticeId, s32 language);
 
 #endif // GUARD_APPRENTICE_H

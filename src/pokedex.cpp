@@ -4371,7 +4371,7 @@ u16 GetKantoPokedexCount(u8 caseID)
     return count;
 }
 
-bool16 HasAllHoennMons(void)
+extern "C" bool16 HasAllHoennMons(void)
 {
     u16 i;
 

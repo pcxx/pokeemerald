@@ -19,6 +19,6 @@ void PadNameString(u8 *dest, u8 padChar);
 void sub_81DB554(u8 *, u8);
 void sub_81DB5AC(u8 *);
 int sub_81DB604(u8 *);
-void sub_81DB620(int windowId, int columnStart, int rowStart, int numFillTiles, int numRows);
+extern "C" void sub_81DB620(int windowId, int columnStart, int rowStart, int numFillTiles, int numRows);
 
 #endif // GUARD_INTERNATIONAL_STRING_UTIL_H

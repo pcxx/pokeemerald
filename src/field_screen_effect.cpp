@@ -492,7 +492,7 @@ void DoWarp(void)
     CreateTask(Task_WarpAndLoadMap, 10);
 }
 
-void DoDiveWarp(void)
+extern "C" void DoDiveWarp(void)
 {
     ScriptContext2_Enable();
     TryFadeOutOldMapMusic();
@@ -519,7 +519,7 @@ void DoDoorWarp(void)
     CreateTask(Task_DoDoorWarp, 10);
 }
 
-void DoFallWarp(void)
+extern "C" void DoFallWarp(void)
 {
     DoDiveWarp();
     gFieldCallback = FieldCB_FallWarpExit;
@@ -600,7 +600,7 @@ static void Task_DoCableClubWarp(u8 taskId)
 
 #undef tState
 
-void DoCableClubWarp(void)
+extern "C" void DoCableClubWarp(void)
 {
     ScriptContext2_Enable();
     TryFadeOutOldMapMusic();
@@ -640,7 +640,7 @@ static void Task_ReturnToWorldFromLinkRoom(u8 taskId)
     }
 }
 
-void ReturnFromLinkRoom(void)
+extern "C" void ReturnFromLinkRoom(void)
 {
     CreateTask(Task_ReturnToWorldFromLinkRoom, 10);
 }
@@ -754,7 +754,7 @@ static void Task_DoContestHallWarp(u8 taskId)
     }
 }
 
-void DoContestHallWarp(void)
+extern "C" void DoContestHallWarp(void)
 {
     ScriptContext2_Enable();
     TryFadeOutOldMapMusic();
@@ -1208,7 +1208,7 @@ static void Task_OrbEffect(u8 taskId)
     }
 }
 
-void DoOrbEffect(void)
+extern "C" void DoOrbEffect(void)
 {
     u8 taskId = CreateTask(Task_OrbEffect, 80);
     s16 *data = gTasks[taskId].data;
@@ -1237,7 +1237,7 @@ void DoOrbEffect(void)
     tCenterY = 80;
 }
 
-void FadeOutOrbEffect(void)
+extern "C" void FadeOutOrbEffect(void)
 {
     u8 taskId = FindTaskIdByFunc(Task_OrbEffect);
     gTasks[taskId].tState = 6;
@@ -1255,7 +1255,7 @@ void FadeOutOrbEffect(void)
 #undef tWinIn
 #undef tWinOut
 
-void Script_FadeOutMapMusic(void)
+extern "C" void Script_FadeOutMapMusic(void)
 {
     Overworld_FadeOutMapMusic();
     CreateTask(Task_EnableScriptAfterMusicFade, 80);

@@ -20,7 +20,7 @@ struct MusicPlayerInfo gMPlayInfo_SE2;
 struct MusicPlayerInfo gMPlayInfo_SE3;
 u8 gMPlayMemAccArea[0x10];
 
-u32 MidiKeyToFreq(struct WaveData *wav, u8 key, u8 fineAdjust)
+extern "C" u32 MidiKeyToFreq(struct WaveData *wav, u8 key, u8 fineAdjust)
 {
     u32 val1, val2;
     u32 fineAdjustShifted = fineAdjust << 24;
@@ -317,13 +317,13 @@ void MusicPlayerJumpTableCopy(void)
     asm("svc 0x2A");
 }
 
-void ClearChain(void *x)
+extern "C" void ClearChain(void *x)
 {
     void (*func)(void *) = reinterpret_cast<decltype(func)>(*(&gMPlayJumpTable[34]));
     func(x);
 }
 
-void Clear64byte(void *x)
+extern "C" void Clear64byte(void *x)
 {
     void (*func)(void *) = reinterpret_cast<decltype(func)>(*(&gMPlayJumpTable[35]));
     func(x);
@@ -638,7 +638,7 @@ void m4aMPlayStop(struct MusicPlayerInfo *mplayInfo)
     mplayInfo->ident = ID_NUMBER;
 }
 
-void FadeOutBody(struct MusicPlayerInfo *mplayInfo)
+extern "C" void FadeOutBody(struct MusicPlayerInfo *mplayInfo)
 {
     s32 i;
     struct MusicPlayerTrack *track;
@@ -699,7 +699,7 @@ void FadeOutBody(struct MusicPlayerInfo *mplayInfo)
     }
 }
 
-void TrkVolPitSet(struct MusicPlayerInfo *mplayInfo, struct MusicPlayerTrack *track)
+extern "C" void TrkVolPitSet(struct MusicPlayerInfo *mplayInfo, struct MusicPlayerTrack *track)
 {
     if (track->flags & MPT_FLG_VOLSET)
     {

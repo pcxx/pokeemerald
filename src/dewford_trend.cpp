@@ -212,7 +212,7 @@ void ReceiveEasyChatPairsData(struct EasyChatPair *a, size_t size, u8 unused)
     }
 }
 
-void BufferTrendyPhraseString(void)
+extern "C" void BufferTrendyPhraseString(void)
 {
     struct EasyChatPair *s = &gSaveBlock1Ptr->easyChatPairs[gSpecialVar_0x8004];
 
@@ -220,7 +220,7 @@ void BufferTrendyPhraseString(void)
 }
 
 
-void TrendyPhraseIsOld(void)
+extern "C" void TrendyPhraseIsOld(void)
 {
     u8 result = 0;
 
@@ -238,7 +238,7 @@ void TrendyPhraseIsOld(void)
     gSpecialVar_Result = result;
 }
 
-void GetDewfordHallPaintingNameIndex(void)
+extern "C" void GetDewfordHallPaintingNameIndex(void)
 {
     gSpecialVar_Result = (gSaveBlock1Ptr->easyChatPairs[0].words[0] + gSaveBlock1Ptr->easyChatPairs[0].words[1]) & 7;
 }

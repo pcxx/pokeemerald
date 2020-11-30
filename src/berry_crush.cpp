@@ -1693,7 +1693,7 @@ static void Task_ShowBerryCrushRankings(u8 taskId)
     ++data[0];
 }
 
-void ShowBerryCrushRankings(void)
+extern "C" void ShowBerryCrushRankings(void)
 {
     u8 taskId;
 

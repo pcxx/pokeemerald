@@ -80,10 +80,10 @@ EWRAM_DATA u8 sTVSecretBaseSecretsRandomValues[3] = {};
 void ClearPokemonNews(void);
 u8 GetTVChannelByShowType(u8 kind);
 u8 FindFirstActiveTVShowThatIsNotAMassOutbreak(void);
-u8 CheckForBigMovieOrEmergencyNewsOnTV(void);
+extern "C" u8 CheckForBigMovieOrEmergencyNewsOnTV(void);
 void SetTVMetatilesOnMap(int width, int height, u16 tileId);
 u8 FindAnyTVNewsOnTheAir(void);
-bool8 IsTVShowInSearchOfTrainersAiring(void);
+extern "C" bool8 IsTVShowInSearchOfTrainersAiring(void);
 void TakeTVShowInSearchOfTrainersOffTheAir(void);
 bool8 TV_BernoulliTrial(u16 ratio);
 s8 FindEmptyTVSlotBeyondFirstFiveShowsOfArray(TVShow *shows);
@@ -773,7 +773,7 @@ void ClearTVShowData(void)
     ClearPokemonNews();
 }
 
-u8 GetRandomActiveShowIdx(void)
+extern "C" u8 GetRandomActiveShowIdx(void)
 {
     u8 i;
     u8 j;
@@ -867,19 +867,19 @@ void SetTVMetatilesOnMap(int width, int height, u16 tileId)
     }
 }
 
-void TurnOffTVScreen(void)
+extern "C" void TurnOffTVScreen(void)
 {
     SetTVMetatilesOnMap(gBackupMapLayout.width, gBackupMapLayout.height, 0x0002);
     DrawWholeMapView();
 }
 
-void TurnOnTVScreen(void)
+extern "C" void TurnOnTVScreen(void)
 {
     SetTVMetatilesOnMap(gBackupMapLayout.width, gBackupMapLayout.height, 0x0003);
     DrawWholeMapView();
 }
 
-u8 GetSelectedTVShow(void)
+extern "C" u8 GetSelectedTVShow(void)
 {
     return gSaveBlock1Ptr->tvShows[gSpecialVar_0x8004].common.kind;
 }
@@ -898,7 +898,7 @@ u8 FindFirstActiveTVShowThatIsNotAMassOutbreak(void)
     return 0xFF;
 }
 
-u8 GetNextActiveShowIfMassOutbreak(void)
+extern "C" u8 GetNextActiveShowIfMassOutbreak(void)
 {
     TVShow *tvShow;
 
@@ -933,7 +933,7 @@ void ResetGabbyAndTy(void)
     gSaveBlock1Ptr->gabbyAndTyData.battleNum = 0;
 }
 
-void GabbyAndTyBeforeInterview(void)
+extern "C" void GabbyAndTyBeforeInterview(void)
 {
     u8 i;
 
@@ -983,7 +983,7 @@ void GabbyAndTyBeforeInterview(void)
     }
 }
 
-void GabbyAndTyAfterInterview(void)
+extern "C" void GabbyAndTyAfterInterview(void)
 {
     gSaveBlock1Ptr->gabbyAndTyData.battleTookMoreThanOneTurn2 = gSaveBlock1Ptr->gabbyAndTyData.battleTookMoreThanOneTurn;
     gSaveBlock1Ptr->gabbyAndTyData.playerLostAMon2 = gSaveBlock1Ptr->gabbyAndTyData.playerLostAMon;
@@ -999,7 +999,7 @@ void TakeTVShowInSearchOfTrainersOffTheAir(void)
     gSaveBlock1Ptr->gabbyAndTyData.onAir = FALSE;
 }
 
-u8 GabbyAndTyGetBattleNum(void)
+extern "C" u8 GabbyAndTyGetBattleNum(void)
 {
     if (gSaveBlock1Ptr->gabbyAndTyData.battleNum > 5)
     {
@@ -1008,12 +1008,12 @@ u8 GabbyAndTyGetBattleNum(void)
     return gSaveBlock1Ptr->gabbyAndTyData.battleNum;
 }
 
-bool8 IsTVShowInSearchOfTrainersAiring(void)
+extern "C" bool8 IsTVShowInSearchOfTrainersAiring(void)
 {
     return gSaveBlock1Ptr->gabbyAndTyData.onAir;
 }
 
-bool8 GabbyAndTyGetLastQuote(void)
+extern "C" bool8 GabbyAndTyGetLastQuote(void)
 {
     if (gSaveBlock1Ptr->gabbyAndTyData.quote[0] == 0xFFFF)
     {
@@ -1024,7 +1024,7 @@ bool8 GabbyAndTyGetLastQuote(void)
     return TRUE;
 }
 
-u8 GabbyAndTyGetLastBattleTrivia(void)
+extern "C" u8 GabbyAndTyGetLastBattleTrivia(void)
 {
     if (!gSaveBlock1Ptr->gabbyAndTyData.battleTookMoreThanOneTurn2)
     {
@@ -1045,7 +1045,7 @@ u8 GabbyAndTyGetLastBattleTrivia(void)
     return 0;
 }
 
-void GabbyAndTySetScriptVarsToObjectEventLocalIds(void)
+extern "C" void GabbyAndTySetScriptVarsToObjectEventLocalIds(void)
 {
     switch (GabbyAndTyGetBattleNum())
     {
@@ -1084,7 +1084,7 @@ void GabbyAndTySetScriptVarsToObjectEventLocalIds(void)
     }
 }
 
-void InterviewAfter(void)
+extern "C" void InterviewAfter(void)
 {
     switch (gSpecialVar_0x8005)
     {
@@ -1369,7 +1369,7 @@ bool8 Put3CheersForPokeblocksOnTheAir(const u8 *partnersName, u8 flavor, u8 colo
     return TRUE;
 }
 
-void PutFanClubSpecialOnTheAir(void)
+extern "C" void PutFanClubSpecialOnTheAir(void)
 {
     TVShow *show;
     u8 name[32];
@@ -1655,7 +1655,7 @@ void StartMassOutbreak(void)
     gSaveBlock1Ptr->outbreakDaysLeft = 2;
 }
 
-void PutLilycoveContestLadyShowOnTheAir(void)
+extern "C" void PutLilycoveContestLadyShowOnTheAir(void)
 {
     TVShow *show;
 
@@ -1993,7 +1993,7 @@ void sub_80EDC60(const u16 *words)
     }
 }
 
-void TryPutTreasureInvestigatorsOnAir(void)
+extern "C" void TryPutTreasureInvestigatorsOnAir(void)
 {
     TVShow *show;
 
@@ -2288,7 +2288,7 @@ void sub_80EE184(void)
     }
 }
 
-void TryPutLotteryWinnerReportOnAir(void)
+extern "C" void TryPutLotteryWinnerReportOnAir(void)
 {
     TVShow *show;
 
@@ -2430,7 +2430,7 @@ u8 TV_MonDataIdxToRibbon(u8 monDataIdx)
     return 0;
 }
 
-void TrySetUpTrainerFanClubSpecial(void)
+extern "C" void TrySetUpTrainerFanClubSpecial(void)
 {
     TVShow *show;
 
@@ -2448,7 +2448,7 @@ void TrySetUpTrainerFanClubSpecial(void)
     }
 }
 
-bool8 ShouldHideFanClubInterviewer(void)
+extern "C" bool8 ShouldHideFanClubInterviewer(void)
 {
     sCurTVShowSlot = FindEmptyTVSlotWithinFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
     if (sCurTVShowSlot == -1)
@@ -2633,12 +2633,12 @@ void IncrementDailyBerryBlender(void)
     VarSet(VAR_DAILY_BLENDER, VarGet(VAR_DAILY_BLENDER) + 1);
 }
 
-void IncrementDailyPlantedBerries(void)
+extern "C" void IncrementDailyPlantedBerries(void)
 {
     VarSet(VAR_DAILY_PLANTED_BERRIES, VarGet(VAR_DAILY_PLANTED_BERRIES) + 1);
 }
 
-void IncrementDailyPickedBerries(void)
+extern "C" void IncrementDailyPickedBerries(void)
 {
     VarSet(VAR_DAILY_PICKED_BERRIES, VarGet(VAR_DAILY_PICKED_BERRIES) + gSpecialVar_0x8006);
 }
@@ -2737,7 +2737,7 @@ u8 FindAnyTVNewsOnTheAir(void)
     return 0xFF;
 }
 
-void DoPokeNews(void)
+extern "C" void DoPokeNews(void)
 {
     u8 i;
     u16 n;
@@ -2897,7 +2897,7 @@ void CopyContestCategoryToStringVar(u8 varIdx, u8 category)
     }
 }
 
-void SetContestCategoryStringVarForInterview(void)
+extern "C" void SetContestCategoryStringVarForInterview(void)
 {
     TVShow *show;
 
@@ -3020,7 +3020,7 @@ void FindActiveBroadcastByShowType_SetScriptResult(u8 kind)
     sub_80EFA88();
 }
 
-void InterviewBefore(void)
+extern "C" void InterviewBefore(void)
 {
     gSpecialVar_Result = FALSE;
     switch (gSpecialVar_0x8005)
@@ -3151,7 +3151,7 @@ static bool8 IsPartyMonNicknamedOrNotEnglish(u8 monIdx)
     return TRUE;
 }
 
-bool8 IsLeadMonNicknamedOrNotEnglish(void)
+extern "C" bool8 IsLeadMonNicknamedOrNotEnglish(void)
 {
     return IsPartyMonNicknamedOrNotEnglish(GetLeadMonIndex());
 }
@@ -3409,7 +3409,7 @@ void TV_GetNicknameSubstring(u8 varIdx, u8 whichPosition, u8 charParam, u16 whic
     StringCopy(gTVStringVarPtrs[varIdx], buff);
 }
 
-bool8 TV_IsScriptShowKindAlreadyInQueue(void)
+extern "C" bool8 TV_IsScriptShowKindAlreadyInQueue(void)
 {
     u8 i;
 
@@ -3423,7 +3423,7 @@ bool8 TV_IsScriptShowKindAlreadyInQueue(void)
     return FALSE;
 }
 
-bool8 TryPutNameRaterShowOnTheAir(void)
+extern "C" bool8 TryPutNameRaterShowOnTheAir(void)
 {
     GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar1);
 
@@ -3435,7 +3435,7 @@ bool8 TryPutNameRaterShowOnTheAir(void)
     return TRUE;
 }
 
-void ChangePokemonNickname(void)
+extern "C" void ChangePokemonNickname(void)
 {
     void ChangePokemonNickname_CB(void);
 
@@ -3450,7 +3450,7 @@ void ChangePokemonNickname_CB(void)
     CB2_ReturnToFieldContinueScriptPlayMapMusic();
 }
 
-void ChangeBoxPokemonNickname(void)
+extern "C" void ChangeBoxPokemonNickname(void)
 {
     struct BoxPokemon *boxMon;
 
@@ -3466,13 +3466,13 @@ void ChangeBoxPokemonNickname_CB(void)
     CB2_ReturnToFieldContinueScriptPlayMapMusic();
 }
 
-void BufferMonNickname(void)
+extern "C" void BufferMonNickname(void)
 {
     GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar1);
     StringGetEnd10(gStringVar1);
 }
 
-void IsMonOTIDNotPlayers(void)
+extern "C" void IsMonOTIDNotPlayers(void)
 {
     if (GetPlayerIDAsU32() == GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_OT_ID, NULL))
         gSpecialVar_Result = FALSE;
@@ -3506,7 +3506,7 @@ u32 GetPlayerIDAsU32(void)
     return (gSaveBlock2Ptr->playerTrainerId[3] << 24) | (gSaveBlock2Ptr->playerTrainerId[2] << 16) | (gSaveBlock2Ptr->playerTrainerId[1] << 8) | gSaveBlock2Ptr->playerTrainerId[0];
 }
 
-u8 CheckForBigMovieOrEmergencyNewsOnTV(void)
+extern "C" u8 CheckForBigMovieOrEmergencyNewsOnTV(void)
 {
     if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
     {
@@ -3537,7 +3537,7 @@ u8 CheckForBigMovieOrEmergencyNewsOnTV(void)
     return 1;
 }
 
-void GetMomOrDadStringForTVMessage(void)
+extern "C" void GetMomOrDadStringForTVMessage(void)
 {
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
     {
@@ -4400,7 +4400,7 @@ void sub_80F14F8(TVShow *shows)
     }
 }
 
-void DoTVShow(void)
+extern "C" void DoTVShow(void)
 {
     if (gSaveBlock1Ptr->tvShows[gSpecialVar_0x8004].common.active)
     {
@@ -5693,7 +5693,7 @@ static void DoTVShow3CheersForPokeblocks(void)
     ShowFieldMessage(sTV3CheersForPokeblocksTextGroup[state]);
 }
 
-void DoTVShowInSearchOfTrainers(void)
+extern "C" void DoTVShowInSearchOfTrainers(void)
 {
     u8 state;
 
@@ -7233,7 +7233,7 @@ void TVShowDone(void)
     gSaveBlock1Ptr->tvShows[gSpecialVar_0x8004].common.active = FALSE;
 }
 
-void ResetTVShowState(void)
+extern "C" void ResetTVShowState(void)
 {
     sTVShowState = 0;
 }

@@ -54,7 +54,7 @@ void sub_801DBDC(void)
 }
 
 // Unused
-u16 sub_801DC20(void)
+extern "C" u16 sub_801DC20(void)
 {
     u16 *r6 = &gSpecialVar_Result;
     struct MysteryEventStruct *r4 = sub_801B044();

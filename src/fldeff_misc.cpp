@@ -833,7 +833,7 @@ static void Task_SecretBasePCTurnOn(u8 taskId)
 #undef tY
 #undef tState
 
-void DoSecretBasePCTurnOffEffect(void)
+extern "C" void DoSecretBasePCTurnOffEffect(void)
 {
     s16 x, y;
 
@@ -1117,7 +1117,7 @@ static void SpriteCB_SandPillar_End(struct Sprite *sprite)
     EnableBothScriptContexts();
 }
 
-void InteractWithShieldOrTVDecoration(void)
+extern "C" void InteractWithShieldOrTVDecoration(void)
 {
     s16 x, y;
     s32 metatileId;
@@ -1277,7 +1277,7 @@ static void Task_WateringBerryTreeAnim_End(u8 taskId)
     EnableBothScriptContexts();
 }
 
-void DoWateringBerryTreeAnim(void)
+extern "C" void DoWateringBerryTreeAnim(void)
 {
     CreateTask(Task_WateringBerryTreeAnim, 80);
 }

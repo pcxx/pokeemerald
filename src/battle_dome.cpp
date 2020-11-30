@@ -2080,7 +2080,7 @@ static const u8 sTourneyTreeLineSectionArrayCounts[DOME_TOURNAMENT_TRAINERS_COUN
 };
 
 // code
-void CallBattleDomeFunction(void)
+extern "C" void CallBattleDomeFunction(void)
 {
     sBattleDomeFunctions[gSpecialVar_0x8004]();
 }

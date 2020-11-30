@@ -19,7 +19,7 @@ extern u16 gTotalCameraPixelOffsetX;
 extern u16 gTotalCameraPixelOffsetY;
 
 // Exported ROM declarations
-void DrawWholeMapView(void);
+extern "C" void DrawWholeMapView(void);
 void CurrentMapDrawMetatileAt(int x, int y);
 void sub_8089C08(s16 *a0, s16 *a1);
 void DrawDoorMetatileAt(int x, int y, u16 *arr);

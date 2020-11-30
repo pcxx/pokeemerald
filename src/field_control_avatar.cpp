@@ -993,7 +993,7 @@ const u8 *GetObjectEventScriptPointerPlayerFacing(void)
     return GetInteractedObjectEventScript(&position, MapGridGetMetatileBehaviorAt(position.x, position.y), direction);
 }
 
-int SetCableClubWarp(void)
+extern "C" int SetCableClubWarp(void)
 {
     struct MapPosition position;
 

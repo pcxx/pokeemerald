@@ -344,7 +344,7 @@ void FieldCB_ShowPortholeView(void)
     ScriptContext2_Enable();
 }
 
-void LookThroughPorthole(void)
+extern "C" void LookThroughPorthole(void)
 {
     FlagSet(FLAG_SYS_CRUISE_MODE);
     FlagSet(FLAG_DONT_TRANSITION_MUSIC);

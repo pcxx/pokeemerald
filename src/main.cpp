@@ -81,7 +81,7 @@ void InitIntrHandlers(void);
 static void WaitForVBlank(void);
 void EnableVCountIntrAtLine150(void);
 
-void AgbMain()
+extern "C" void AgbMain()
 {
 #if MODERN
     // Modern compilers are liberal with the stack on entry to this function,
@@ -428,7 +428,7 @@ void ClearTrainerHillVBlankCounter(void)
     gTrainerHillVBlankCounter = NULL;
 }
 
-void DoSoftReset(void)
+extern "C" void DoSoftReset(void)
 {
     REG_IME = 0;
     m4aSoundVSyncOff();

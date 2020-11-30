@@ -76,7 +76,7 @@ static const u32 sWinStreakMasks[][2] =
 };
 
 // code
-void CallBattlePalaceFunction(void)
+extern "C" void CallBattlePalaceFunction(void)
 {
     sBattlePalaceFunctions[gSpecialVar_0x8004]();
 }

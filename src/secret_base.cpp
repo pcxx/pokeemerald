@@ -243,7 +243,7 @@ void TrySetCurSecretBaseIndex(void)
     }
 }
 
-void CheckPlayerHasSecretBase(void)
+extern "C" void CheckPlayerHasSecretBase(void)
 {
     // The player's secret base is always the first in the array.
     if (gSaveBlock1Ptr->secretBases[0].secretBaseId)
@@ -281,7 +281,7 @@ static u8 GetSecretBaseTypeInFrontOfPlayer_(void)
     return 0;
 }
 
-void GetSecretBaseTypeInFrontOfPlayer(void)
+extern "C" void GetSecretBaseTypeInFrontOfPlayer(void)
 {
     gSpecialVar_0x8007 = GetSecretBaseTypeInFrontOfPlayer_();
 }
@@ -347,7 +347,7 @@ static u8 GetNameLength(const u8 *secretBaseOwnerName)
     return PLAYER_NAME_LENGTH;
 }
 
-void SetPlayerSecretBase(void)
+extern "C" void SetPlayerSecretBase(void)
 {
     u16 i;
 
@@ -423,7 +423,7 @@ static void Task_EnterSecretBase(u8 taskId)
     }
 }
 
-void EnterSecretBase(void)
+extern "C" void EnterSecretBase(void)
 {
     CreateTask(Task_EnterSecretBase, 0);
     FadeScreen(FADE_TO_BLACK, 0);
@@ -481,7 +481,7 @@ static void Task_EnterNewlyCreatedSecretBase(u8 taskId)
     }
 }
 
-void EnterNewlyCreatedSecretBase(void)
+extern "C" void EnterNewlyCreatedSecretBase(void)
 {
     CreateTask(Task_EnterNewlyCreatedSecretBase, 0);
     FadeScreen(FADE_TO_BLACK, 0);
@@ -529,7 +529,7 @@ void InitSecretBaseAppearance(bool8 hidePC)
     }
 }
 
-void InitSecretBaseDecorationSprites(void)
+extern "C" void InitSecretBaseDecorationSprites(void)
 {
     u8 i;
     u8 *decorations;
@@ -631,7 +631,7 @@ void HideSecretBaseDecorationSprites(void)
     }
 }
 
-void SetSecretBaseOwnerGfxId(void)
+extern "C" void SetSecretBaseOwnerGfxId(void)
 {
     VarSet(VAR_OBJ_GFX_ID_F, sSecretBaseOwnerGfxIds[GetSecretBaseOwnerType(VarGet(VAR_CURRENT_SECRET_BASE))]);
 }
@@ -695,7 +695,7 @@ static void WarpOutOfSecretBase(void)
     FadeScreen(FADE_TO_BLACK, 0);
 }
 
-void IsCurSecretBaseOwnedByAnotherPlayer(void)
+extern "C" void IsCurSecretBaseOwnedByAnotherPlayer(void)
 {
     if (gSaveBlock1Ptr->secretBases[0].secretBaseId != sCurSecretBaseId)
         gSpecialVar_Result = TRUE;
@@ -715,7 +715,7 @@ u8 *GetSecretBaseMapName(u8 *dest)
     return GetSecretBaseName(dest, VarGet(VAR_CURRENT_SECRET_BASE));
 }
 
-void CopyCurSecretBaseOwnerName_StrVar1(void)
+extern "C" void CopyCurSecretBaseOwnerName_StrVar1(void)
 {
     u8 secretBaseId;
     const u8 *name;
@@ -785,7 +785,7 @@ void SetPlayerSecretBaseParty(void)
     }
 }
 
-void ClearAndLeaveSecretBase(void)
+extern "C" void ClearAndLeaveSecretBase(void)
 {
     u16 temp = gSaveBlock1Ptr->secretBases[0].numSecretBasesReceived;
     ClearSecretBase(&gSaveBlock1Ptr->secretBases[0]);
@@ -793,7 +793,7 @@ void ClearAndLeaveSecretBase(void)
     WarpOutOfSecretBase();
 }
 
-void MoveOutOfSecretBase(void)
+extern "C" void MoveOutOfSecretBase(void)
 {
     IncrementGameStat(GAME_STAT_MOVED_SECRET_BASE);
     ClearAndLeaveSecretBase();
@@ -829,7 +829,7 @@ static void ClosePlayerSecretBaseEntrance(void)
 
 // When the player moves to a new secret base by interacting with a new secret base
 // entrance in the overworld.
-void MoveOutOfSecretBaseFromOutside(void)
+extern "C" void MoveOutOfSecretBaseFromOutside(void)
 {
     u16 temp;
 
@@ -853,7 +853,7 @@ static u8 GetNumRegisteredSecretBases(void)
     return count;
 }
 
-void GetCurSecretBaseRegistrationValidity(void)
+extern "C" void GetCurSecretBaseRegistrationValidity(void)
 {
     if (IsSecretBaseRegistered(VarGet(VAR_CURRENT_SECRET_BASE)) == TRUE)
         gSpecialVar_Result = 1;
@@ -863,18 +863,18 @@ void GetCurSecretBaseRegistrationValidity(void)
         gSpecialVar_Result = 0;
 }
 
-void ToggleCurSecretBaseRegistry(void)
+extern "C" void ToggleCurSecretBaseRegistry(void)
 {
     gSaveBlock1Ptr->secretBases[VarGet(VAR_CURRENT_SECRET_BASE)].registryStatus ^= 1;
     FlagSet(FLAG_SECRET_BASE_REGISTRY_ENABLED);
 }
 
-void ShowSecretBaseDecorationMenu(void)
+extern "C" void ShowSecretBaseDecorationMenu(void)
 {
     CreateTask(DoSecretBaseDecorationMenu, 0);
 }
 
-void ShowSecretBaseRegistryMenu(void)
+extern "C" void ShowSecretBaseRegistryMenu(void)
 {
     CreateTask(Task_ShowSecretBaseRegistryMenu, 0);
 }
@@ -1118,19 +1118,19 @@ const u8 *GetSecretBaseTrainerLoseText(void)
         return SecretBase_Text_Trainer9Defeated;
 }
 
-void PrepSecretBaseBattleFlags(void)
+extern "C" void PrepSecretBaseBattleFlags(void)
 {
     TryGainNewFanFromCounter(FANCOUNTER_BATTLED_AT_BASE);
     gTrainerBattleOpponent_A = TRAINER_SECRET_BASE;
     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_SECRET_BASE;
 }
 
-void SetBattledOwnerFromResult(void)
+extern "C" void SetBattledOwnerFromResult(void)
 {
     gSaveBlock1Ptr->secretBases[VarGet(VAR_CURRENT_SECRET_BASE)].battledOwnerToday = gSpecialVar_Result;
 }
 
-void GetSecretBaseOwnerAndState(void)
+extern "C" void GetSecretBaseOwnerAndState(void)
 {
     u16 secretBaseId;
     u8 i;
@@ -1723,7 +1723,7 @@ void ClearJapaneseSecretBases(struct SecretBase *bases)
     }
 }
 
-void InitSecretBaseVars(void)
+extern "C" void InitSecretBaseVars(void)
 {
     VarSet(VAR_SECRET_BASE_STEP_COUNTER, 0);
     VarSet(VAR_SECRET_BASE_LAST_ITEM_USED, 0);
@@ -1752,19 +1752,19 @@ void CheckLeftFriendsSecretBase(void)
     }
 }
 
-void CheckInteractedWithFriendsDollDecor(void)
+extern "C" void CheckInteractedWithFriendsDollDecor(void)
 {
     if (VarGet(VAR_CURRENT_SECRET_BASE) != 0)
         VarSet(VAR_SECRET_BASE_HIGH_TV_FLAGS, VarGet(VAR_SECRET_BASE_HIGH_TV_FLAGS) | SECRET_BASE_USED_DOLL);
 }
 
-void CheckInteractedWithFriendsCushionDecor(void)
+extern "C" void CheckInteractedWithFriendsCushionDecor(void)
 {
     if (VarGet(VAR_CURRENT_SECRET_BASE) != 0)
         VarSet(VAR_SECRET_BASE_LOW_TV_FLAGS, VarGet(VAR_SECRET_BASE_LOW_TV_FLAGS) | SECRET_BASE_USED_CUSHION);
 }
 
-void DeclinedSecretBaseBattle(void)
+extern "C" void DeclinedSecretBaseBattle(void)
 {
     if (VarGet(VAR_CURRENT_SECRET_BASE) != 0)
     {
@@ -1774,7 +1774,7 @@ void DeclinedSecretBaseBattle(void)
     }
 }
 
-void WonSecretBaseBattle(void)
+extern "C" void WonSecretBaseBattle(void)
 {
     if (VarGet(VAR_CURRENT_SECRET_BASE) != 0)
     {
@@ -1784,7 +1784,7 @@ void WonSecretBaseBattle(void)
     }
 }
 
-void LostSecretBaseBattle(void)
+extern "C" void LostSecretBaseBattle(void)
 {
     if (VarGet(VAR_CURRENT_SECRET_BASE) != 0)
     {
@@ -1794,7 +1794,7 @@ void LostSecretBaseBattle(void)
     }
 }
 
-void DrewSecretBaseBattle(void)
+extern "C" void DrewSecretBaseBattle(void)
 {
     if (VarGet(VAR_CURRENT_SECRET_BASE) != 0)
     {
@@ -1804,7 +1804,7 @@ void DrewSecretBaseBattle(void)
     }
 }
 
-void CheckInteractedWithFriendsPosterDecor(void)
+extern "C" void CheckInteractedWithFriendsPosterDecor(void)
 {
     s16 x, y;
 
@@ -1832,7 +1832,7 @@ void CheckInteractedWithFriendsPosterDecor(void)
     }
 }
 
-void CheckInteractedWithFriendsFurnitureBottom(void)
+extern "C" void CheckInteractedWithFriendsFurnitureBottom(void)
 {
     s16 x, y;
 
@@ -1910,7 +1910,7 @@ void CheckInteractedWithFriendsFurnitureBottom(void)
     }
 }
 
-void CheckInteractedWithFriendsFurnitureMiddle(void)
+extern "C" void CheckInteractedWithFriendsFurnitureMiddle(void)
 {
     s16 x, y;
 
@@ -1934,7 +1934,7 @@ void CheckInteractedWithFriendsFurnitureMiddle(void)
     }
 }
 
-void CheckInteractedWithFriendsFurnitureTop(void)
+extern "C" void CheckInteractedWithFriendsFurnitureTop(void)
 {
     s16 x, y;
 
@@ -1980,7 +1980,7 @@ void CheckInteractedWithFriendsFurnitureTop(void)
     }
 }
 
-void CheckInteractedWithFriendsSandOrnament(void)
+extern "C" void CheckInteractedWithFriendsSandOrnament(void)
 {
     s16 x, y;
 

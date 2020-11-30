@@ -122,7 +122,7 @@ struct EasyChatWordsByLetter
 };
 
 void InitEasyChatPhrases(void);
-void ShowEasyChatScreen(void);
+extern "C" void ShowEasyChatScreen(void);
 u8 * CopyEasyChatWord(u8 *dest, u16 word);
 bool32 sub_811F8D8(int word);
 void InitializeEasyChatWordArray(u16 *words, u16 length);

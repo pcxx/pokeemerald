@@ -4391,7 +4391,7 @@ u8 SendMonToPC(struct Pokemon* mon)
     return MON_CANT_GIVE;
 }
 
-u8 CalculatePlayerPartyCount(void)
+extern "C" u8 CalculatePlayerPartyCount(void)
 {
     gPlayerPartyCount = 0;
 

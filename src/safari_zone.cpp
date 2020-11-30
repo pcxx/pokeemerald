@@ -52,7 +52,7 @@ void ResetSafariZoneFlag(void)
     FlagClear(FLAG_SYS_SAFARI_MODE);
 }
 
-void EnterSafariMode(void)
+extern "C" void EnterSafariMode(void)
 {
     IncrementGameStat(GAME_STAT_ENTERED_SAFARI_ZONE);
     SetSafariZoneFlag();
@@ -63,7 +63,7 @@ void EnterSafariMode(void)
     sSafariZonePkblkUses = 0;
 }
 
-void ExitSafariMode(void)
+extern "C" void ExitSafariMode(void)
 {
     sub_80EE44C(sSafariZoneCaughtMons, sSafariZonePkblkUses);
     ResetSafariZoneFlag();
@@ -128,7 +128,7 @@ static void ClearAllPokeblockFeeders(void)
     memset(sPokeblockFeeders, 0, sizeof(sPokeblockFeeders));
 }
 
-void GetPokeblockFeederInFront(void)
+extern "C" void GetPokeblockFeederInFront(void)
 {
     s16 x, y;
     u16 i;

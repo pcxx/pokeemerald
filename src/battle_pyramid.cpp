@@ -845,7 +845,7 @@ static const u8 sBorderedSquareIds[][4] =
 static const u8 sPickupPercentages[PICKUP_ITEMS_PER_ROUND] = {30, 40, 50, 60, 70, 80, 85, 90, 95, 100};
 
 // code
-void CallBattlePyramidFunction(void)
+extern "C" void CallBattlePyramidFunction(void)
 {
     sBattlePyramidFunctions[gSpecialVar_0x8004]();
 }

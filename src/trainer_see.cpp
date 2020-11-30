@@ -627,7 +627,7 @@ void sub_80B4578(struct ObjectEvent *var)
     StoreWordInTwoHalfwords((u16 *)&gTasks[CreateTask(sub_80B44C8, 0)].data[1], (u32)var);
 }
 
-void EndTrainerApproach(void)
+extern "C" void EndTrainerApproach(void)
 {
     sub_80B40C8(Task_DestroyTrainerApproachTask);
 }
@@ -638,7 +638,7 @@ static void Task_DestroyTrainerApproachTask(u8 taskId)
     EnableBothScriptContexts();
 }
 
-void TryPrepareSecondApproachingTrainer(void)
+extern "C" void TryPrepareSecondApproachingTrainer(void)
 {
     if (gNoOfApproachingTrainers == 2)
     {
@@ -766,7 +766,7 @@ u8 GetChosenApproachingTrainerObjectEventId(u8 arrayId)
         return gApproachingTrainers[1].objectEventId;
 }
 
-void PlayerFaceTrainerAfterBattle(void)
+extern "C" void PlayerFaceTrainerAfterBattle(void)
 {
     struct ObjectEvent *objEvent;
 

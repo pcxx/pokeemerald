@@ -35,7 +35,7 @@ enum
     PHRASE_FIRST_ATTEMPT
 };
 
-u16 TryBufferWaldaPhrase(void)
+extern "C" u16 TryBufferWaldaPhrase(void)
 {
     if (IsWaldaPhraseEmpty())
         return FALSE;
@@ -44,7 +44,7 @@ u16 TryBufferWaldaPhrase(void)
     return TRUE;
 }
 
-void DoWaldaNamingScreen(void)
+extern "C" void DoWaldaNamingScreen(void)
 {
     StringCopy(gStringVar2, GetWaldaPhrasePtr());
     DoNamingScreen(NAMING_SCREEN_WALDA, gStringVar2, 0, 0, 0, CB2_HandleGivenWaldaPhrase);
@@ -84,7 +84,7 @@ static u32 GetWaldaPhraseInputCase(u8 *inputPtr)
     return PHRASE_GIVEN_NEW;
 }
 
-u16 TryGetWallpaperWithWaldaPhrase(void)
+extern "C" u16 TryGetWallpaperWithWaldaPhrase(void)
 {
     u16 backgroundClr, foregroundClr;
     u8 patternId, iconId;

@@ -28,7 +28,7 @@
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
 
-void HealPlayerParty(void)
+extern "C" void HealPlayerParty(void)
 {
     u8 i, j;
     u8 ppBonuses;
@@ -96,7 +96,7 @@ u8 ScriptGiveEgg(u16 species)
     return GiveMonToPlayer(&mon);
 }
 
-void HasEnoughMonsForDoubleBattle(void)
+extern "C" void HasEnoughMonsForDoubleBattle(void)
 {
     switch (GetMonsStateToDoubles())
     {
@@ -125,7 +125,7 @@ static bool8 CheckPartyMonHasHeldItem(u16 item)
     return FALSE;
 }
 
-bool8 DoesPartyHaveEnigmaBerry(void)
+extern "C" bool8 DoesPartyHaveEnigmaBerry(void)
 {
     bool8 hasItem = CheckPartyMonHasHeldItem(ITEM_ENIGMA_BERRY);
     if (hasItem == TRUE)
@@ -158,7 +158,7 @@ void ScriptSetMonMoveSlot(u8 monIndex, u16 move, u8 slot)
 
 // Note: When control returns to the event script, gSpecialVar_Result will be
 // TRUE if the party selection was successful.
-void ChooseHalfPartyForBattle(void)
+extern "C" void ChooseHalfPartyForBattle(void)
 {
     gMain.savedCallback = CB2_ReturnFromChooseHalfParty;
     VarSet(VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER);
@@ -180,7 +180,7 @@ static void CB2_ReturnFromChooseHalfParty(void)
     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
-void ChoosePartyForBattleFrontier(void)
+extern "C" void ChoosePartyForBattleFrontier(void)
 {
     gMain.savedCallback = CB2_ReturnFromChooseBattleFrontierParty;
     InitChooseHalfPartyForBattle(gSpecialVar_0x8004 + 1);
@@ -201,7 +201,7 @@ static void CB2_ReturnFromChooseBattleFrontierParty(void)
     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
-void ReducePlayerPartyToSelectedMons(void)
+extern "C" void ReducePlayerPartyToSelectedMons(void)
 {
     struct Pokemon party[MAX_FRONTIER_PARTY_SIZE];
     int i;

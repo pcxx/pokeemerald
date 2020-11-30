@@ -146,12 +146,12 @@ u8 GetCurrentMauvilleOldMan(void)
     return common->id;
 }
 
-void ScrSpecial_GetCurrentMauvilleMan(void)
+extern "C" void ScrSpecial_GetCurrentMauvilleMan(void)
 {
     gSpecialVar_Result = GetCurrentMauvilleOldMan();
 }
 
-void ScrSpecial_HasBardSongBeenChanged(void)
+extern "C" void ScrSpecial_HasBardSongBeenChanged(void)
 {
     u16 *scriptResult = &gSpecialVar_Result; // why??
     struct MauvilleManBard *bard = &gSaveBlock1Ptr->oldMan.bard;
@@ -159,7 +159,7 @@ void ScrSpecial_HasBardSongBeenChanged(void)
     *scriptResult = bard->hasChangedSong;
 }
 
-void ScrSpecial_SaveBardSongLyrics(void)
+extern "C" void ScrSpecial_SaveBardSongLyrics(void)
 {
     u16 i;
     struct MauvilleManBard *bard = &gSaveBlock1Ptr->oldMan.bard;
@@ -225,13 +225,13 @@ static void PrepareSongText(void)
     }
 }
 
-void ScrSpecial_PlayBardSong(void)
+extern "C" void ScrSpecial_PlayBardSong(void)
 {
     StartBardSong(gSpecialVar_0x8004);
     ScriptContext1_Stop();
 }
 
-void ScrSpecial_GetHipsterSpokenFlag(void)
+extern "C" void ScrSpecial_GetHipsterSpokenFlag(void)
 {
     u16 *scriptResult = &gSpecialVar_Result; // again??
     struct MauvilleManHipster *hipster = &gSaveBlock1Ptr->oldMan.hipster;
@@ -239,14 +239,14 @@ void ScrSpecial_GetHipsterSpokenFlag(void)
     *scriptResult = hipster->alreadySpoken;
 }
 
-void ScrSpecial_SetHipsterSpokenFlag(void)
+extern "C" void ScrSpecial_SetHipsterSpokenFlag(void)
 {
     struct MauvilleManHipster *hipster = &gSaveBlock1Ptr->oldMan.hipster;
 
     hipster->alreadySpoken = TRUE;
 }
 
-void ScrSpecial_HipsterTeachWord(void)
+extern "C" void ScrSpecial_HipsterTeachWord(void)
 {
     u16 phrase = GetNewHipsterPhraseToTeach();
 
@@ -261,7 +261,7 @@ void ScrSpecial_HipsterTeachWord(void)
     }
 }
 
-void ScrSpecial_GiddyShouldTellAnotherTale(void)
+extern "C" void ScrSpecial_GiddyShouldTellAnotherTale(void)
 {
     struct MauvilleManGiddy *giddy = &gSaveBlock1Ptr->oldMan.giddy;
 
@@ -276,7 +276,7 @@ void ScrSpecial_GiddyShouldTellAnotherTale(void)
     }
 }
 
-void ScrSpecial_GenerateGiddyLine(void)
+extern "C" void ScrSpecial_GenerateGiddyLine(void)
 {
     struct MauvilleManGiddy *giddy = &gSaveBlock1Ptr->oldMan.giddy;
 
@@ -673,7 +673,7 @@ static void Task_BardSong(u8 taskId)
     RunTextPrintersAndIsPrinter0Active();
 }
 
-void ScrSpecial_SetMauvilleOldManObjEventGfx(void)
+extern "C" void ScrSpecial_SetMauvilleOldManObjEventGfx(void)
 {
     VarSet(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_BARD);
 }
@@ -1382,24 +1382,24 @@ static void Task_StoryListMenu(u8 taskId)
 }
 
 // Sets gSpecialVar_Result to TRUE if player selected a story
-void ScrSpecial_StorytellerStoryListMenu(void)
+extern "C" void ScrSpecial_StorytellerStoryListMenu(void)
 {
     CreateTask(Task_StoryListMenu, 80);
 }
 
-void ScrSpecial_StorytellerDisplayStory(void)
+extern "C" void ScrSpecial_StorytellerDisplayStory(void)
 {
     StorytellerDisplayStory(sSelectedStory);
 }
 
-u8 ScrSpecial_StorytellerGetFreeStorySlot(void)
+extern "C" u8 ScrSpecial_StorytellerGetFreeStorySlot(void)
 {
     sStorytellerPtr = &gSaveBlock1Ptr->oldMan.storyteller;
     return GetFreeStorySlot();
 }
 
 // Returns TRUE if stat has increased
-bool8 ScrSpecial_StorytellerUpdateStat(void)
+extern "C" bool8 ScrSpecial_StorytellerUpdateStat(void)
 {
     u8 r4;
     sStorytellerPtr = &gSaveBlock1Ptr->oldMan.storyteller;
@@ -1413,7 +1413,7 @@ bool8 ScrSpecial_StorytellerUpdateStat(void)
     return FALSE;
 }
 
-bool8 ScrSpecial_HasStorytellerAlreadyRecorded(void)
+extern "C" bool8 ScrSpecial_HasStorytellerAlreadyRecorded(void)
 {
     sStorytellerPtr = &gSaveBlock1Ptr->oldMan.storyteller;
 
@@ -1423,7 +1423,7 @@ bool8 ScrSpecial_HasStorytellerAlreadyRecorded(void)
         return TRUE;
 }
 
-bool8 ScrSpecial_StorytellerInitializeRandomStat(void)
+extern "C" bool8 ScrSpecial_StorytellerInitializeRandomStat(void)
 {
     sStorytellerPtr = &gSaveBlock1Ptr->oldMan.storyteller;
     return StorytellerInitializeRandomStat();

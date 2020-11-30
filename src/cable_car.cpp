@@ -242,7 +242,7 @@ static void Task_LoadCableCar(u8 taskId)
     }
 }
 
-void CableCar(void)
+extern "C" void CableCar(void)
 {
     ScriptContext2_Enable();
     CreateTask(Task_LoadCableCar, 1);

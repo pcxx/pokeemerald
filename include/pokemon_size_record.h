@@ -2,12 +2,12 @@
 #define GUARD_POKEMON_SIZE_RECORD_H
 
 void InitSeedotSizeRecord(void);
-void GetSeedotSizeRecordInfo(void);
-void CompareSeedotSize(void);
+extern "C" void GetSeedotSizeRecordInfo(void);
+extern "C" void CompareSeedotSize(void);
 
 void InitLotadSizeRecord(void);
-void GetLotadSizeRecordInfo(void);
-void CompareLotadSize(void);
+extern "C" void GetLotadSizeRecordInfo(void);
+extern "C" void CompareLotadSize(void);
 
 void GiveGiftRibbonToParty(u8 index, u8 ribbonId);
 

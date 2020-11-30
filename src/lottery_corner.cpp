@@ -39,13 +39,13 @@ void SetRandomLotteryNumber(u16 i)
     SetLotteryNumber(var);
 }
 
-void RetrieveLotteryNumber(void)
+extern "C" void RetrieveLotteryNumber(void)
 {
     u16 lottoNumber = GetLotteryNumber();
     gSpecialVar_Result = lottoNumber;
 }
 
-void PickLotteryCornerTicket(void)
+extern "C" void PickLotteryCornerTicket(void)
 {
     u16 i;
     u16 j;

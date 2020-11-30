@@ -5,8 +5,8 @@ extern u8 gRecordsWindowId;
 
 void ClearPlayerLinkBattleRecords(void);
 void UpdatePlayerLinkBattleRecords(s32 battlerId);
-void ShowLinkBattleRecords(void);
-void RemoveRecordsWindow(void);
-void ShowTrainerHillRecords(void);
+extern "C" void ShowLinkBattleRecords(void);
+extern "C" void RemoveRecordsWindow(void);
+extern "C" void ShowTrainerHillRecords(void);
 
 #endif // GUARD_BATTLE_RECORDS_H

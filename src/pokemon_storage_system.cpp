@@ -1635,7 +1635,7 @@ s16 GetFirstFreeBoxSpot(u8 boxId)
     return -1; // all spots are taken
 }
 
-u8 CountPartyNonEggMons(void)
+extern "C" u8 CountPartyNonEggMons(void)
 {
     u16 i, count;
 
@@ -1669,7 +1669,7 @@ u8 CountPartyAliveNonEggMonsExcept(u8 slotToIgnore)
     return count;
 }
 
-u16 CountPartyAliveNonEggMons_IgnoreVar0x8004Slot(void)
+extern "C" u16 CountPartyAliveNonEggMons_IgnoreVar0x8004Slot(void)
 {
     return CountPartyAliveNonEggMonsExcept(gSpecialVar_0x8004);
 }
@@ -1834,7 +1834,7 @@ static void Task_PokemonStorageSystemPC(u8 taskId)
     }
 }
 
-void ShowPokemonStorageSystemPC(void)
+extern "C" void ShowPokemonStorageSystemPC(void)
 {
     u8 taskId = CreateTask(Task_PokemonStorageSystemPC, 80);
     gTasks[taskId].data[0] = 0;

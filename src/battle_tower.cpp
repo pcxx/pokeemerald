@@ -904,7 +904,7 @@ static const u16 sRecordTrainerSpeechLost[] =
 };
 
 // code
-void CallBattleTowerFunc(void)
+extern "C" void CallBattleTowerFunc(void)
 {
     sBattleTowerFuncs[gSpecialVar_0x8004]();
 }
@@ -1257,7 +1257,7 @@ void SetBattleFacilityTrainerGfxId(u16 trainerId, u8 tempVarId)
     }
 }
 
-void SetEReaderTrainerGfxId(void)
+extern "C" void SetEReaderTrainerGfxId(void)
 {
     SetBattleFacilityTrainerGfxId(TRAINER_EREADER, 0);
 }
@@ -1994,7 +1994,7 @@ static void Task_StartBattleAfterTransition(u8 taskId)
     }
 }
 
-void DoSpecialTrainerBattle(void)
+extern "C" void DoSpecialTrainerBattle(void)
 {
     s32 i;
 
@@ -2859,7 +2859,7 @@ void GetEreaderTrainerName(u8 *dst)
 }
 
 // Checks if the saved E-Reader trainer is valid.
-void ValidateEReaderTrainer(void)
+extern "C" void ValidateEReaderTrainer(void)
 {
     u32 i;
     u32 checksum;
@@ -2906,7 +2906,7 @@ void ClearEReaderTrainer(struct BattleTowerEReaderTrainer *ereaderTrainer)
         ((u32 *)ereaderTrainer)[i] = 0;
 }
 
-void CopyEReaderTrainerGreeting(void)
+extern "C" void CopyEReaderTrainerGreeting(void)
 {
     FrontierSpeechToString(gSaveBlock2Ptr->frontier.ereaderTrainer.greeting);
 }
@@ -2921,7 +2921,7 @@ static void CopyEReaderTrainerFarewellMessage(void)
         FrontierSpeechToString(gSaveBlock2Ptr->frontier.ereaderTrainer.farewellPlayerLost);
 }
 
-void TryHideBattleTowerReporter(void)
+extern "C" void TryHideBattleTowerReporter(void)
 {
     if (gSaveBlock2Ptr->frontier.challengeStatus == CHALLENGE_STATUS_SAVING)
         HideBattleTowerReporter();

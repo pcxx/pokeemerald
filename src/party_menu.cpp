@@ -5677,12 +5677,12 @@ void ChooseMonForTradingBoard(u8 menuType, MainCallback callback)
     InitPartyMenu(menuType, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, callback);
 }
 
-void ChooseMonForMoveTutor(void)
+extern "C" void ChooseMonForMoveTutor(void)
 {
     InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_MOVE_TUTOR, FALSE, PARTY_MSG_TEACH_WHICH_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
-void ChooseMonForWirelessMinigame(void)
+extern "C" void ChooseMonForWirelessMinigame(void)
 {
     InitPartyMenu(PARTY_MENU_TYPE_MINIGAME, PARTY_LAYOUT_SINGLE, PARTY_ACTION_MINIGAME, FALSE, PARTY_MSG_CHOOSE_MON_OR_CANCEL, Task_HandleChooseMonInput, CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
@@ -6186,7 +6186,7 @@ static void CB2_ChooseContestMon(void)
 }
 
 // Used as a script special for showing a party mon to various npcs (e.g. in-game trades, move deleter)
-void ChoosePartyMon(void)
+extern "C" void ChoosePartyMon(void)
 {
     ScriptContext2_Enable();
     FadeScreen(FADE_TO_BLACK, 0);
@@ -6203,7 +6203,7 @@ static void Task_ChoosePartyMon(u8 taskId)
     }
 }
 
-void ChooseMonForMoveRelearner(void)
+extern "C" void ChooseMonForMoveRelearner(void)
 {
     ScriptContext2_Enable();
     FadeScreen(FADE_TO_BLACK, 0);
@@ -6231,7 +6231,7 @@ static void CB2_ChooseMonForMoveRelearner(void)
     SetMainCallback2(CB2_ReturnToField);
 }
 
-void DoBattlePyramidMonsHaveHeldItem(void)
+extern "C" void DoBattlePyramidMonsHaveHeldItem(void)
 {
     u8 i;
 
@@ -6248,7 +6248,7 @@ void DoBattlePyramidMonsHaveHeldItem(void)
 
 // Can be called if the Battle Pyramid Bag is full on exiting and at least one party mon still has held items
 // The player can then select to toss items from the bag or take/toss held items from the party
-void BattlePyramidChooseMonHeldItems(void)
+extern "C" void BattlePyramidChooseMonHeldItems(void)
 {
     ScriptContext2_Enable();
     FadeScreen(FADE_TO_BLACK, 0);
@@ -6265,13 +6265,13 @@ static void Task_BattlePyramidChooseMonHeldItems(u8 taskId)
     }
 }
 
-void MoveDeleterChooseMoveToForget(void)
+extern "C" void MoveDeleterChooseMoveToForget(void)
 {
     ShowPokemonSummaryScreen(PSS_MODE_SELECT_MOVE, gPlayerParty, gSpecialVar_0x8004, gPlayerPartyCount - 1, CB2_ReturnToField);
     gFieldCallback = FieldCB_ContinueScriptHandleMusic;
 }
 
-void GetNumMovesSelectedMonHas(void)
+extern "C" void GetNumMovesSelectedMonHas(void)
 {
     u8 i;
 
@@ -6283,7 +6283,7 @@ void GetNumMovesSelectedMonHas(void)
     }
 }
 
-void BufferMoveDeleterNicknameAndMove(void)
+extern "C" void BufferMoveDeleterNicknameAndMove(void)
 {
     struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
     u16 move = GetMonData(mon, MON_DATA_MOVE1 + gSpecialVar_0x8005);
@@ -6292,7 +6292,7 @@ void BufferMoveDeleterNicknameAndMove(void)
     StringCopy(gStringVar2, gMoveNames[move]);
 }
 
-void MoveDeleterForgetMove(void)
+extern "C" void MoveDeleterForgetMove(void)
 {
     u16 i;
 
@@ -6323,7 +6323,7 @@ static void ShiftMoveSlot(struct Pokemon *mon, u8 slotTo, u8 slotFrom)
     SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
 }
 
-void IsSelectedMonEgg(void)
+extern "C" void IsSelectedMonEgg(void)
 {
     if (GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_IS_EGG))
         gSpecialVar_Result = TRUE;
@@ -6331,7 +6331,7 @@ void IsSelectedMonEgg(void)
         gSpecialVar_Result = FALSE;
 }
 
-void IsLastMonThatKnowsSurf(void)
+extern "C" void IsLastMonThatKnowsSurf(void)
 {
     u16 move;
     u32 i, j;

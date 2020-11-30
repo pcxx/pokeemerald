@@ -159,14 +159,14 @@ void InitSeedotSizeRecord(void)
     VarSet(VAR_SEEDOT_SIZE_RECORD, DEFAULT_MAX_SIZE);
 }
 
-void GetSeedotSizeRecordInfo(void)
+extern "C" void GetSeedotSizeRecordInfo(void)
 {
     u16 *sizeRecord = GetVarPointer(VAR_SEEDOT_SIZE_RECORD);
 
     GetMonSizeRecordInfo(SPECIES_SEEDOT, sizeRecord);
 }
 
-void CompareSeedotSize(void)
+extern "C" void CompareSeedotSize(void)
 {
     u16 *sizeRecord = GetVarPointer(VAR_SEEDOT_SIZE_RECORD);
 
@@ -178,14 +178,14 @@ void InitLotadSizeRecord(void)
     VarSet(VAR_LOTAD_SIZE_RECORD, DEFAULT_MAX_SIZE);
 }
 
-void GetLotadSizeRecordInfo(void)
+extern "C" void GetLotadSizeRecordInfo(void)
 {
     u16 *sizeRecord = GetVarPointer(VAR_LOTAD_SIZE_RECORD);
 
     GetMonSizeRecordInfo(SPECIES_LOTAD, sizeRecord);
 }
 
-void CompareLotadSize(void)
+extern "C" void CompareLotadSize(void)
 {
     u16 *sizeRecord = GetVarPointer(VAR_LOTAD_SIZE_RECORD);
 
