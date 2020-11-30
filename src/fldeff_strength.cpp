@@ -33,7 +33,7 @@ static void FieldCallback_Strength(void)
     ScriptContext1_SetupScript(EventScript_UseStrength);
 }
 
-bool8 FldEff_UseStrength(void)
+extern "C" bool8 FldEff_UseStrength(void)
 {
     u8 taskId = CreateFieldMoveTask();
     gTasks[taskId].data[8] = (u32)StartStrengthFieldEffect >> 16;

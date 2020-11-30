@@ -1018,7 +1018,7 @@ static const u8 *const sFooterTextOptions[][4] = {
 #include "data/easy_chat/easy_chat_groups.h"
 #include "data/easy_chat/easy_chat_words_by_letter.h"
 
-const u8 *const gEasyChatGroupNamePointers[] = {
+extern const u8 *const gEasyChatGroupNamePointers[] = {
     [EC_GROUP_POKEMON] = gEasyChatGroupName_Pokemon,
     [EC_GROUP_TRAINER] = gEasyChatGroupName_Trainer,
     [EC_GROUP_STATUS] = gEasyChatGroupName_Status,

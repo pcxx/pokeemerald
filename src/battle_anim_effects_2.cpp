@@ -109,7 +109,7 @@ static void AnimTask_ScaryFace_Step(u8);
 static void AnimTask_UproarDistortion_Step(u8);
 
 // Unused
-const struct SpriteTemplate gUnknown_08593264 =
+extern const struct SpriteTemplate gUnknown_08593264 =
 {
     .tileTag = ANIM_TAG_FINGER,
     .paletteTag = ANIM_TAG_FINGER,
@@ -120,20 +120,20 @@ const struct SpriteTemplate gUnknown_08593264 =
     .callback = sub_8103448,
 };
 
-const union AnimCmd gUnknown_0859327C[] =
+extern const union AnimCmd gUnknown_0859327C[] =
 {
     ANIMCMD_FRAME(4, 1),
     ANIMCMD_END,
 };
 
 // Unused
-const union AnimCmd *const gUnknown_08593284[] =
+extern const union AnimCmd *const gUnknown_08593284[] =
 {
     gUnknown_0859327C,
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_08593288 =
+extern const struct SpriteTemplate gUnknown_08593288 =
 {
     .tileTag = ANIM_TAG_MUSIC_NOTES,
     .paletteTag = ANIM_TAG_MUSIC_NOTES,
@@ -145,7 +145,7 @@ const struct SpriteTemplate gUnknown_08593288 =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_085932A0 =
+extern const struct SpriteTemplate gUnknown_085932A0 =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -157,7 +157,7 @@ const struct SpriteTemplate gUnknown_085932A0 =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_085932B8 =
+extern const struct SpriteTemplate gUnknown_085932B8 =
 {
     .tileTag = ANIM_TAG_CLAMP,
     .paletteTag = ANIM_TAG_CLAMP,
@@ -168,7 +168,7 @@ const struct SpriteTemplate gUnknown_085932B8 =
     .callback = sub_8103620,
 };
 
-const union AnimCmd gUnknown_085932D0[] =
+extern const union AnimCmd gUnknown_085932D0[] =
 {
     ANIMCMD_FRAME(0, 9),
     ANIMCMD_FRAME(16, 3),
@@ -177,25 +177,25 @@ const union AnimCmd gUnknown_085932D0[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gUnknown_085932E4[] =
+extern const union AnimCmd *const gUnknown_085932E4[] =
 {
     gUnknown_085932D0,
 };
 
-const union AffineAnimCmd gUnknown_085932E8[] =
+extern const union AffineAnimCmd gUnknown_085932E8[] =
 {
     AFFINEANIMCMD_FRAME(0x50, 0x50, 0, 0),
     AFFINEANIMCMD_FRAME(0x9, 0x9, 0, 18),
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd *const gUnknown_08593300[] =
+extern const union AffineAnimCmd *const gUnknown_08593300[] =
 {
     gUnknown_085932E8,
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_08593304 =
+extern const struct SpriteTemplate gUnknown_08593304 =
 {
     .tileTag = ANIM_TAG_EXPLOSION_6,
     .paletteTag = ANIM_TAG_EXPLOSION_6,
@@ -206,7 +206,7 @@ const struct SpriteTemplate gUnknown_08593304 =
     .callback = AnimSpriteOnMonPos,
 };
 
-const union AnimCmd gKinesisZapEnergyAnimCmds[] =
+extern const union AnimCmd gKinesisZapEnergyAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 3, TRUE),
     ANIMCMD_FRAME(8, 3, TRUE),
@@ -219,12 +219,12 @@ const union AnimCmd gKinesisZapEnergyAnimCmds[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gKinesisZapEnergyAnimTable[] =
+extern const union AnimCmd *const gKinesisZapEnergyAnimTable[] =
 {
     gKinesisZapEnergyAnimCmds,
 };
 
-const struct SpriteTemplate gKinesisZapEnergySpriteTemplate =
+extern const struct SpriteTemplate gKinesisZapEnergySpriteTemplate =
 {
     .tileTag = ANIM_TAG_ALERT,
     .paletteTag = ANIM_TAG_ALERT,
@@ -235,7 +235,7 @@ const struct SpriteTemplate gKinesisZapEnergySpriteTemplate =
     .callback = AnimKinesisZapEnergy,
 };
 
-const union AffineAnimCmd gSwordsDanceBladeAffineAnimCmds[] =
+extern const union AffineAnimCmd gSwordsDanceBladeAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x10, 0x100, 0, 0),
     AFFINEANIMCMD_FRAME(0x14, 0x0, 0, 12),
@@ -243,12 +243,12 @@ const union AffineAnimCmd gSwordsDanceBladeAffineAnimCmds[] =
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd *const gSwordsDanceBladeAffineAnimTable[] =
+extern const union AffineAnimCmd *const gSwordsDanceBladeAffineAnimTable[] =
 {
     gSwordsDanceBladeAffineAnimCmds,
 };
 
-const struct SpriteTemplate gSwordsDanceBladeSpriteTemplate =
+extern const struct SpriteTemplate gSwordsDanceBladeSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SWORD,
     .paletteTag = ANIM_TAG_SWORD,
@@ -259,7 +259,7 @@ const struct SpriteTemplate gSwordsDanceBladeSpriteTemplate =
     .callback = AnimSwordsDanceBlade,
 };
 
-const struct SpriteTemplate gSonicBoomSpriteTemplate =
+extern const struct SpriteTemplate gSonicBoomSpriteTemplate =
 {
     .tileTag = ANIM_TAG_AIR_WAVE,
     .paletteTag = ANIM_TAG_AIR_WAVE,
@@ -270,7 +270,7 @@ const struct SpriteTemplate gSonicBoomSpriteTemplate =
     .callback = AnimSonicBoomProjectile,
 };
 
-const struct SpriteTemplate gAirWaveProjectileSpriteTemplate =
+extern const struct SpriteTemplate gAirWaveProjectileSpriteTemplate =
 {
     .tileTag = ANIM_TAG_AIR_WAVE,
     .paletteTag = ANIM_TAG_AIR_WAVE,
@@ -281,14 +281,14 @@ const struct SpriteTemplate gAirWaveProjectileSpriteTemplate =
     .callback = AnimAirWaveProjectile,
 };
 
-const union AffineAnimCmd gGrowingRingAffineAnimCmds[] =
+extern const union AffineAnimCmd gGrowingRingAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x20, 0x20, 0, 0),
     AFFINEANIMCMD_FRAME(0x7, 0x7, 0, -56),
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd gWaterPulseRingAffineAnimCmds[] =
+extern const union AffineAnimCmd gWaterPulseRingAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x5, 0x5, 0, 10),
     AFFINEANIMCMD_FRAME(0xFFF6, 0xFFF6, 0, 10),
@@ -300,17 +300,17 @@ const union AffineAnimCmd gWaterPulseRingAffineAnimCmds[] =
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd *const gGrowingRingAffineAnimTable[] =
+extern const union AffineAnimCmd *const gGrowingRingAffineAnimTable[] =
 {
     gGrowingRingAffineAnimCmds,
 };
 
-const union AffineAnimCmd *const gWaterPulseRingAffineAnimTable[] =
+extern const union AffineAnimCmd *const gWaterPulseRingAffineAnimTable[] =
 {
     gWaterPulseRingAffineAnimCmds,
 };
 
-const struct SpriteTemplate gSupersonicRingSpriteTemplate =
+extern const struct SpriteTemplate gSupersonicRingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_GOLD_RING,
     .paletteTag = ANIM_TAG_GOLD_RING,
@@ -321,7 +321,7 @@ const struct SpriteTemplate gSupersonicRingSpriteTemplate =
     .callback = TranslateAnimSpriteToTargetMonLocation,
 };
 
-const struct SpriteTemplate gScreechRingSpriteTemplate =
+extern const struct SpriteTemplate gScreechRingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_PURPLE_RING,
     .paletteTag = ANIM_TAG_PURPLE_RING,
@@ -332,7 +332,7 @@ const struct SpriteTemplate gScreechRingSpriteTemplate =
     .callback = TranslateAnimSpriteToTargetMonLocation,
 };
 
-const struct SpriteTemplate gMetalSoundSpriteTemplate =
+extern const struct SpriteTemplate gMetalSoundSpriteTemplate =
 {
     .tileTag = ANIM_TAG_METAL_SOUND_WAVES,
     .paletteTag = ANIM_TAG_METAL_SOUND_WAVES,
@@ -343,7 +343,7 @@ const struct SpriteTemplate gMetalSoundSpriteTemplate =
     .callback = TranslateAnimSpriteToTargetMonLocation,
 };
 
-const struct SpriteTemplate gWaterPulseRingSpriteTemplate =
+extern const struct SpriteTemplate gWaterPulseRingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_BLUE_RING_2,
     .paletteTag = ANIM_TAG_BLUE_RING_2,
@@ -354,7 +354,7 @@ const struct SpriteTemplate gWaterPulseRingSpriteTemplate =
     .callback = AnimWaterPulseRing,
 };
 
-const struct SpriteTemplate gEggThrowSpriteTemplate =
+extern const struct SpriteTemplate gEggThrowSpriteTemplate =
 {
     .tileTag = ANIM_TAG_LARGE_FRESH_EGG,
     .paletteTag = ANIM_TAG_LARGE_FRESH_EGG,
@@ -366,7 +366,7 @@ const struct SpriteTemplate gEggThrowSpriteTemplate =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_085934A0 =
+extern const struct SpriteTemplate gUnknown_085934A0 =
 {
     .tileTag = ANIM_TAG_VOID_LINES,
     .paletteTag = ANIM_TAG_VOID_LINES,
@@ -377,29 +377,29 @@ const struct SpriteTemplate gUnknown_085934A0 =
     .callback = sub_8103FE8,
 };
 
-const union AnimCmd gCoinAnimCmds[] =
+extern const union AnimCmd gCoinAnimCmds[] =
 {
     ANIMCMD_FRAME(8, 1),
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gCoinAnimTable[] =
+extern const union AnimCmd *const gCoinAnimTable[] =
 {
     gCoinAnimCmds,
 };
 
-const union AffineAnimCmd gFallingCoinAffineAnimCmds[] =
+extern const union AffineAnimCmd gFallingCoinAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, 10, 1),
     AFFINEANIMCMD_JUMP(0),
 };
 
-const union AffineAnimCmd *const gFallingCoinAffineAnimTable[] =
+extern const union AffineAnimCmd *const gFallingCoinAffineAnimTable[] =
 {
     gFallingCoinAffineAnimCmds,
 };
 
-const struct SpriteTemplate gCoinThrowSpriteTemplate =
+extern const struct SpriteTemplate gCoinThrowSpriteTemplate =
 {
     .tileTag = ANIM_TAG_COIN,
     .paletteTag = ANIM_TAG_COIN,
@@ -410,7 +410,7 @@ const struct SpriteTemplate gCoinThrowSpriteTemplate =
     .callback = AnimCoinThrow,
 };
 
-const struct SpriteTemplate gFallingCoinSpriteTemplate =
+extern const struct SpriteTemplate gFallingCoinSpriteTemplate =
 {
     .tileTag = ANIM_TAG_COIN,
     .paletteTag = ANIM_TAG_COIN,
@@ -421,18 +421,18 @@ const struct SpriteTemplate gFallingCoinSpriteTemplate =
     .callback = AnimFallingCoin,
 };
 
-const union AffineAnimCmd gBulletSeedAffineAnimCmds[] =
+extern const union AffineAnimCmd gBulletSeedAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, 20, 1),
     AFFINEANIMCMD_JUMP(0),
 };
 
-const union AffineAnimCmd *const gBulletSeedAffineAnimTable[] =
+extern const union AffineAnimCmd *const gBulletSeedAffineAnimTable[] =
 {
     gBulletSeedAffineAnimCmds,
 };
 
-const struct SpriteTemplate gBulletSeedSpriteTemplate =
+extern const struct SpriteTemplate gBulletSeedSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SEED,
     .paletteTag = ANIM_TAG_SEED,
@@ -443,19 +443,19 @@ const struct SpriteTemplate gBulletSeedSpriteTemplate =
     .callback = AnimBulletSeed,
 };
 
-const union AffineAnimCmd gRazorWindTornadoAffineAnimCmds[] =
+extern const union AffineAnimCmd gRazorWindTornadoAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x10, 0x100, 0, 0),
     AFFINEANIMCMD_FRAME(0x4, 0x0, 0, 40),
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd *const gRazorWindTornadoAffineAnimTable[] =
+extern const union AffineAnimCmd *const gRazorWindTornadoAffineAnimTable[] =
 {
     gRazorWindTornadoAffineAnimCmds,
 };
 
-const struct SpriteTemplate gRazorWindTornadoSpriteTemplate =
+extern const struct SpriteTemplate gRazorWindTornadoSpriteTemplate =
 {
     .tileTag = ANIM_TAG_GUST,
     .paletteTag = ANIM_TAG_GUST,
@@ -466,7 +466,7 @@ const struct SpriteTemplate gRazorWindTornadoSpriteTemplate =
     .callback = AnimRazorWindTornado,
 };
 
-const union AnimCmd gViceGripAnimCmds1[] =
+extern const union AnimCmd gViceGripAnimCmds1[] =
 {
     ANIMCMD_FRAME(0, 3),
     ANIMCMD_FRAME(16, 3),
@@ -474,7 +474,7 @@ const union AnimCmd gViceGripAnimCmds1[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd gViceGripAnimCmds2[] =
+extern const union AnimCmd gViceGripAnimCmds2[] =
 {
     ANIMCMD_FRAME(0, 3, TRUE, TRUE),
     ANIMCMD_FRAME(16, 3, TRUE, TRUE),
@@ -482,13 +482,13 @@ const union AnimCmd gViceGripAnimCmds2[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gViceGripAnimTable[] =
+extern const union AnimCmd *const gViceGripAnimTable[] =
 {
     gViceGripAnimCmds1,
     gViceGripAnimCmds2,
 };
 
-const struct SpriteTemplate gViceGripSpriteTemplate =
+extern const struct SpriteTemplate gViceGripSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CUT,
     .paletteTag = ANIM_TAG_CUT,
@@ -499,7 +499,7 @@ const struct SpriteTemplate gViceGripSpriteTemplate =
     .callback = AnimViceGripPincer,
 };
 
-const union AnimCmd gGuillotineAnimCmds1[] =
+extern const union AnimCmd gGuillotineAnimCmds1[] =
 {
     ANIMCMD_FRAME(0, 2),
     ANIMCMD_FRAME(16, 2),
@@ -507,7 +507,7 @@ const union AnimCmd gGuillotineAnimCmds1[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd gGuillotineAnimCmds2[] =
+extern const union AnimCmd gGuillotineAnimCmds2[] =
 {
     ANIMCMD_FRAME(0, 2, TRUE, TRUE),
     ANIMCMD_FRAME(16, 2, TRUE, TRUE),
@@ -515,13 +515,13 @@ const union AnimCmd gGuillotineAnimCmds2[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gGuillotineAnimTable[] =
+extern const union AnimCmd *const gGuillotineAnimTable[] =
 {
     gGuillotineAnimCmds1,
     gGuillotineAnimCmds2,
 };
 
-const struct SpriteTemplate gGuillotineSpriteTemplate =
+extern const struct SpriteTemplate gGuillotineSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CUT,
     .paletteTag = ANIM_TAG_CUT,
@@ -532,7 +532,7 @@ const struct SpriteTemplate gGuillotineSpriteTemplate =
     .callback = AnimGuillotinePincer,
 };
 
-const union AffineAnimCmd gSplashEffectAffineAnimCmds[] =
+extern const union AffineAnimCmd gSplashEffectAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(-6, 4, 0, 8),
     AFFINEANIMCMD_FRAME(10, -10, 0, 8),
@@ -540,7 +540,7 @@ const union AffineAnimCmd gSplashEffectAffineAnimCmds[] =
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd gGrowAndShrinkAffineAnimCmds[] =
+extern const union AffineAnimCmd gGrowAndShrinkAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(-4, -5, 0, 12),
     AFFINEANIMCMD_FRAME(0, 0, 0, 24),
@@ -548,7 +548,7 @@ const union AffineAnimCmd gGrowAndShrinkAffineAnimCmds[] =
     AFFINEANIMCMD_END,
 };
 
-const union AnimCmd gBreathPuffAnimCmds1[] =
+extern const union AnimCmd gBreathPuffAnimCmds1[] =
 {
     ANIMCMD_FRAME(0, 4, TRUE),
     ANIMCMD_FRAME(4, 40, TRUE),
@@ -557,7 +557,7 @@ const union AnimCmd gBreathPuffAnimCmds1[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd gBreathPuffAnimCmds2[] =
+extern const union AnimCmd gBreathPuffAnimCmds2[] =
 {
     ANIMCMD_FRAME(0, 4),
     ANIMCMD_FRAME(4, 40),
@@ -566,13 +566,13 @@ const union AnimCmd gBreathPuffAnimCmds2[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gBreathPuffAnimTable[] =
+extern const union AnimCmd *const gBreathPuffAnimTable[] =
 {
     gBreathPuffAnimCmds1,
     gBreathPuffAnimCmds2,
 };
 
-const struct SpriteTemplate gBreathPuffSpriteTemplate =
+extern const struct SpriteTemplate gBreathPuffSpriteTemplate =
 {
     .tileTag = ANIM_TAG_BREATH,
     .paletteTag = ANIM_TAG_BREATH,
@@ -583,19 +583,19 @@ const struct SpriteTemplate gBreathPuffSpriteTemplate =
     .callback = AnimBreathPuff,
 };
 
-const union AffineAnimCmd gAngerMarkAffineAnimCmds[] =
+extern const union AffineAnimCmd gAngerMarkAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0xB, 0xB, 0, 8),
     AFFINEANIMCMD_FRAME(0xFFF5, 0xFFF5, 0, 8),
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd *const gAngerMarkAffineAnimTable[] =
+extern const union AffineAnimCmd *const gAngerMarkAffineAnimTable[] =
 {
     gAngerMarkAffineAnimCmds,
 };
 
-const struct SpriteTemplate gAngerMarkSpriteTemplate =
+extern const struct SpriteTemplate gAngerMarkSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ANGER,
     .paletteTag = ANIM_TAG_ANGER,
@@ -606,7 +606,7 @@ const struct SpriteTemplate gAngerMarkSpriteTemplate =
     .callback = AnimAngerMark,
 };
 
-const union AffineAnimCmd gThrashMoveMonAffineAnimCmds[] =
+extern const union AffineAnimCmd gThrashMoveMonAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(-10, 9, 0, 7),
     AFFINEANIMCMD_FRAME(20, -20, 0, 7),
@@ -616,7 +616,7 @@ const union AffineAnimCmd gThrashMoveMonAffineAnimCmds[] =
     AFFINEANIMCMD_END,
 };
 
-const struct SpriteTemplate gPencilSpriteTemplate =
+extern const struct SpriteTemplate gPencilSpriteTemplate =
 {
     .tileTag = ANIM_TAG_PENCIL,
     .paletteTag = ANIM_TAG_PENCIL,
@@ -627,7 +627,7 @@ const struct SpriteTemplate gPencilSpriteTemplate =
     .callback = AnimPencil,
 };
 
-const struct SpriteTemplate gSnoreZSpriteTemplate =
+extern const struct SpriteTemplate gSnoreZSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SNORE_Z,
     .paletteTag = ANIM_TAG_SNORE_Z,
@@ -638,7 +638,7 @@ const struct SpriteTemplate gSnoreZSpriteTemplate =
     .callback = AnimTravelDiagonally,
 };
 
-const union AnimCmd gExplosionAnimCmds[] =
+extern const union AnimCmd gExplosionAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 5),
     ANIMCMD_FRAME(16, 5),
@@ -647,12 +647,12 @@ const union AnimCmd gExplosionAnimCmds[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gExplosionAnimTable[] =
+extern const union AnimCmd *const gExplosionAnimTable[] =
 {
     gExplosionAnimCmds,
 };
 
-const struct SpriteTemplate gExplosionSpriteTemplate =
+extern const struct SpriteTemplate gExplosionSpriteTemplate =
 {
     .tileTag = ANIM_TAG_EXPLOSION,
     .paletteTag = ANIM_TAG_EXPLOSION,
@@ -663,7 +663,7 @@ const struct SpriteTemplate gExplosionSpriteTemplate =
     .callback = AnimSpriteOnMonPos,
 };
 
-const union AffineAnimCmd gSoftBoiledEggAffineAnimCmds1[] =
+extern const union AffineAnimCmd gSoftBoiledEggAffineAnimCmds1[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, -8, 2),
     AFFINEANIMCMD_FRAME(0x0, 0x0, 8, 4),
@@ -671,13 +671,13 @@ const union AffineAnimCmd gSoftBoiledEggAffineAnimCmds1[] =
     AFFINEANIMCMD_JUMP(0),
 };
 
-const union AffineAnimCmd gSoftBoiledEggAffineAnimCmds2[] =
+extern const union AffineAnimCmd gSoftBoiledEggAffineAnimCmds2[] =
 {
     AFFINEANIMCMD_FRAME(0x100, 0x100, 0, 0),
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd gSoftBoiledEggAffineAnimCmds3[] =
+extern const union AffineAnimCmd gSoftBoiledEggAffineAnimCmds3[] =
 {
     AFFINEANIMCMD_FRAME(0xFFF8, 0x4, 0, 8),
     AFFINEANIMCMD_LOOP(0),
@@ -689,14 +689,14 @@ const union AffineAnimCmd gSoftBoiledEggAffineAnimCmds3[] =
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd *const gSoftBoiledEggAffineAnimTable[] =
+extern const union AffineAnimCmd *const gSoftBoiledEggAffineAnimTable[] =
 {
     gSoftBoiledEggAffineAnimCmds1,
     gSoftBoiledEggAffineAnimCmds2,
     gSoftBoiledEggAffineAnimCmds3,
 };
 
-const struct SpriteTemplate gSoftBoiledEggSpriteTemplate =
+extern const struct SpriteTemplate gSoftBoiledEggSpriteTemplate =
 {
     .tileTag = ANIM_TAG_BREAKING_EGG,
     .paletteTag = ANIM_TAG_BREAKING_EGG,
@@ -707,39 +707,39 @@ const struct SpriteTemplate gSoftBoiledEggSpriteTemplate =
     .callback = AnimSoftBoiledEgg,
 };
 
-const union AffineAnimCmd gThinRingExpandingAffineAnimCmds1[] =
+extern const union AffineAnimCmd gThinRingExpandingAffineAnimCmds1[] =
 {
     AFFINEANIMCMD_FRAME(0x10, 0x10, 0, 0),
     AFFINEANIMCMD_FRAME(0x10, 0x10, 0, 30),
     AFFINEANIMCMD_END_ALT(1),
 };
 
-const union AffineAnimCmd gThinRingExpandingAffineAnimCmds2[] =
+extern const union AffineAnimCmd gThinRingExpandingAffineAnimCmds2[] =
 {
     AFFINEANIMCMD_FRAME(0x10, 0x10, 0, 0),
     AFFINEANIMCMD_FRAME(0x20, 0x20, 0, 15),
     AFFINEANIMCMD_END_ALT(1),
 };
 
-const union AffineAnimCmd gHyperVoiceRingAffineAnimCmds[] =
+extern const union AffineAnimCmd gHyperVoiceRingAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x10, 0x10, 0, 0),
     AFFINEANIMCMD_FRAME(0xB, 0xB, 0, 45),
     AFFINEANIMCMD_END_ALT(1),
 };
 
-const union AffineAnimCmd *const gThinRingExpandingAffineAnimTable[] =
+extern const union AffineAnimCmd *const gThinRingExpandingAffineAnimTable[] =
 {
     gThinRingExpandingAffineAnimCmds1,
     gThinRingExpandingAffineAnimCmds2,
 };
 
-const union AffineAnimCmd *const gHyperVoiceRingAffineAnimTable[] =
+extern const union AffineAnimCmd *const gHyperVoiceRingAffineAnimTable[] =
 {
     gHyperVoiceRingAffineAnimCmds,
 };
 
-const struct SpriteTemplate gThinRingExpandingSpriteTemplate =
+extern const struct SpriteTemplate gThinRingExpandingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_THIN_RING,
     .paletteTag = ANIM_TAG_THIN_RING,
@@ -750,19 +750,19 @@ const struct SpriteTemplate gThinRingExpandingSpriteTemplate =
     .callback = AnimSpriteOnMonPos,
 };
 
-const union AffineAnimCmd gThinRingShrinkingAffineAnimCmds[] =
+extern const union AffineAnimCmd gThinRingShrinkingAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x200, 0x200, 0, 0),
     AFFINEANIMCMD_FRAME(0xFFF0, 0xFFF0, 0, 30),
     AFFINEANIMCMD_END_ALT(1),
 };
 
-const union AffineAnimCmd *const gThinRingShrinkingAffineAnimTable[] =
+extern const union AffineAnimCmd *const gThinRingShrinkingAffineAnimTable[] =
 {
     gThinRingShrinkingAffineAnimCmds,
 };
 
-const struct SpriteTemplate gThinRingShrinkingSpriteTemplate =
+extern const struct SpriteTemplate gThinRingShrinkingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_THIN_RING,
     .paletteTag = ANIM_TAG_THIN_RING,
@@ -773,7 +773,7 @@ const struct SpriteTemplate gThinRingShrinkingSpriteTemplate =
     .callback = AnimSpriteOnMonPos,
 };
 
-const struct SpriteTemplate gBlendThinRingExpandingSpriteTemplate =
+extern const struct SpriteTemplate gBlendThinRingExpandingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_THIN_RING,
     .paletteTag = ANIM_TAG_THIN_RING,
@@ -784,7 +784,7 @@ const struct SpriteTemplate gBlendThinRingExpandingSpriteTemplate =
     .callback = AnimBlendThinRing,
 };
 
-const struct SpriteTemplate gHyperVoiceRingSpriteTemplate =
+extern const struct SpriteTemplate gHyperVoiceRingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_THIN_RING,
     .paletteTag = ANIM_TAG_THIN_RING,
@@ -795,7 +795,7 @@ const struct SpriteTemplate gHyperVoiceRingSpriteTemplate =
     .callback = AnimHyperVoiceRing,
 };
 
-const struct SpriteTemplate gUproarRingSpriteTemplate =
+extern const struct SpriteTemplate gUproarRingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_THIN_RING,
     .paletteTag = ANIM_TAG_THIN_RING,
@@ -806,13 +806,13 @@ const struct SpriteTemplate gUproarRingSpriteTemplate =
     .callback = AnimUproarRing,
 };
 
-const union AffineAnimCmd gStretchAttackerAffineAnimCmds[] =
+extern const union AffineAnimCmd gStretchAttackerAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(96, -13, 0, 8),
     AFFINEANIMCMD_END,
 };
 
-const union AnimCmd gSpeedDustAnimCmds[] =
+extern const union AnimCmd gSpeedDustAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 3),
     ANIMCMD_FRAME(4, 3),
@@ -822,12 +822,12 @@ const union AnimCmd gSpeedDustAnimCmds[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gSpeedDustAnimTable[] =
+extern const union AnimCmd *const gSpeedDustAnimTable[] =
 {
     gSpeedDustAnimCmds,
 };
 
-const struct SpriteTemplate gSpeedDustSpriteTemplate =
+extern const struct SpriteTemplate gSpeedDustSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPEED_DUST,
     .paletteTag = ANIM_TAG_SPEED_DUST,
@@ -838,7 +838,7 @@ const struct SpriteTemplate gSpeedDustSpriteTemplate =
     .callback = AnimSpeedDust,
 };
 
-const s8 gSpeedDustPosTable[][2] =
+extern const s8 gSpeedDustPosTable[][2] =
 {
     {30, 28},
     {-20, 24},
@@ -846,7 +846,7 @@ const s8 gSpeedDustPosTable[][2] =
     {-10, 28},
 };
 
-const union AnimCmd gBellAnimCmds[] =
+extern const union AnimCmd gBellAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 6),
     ANIMCMD_FRAME(16, 6),
@@ -864,12 +864,12 @@ const union AnimCmd gBellAnimCmds[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gBellAnimTable[] =
+extern const union AnimCmd *const gBellAnimTable[] =
 {
     gBellAnimCmds,
 };
 
-const struct SpriteTemplate gBellSpriteTemplate =
+extern const struct SpriteTemplate gBellSpriteTemplate =
 {
     .tileTag = ANIM_TAG_BELL,
     .paletteTag = ANIM_TAG_BELL,
@@ -889,7 +889,7 @@ static const u16 sMusicNotePaletteTagsTable[NUM_MUSIC_NOTE_PAL_TAGS] =
     ANIM_SPRITES_START - 2,
 };
 
-const struct SpriteTemplate gHealBellMusicNoteSpriteTemplate =
+extern const struct SpriteTemplate gHealBellMusicNoteSpriteTemplate =
 {
     .tileTag = ANIM_TAG_MUSIC_NOTES_2,
     .paletteTag = ANIM_TAG_MUSIC_NOTES_2,
@@ -900,7 +900,7 @@ const struct SpriteTemplate gHealBellMusicNoteSpriteTemplate =
     .callback = AnimHealBellMusicNote,
 };
 
-const struct SpriteTemplate gMagentaHeartSpriteTemplate =
+extern const struct SpriteTemplate gMagentaHeartSpriteTemplate =
 {
     .tileTag = ANIM_TAG_MAGENTA_HEART,
     .paletteTag = ANIM_TAG_MAGENTA_HEART,
@@ -918,7 +918,7 @@ static const union AffineAnimCmd sAffineAnims_StretchBattlerUp[] =
     AFFINEANIMCMD_END,
 };
 
-const struct SpriteTemplate gRedHeartProjectileSpriteTemplate =
+extern const struct SpriteTemplate gRedHeartProjectileSpriteTemplate =
 {
     .tileTag = ANIM_TAG_RED_HEART,
     .paletteTag = ANIM_TAG_RED_HEART,
@@ -929,7 +929,7 @@ const struct SpriteTemplate gRedHeartProjectileSpriteTemplate =
     .callback = AnimRedHeartProjectile,
 };
 
-const struct SpriteTemplate gRedHeartBurstSpriteTemplate =
+extern const struct SpriteTemplate gRedHeartBurstSpriteTemplate =
 {
     .tileTag = ANIM_TAG_RED_HEART,
     .paletteTag = ANIM_TAG_RED_HEART,
@@ -940,7 +940,7 @@ const struct SpriteTemplate gRedHeartBurstSpriteTemplate =
     .callback = AnimParticleBurst,
 };
 
-const struct SpriteTemplate gRedHeartRisingSpriteTemplate =
+extern const struct SpriteTemplate gRedHeartRisingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_RED_HEART,
     .paletteTag = ANIM_TAG_RED_HEART,
@@ -951,19 +951,19 @@ const struct SpriteTemplate gRedHeartRisingSpriteTemplate =
     .callback = AnimRedHeartRising,
 };
 
-const union AffineAnimCmd gHiddenPowerOrbAffineAnimCmds[] =
+extern const union AffineAnimCmd gHiddenPowerOrbAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x80, 0x80, 0, 0),
     AFFINEANIMCMD_FRAME(0x8, 0x8, 0, 1),
     AFFINEANIMCMD_JUMP(1),
 };
 
-const union AffineAnimCmd *const gHiddenPowerOrbAffineAnimTable[] =
+extern const union AffineAnimCmd *const gHiddenPowerOrbAffineAnimTable[] =
 {
     gHiddenPowerOrbAffineAnimCmds,
 };
 
-const struct SpriteTemplate gHiddenPowerOrbSpriteTemplate =
+extern const struct SpriteTemplate gHiddenPowerOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_RED_ORB,
     .paletteTag = ANIM_TAG_RED_ORB,
@@ -974,7 +974,7 @@ const struct SpriteTemplate gHiddenPowerOrbSpriteTemplate =
     .callback = AnimOrbitFast,
 };
 
-const struct SpriteTemplate gHiddenPowerOrbScatterSpriteTemplate =
+extern const struct SpriteTemplate gHiddenPowerOrbScatterSpriteTemplate =
 {
     .tileTag = ANIM_TAG_RED_ORB,
     .paletteTag = ANIM_TAG_RED_ORB,
@@ -985,19 +985,19 @@ const struct SpriteTemplate gHiddenPowerOrbScatterSpriteTemplate =
     .callback = AnimOrbitScatter,
 };
 
-const union AffineAnimCmd gSpitUpOrbAffineAnimCmds[] =
+extern const union AffineAnimCmd gSpitUpOrbAffineAnimCmds[] =
 {
     AFFINEANIMCMD_FRAME(0x80, 0x80, 0, 0),
     AFFINEANIMCMD_FRAME(0x8, 0x8, 0, 1),
     AFFINEANIMCMD_JUMP(1),
 };
 
-const union AffineAnimCmd *const gSpitUpOrbAffineAnimTable[] =
+extern const union AffineAnimCmd *const gSpitUpOrbAffineAnimTable[] =
 {
     gSpitUpOrbAffineAnimCmds,
 };
 
-const struct SpriteTemplate gSpitUpOrbSpriteTemplate =
+extern const struct SpriteTemplate gSpitUpOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_RED_ORB_2,
     .paletteTag = ANIM_TAG_RED_ORB_2,
@@ -1008,7 +1008,7 @@ const struct SpriteTemplate gSpitUpOrbSpriteTemplate =
     .callback = AnimSpitUpOrb,
 };
 
-const union AnimCmd gEyeSparkleAnimCmds[] =
+extern const union AnimCmd gEyeSparkleAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 4),
     ANIMCMD_FRAME(4, 4),
@@ -1018,12 +1018,12 @@ const union AnimCmd gEyeSparkleAnimCmds[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gEyeSparkleAnimTable[] =
+extern const union AnimCmd *const gEyeSparkleAnimTable[] =
 {
     gEyeSparkleAnimCmds,
 };
 
-const struct SpriteTemplate gEyeSparkleSpriteTemplate =
+extern const struct SpriteTemplate gEyeSparkleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_EYE_SPARKLE,
     .paletteTag = ANIM_TAG_EYE_SPARKLE,
@@ -1034,18 +1034,18 @@ const struct SpriteTemplate gEyeSparkleSpriteTemplate =
     .callback = AnimEyeSparkle,
 };
 
-const union AnimCmd gAngelSpriteAnimCmds[] =
+extern const union AnimCmd gAngelSpriteAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 24),
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gAngelSpriteAnimTable[] =
+extern const union AnimCmd *const gAngelSpriteAnimTable[] =
 {
     gAngelSpriteAnimCmds,
 };
 
-const struct SpriteTemplate gAngelSpriteTemplate =
+extern const struct SpriteTemplate gAngelSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ANGEL,
     .paletteTag = ANIM_TAG_ANGEL,
@@ -1056,7 +1056,7 @@ const struct SpriteTemplate gAngelSpriteTemplate =
     .callback = AnimAngel,
 };
 
-const struct SpriteTemplate gPinkHeartSpriteTemplate =
+extern const struct SpriteTemplate gPinkHeartSpriteTemplate =
 {
     .tileTag = ANIM_TAG_PINK_HEART,
     .paletteTag = ANIM_TAG_PINK_HEART,
@@ -1067,25 +1067,25 @@ const struct SpriteTemplate gPinkHeartSpriteTemplate =
     .callback = AnimPinkHeart,
 };
 
-const union AnimCmd gDevilAnimCmds1[] =
+extern const union AnimCmd gDevilAnimCmds1[] =
 {
     ANIMCMD_FRAME(0, 3),
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gDevilAnimCmds2[] =
+extern const union AnimCmd gDevilAnimCmds2[] =
 {
     ANIMCMD_FRAME(16, 3),
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd *const gDevilAnimTable[] =
+extern const union AnimCmd *const gDevilAnimTable[] =
 {
     gDevilAnimCmds1,
     gDevilAnimCmds2,
 };
 
-const struct SpriteTemplate gDevilSpriteTemplate =
+extern const struct SpriteTemplate gDevilSpriteTemplate =
 {
     .tileTag = ANIM_TAG_DEVIL,
     .paletteTag = ANIM_TAG_DEVIL,
@@ -1096,7 +1096,7 @@ const struct SpriteTemplate gDevilSpriteTemplate =
     .callback = AnimDevil,
 };
 
-const union AnimCmd gUnknown_08593B08[] =
+extern const union AnimCmd gUnknown_08593B08[] =
 {
     ANIMCMD_FRAME(0, 4),
     ANIMCMD_FRAME(16, 4),
@@ -1105,7 +1105,7 @@ const union AnimCmd gUnknown_08593B08[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd gUnknown_08593B1C[] =
+extern const union AnimCmd gUnknown_08593B1C[] =
 {
     ANIMCMD_FRAME(0, 4, TRUE),
     ANIMCMD_FRAME(16, 4, TRUE),
@@ -1114,13 +1114,13 @@ const union AnimCmd gUnknown_08593B1C[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gFurySwipesAnimTable[] =
+extern const union AnimCmd *const gFurySwipesAnimTable[] =
 {
     gUnknown_08593B08,
     gUnknown_08593B1C,
 };
 
-const struct SpriteTemplate gFurySwipesSpriteTemplate =
+extern const struct SpriteTemplate gFurySwipesSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SWIPE,
     .paletteTag = ANIM_TAG_SWIPE,
@@ -1131,7 +1131,7 @@ const struct SpriteTemplate gFurySwipesSpriteTemplate =
     .callback = AnimFurySwipes,
 };
 
-const union AnimCmd gMovementWavesAnimCmds1[] =
+extern const union AnimCmd gMovementWavesAnimCmds1[] =
 {
     ANIMCMD_FRAME(0, 8),
     ANIMCMD_FRAME(16, 8),
@@ -1140,7 +1140,7 @@ const union AnimCmd gMovementWavesAnimCmds1[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd gMovementWavesAnimCmds2[] =
+extern const union AnimCmd gMovementWavesAnimCmds2[] =
 {
     ANIMCMD_FRAME(16, 8, TRUE),
     ANIMCMD_FRAME(32, 8, TRUE),
@@ -1149,13 +1149,13 @@ const union AnimCmd gMovementWavesAnimCmds2[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const gMovementWavesAnimTable[] =
+extern const union AnimCmd *const gMovementWavesAnimTable[] =
 {
     gMovementWavesAnimCmds1,
     gMovementWavesAnimCmds2,
 };
 
-const struct SpriteTemplate gMovementWavesSpriteTemplate =
+extern const struct SpriteTemplate gMovementWavesSpriteTemplate =
 {
     .tileTag = ANIM_TAG_MOVEMENT_WAVES,
     .paletteTag = ANIM_TAG_MOVEMENT_WAVES,
@@ -1174,7 +1174,7 @@ static const union AffineAnimCmd sAffineAnims_UproarDistortion[] =
     AFFINEANIMCMD_END,
 };
 
-const struct SpriteTemplate gJaggedMusicNoteSpriteTemplate =
+extern const struct SpriteTemplate gJaggedMusicNoteSpriteTemplate =
 {
     .tileTag = ANIM_TAG_JAGGED_MUSIC_NOTE,
     .paletteTag = ANIM_TAG_JAGGED_MUSIC_NOTE,
@@ -1185,25 +1185,25 @@ const struct SpriteTemplate gJaggedMusicNoteSpriteTemplate =
     .callback = AnimJaggedMusicNote,
 };
 
-const union AffineAnimCmd gPerishSongMusicNoteAffineAnimCmds1[] =
+extern const union AffineAnimCmd gPerishSongMusicNoteAffineAnimCmds1[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, 0, 5),
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd gPerishSongMusicNoteAffineAnimCmds2[] =
+extern const union AffineAnimCmd gPerishSongMusicNoteAffineAnimCmds2[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, -8, 16),
     AFFINEANIMCMD_END_ALT(1),
 };
 
-const union AffineAnimCmd gPerishSongMusicNoteAffineAnimCmds3[] =
+extern const union AffineAnimCmd gPerishSongMusicNoteAffineAnimCmds3[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, 8, 16),
     AFFINEANIMCMD_END_ALT(1),
 };
 
-const union AffineAnimCmd *const gPerishSongMusicNoteAffineAnimTable[] =
+extern const union AffineAnimCmd *const gPerishSongMusicNoteAffineAnimTable[] =
 {
     gPerishSongMusicNoteAffineAnimCmds1,
     gPerishSongMusicNoteAffineAnimCmds2,
@@ -1211,7 +1211,7 @@ const union AffineAnimCmd *const gPerishSongMusicNoteAffineAnimTable[] =
 };
 
 extern const union AnimCmd *const gMusicNotesAnimTable[];
-const struct SpriteTemplate gPerishSongMusicNoteSpriteTemplate =
+extern const struct SpriteTemplate gPerishSongMusicNoteSpriteTemplate =
 {
     .tileTag = ANIM_TAG_MUSIC_NOTES_2,
     .paletteTag = ANIM_TAG_MUSIC_NOTES_2,
@@ -1222,7 +1222,7 @@ const struct SpriteTemplate gPerishSongMusicNoteSpriteTemplate =
     .callback = AnimPerishSongMusicNote,
 };
 
-const struct SpriteTemplate gPerishSongMusicNote2SpriteTemplate =
+extern const struct SpriteTemplate gPerishSongMusicNote2SpriteTemplate =
 {
     .tileTag = ANIM_TAG_MUSIC_NOTES_2,
     .paletteTag = ANIM_TAG_MUSIC_NOTES_2,
@@ -1233,25 +1233,25 @@ const struct SpriteTemplate gPerishSongMusicNote2SpriteTemplate =
     .callback = AnimPerishSongMusicNote2,
 };
 
-const union AffineAnimCmd gGuardRingAffineAnimCmds1[] =
+extern const union AffineAnimCmd gGuardRingAffineAnimCmds1[] =
 {
     AFFINEANIMCMD_FRAME(0x100, 0x100, 0, 0),
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd gGuardRingAffineAnimCmds2[] =
+extern const union AffineAnimCmd gGuardRingAffineAnimCmds2[] =
 {
     AFFINEANIMCMD_FRAME(0x200, 0x100, 0, 0),
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd *const gGuardRingAffineAnimTable[] =
+extern const union AffineAnimCmd *const gGuardRingAffineAnimTable[] =
 {
     gGuardRingAffineAnimCmds1,
     gGuardRingAffineAnimCmds2,
 };
 
-const struct SpriteTemplate gGuardRingSpriteTemplate =
+extern const struct SpriteTemplate gGuardRingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_GUARD_RING,
     .paletteTag = ANIM_TAG_GUARD_RING,
@@ -1374,7 +1374,7 @@ static void sub_8103680(struct Sprite *sprite)
 
 // Rotates the attacking mon sprite downwards and then back upwards to its original position.
 // No args.
-void AnimTask_Withdraw(u8 taskId)
+extern "C" void AnimTask_Withdraw(u8 taskId)
 {
     PrepareBattlerSpriteForRotScale(gBattlerSpriteIds[gBattleAnimAttacker], ST_OAM_OBJ_NORMAL);
     gTasks[taskId].func = AnimTask_Withdraw_Step;
@@ -1638,7 +1638,7 @@ static void AirCutterProjectileStep1(u8 taskId)
     }
 }
 
-void AnimTask_AirCutterProjectile(u8 taskId)
+extern "C" void AnimTask_AirCutterProjectile(u8 taskId)
 {
     s16 attackerY = 0;
     s16 attackerX = 0;
@@ -1999,7 +1999,7 @@ static void AnimGuillotinePincer_Step3(struct Sprite *sprite)
 // Scales up the target mon sprite, and sets the palette to greyscale.
 // Used in MOVE_DISABLE.
 // No args.
-void AnimTask_GrowAndGreyscale(u8 taskId)
+extern "C" void AnimTask_GrowAndGreyscale(u8 taskId)
 {
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_TARGET);
     PrepareBattlerSpriteForRotScale(spriteId, ST_OAM_OBJ_BLEND);
@@ -2023,7 +2023,7 @@ static void AnimTask_GrowAndGreyscale_Step(u8 taskId)
 // Shrinks and grows the attacking mon several times. Also creates transparent versions of the
 // mon's sprite while it is shrinking.
 // No args.
-void AnimTask_Minimize(u8 taskId)
+extern "C" void AnimTask_Minimize(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
@@ -2148,7 +2148,7 @@ static void ClonedMinizeSprite_Step(struct Sprite *sprite)
 // Task to facilitate expanding and hopping effect seen in Splash.
 // arg 0: anim battler
 // arg 1: num hops
-void AnimTask_Splash(u8 taskId)
+extern "C" void AnimTask_Splash(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     if (gBattleAnimArgs[1] == 0)
@@ -2222,7 +2222,7 @@ static void AnimTask_Splash_Step(u8 taskId)
 // Grows, pauses, then shrinks the attacking mon.
 // Used by MOVE_SWAGGER and MOVE_BULK_UP
 // No args.
-void AnimTask_GrowAndShrink(u8 taskId)
+extern "C" void AnimTask_GrowAndShrink(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
@@ -2289,7 +2289,7 @@ static void AnimAngerMark(struct Sprite *sprite)
 }
 
 // left/right movements
-void AnimTask_ThrashMoveMonHorizontal(u8 taskId)
+extern "C" void AnimTask_ThrashMoveMonHorizontal(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
@@ -2307,7 +2307,7 @@ static void AnimTask_ThrashMoveMonHorizontal_Step(u8 taskId)
 }
 
 // up/down movements
-void AnimTask_ThrashMoveMonVertical(u8 taskId)
+extern "C" void AnimTask_ThrashMoveMonVertical(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     task->data[0] = GetAnimBattlerSpriteId(ANIM_ATTACKER);
@@ -2377,7 +2377,7 @@ static void AnimTask_ThrashMoveMonVertical_Step(u8 taskId)
     }
 }
 
-void AnimTask_SketchDrawMon(u8 taskId)
+extern "C" void AnimTask_SketchDrawMon(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     struct ScanlineEffectParams params;
@@ -2779,7 +2779,7 @@ static void AnimSoftBoiledEgg_Step4_Callback(struct Sprite *sprite)
 }
 
 // Used by Extremespeed
-void AnimTask_AttackerStretchAndDisappear(u8 taskId)
+extern "C" void AnimTask_AttackerStretchAndDisappear(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
@@ -2799,7 +2799,7 @@ static void AnimTask_AttackerStretchAndDisappear_Step(u8 taskId)
     }
 }
 
-void AnimTask_ExtremeSpeedImpact(u8 taskId)
+extern "C" void AnimTask_ExtremeSpeedImpact(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     task->data[0] = 0;
@@ -2868,7 +2868,7 @@ static void AnimTask_ExtremeSpeedImpact_Step(u8 taskId)
     }
 }
 
-void AnimTask_ExtremeSpeedMonReappear(u8 taskId)
+extern "C" void AnimTask_ExtremeSpeedMonReappear(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     task->data[0] = 0;
@@ -2910,7 +2910,7 @@ static void AnimTask_ExtremeSpeedMonReappear_Step(u8 taskId)
     }
 }
 
-void AnimTask_SpeedDust(u8 taskId)
+extern "C" void AnimTask_SpeedDust(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
     task->data[0] = 0;
@@ -3004,7 +3004,7 @@ static void AnimSpeedDust(struct Sprite *sprite)
     }
 }
 
-void AnimTask_LoadMusicNotesPals(u8 taskId)
+extern "C" void AnimTask_LoadMusicNotesPals(u8 taskId)
 {
     int i;
     u8 paletteNums[NUM_MUSIC_NOTE_PAL_TAGS];
@@ -3022,7 +3022,7 @@ void AnimTask_LoadMusicNotesPals(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_FreeMusicNotesPals(u8 taskId)
+extern "C" void AnimTask_FreeMusicNotesPals(u8 taskId)
 {
     int i;
     for (i = 0; i < NUM_MUSIC_NOTE_PAL_TAGS; i++)
@@ -3067,7 +3067,7 @@ static void AnimMagentaHeart(struct Sprite *sprite)
         DestroyAnimSprite(sprite);
 }
 
-void AnimTask_FakeOut(u8 taskId)
+extern "C" void AnimTask_FakeOut(u8 taskId)
 {
     u16 win0h = IsContest() ? 0x98 : 0xF0;
     u16 win0v = 0;
@@ -3120,7 +3120,7 @@ static void AnimTask_FakeOut_Step2(u8 taskId)
     }
 }
 
-void AnimTask_StretchTargetUp(u8 taskId)
+extern "C" void AnimTask_StretchTargetUp(u8 taskId)
 {
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_TARGET);
     if (++gTasks[taskId].data[0] == 1)
@@ -3140,7 +3140,7 @@ void AnimTask_StretchTargetUp(u8 taskId)
     }
 }
 
-void AnimTask_StretchAttackerUp(u8 taskId)
+extern "C" void AnimTask_StretchAttackerUp(u8 taskId)
 {
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
     if (++gTasks[taskId].data[0] == 1)
@@ -3233,7 +3233,7 @@ static void AnimRedHeartRising_Step(struct Sprite *sprite)
     }
 }
 
-void AnimTask_HeartsBackground(u8 taskId)
+extern "C" void AnimTask_HeartsBackground(u8 taskId)
 {
     struct BattleAnimBgData animBg;
 
@@ -3311,7 +3311,7 @@ static void AnimTask_HeartsBackground_Step(u8 taskId)
     }
 }
 
-void AnimTask_ScaryFace(u8 taskId)
+extern "C" void AnimTask_ScaryFace(u8 taskId)
 {
     struct BattleAnimBgData animBg;
 
@@ -3648,7 +3648,7 @@ static void AnimMovementWaves_Step(struct Sprite *sprite)
     }
 }
 
-void AnimTask_UproarDistortion(u8 taskId)
+extern "C" void AnimTask_UproarDistortion(u8 taskId)
 {
     u8 spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[0]);
 
@@ -3815,13 +3815,13 @@ static void AnimGuardRing(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-void AnimTask_IsFuryCutterHitRight(u8 taskId)
+extern "C" void AnimTask_IsFuryCutterHitRight(u8 taskId)
 {
     gBattleAnimArgs[ARG_RET_ID] = gAnimDisableStructPtr->furyCutterCounter & 1;
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_GetFuryCutterHitCount(u8 taskId)
+extern "C" void AnimTask_GetFuryCutterHitCount(u8 taskId)
 {
     gBattleAnimArgs[ARG_RET_ID] = gAnimDisableStructPtr->furyCutterCounter;
     DestroyAnimVisualTask(taskId);

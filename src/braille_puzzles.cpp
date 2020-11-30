@@ -161,7 +161,7 @@ void DoBrailleRegisteelEffect(void)
     FieldEffectStart(FLDEFF_USE_TOMB_PUZZLE_EFFECT);
 }
 
-bool8 FldEff_UseFlyAncientTomb(void)
+extern "C" bool8 FldEff_UseFlyAncientTomb(void)
 {
     u8 taskId = CreateFieldMoveTask();
 
@@ -407,7 +407,7 @@ bool32 BrailleWait_CheckButtonPress(void)
 }
 
 // this used to be FldEff_UseFlyAncientTomb . why did GF merge the 2 functions?
-bool8 FldEff_UsePuzzleEffect(void)
+extern "C" bool8 FldEff_UsePuzzleEffect(void)
 {
     u8 taskId = CreateFieldMoveTask();
 

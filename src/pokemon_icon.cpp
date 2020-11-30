@@ -22,7 +22,7 @@ static u8 CreateMonIconSprite(struct MonIconSpriteTemplate *, s16, s16, u8);
 
 // .rodata
 
-const u8 *const gMonIconTable[] =
+extern const u8 *const gMonIconTable[] =
 {
     [SPECIES_NONE] = gMonIcon_Bulbasaur,
     [SPECIES_BULBASAUR] = gMonIcon_Bulbasaur,
@@ -466,7 +466,7 @@ const u8 *const gMonIconTable[] =
     [SPECIES_UNOWN_QMARK] = gMonIcon_UnownQuestionMark,
 };
 
-const u8 gMonIconPaletteIndices[] =
+extern const u8 gMonIconPaletteIndices[] =
 {
     [SPECIES_NONE] = 0,
     [SPECIES_BULBASAUR] = 1,
@@ -910,7 +910,7 @@ const u8 gMonIconPaletteIndices[] =
     [SPECIES_UNOWN_QMARK] = 0,
 };
 
-const struct SpritePalette gMonIconPaletteTable[] =
+extern const struct SpritePalette gMonIconPaletteTable[] =
 {
     { gMonIconPalettes[0], POKE_ICON_BASE_PAL_TAG + 0 },
     { gMonIconPalettes[1], POKE_ICON_BASE_PAL_TAG + 1 },

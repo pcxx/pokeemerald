@@ -3,9 +3,9 @@
 
 // cut
 bool8 SetUpFieldMove_Cut(void);
-bool8 FldEff_UseCutOnGrass(void);
-bool8 FldEff_UseCutOnTree(void);
-bool8 FldEff_CutGrass(void);
+extern "C" bool8 FldEff_UseCutOnGrass(void);
+extern "C" bool8 FldEff_UseCutOnTree(void);
+extern "C" bool8 FldEff_CutGrass(void);
 void FixLongGrassMetatilesWindowTop(s16 x, s16 y);
 void FixLongGrassMetatilesWindowBottom(s16 x, s16 y);
 
@@ -30,24 +30,24 @@ bool8 GetMapPairFadeFromType(u8 a1, u8 a2);
 
 // strength
 bool8 SetUpFieldMove_Strength(void);
-bool8 FldEff_UseStrength(void);
+extern "C" bool8 FldEff_UseStrength(void);
 
 // sweet scent
 bool8 SetUpFieldMove_SweetScent(void);
-bool8 FldEff_SweetScent(void);
+extern "C" bool8 FldEff_SweetScent(void);
 
 // teleport
 bool8 SetUpFieldMove_Teleport(void);
-bool8 FldEff_UseTeleport(void);
+extern "C" bool8 FldEff_UseTeleport(void);
 
 // dig
 bool8 SetUpFieldMove_Dig(void);
-bool8 FldEff_UseDig(void);
+extern "C" bool8 FldEff_UseDig(void);
 
 // rock smash
 bool8 CheckObjectGraphicsInFrontOfPlayer(u8 graphicsId);
 u8 CreateFieldMoveTask(void);
 bool8 SetUpFieldMove_RockSmash(void);
-bool8 FldEff_UseRockSmash(void);
+extern "C" bool8 FldEff_UseRockSmash(void);
 
 #endif // GUARD_FLDEFF_H

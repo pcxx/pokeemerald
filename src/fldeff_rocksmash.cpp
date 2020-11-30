@@ -149,7 +149,7 @@ static void FieldCallback_RockSmash(void)
     ScriptContext1_SetupScript(EventScript_UseRockSmash);
 }
 
-bool8 FldEff_UseRockSmash(void)
+extern "C" bool8 FldEff_UseRockSmash(void)
 {
     u8 taskId = CreateFieldMoveTask();
 

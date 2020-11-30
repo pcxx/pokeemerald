@@ -113,7 +113,7 @@ static const u8 sBerryDescriptionPart2_Starf[] = _("world's edge. Considered a m
 static const u8 sBerryDescriptionPart1_Enigma[] = _("A completely enigmatic BERRY.");
 static const u8 sBerryDescriptionPart2_Enigma[] = _("Appears to have the power of stars.");
 
-const struct Berry gBerries[] =
+extern const struct Berry gBerries[] =
 {
     [ITEM_CHERI_BERRY - FIRST_BERRY_INDEX] =
     {
@@ -890,7 +890,7 @@ const struct Berry gBerries[] =
     },
 };
 
-const struct UnkStruct_0858AB24 gUnknown_0858AB24[] = {
+extern const struct UnkStruct_0858AB24 gUnknown_0858AB24[] = {
     { 50,  20},
     { 50,  20},
     { 50,  20},
@@ -936,7 +936,7 @@ const struct UnkStruct_0858AB24 gUnknown_0858AB24[] = {
     {150, 200}
 };
 
-const struct BerryTree gBlankBerryTree = {};
+extern const struct BerryTree gBlankBerryTree = {};
 
 // unused
 void ClearEnigmaBerries(void)

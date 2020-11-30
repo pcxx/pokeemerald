@@ -357,13 +357,13 @@ static const struct SpriteTemplate sSpriteTemplate_NewGameBirch =
     .callback = SpriteCallbackDummy
 };
 
-const struct SpritePalette gSpritePalette_PokeballGlow =
+extern const struct SpritePalette gSpritePalette_PokeballGlow =
 {
     .data = sPokeballGlow_Pal,
     .tag = FLDEFF_PAL_TAG_POKEBALL_GLOW
 };
 
-const struct SpritePalette gSpritePalette_HofMonitor =
+extern const struct SpritePalette gSpritePalette_HofMonitor =
 {
     .data = sHofMonitor_Pal,
     .tag = FLDEFF_PAL_TAG_HOF_MONITOR
@@ -480,13 +480,13 @@ static const struct Subsprite sSubsprites_HofMonitorBig[] =
 
 static const struct SubspriteTable sSubspriteTable_HofMonitorBig = subsprite_table(sSubsprites_HofMonitorBig);
 
-const union AnimCmd gSpriteAnim_855C2CC[] =
+extern const union AnimCmd gSpriteAnim_855C2CC[] =
 {
     ANIMCMD_FRAME(.imageValue = 0, .duration = 1),
     ANIMCMD_JUMP(0)
 };
 
-const union AnimCmd gSpriteAnim_855C2D4[] =
+extern const union AnimCmd gSpriteAnim_855C2D4[] =
 {
     ANIMCMD_FRAME(.imageValue = 0, .duration = 16),
     ANIMCMD_FRAME(.imageValue = 1, .duration = 16),
@@ -499,7 +499,7 @@ const union AnimCmd gSpriteAnim_855C2D4[] =
     ANIMCMD_END
 };
 
-const union AnimCmd *const gSpriteAnimTable_855C2F8[] =
+extern const union AnimCmd *const gSpriteAnimTable_855C2F8[] =
 {
     gSpriteAnim_855C2CC,
     gSpriteAnim_855C2D4
@@ -995,7 +995,7 @@ void MultiplyPaletteRGBComponents(u16 i, u8 r, u8 g, u8 b)
 // Sprite data for SpriteCB_PokeballGlow
 #define sEffectSpriteId data[0]
 
-bool8 FldEff_PokecenterHeal(void)
+extern "C" bool8 FldEff_PokecenterHeal(void)
 {
     u8 nPokemon;
     struct Task *task;
@@ -1051,7 +1051,7 @@ static void PokecenterHealEffect_WaitForSoundAndEnd(struct Task *task)
     }
 }
 
-bool8 FldEff_HallOfFameRecord(void)
+extern "C" bool8 FldEff_HallOfFameRecord(void)
 {
     u8 nPokemon;
     struct Task *task;
@@ -1814,7 +1814,7 @@ static bool8 EscalatorWarpIn_End(struct Task *task)
 #define tState data[0]
 #define tMonId data[1]
 
-bool8 FldEff_UseWaterfall(void)
+extern "C" bool8 FldEff_UseWaterfall(void)
 {
     u8 taskId;
     taskId = CreateTask(Task_UseWaterfall, 0xff);
@@ -1888,7 +1888,7 @@ static bool8 WaterfallFieldEffect_ContinueRideOrEnd(struct Task *task, struct Ob
 #undef tState
 #undef tMonId
 
-bool8 FldEff_UseDive(void)
+extern "C" bool8 FldEff_UseDive(void)
 {
     u8 taskId;
     taskId = CreateTask(Task_UseDive, 0xff);
@@ -2111,7 +2111,7 @@ static bool8 LavaridgeGymB1FWarpExitEffect_End(struct Task *task, struct ObjectE
 }
 
 // For the ash effect when jumping off the Lavaridge Gym B1F warp tiles
-u8 FldEff_AshLaunch(void)
+extern "C" u8 FldEff_AshLaunch(void)
 {
     u8 spriteId;
     SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
@@ -2203,7 +2203,7 @@ static bool8 LavaridgeGym1FWarpEffect_Warp(struct Task *task, struct ObjectEvent
 }
 
 // For the ash effect when a trainer pops out of ash, or when the player enters/exits a warp in Lavaridge Gym 1F
-u8 FldEff_AshPuff(void)
+extern "C" u8 FldEff_AshPuff(void)
 {
     u8 spriteId;
     SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
@@ -2552,7 +2552,7 @@ static void TeleportWarpInFieldEffect_SpinGround(struct Task *task)
 // Outdoor has a black background with thick white streaks and appears from the right by stretching vertically and horizontally
 // Indoor has blue background with thin white streaks and appears from the left by stretching horizontally
 // For both the background streaks move to the right, and the mon sprite enters from the right and exits left
-bool8 FldEff_FieldMoveShowMon(void)
+extern "C" bool8 FldEff_FieldMoveShowMon(void)
 {
     u8 taskId;
     if (IsMapTypeOutdoors(GetCurrentMapType()) == TRUE)
@@ -2564,7 +2564,7 @@ bool8 FldEff_FieldMoveShowMon(void)
     return FALSE;
 }
 
-bool8 FldEff_FieldMoveShowMonInit(void)
+extern "C" bool8 FldEff_FieldMoveShowMonInit(void)
 {
     struct Pokemon *pokemon;
     u32 flag = gFieldEffectArguments[0] & 0x80000000;
@@ -2969,7 +2969,7 @@ static void SpriteCB_FieldMoveMonSlideOffscreen(struct Sprite *sprite)
 #define tDestY data[2]
 #define tMonId data[15]
 
-u8 FldEff_UseSurf(void)
+extern "C" u8 FldEff_UseSurf(void)
 {
     u8 taskId = CreateTask(Task_SurfFieldEffect, 0xff);
     gTasks[taskId].tMonId = gFieldEffectArguments[0];
@@ -3065,7 +3065,7 @@ static void SurfFieldEffect_End(struct Task *task)
 #undef tDestY
 #undef tMonId
 
-u8 FldEff_RayquazaSpotlight(void)
+extern "C" u8 FldEff_RayquazaSpotlight(void)
 {
     u8 i, j, k;
     u8 spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_RAYQUAZA], 120, -24, 1);
@@ -3102,7 +3102,7 @@ u8 FldEff_RayquazaSpotlight(void)
     return spriteId;
 }
 
-u8 FldEff_NPCFlyOut(void)
+extern "C" u8 FldEff_NPCFlyOut(void)
 {
     u8 spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0x78, 0, 1);
     struct Sprite *sprite = &gSprites[spriteId];
@@ -3147,7 +3147,7 @@ static void SpriteCB_NPCFlyOut(struct Sprite *sprite)
 #define sPlayerSpriteId data[6]
 #define sAnimCompleted  data[7]
 
-u8 FldEff_UseFly(void)
+extern "C" u8 FldEff_UseFly(void)
 {
     u8 taskId = CreateTask(Task_FlyOut, 254);
     gTasks[taskId].tMonId = gFieldEffectArguments[0];
@@ -3438,7 +3438,7 @@ static void StartFlyBirdReturnToBall(u8 spriteId)
     gSprites[spriteId].callback = SpriteCB_FlyBirdReturnToBall;
 }
 
-u8 FldEff_FlyIn(void)
+extern "C" u8 FldEff_FlyIn(void)
 {
     CreateTask(Task_FlyIn, 254);
     return 0;
@@ -3608,7 +3608,7 @@ static void FlyInFieldEffect_End(struct Task *task)
 #define tMapNum        data[7]
 #define tMapGroup      data[8]
 
-bool8 FldEff_DestroyDeoxysRock(void)
+extern "C" bool8 FldEff_DestroyDeoxysRock(void)
 {
     u8 taskId;
     u8 objectEventId;
@@ -3820,7 +3820,7 @@ static void SpriteCB_DeoxysRockFragment(struct Sprite* sprite)
         DestroySprite(sprite);
 }
 
-bool8 FldEff_MoveDeoxysRock(struct Sprite* sprite)
+extern "C" bool8 FldEff_MoveDeoxysRock(struct Sprite* sprite)
 {
     u8 objectEventIdBuffer;
     if (!TryGetObjectEventIdByLocalIdAndMap(gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2], &objectEventIdBuffer))

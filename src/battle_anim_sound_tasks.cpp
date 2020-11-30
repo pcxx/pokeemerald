@@ -15,7 +15,7 @@ static void SoundTask_PlayCryWithEcho_Step(u8 taskId);
 static void SoundTask_AdjustPanningVar_Step(u8 taskId);
 
 // task start
-void sub_8158B30(u8 taskId)
+extern "C" void sub_8158B30(u8 taskId)
 {
     s8 pan1, pan2, panIncrement;
 
@@ -72,7 +72,7 @@ static void sub_8158C04(u8 taskId)
 // task end
 
 // task start
-void SoundTask_LoopSEAdjustPanning(u8 taskId)
+extern "C" void SoundTask_LoopSEAdjustPanning(u8 taskId)
 {
     u16 songId = gBattleAnimArgs[0];
     s8 targetPan = gBattleAnimArgs[2];
@@ -126,7 +126,7 @@ static void SoundTask_LoopSEAdjustPanning_Step(u8 taskId)
 // task end
 
 // task start
-void SoundTask_PlayCryHighPitch(u8 taskId)
+extern "C" void SoundTask_PlayCryHighPitch(u8 taskId)
 {
     u16 species = 0;
     s8 pan = BattleAnimAdjustPanning(SOUND_PAN_ATTACKER);
@@ -172,7 +172,7 @@ void SoundTask_PlayCryHighPitch(u8 taskId)
 // task end
 
 // task start
-void SoundTask_PlayDoubleCry(u8 taskId)
+extern "C" void SoundTask_PlayDoubleCry(u8 taskId)
 {
     u16 species = 0;
     s8 pan = BattleAnimAdjustPanning(SOUND_PAN_ATTACKER);
@@ -260,7 +260,7 @@ static void SoundTask_PlayDoubleCry_Step(u8 taskId)
 }
 // task end
 
-void SoundTask_WaitForCry(u8 taskId)
+extern "C" void SoundTask_WaitForCry(u8 taskId)
 {
     if (gTasks[taskId].data[9] < 2)
     {
@@ -274,7 +274,7 @@ void SoundTask_WaitForCry(u8 taskId)
 }
 
 // task start
-void SoundTask_PlayCryWithEcho(u8 taskId)
+extern "C" void SoundTask_PlayCryWithEcho(u8 taskId)
 {
     u16 species;
     s8 pan;
@@ -331,7 +331,7 @@ static void SoundTask_PlayCryWithEcho_Step(u8 taskId)
 }
 // task end
 
-void SoundTask_PlaySE1WithPanning(u8 taskId)
+extern "C" void SoundTask_PlaySE1WithPanning(u8 taskId)
 {
     u16 songId = gBattleAnimArgs[0];
     s8 pan = BattleAnimAdjustPanning(gBattleAnimArgs[1]);
@@ -340,7 +340,7 @@ void SoundTask_PlaySE1WithPanning(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void SoundTask_PlaySE2WithPanning(u8 taskId)
+extern "C" void SoundTask_PlaySE2WithPanning(u8 taskId)
 {
     u16 songId = gBattleAnimArgs[0];
     s8 pan = BattleAnimAdjustPanning(gBattleAnimArgs[1]);
@@ -351,7 +351,7 @@ void SoundTask_PlaySE2WithPanning(u8 taskId)
 
 // Adjusts panning and assigns it to gAnimCustomPanning. Doesnt play sound. 
 // Used by Confuse Ray and Will-O-Wisp (see uses of gAnimCustomPanning)
-void SoundTask_AdjustPanningVar(u8 taskId)
+extern "C" void SoundTask_AdjustPanningVar(u8 taskId)
 {
     s8 targetPan = gBattleAnimArgs[1];
     s8 panIncrement = gBattleAnimArgs[2];

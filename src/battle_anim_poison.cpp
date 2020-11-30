@@ -27,7 +27,7 @@ static const union AnimCmd *const sAnims_ToxicBubble[] =
     sAnim_ToxicBubble,
 };
 
-const struct SpriteTemplate gToxicBubbleSpriteTemplate =
+extern const struct SpriteTemplate gToxicBubbleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_TOXIC_BUBBLE,
     .paletteTag = ANIM_TAG_TOXIC_BUBBLE,
@@ -95,7 +95,7 @@ static const union AffineAnimCmd *const sAffineAnims_SludgeBombHit[] =
     sAffineAnim_SludgeBombHit,
 };
 
-const struct SpriteTemplate gSludgeProjectileSpriteTemplate =
+extern const struct SpriteTemplate gSludgeProjectileSpriteTemplate =
 {
     .tileTag = ANIM_TAG_POISON_BUBBLE,
     .paletteTag = ANIM_TAG_POISON_BUBBLE,
@@ -106,7 +106,7 @@ const struct SpriteTemplate gSludgeProjectileSpriteTemplate =
     .callback = AnimSludgeProjectile,
 };
 
-const struct SpriteTemplate gAcidPoisonBubbleSpriteTemplate =
+extern const struct SpriteTemplate gAcidPoisonBubbleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_POISON_BUBBLE,
     .paletteTag = ANIM_TAG_POISON_BUBBLE,
@@ -117,7 +117,7 @@ const struct SpriteTemplate gAcidPoisonBubbleSpriteTemplate =
     .callback = AnimAcidPoisonBubble,
 };
 
-const struct SpriteTemplate gSludgeBombHitParticleSpriteTemplate =
+extern const struct SpriteTemplate gSludgeBombHitParticleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_POISON_BUBBLE,
     .paletteTag = ANIM_TAG_POISON_BUBBLE,
@@ -135,12 +135,12 @@ static const union AffineAnimCmd sAffineAnim_AcidPoisonDroplet[] =
     AFFINEANIMCMD_JUMP(0),
 };
 
-const union AffineAnimCmd *const gAffineAnims_Droplet[] =
+extern const union AffineAnimCmd *const gAffineAnims_Droplet[] =
 {
     sAffineAnim_AcidPoisonDroplet,
 };
 
-const struct SpriteTemplate gAcidPoisonDropletSpriteTemplate =
+extern const struct SpriteTemplate gAcidPoisonDropletSpriteTemplate =
 {
     .tileTag = ANIM_TAG_POISON_BUBBLE,
     .paletteTag = ANIM_TAG_POISON_BUBBLE,
@@ -163,7 +163,7 @@ static const union AffineAnimCmd *const sAffineAnims_Bubble[] =
     sAffineAnim_Bubble,
 };
 
-const struct SpriteTemplate gPoisonBubbleSpriteTemplate =
+extern const struct SpriteTemplate gPoisonBubbleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_POISON_BUBBLE,
     .paletteTag = ANIM_TAG_POISON_BUBBLE,
@@ -174,7 +174,7 @@ const struct SpriteTemplate gPoisonBubbleSpriteTemplate =
     .callback = AnimBubbleEffect,
 };
 
-const struct SpriteTemplate gWaterBubbleSpriteTemplate =
+extern const struct SpriteTemplate gWaterBubbleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_BUBBLES,
     .paletteTag = ANIM_TAG_SMALL_BUBBLES,

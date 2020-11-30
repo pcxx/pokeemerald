@@ -61,7 +61,7 @@ static const struct UCoords8 sBattlerCoords[][4] =
 };
 
 // One entry for each of the four Castform forms.
-const struct MonCoords gCastformFrontSpriteCoords[] =
+extern const struct MonCoords gCastformFrontSpriteCoords[] =
 {
     { .size = 0x44, .y_offset = 17 }, // NORMAL
     { .size = 0x66, .y_offset =  9 }, // SUN
@@ -1594,7 +1594,7 @@ void obj_delete_but_dont_free_vram(struct Sprite *sprite)
 }
 
 // Only used to fade Moonlight moon sprite in
-void AnimTask_AlphaFadeIn(u8 taskId)
+extern "C" void AnimTask_AlphaFadeIn(u8 taskId)
 {
     s16 v1 = 0;
     s16 v2 = 0;
@@ -1654,7 +1654,7 @@ static void sub_80A7AFC(u8 taskId)
 // arg 2: target blend coefficient
 // arg 3: initial delay
 // arg 4: number of times to blend in and out
-void AnimTask_BlendMonInAndOut(u8 task)
+extern "C" void AnimTask_BlendMonInAndOut(u8 task)
 {
     u8 spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[0]);
     if (spriteId == 0xff)
@@ -1714,7 +1714,7 @@ static void AnimTask_BlendMonInAndOutStep(u8 taskId)
 }
 
 // See AnimTask_BlendMonInAndOut. Same, but ANIM_TAG_* instead of mon
-void AnimTask_BlendPalInAndOutByTag(u8 task)
+extern "C" void AnimTask_BlendPalInAndOutByTag(u8 task)
 {
     u8 palette = IndexOfSpritePaletteTag(gBattleAnimArgs[0]);
 
@@ -1933,7 +1933,7 @@ u8 sub_80A80C8(struct Task *task)
     return task->data[8];
 }
 
-void AnimTask_GetFrustrationPowerLevel(u8 taskId)
+extern "C" void AnimTask_GetFrustrationPowerLevel(u8 taskId)
 {
     u16 powerLevel;
 
@@ -2333,7 +2333,7 @@ void AnimSpinningSparkle(struct Sprite *sprite)
 // Slides attacker to right and back with a cloned trace of the specified color
 // arg0: Trace palette blend color
 // arg1: Trace palette blend coeff
-void AnimTask_AttackerPunchWithTrace(u8 taskId)
+extern "C" void AnimTask_AttackerPunchWithTrace(u8 taskId)
 {
     u16 src;
     u16 dest;

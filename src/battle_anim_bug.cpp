@@ -43,7 +43,7 @@ static const union AffineAnimCmd *const sAffineAnims_MegahornHorn[] =
     sAffineAnim_MegahornHorn_2,
 };
 
-const struct SpriteTemplate gMegahornHornSpriteTemplate =
+extern const struct SpriteTemplate gMegahornHornSpriteTemplate =
 {
     .tileTag = ANIM_TAG_HORN_HIT_2,
     .paletteTag = ANIM_TAG_HORN_HIT_2,
@@ -79,7 +79,7 @@ static const union AffineAnimCmd *const sAffineAnims_LeechLifeNeedle[] =
     sAffineAnim_LeechLifeNeedle_2,
 };
 
-const struct SpriteTemplate gLeechLifeNeedleSpriteTemplate =
+extern const struct SpriteTemplate gLeechLifeNeedleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_NEEDLE,
     .paletteTag = ANIM_TAG_NEEDLE,
@@ -90,7 +90,7 @@ const struct SpriteTemplate gLeechLifeNeedleSpriteTemplate =
     .callback = AnimLeechLifeNeedle,
 };
 
-const struct SpriteTemplate gWebThreadSpriteTemplate =
+extern const struct SpriteTemplate gWebThreadSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WEB_THREAD,
     .paletteTag = ANIM_TAG_WEB_THREAD,
@@ -101,7 +101,7 @@ const struct SpriteTemplate gWebThreadSpriteTemplate =
     .callback = AnimTranslateWebThread,
 };
 
-const struct SpriteTemplate gStringWrapSpriteTemplate =
+extern const struct SpriteTemplate gStringWrapSpriteTemplate =
 {
     .tileTag = ANIM_TAG_STRING,
     .paletteTag = ANIM_TAG_STRING,
@@ -124,7 +124,7 @@ static const union AffineAnimCmd *const sAffineAnims_SpiderWeb[] =
     sAffineAnim_SpiderWeb,
 };
 
-const struct SpriteTemplate gSpiderWebSpriteTemplate =
+extern const struct SpriteTemplate gSpiderWebSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPIDER_WEB,
     .paletteTag = ANIM_TAG_SPIDER_WEB,
@@ -135,7 +135,7 @@ const struct SpriteTemplate gSpiderWebSpriteTemplate =
     .callback = AnimSpiderWeb,
 };
 
-const struct SpriteTemplate gLinearStingerSpriteTemplate =
+extern const struct SpriteTemplate gLinearStingerSpriteTemplate =
 {
     .tileTag = ANIM_TAG_NEEDLE,
     .paletteTag = ANIM_TAG_NEEDLE,
@@ -146,7 +146,7 @@ const struct SpriteTemplate gLinearStingerSpriteTemplate =
     .callback = AnimTranslateStinger,
 };
 
-const struct SpriteTemplate gPinMissileSpriteTemplate =
+extern const struct SpriteTemplate gPinMissileSpriteTemplate =
 {
     .tileTag = ANIM_TAG_NEEDLE,
     .paletteTag = ANIM_TAG_NEEDLE,
@@ -157,7 +157,7 @@ const struct SpriteTemplate gPinMissileSpriteTemplate =
     .callback = AnimMissileArc,
 };
 
-const struct SpriteTemplate gIcicleSpearSpriteTemplate =
+extern const struct SpriteTemplate gIcicleSpearSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICICLE_SPEAR,
     .paletteTag = ANIM_TAG_ICICLE_SPEAR,
@@ -184,7 +184,7 @@ static const union AffineAnimCmd *const sAffineAnims_TailGlowOrb[] =
     sAffineAnim_TailGlowOrb,
 };
 
-const struct SpriteTemplate gTailGlowOrbSpriteTemplate =
+extern const struct SpriteTemplate gTailGlowOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CIRCLE_OF_LIGHT,
     .paletteTag = ANIM_TAG_CIRCLE_OF_LIGHT,

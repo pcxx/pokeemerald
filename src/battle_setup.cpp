@@ -253,7 +253,7 @@ static const struct TrainerBattleParameter sTrainerBContinueScriptBattleParams[]
     .mapNum = MAP_NUM(map),                                             \
 }
 
-const struct RematchTrainer gRematchTable[REMATCH_TABLE_ENTRIES] =
+extern const struct RematchTrainer gRematchTable[REMATCH_TABLE_ENTRIES] =
 {
     [REMATCH_ROSE] = REMATCH(TRAINER_ROSE_1, TRAINER_ROSE_2, TRAINER_ROSE_3, TRAINER_ROSE_4, TRAINER_ROSE_5, ROUTE118),
     [REMATCH_ANDRES] = REMATCH(TRAINER_ANDRES_1, TRAINER_ANDRES_2, TRAINER_ANDRES_3, TRAINER_ANDRES_4, TRAINER_ANDRES_5, ROUTE105),

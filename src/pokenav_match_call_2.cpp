@@ -213,12 +213,12 @@ static const struct WindowTemplate sCallMsgBoxWindowTemplate =
     .baseBlock = 10
 };
 
-const struct CompressedSpriteSheet gUnknown_08622810[1] = 
+extern const struct CompressedSpriteSheet gUnknown_08622810[1] = 
 {
     {gUnknown_086226B8, 0x40, 7}
 };
 
-const struct SpritePalette gUnknown_08622818[2] = 
+extern const struct SpritePalette gUnknown_08622818[2] = 
 {
     {gUnknown_08622698, 12}
 };

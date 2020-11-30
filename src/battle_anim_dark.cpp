@@ -26,7 +26,7 @@ static void sub_8114374(u8);
 static void AnimTask_MetallicShine_Step(u8);
 
 // Unused
-const struct SpriteTemplate gUnknown_08596FC8 =
+extern const struct SpriteTemplate gUnknown_08596FC8 =
 {
     .tileTag = ANIM_TAG_TIED_BAG,
     .paletteTag = ANIM_TAG_TIED_BAG,
@@ -85,7 +85,7 @@ static const union AffineAnimCmd sAffineAnim_Bite_7[] =
     AFFINEANIMCMD_END,
 };
 
-const union AffineAnimCmd *const gAffineAnims_Bite[] =
+extern const union AffineAnimCmd *const gAffineAnims_Bite[] =
 {
     sAffineAnim_Bite_0,
     sAffineAnim_Bite_1,
@@ -97,7 +97,7 @@ const union AffineAnimCmd *const gAffineAnims_Bite[] =
     sAffineAnim_Bite_7,
 };
 
-const struct SpriteTemplate gSharpTeethSpriteTemplate =
+extern const struct SpriteTemplate gSharpTeethSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SHARP_TEETH,
     .paletteTag = ANIM_TAG_SHARP_TEETH,
@@ -108,7 +108,7 @@ const struct SpriteTemplate gSharpTeethSpriteTemplate =
     .callback = AnimBite,
 };
 
-const struct SpriteTemplate gClampJawSpriteTemplate =
+extern const struct SpriteTemplate gClampJawSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CLAMP,
     .paletteTag = ANIM_TAG_CLAMP,
@@ -139,7 +139,7 @@ static const union AffineAnimCmd *const sAffineAnims_TearDrop[] =
     sAffineAnim_TearDrop_1,
 };
 
-const struct SpriteTemplate gTearDropSpriteTemplate =
+extern const struct SpriteTemplate gTearDropSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_BUBBLES,
     .paletteTag = ANIM_TAG_SMALL_BUBBLES,
@@ -176,7 +176,7 @@ static const union AnimCmd *const sAnims_ClawSlash[] =
     sAnim_ClawSlash_1,
 };
 
-const struct SpriteTemplate gClawSlashSpriteTemplate =
+extern const struct SpriteTemplate gClawSlashSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CLAW_SLASH,
     .paletteTag = ANIM_TAG_CLAW_SLASH,
@@ -187,7 +187,7 @@ const struct SpriteTemplate gClawSlashSpriteTemplate =
     .callback = AnimClawSlash,
 };
 
-void AnimTask_AttackerFadeToInvisible(u8 taskId)
+extern "C" void AnimTask_AttackerFadeToInvisible(u8 taskId)
 {
     int battler;
     gTasks[taskId].data[0] = gBattleAnimArgs[0];
@@ -225,7 +225,7 @@ static void AnimTask_AttackerFadeToInvisible_Step(u8 taskId)
     }
 }
 
-void AnimTask_AttackerFadeFromInvisible(u8 taskId)
+extern "C" void AnimTask_AttackerFadeFromInvisible(u8 taskId)
 {
     gTasks[taskId].data[0] = gBattleAnimArgs[0];
     gTasks[taskId].data[1] = BLDALPHA_BLEND(0, 16);
@@ -257,7 +257,7 @@ static void AnimTask_AttackerFadeFromInvisible_Step(u8 taskId)
     }
 }
 
-void AnimTask_InitAttackerFadeFromInvisible(u8 taskId)
+extern "C" void AnimTask_InitAttackerFadeFromInvisible(u8 taskId)
 {
     SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0, 16));
     if (GetBattlerSpriteBGPriorityRank(gBattleAnimAttacker) == 1)
@@ -396,7 +396,7 @@ static void AnimTearDrop_Step(struct Sprite *sprite)
         DestroySpriteAndMatrix(sprite);
 }
 
-void AnimTask_MoveAttackerMementoShadow(u8 taskId)
+extern "C" void AnimTask_MoveAttackerMementoShadow(u8 taskId)
 {
     struct ScanlineEffectParams scanlineParams;
     struct BattleAnimBgData animBg;
@@ -525,7 +525,7 @@ static void AnimTask_MoveAttackerMementoShadow_Step(u8 taskId)
     }
 }
 
-void AnimTask_MoveTargetMementoShadow(u8 taskId)
+extern "C" void AnimTask_MoveTargetMementoShadow(u8 taskId)
 {
     struct BattleAnimBgData animBg;
     struct ScanlineEffectParams scanlineParams;
@@ -769,7 +769,7 @@ static void sub_8114374(u8 priority)
     }
 }
 
-void AnimTask_InitMementoShadow(u8 taskId)
+extern "C" void AnimTask_InitMementoShadow(u8 taskId)
 {
     u8 toBG2 = GetBattlerSpriteBGPriorityRank(gBattleAnimAttacker) ^ 1 ? 1 : 0;
     MoveBattlerSpriteToBG(gBattleAnimAttacker, toBG2, TRUE);
@@ -811,7 +811,7 @@ static void AnimClawSlash(struct Sprite *sprite)
 // arg1: if true, use custom color
 // arg2: custom color
 // Custom color argument is used in MOVE_POISON_TAIL to make the mon turn purplish/pinkish as if became cloaked in poison.
-void AnimTask_MetallicShine(u8 taskId)
+extern "C" void AnimTask_MetallicShine(u8 taskId)
 {
     u16 species;
     u8 spriteId;
@@ -928,7 +928,7 @@ static void AnimTask_MetallicShine_Step(u8 taskId)
 // Changes battler's palette to either greyscale or original.
 // arg0: which battler
 // arg1: FALSE grayscale, TRUE original
-void AnimTask_SetGreyscaleOrOriginalPal(u8 taskId)
+extern "C" void AnimTask_SetGreyscaleOrOriginalPal(u8 taskId)
 {
     u8 spriteId;
     u8 battler;

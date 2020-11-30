@@ -28,7 +28,7 @@ static void FieldCallback_Teleport(void)
     gFieldEffectArguments[0] = (u32)GetCursorSelectionMonId();
 }
 
-bool8 FldEff_UseTeleport(void)
+extern "C" bool8 FldEff_UseTeleport(void)
 {
     u8 taskId = CreateFieldMoveTask();
     gTasks[taskId].data[8] = (u32)StartTeleportFieldEffect >> 16;

@@ -52,7 +52,7 @@ static const union AnimCmd *const sAnims_Lightning[] =
     sAnim_Lightning,
 };
 
-const struct SpriteTemplate gLightningSpriteTemplate =
+extern const struct SpriteTemplate gLightningSpriteTemplate =
 {
     .tileTag = ANIM_TAG_LIGHTNING,
     .paletteTag = ANIM_TAG_LIGHTNING,
@@ -77,7 +77,7 @@ static const union AffineAnimCmd *const gUnknown_085956F8[] =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_085956FC =
+extern const struct SpriteTemplate gUnknown_085956FC =
 {
     .tileTag = ANIM_TAG_HANDS_AND_FEET,
     .paletteTag = ANIM_TAG_HANDS_AND_FEET,
@@ -105,7 +105,7 @@ static const union AnimCmd *const gUnknown_08595730[] =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_08595734 =
+extern const struct SpriteTemplate gUnknown_08595734 =
 {
     .tileTag = ANIM_TAG_SHOCK,
     .paletteTag = ANIM_TAG_SHOCK,
@@ -116,7 +116,7 @@ const struct SpriteTemplate gUnknown_08595734 =
     .callback = sub_810A274,
 };
 
-const struct SpriteTemplate gSparkElectricitySpriteTemplate =
+extern const struct SpriteTemplate gSparkElectricitySpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARK_2,
     .paletteTag = ANIM_TAG_SPARK_2,
@@ -127,7 +127,7 @@ const struct SpriteTemplate gSparkElectricitySpriteTemplate =
     .callback = AnimSparkElectricity,
 };
 
-const struct SpriteTemplate gZapCannonBallSpriteTemplate =
+extern const struct SpriteTemplate gZapCannonBallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_BLACK_BALL_2,
     .paletteTag = ANIM_TAG_BLACK_BALL_2,
@@ -149,7 +149,7 @@ static const union AffineAnimCmd *const sAffineAnims_FlashingSpark[] =
     sAffineAnim_FlashingSpark,
 };
 
-const struct SpriteTemplate gZapCannonSparkSpriteTemplate =
+extern const struct SpriteTemplate gZapCannonSparkSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARK_2,
     .paletteTag = ANIM_TAG_SPARK_2,
@@ -186,7 +186,7 @@ static const union AffineAnimCmd *const sAffineAnims_ThunderboltOrb[] =
     sAffineAnim_ThunderboltOrb,
 };
 
-const struct SpriteTemplate gThunderboltOrbSpriteTemplate =
+extern const struct SpriteTemplate gThunderboltOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SHOCK_3,
     .paletteTag = ANIM_TAG_SHOCK_3,
@@ -197,7 +197,7 @@ const struct SpriteTemplate gThunderboltOrbSpriteTemplate =
     .callback = AnimThunderboltOrb,
 };
 
-const struct SpriteTemplate gSparkElectricityFlashingSpriteTemplate =
+extern const struct SpriteTemplate gSparkElectricityFlashingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARK_2,
     .paletteTag = ANIM_TAG_SPARK_2,
@@ -208,7 +208,7 @@ const struct SpriteTemplate gSparkElectricityFlashingSpriteTemplate =
     .callback = AnimSparkElectricityFlashing,
 };
 
-const struct SpriteTemplate gElectricitySpriteTemplate =
+extern const struct SpriteTemplate gElectricitySpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARK_2,
     .paletteTag = ANIM_TAG_SPARK_2,
@@ -219,7 +219,7 @@ const struct SpriteTemplate gElectricitySpriteTemplate =
     .callback = AnimElectricity,
 };
 
-const struct SpriteTemplate gElectricBoltSegmentSpriteTemplate =
+extern const struct SpriteTemplate gElectricBoltSegmentSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARK,
     .paletteTag = ANIM_TAG_SPARK,
@@ -230,7 +230,7 @@ const struct SpriteTemplate gElectricBoltSegmentSpriteTemplate =
     .callback = AnimElectricBoltSegment,
 };
 
-const struct SpriteTemplate gThunderWaveSpriteTemplate =
+extern const struct SpriteTemplate gThunderWaveSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARK_H,
     .paletteTag = ANIM_TAG_SPARK_H,
@@ -285,7 +285,7 @@ static const union AnimCmd *const sAnims_ElectricChargingParticles[] =
     sAnim_ElectricChargingParticles_1,
 };
 
-const struct SpriteTemplate gElectricChargingParticlesSpriteTemplate =
+extern const struct SpriteTemplate gElectricChargingParticlesSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ELECTRIC_ORBS,
     .paletteTag = ANIM_TAG_ELECTRIC_ORBS,
@@ -333,7 +333,7 @@ static const union AffineAnimCmd *const sAffineAnims_GrowingElectricOrb[] =
     sAffineAnim_GrowingElectricOrb_2,
 };
 
-const struct SpriteTemplate gGrowingChargeOrbSpriteTemplate =
+extern const struct SpriteTemplate gGrowingChargeOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CIRCLE_OF_LIGHT,
     .paletteTag = ANIM_TAG_CIRCLE_OF_LIGHT,
@@ -358,7 +358,7 @@ static const union AnimCmd *const sAnims_ElectricPuff[] =
     sAnim_ElectricPuff,
 };
 
-const struct SpriteTemplate gElectricPuffSpriteTemplate =
+extern const struct SpriteTemplate gElectricPuffSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ELECTRICITY,
     .paletteTag = ANIM_TAG_ELECTRICITY,
@@ -369,7 +369,7 @@ const struct SpriteTemplate gElectricPuffSpriteTemplate =
     .callback = AnimElectricPuff,
 };
 
-const struct SpriteTemplate gVoltTackleOrbSlideSpriteTemplate =
+extern const struct SpriteTemplate gVoltTackleOrbSlideSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CIRCLE_OF_LIGHT,
     .paletteTag = ANIM_TAG_CIRCLE_OF_LIGHT,
@@ -423,7 +423,7 @@ static const union AffineAnimCmd *const sAffineAnims_VoltTackleBolt[] =
     sAffineAnim_VoltTackleBolt,
 };
 
-const struct SpriteTemplate gVoltTackleBoltSpriteTemplate =
+extern const struct SpriteTemplate gVoltTackleBoltSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARK,
     .paletteTag = ANIM_TAG_SPARK,
@@ -434,7 +434,7 @@ const struct SpriteTemplate gVoltTackleBoltSpriteTemplate =
     .callback = AnimVoltTackleBolt,
 };
 
-const struct SpriteTemplate gGrowingShockWaveOrbSpriteTemplate =
+extern const struct SpriteTemplate gGrowingShockWaveOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CIRCLE_OF_LIGHT,
     .paletteTag = ANIM_TAG_CIRCLE_OF_LIGHT,
@@ -445,7 +445,7 @@ const struct SpriteTemplate gGrowingShockWaveOrbSpriteTemplate =
     .callback = AnimGrowingShockWaveOrb,
 };
 
-const struct SpriteTemplate gShockWaveProgressingBoltSpriteTemplate =
+extern const struct SpriteTemplate gShockWaveProgressingBoltSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARK,
     .paletteTag = ANIM_TAG_SPARK,
@@ -680,7 +680,7 @@ static void AnimElectricity(struct Sprite *sprite)
 }
 
 // The vertical falling thunder bolt used in Thunder Wave/Shock/Bolt
-void AnimTask_ElectricBolt(u8 taskId)
+extern "C" void AnimTask_ElectricBolt(u8 taskId)
 {
     gTasks[taskId].data[0] = GetBattlerSpriteCoord(gBattleAnimTarget, 0) + gBattleAnimArgs[0];
     gTasks[taskId].data[1] = GetBattlerSpriteCoord(gBattleAnimTarget, 1) + gBattleAnimArgs[1];
@@ -800,7 +800,7 @@ static void AnimThunderWave_Step(struct Sprite *sprite)
 }
 
 // Animates small electric orbs moving from around the battler inward. For Charge/Shock Wave
-void AnimTask_ElectricChargingParticles(u8 taskId)
+extern "C" void AnimTask_ElectricChargingParticles(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -956,7 +956,7 @@ static void AnimVoltTackleOrbSlide_Step(struct Sprite *sprite)
     }
 }
 
-void AnimTask_VoltTackleAttackerReappear(u8 taskId)
+extern "C" void AnimTask_VoltTackleAttackerReappear(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -1012,7 +1012,7 @@ void AnimTask_VoltTackleAttackerReappear(u8 taskId)
 }
 
 // The horizontal bolts of electricity for Volt Tackle
-void AnimTask_VoltTackleBolt(u8 taskId)
+extern "C" void AnimTask_VoltTackleBolt(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -1144,7 +1144,7 @@ static void AnimGrowingShockWaveOrb(struct Sprite *sprite)
 }
 
 // Thin bolt of electricity that moves up and down toward the target. Used by Shock Wave
-void AnimTask_ShockWaveProgressingBolt(u8 taskId)
+extern "C" void AnimTask_ShockWaveProgressingBolt(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -1269,7 +1269,7 @@ static void AnimShockWaveProgressingBolt(struct Sprite *sprite)
     }
 }
 
-void AnimTask_ShockWaveLightning(u8 taskId)
+extern "C" void AnimTask_ShockWaveLightning(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 

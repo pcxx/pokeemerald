@@ -81,7 +81,7 @@ static void SetEReaderTrainerChecksum(struct BattleTowerEReaderTrainer *ereaderT
 static u8 SetTentPtrsGetLevel(void);
 
 // Const rom data.
-const u16 gBattleFrontierHeldItems[] =
+extern const u16 gBattleFrontierHeldItems[] =
 {
     ITEM_NONE,
     ITEM_KINGS_ROCK,
@@ -152,7 +152,7 @@ const u16 gBattleFrontierHeldItems[] =
 #include "data/battle_frontier/battle_frontier_trainers.h"
 #include "data/battle_frontier/battle_frontier_mons.h"
 
-const u8 gTowerMaleFacilityClasses[30] =
+extern const u8 gTowerMaleFacilityClasses[30] =
 {
     FACILITY_CLASS_RUIN_MANIAC,
     FACILITY_CLASS_TUBER_M,
@@ -186,7 +186,7 @@ const u8 gTowerMaleFacilityClasses[30] =
     FACILITY_CLASS_HIKER
 };
 
-const u8 gTowerFemaleFacilityClasses[20] =
+extern const u8 gTowerFemaleFacilityClasses[20] =
 {
     FACILITY_CLASS_AROMA_LADY,
     FACILITY_CLASS_TUBER_F,
@@ -210,7 +210,7 @@ const u8 gTowerFemaleFacilityClasses[20] =
     FACILITY_CLASS_LASS
 };
 
-const u8 gTowerMaleTrainerGfxIds[30] =
+extern const u8 gTowerMaleTrainerGfxIds[30] =
 {
     OBJ_EVENT_GFX_HIKER,
     OBJ_EVENT_GFX_TUBER_M,
@@ -244,7 +244,7 @@ const u8 gTowerMaleTrainerGfxIds[30] =
     OBJ_EVENT_GFX_HIKER
 };
 
-const u8 gTowerFemaleTrainerGfxIds[20] =
+extern const u8 gTowerFemaleTrainerGfxIds[20] =
 {
     OBJ_EVENT_GFX_WOMAN_2,
     OBJ_EVENT_GFX_TUBER_F,

@@ -59,7 +59,7 @@ static const union AnimCmd *const sAnims_ConfusionDuck[] =
     sAnim_ConfusionDuck_1,
 };
 
-const struct SpriteTemplate gConfusionDuckSpriteTemplate =
+extern const struct SpriteTemplate gConfusionDuckSpriteTemplate =
 {
     .tileTag = ANIM_TAG_DUCK,
     .paletteTag = ANIM_TAG_DUCK,
@@ -70,7 +70,7 @@ const struct SpriteTemplate gConfusionDuckSpriteTemplate =
     .callback = AnimConfusionDuck,
 };
 
-const struct SpriteTemplate gSimplePaletteBlendSpriteTemplate =
+extern const struct SpriteTemplate gSimplePaletteBlendSpriteTemplate =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -81,7 +81,7 @@ const struct SpriteTemplate gSimplePaletteBlendSpriteTemplate =
     .callback = AnimSimplePaletteBlend,
 };
 
-const struct SpriteTemplate gComplexPaletteBlendSpriteTemplate =
+extern const struct SpriteTemplate gComplexPaletteBlendSpriteTemplate =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -108,7 +108,7 @@ static const union AnimCmd *const gUnknown_085972BC[] =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_085972C0 =
+extern const struct SpriteTemplate gUnknown_085972C0 =
 {
     .tileTag = ANIM_TAG_SPARKLE_4,
     .paletteTag = ANIM_TAG_SPARKLE_4,
@@ -119,7 +119,7 @@ const struct SpriteTemplate gUnknown_085972C0 =
     .callback = sub_81159B4,
 };
 
-const struct SpriteTemplate gShakeMonOrTerrainSpriteTemplate =
+extern const struct SpriteTemplate gShakeMonOrTerrainSpriteTemplate =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -165,7 +165,7 @@ static const union AffineAnimCmd *const sAffineAnims_HitSplat[] =
     sAffineAnim_HitSplat_3,
 };
 
-const struct SpriteTemplate gBasicHitSplatSpriteTemplate =
+extern const struct SpriteTemplate gBasicHitSplatSpriteTemplate =
 {
     .tileTag = ANIM_TAG_IMPACT,
     .paletteTag = ANIM_TAG_IMPACT,
@@ -176,7 +176,7 @@ const struct SpriteTemplate gBasicHitSplatSpriteTemplate =
     .callback = AnimHitSplatBasic,
 };
 
-const struct SpriteTemplate gHandleInvertHitSplatSpriteTemplate =
+extern const struct SpriteTemplate gHandleInvertHitSplatSpriteTemplate =
 {
     .tileTag = ANIM_TAG_IMPACT,
     .paletteTag = ANIM_TAG_IMPACT,
@@ -187,7 +187,7 @@ const struct SpriteTemplate gHandleInvertHitSplatSpriteTemplate =
     .callback = AnimHitSplatHandleInvert,
 };
 
-const struct SpriteTemplate gWaterHitSplatSpriteTemplate =
+extern const struct SpriteTemplate gWaterHitSplatSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WATER_IMPACT,
     .paletteTag = ANIM_TAG_WATER_IMPACT,
@@ -198,7 +198,7 @@ const struct SpriteTemplate gWaterHitSplatSpriteTemplate =
     .callback = AnimHitSplatBasic,
 };
 
-const struct SpriteTemplate gRandomPosHitSplatSpriteTemplate =
+extern const struct SpriteTemplate gRandomPosHitSplatSpriteTemplate =
 {
     .tileTag = ANIM_TAG_IMPACT,
     .paletteTag = ANIM_TAG_IMPACT,
@@ -209,7 +209,7 @@ const struct SpriteTemplate gRandomPosHitSplatSpriteTemplate =
     .callback = AnimHitSplatRandom,
 };
 
-const struct SpriteTemplate gMonEdgeHitSplatSpriteTemplate =
+extern const struct SpriteTemplate gMonEdgeHitSplatSpriteTemplate =
 {
     .tileTag = ANIM_TAG_IMPACT,
     .paletteTag = ANIM_TAG_IMPACT,
@@ -220,7 +220,7 @@ const struct SpriteTemplate gMonEdgeHitSplatSpriteTemplate =
     .callback = AnimHitSplatOnMonEdge,
 };
 
-const struct SpriteTemplate gCrossImpactSpriteTemplate =
+extern const struct SpriteTemplate gCrossImpactSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CROSS_IMPACT,
     .paletteTag = ANIM_TAG_CROSS_IMPACT,
@@ -231,7 +231,7 @@ const struct SpriteTemplate gCrossImpactSpriteTemplate =
     .callback = AnimCrossImpact,
 };
 
-const struct SpriteTemplate gFlashingHitSplatSpriteTemplate =
+extern const struct SpriteTemplate gFlashingHitSplatSpriteTemplate =
 {
     .tileTag = ANIM_TAG_IMPACT,
     .paletteTag = ANIM_TAG_IMPACT,
@@ -242,7 +242,7 @@ const struct SpriteTemplate gFlashingHitSplatSpriteTemplate =
     .callback = AnimFlashingHitSplat,
 };
 
-const struct SpriteTemplate gPersistHitSplatSpriteTemplate =
+extern const struct SpriteTemplate gPersistHitSplatSpriteTemplate =
 {
     .tileTag = ANIM_TAG_IMPACT,
     .paletteTag = ANIM_TAG_IMPACT,
@@ -427,7 +427,7 @@ static void sub_81159B4(struct Sprite *sprite)
 
 // Blends mon/screen to designated color or back alternately tNumBlends times 
 // Many uses of this task only set a tNumBlends of 2, which has the effect of blending to a color and back once
-void AnimTask_BlendColorCycle(u8 taskId)
+extern "C" void AnimTask_BlendColorCycle(u8 taskId)
 {
     gTasks[taskId].tPalSelector = gBattleAnimArgs[0];
     gTasks[taskId].tDelay = gBattleAnimArgs[1];
@@ -487,7 +487,7 @@ static void AnimTask_BlendColorCycleLoop(u8 taskId)
 }
 
 // See AnimTask_BlendColorCycle. Same, but excludes Attacker and Target
-void AnimTask_BlendColorCycleExclude(u8 taskId)
+extern "C" void AnimTask_BlendColorCycleExclude(u8 taskId)
 {
     int battler;
     u32 selectedPalettes = 0;
@@ -562,7 +562,7 @@ static void AnimTask_BlendColorCycleExcludeLoop(u8 taskId)
 }
 
 // See AnimTask_BlendColorCycle. Same, but selects palette by ANIM_TAG_*
-void AnimTask_BlendColorCycleByTag(u8 taskId)
+extern "C" void AnimTask_BlendColorCycleByTag(u8 taskId)
 {
     u8 paletteIndex;
 
@@ -636,7 +636,7 @@ static void AnimTask_BlendColorCycleByTagLoop(u8 taskId)
 #undef tPalSelectorLo
 
 // Flashes the specified anim tag with given color. Used e.g. to flash the particles red in Hyper Beam
-void AnimTask_FlashAnimTagWithColor(u8 taskId)
+extern "C" void AnimTask_FlashAnimTagWithColor(u8 taskId)
 {
     u8 paletteIndex;
 
@@ -716,7 +716,7 @@ static void AnimTask_FlashAnimTagWithColor_Step2(u8 taskId)
     }
 }
 
-void AnimTask_InvertScreenColor(u8 taskId)
+extern "C" void AnimTask_InvertScreenColor(u8 taskId)
 {
     u32 selectedPalettes = 0;
     u8 attackerBattler = gBattleAnimAttacker;
@@ -879,7 +879,7 @@ static void AnimShakeMonOrBattleTerrain_UpdateCoordOffsetEnabled(void)
 // arg1: y offset of shake
 // arg2: number of shakes
 // arg3: time between shakes
-void AnimTask_ShakeBattleTerrain(u8 taskId)
+extern "C" void AnimTask_ShakeBattleTerrain(u8 taskId)
 {
     gTasks[taskId].tXOffset = gBattleAnimArgs[0];
     gTasks[taskId].tYOffset = gBattleAnimArgs[1];

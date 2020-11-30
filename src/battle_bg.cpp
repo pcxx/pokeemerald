@@ -119,7 +119,7 @@ static const struct CompressedSpriteSheet sVsLettersSpriteSheet =
     gVsLettersGfx, 0x1000, TAG_VS_LETTERS
 };
 
-const struct BgTemplate gBattleBgTemplates[] =
+extern const struct BgTemplate gBattleBgTemplates[] =
 {
     {
         .bg = 0,
@@ -592,7 +592,7 @@ static const struct WindowTemplate gBattleArenaWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-const struct WindowTemplate * const gBattleWindowTemplates[] =
+extern const struct WindowTemplate * const gBattleWindowTemplates[] =
 {
     gStandardBattleWindowTemplates,
     gBattleArenaWindowTemplates,

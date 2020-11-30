@@ -61,7 +61,7 @@ static const union AnimCmd *const sAnims_FireSpiralSpread[] =
     sAnim_FireSpiralSpread_1,
 };
 
-const struct SpriteTemplate gFireSpiralInwardSpriteTemplate =
+extern const struct SpriteTemplate gFireSpiralInwardSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -72,7 +72,7 @@ const struct SpriteTemplate gFireSpiralInwardSpriteTemplate =
     .callback = AnimFireSpiralInward,
 };
 
-const struct SpriteTemplate gFireSpreadSpriteTemplate =
+extern const struct SpriteTemplate gFireSpreadSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -128,7 +128,7 @@ static const union AffineAnimCmd *const sAffineAnims_LargeFlame[] =
     sAffineAnim_LargeFlame,
 };
 
-const struct SpriteTemplate gLargeFlameSpriteTemplate =
+extern const struct SpriteTemplate gLargeFlameSpriteTemplate =
 {
     .tileTag = ANIM_TAG_FIRE,
     .paletteTag = ANIM_TAG_FIRE,
@@ -139,7 +139,7 @@ const struct SpriteTemplate gLargeFlameSpriteTemplate =
     .callback = AnimLargeFlame,
 };
 
-const struct SpriteTemplate gLargeFlameScatterSpriteTemplate =
+extern const struct SpriteTemplate gLargeFlameScatterSpriteTemplate =
 {
     .tileTag = ANIM_TAG_FIRE,
     .paletteTag = ANIM_TAG_FIRE,
@@ -150,7 +150,7 @@ const struct SpriteTemplate gLargeFlameScatterSpriteTemplate =
     .callback = AnimLargeFlame,
 };
 
-const struct SpriteTemplate gFirePlumeSpriteTemplate =
+extern const struct SpriteTemplate gFirePlumeSpriteTemplate =
 {
     .tileTag = ANIM_TAG_FIRE_PLUME,
     .paletteTag = ANIM_TAG_FIRE_PLUME,
@@ -162,7 +162,7 @@ const struct SpriteTemplate gFirePlumeSpriteTemplate =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_08595440 =
+extern const struct SpriteTemplate gUnknown_08595440 =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -187,7 +187,7 @@ static const union AnimCmd *const gUnknown_08595468[] =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_0859546C =
+extern const struct SpriteTemplate gUnknown_0859546C =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -210,7 +210,7 @@ static const union AffineAnimCmd *const sAffineAnims_SunlightRay[] =
     sAffineAnim_SunlightRay,
 };
 
-const struct SpriteTemplate gSunlightRaySpriteTemplate =
+extern const struct SpriteTemplate gSunlightRaySpriteTemplate =
 {
     .tileTag = ANIM_TAG_SUNLIGHT,
     .paletteTag = ANIM_TAG_SUNLIGHT,
@@ -231,12 +231,12 @@ static const union AnimCmd sAnim_BasicFire[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd *const gAnims_BasicFire[] =
+extern const union AnimCmd *const gAnims_BasicFire[] =
 {
     sAnim_BasicFire,
 };
 
-const struct SpriteTemplate gEmberSpriteTemplate =
+extern const struct SpriteTemplate gEmberSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -247,7 +247,7 @@ const struct SpriteTemplate gEmberSpriteTemplate =
     .callback = TranslateAnimSpriteToTargetMonLocation,
 };
 
-const struct SpriteTemplate gEmberFlareSpriteTemplate =
+extern const struct SpriteTemplate gEmberFlareSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -258,7 +258,7 @@ const struct SpriteTemplate gEmberFlareSpriteTemplate =
     .callback = AnimEmberFlare,
 };
 
-const struct SpriteTemplate gBurnFlameSpriteTemplate =
+extern const struct SpriteTemplate gBurnFlameSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -269,7 +269,7 @@ const struct SpriteTemplate gBurnFlameSpriteTemplate =
     .callback = AnimBurnFlame,
 };
 
-const struct SpriteTemplate gFireBlastRingSpriteTemplate =
+extern const struct SpriteTemplate gFireBlastRingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -311,7 +311,7 @@ static const union AffineAnimCmd *const gUnknown_08595564[] =
     gUnknown_08595554,
 };
 
-const struct SpriteTemplate gFireBlastCrossSpriteTemplate =
+extern const struct SpriteTemplate gFireBlastCrossSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -322,7 +322,7 @@ const struct SpriteTemplate gFireBlastCrossSpriteTemplate =
     .callback = AnimFireCross,
 };
 
-const struct SpriteTemplate gFireSpiralOutwardSpriteTemplate =
+extern const struct SpriteTemplate gFireSpiralOutwardSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -333,7 +333,7 @@ const struct SpriteTemplate gFireSpiralOutwardSpriteTemplate =
     .callback = AnimFireSpiralOutward,
 };
 
-const struct SpriteTemplate gWeatherBallFireDownSpriteTemplate =
+extern const struct SpriteTemplate gWeatherBallFireDownSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -344,7 +344,7 @@ const struct SpriteTemplate gWeatherBallFireDownSpriteTemplate =
     .callback = AnimWeatherBallDown,
 };
 
-const struct SpriteTemplate gEruptionLaunchRockSpriteTemplate =
+extern const struct SpriteTemplate gEruptionLaunchRockSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WARM_ROCK,
     .paletteTag = ANIM_TAG_WARM_ROCK,
@@ -366,7 +366,7 @@ static const s16 sEruptionLaunchRockCoords[][2] =
     { 4, -7},
 };
 
-const struct SpriteTemplate gEruptionFallingRockSpriteTemplate =
+extern const struct SpriteTemplate gEruptionFallingRockSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WARM_ROCK,
     .paletteTag = ANIM_TAG_WARM_ROCK,
@@ -412,7 +412,7 @@ static const union AnimCmd *const sAnims_WillOWispOrb[] =
     sAnim_WillOWispOrb_3,
 };
 
-const struct SpriteTemplate gWillOWispOrbSpriteTemplate =
+extern const struct SpriteTemplate gWillOWispOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WISP_ORB,
     .paletteTag = ANIM_TAG_WISP_ORB,
@@ -437,7 +437,7 @@ static const union AnimCmd *const sAnims_WillOWispFire[] =
     sAnim_WillOWispFire,
 };
 
-const struct SpriteTemplate gWillOWispFireSpriteTemplate =
+extern const struct SpriteTemplate gWillOWispFireSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WISP_FIRE,
     .paletteTag = ANIM_TAG_WISP_FIRE,
@@ -773,7 +773,7 @@ static void AnimFireSpiralOutward_Step2(struct Sprite *sprite)
 }
 
 // Animates first stage of Eruption where the attacker squishes and launches rocks away from themself
-void AnimTask_EruptionLaunchRocks(u8 taskId)
+extern "C" void AnimTask_EruptionLaunchRocks(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -1183,7 +1183,7 @@ static void AnimWillOWispFire(struct Sprite *sprite)
         DestroyAnimSprite(sprite);
 }
 
-void AnimTask_MoveHeatWaveTargets(u8 taskId)
+extern "C" void AnimTask_MoveHeatWaveTargets(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -1285,7 +1285,7 @@ static void AnimTask_MoveHeatWaveTargets_Step(u8 taskId)
 // Used to add a color mask to the battle interface / HUD in Heat Wave.
 // arg 0: opacity
 // arg 1: color code
-void AnimTask_BlendBackground(u8 taskId)
+extern "C" void AnimTask_BlendBackground(u8 taskId)
 {
     struct BattleAnimBgData animBg;
     sub_80A6B30(&animBg);
@@ -1300,7 +1300,7 @@ void AnimTask_BlendBackground(u8 taskId)
 #define tPatternId   data[4]
 
 // Shakes target horizontally or vertically tMaxShakes times, following a set pattern of alternations
-void AnimTask_ShakeTargetInPattern(u8 taskId)
+extern "C" void AnimTask_ShakeTargetInPattern(u8 taskId)
 {
     s8 dir;
     u8 spriteId;

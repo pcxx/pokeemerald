@@ -62,7 +62,7 @@ static const union AnimCmd *const gUnknown_08595A54[] =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_08595A58 =
+extern const struct SpriteTemplate gUnknown_08595A58 =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -136,7 +136,7 @@ static const union AnimCmd *const sAnims_BlizzardIceCrystal[] =
     sAnim_BlizzardIceCrystal,
 };
 
-const union AnimCmd *const gAnims_SmallBubblePair[] =
+extern const union AnimCmd *const gAnims_SmallBubblePair[] =
 {
     sAnim_SmallBubblePair,
 };
@@ -152,7 +152,7 @@ static const union AffineAnimCmd *const sAffineAnims_IceCrystalSpiralInwardLarge
     sAffineAnim_IceCrystalSpiralInwardLarge,
 };
 
-const struct SpriteTemplate gIceCrystalSpiralInwardLarge =
+extern const struct SpriteTemplate gIceCrystalSpiralInwardLarge =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -163,7 +163,7 @@ const struct SpriteTemplate gIceCrystalSpiralInwardLarge =
     .callback = AnimIcePunchSwirlingParticle,
 };
 
-const struct SpriteTemplate gIceCrystalSpiralInwardSmall =
+extern const struct SpriteTemplate gIceCrystalSpiralInwardSmall =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -185,7 +185,7 @@ static const union AffineAnimCmd *const sAffineAnims_IceBeamInnerCrystal[] =
     sAffineAnim_IceBeamInnerCrystal,
 };
 
-const struct SpriteTemplate gIceBeamInnerCrystalSpriteTemplate =
+extern const struct SpriteTemplate gIceBeamInnerCrystalSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -196,7 +196,7 @@ const struct SpriteTemplate gIceBeamInnerCrystalSpriteTemplate =
     .callback = AnimIceBeamParticle,
 };
 
-const struct SpriteTemplate gIceBeamOuterCrystalSpriteTemplate =
+extern const struct SpriteTemplate gIceBeamOuterCrystalSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -220,7 +220,7 @@ static const union AffineAnimCmd *const sAffineAnims_IceCrystalHit[] =
     sAffineAnim_IceCrystalHit,
 };
 
-const struct SpriteTemplate gIceCrystalHitLargeSpriteTemplate =
+extern const struct SpriteTemplate gIceCrystalHitLargeSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -231,7 +231,7 @@ const struct SpriteTemplate gIceCrystalHitLargeSpriteTemplate =
     .callback = AnimIceEffectParticle,
 };
 
-const struct SpriteTemplate gIceCrystalHitSmallSpriteTemplate =
+extern const struct SpriteTemplate gIceCrystalHitSmallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -242,7 +242,7 @@ const struct SpriteTemplate gIceCrystalHitSmallSpriteTemplate =
     .callback = AnimIceEffectParticle,
 };
 
-const struct SpriteTemplate gSwirlingSnowballSpriteTemplate =
+extern const struct SpriteTemplate gSwirlingSnowballSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -253,7 +253,7 @@ const struct SpriteTemplate gSwirlingSnowballSpriteTemplate =
     .callback = AnimSwirlingSnowball,
 };
 
-const struct SpriteTemplate gBlizzardIceCrystalSpriteTemplate =
+extern const struct SpriteTemplate gBlizzardIceCrystalSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -264,7 +264,7 @@ const struct SpriteTemplate gBlizzardIceCrystalSpriteTemplate =
     .callback = AnimMoveParticleBeyondTarget,
 };
 
-const struct SpriteTemplate gPowderSnowSnowballSpriteTemplate =
+extern const struct SpriteTemplate gPowderSnowSnowballSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -292,7 +292,7 @@ static const union AnimCmd *const sAnims_IceGroundSpike[] =
     sAnim_IceGroundSpike,
 };
 
-const struct SpriteTemplate gIceGroundSpikeSpriteTemplate =
+extern const struct SpriteTemplate gIceGroundSpikeSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_SPIKES,
     .paletteTag = ANIM_TAG_ICE_SPIKES,
@@ -315,7 +315,7 @@ static const union AnimCmd *const sAnims_Cloud[] =
     sAnim_Cloud,
 };
 
-const struct SpriteTemplate gMistCloudSpriteTemplate =
+extern const struct SpriteTemplate gMistCloudSpriteTemplate =
 {
     .tileTag = ANIM_TAG_MIST_CLOUD,
     .paletteTag = ANIM_TAG_MIST_CLOUD,
@@ -326,7 +326,7 @@ const struct SpriteTemplate gMistCloudSpriteTemplate =
     .callback = InitSwirlingFogAnim,
 };
 
-const struct SpriteTemplate gSmogCloudSpriteTemplate =
+extern const struct SpriteTemplate gSmogCloudSpriteTemplate =
 {
     .tileTag = ANIM_TAG_PURPLE_GAS_CLOUD,
     .paletteTag = ANIM_TAG_PURPLE_GAS_CLOUD,
@@ -342,7 +342,7 @@ static const u8 sUnknown_08595C5C[] =
     0, 1, 2, 2, 2, 2, 3, 4, 4, 4, 5, 6, 6, 6, 6, 7, 8, 8, 8, 9,
 };
 
-const struct SpriteTemplate gMistBallSpriteTemplate =
+extern const struct SpriteTemplate gMistBallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_BUBBLES,
     .paletteTag = ANIM_TAG_SMALL_BUBBLES,
@@ -358,7 +358,7 @@ static const u8 sUnknown_08595C88[] =
     0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5,
 };
 
-const struct SpriteTemplate gPoisonGasCloudSpriteTemplate =
+extern const struct SpriteTemplate gPoisonGasCloudSpriteTemplate =
 {
     .tileTag = ANIM_TAG_PURPLE_GAS_CLOUD,
     .paletteTag = ANIM_TAG_PURPLE_GAS_CLOUD,
@@ -419,7 +419,7 @@ static const union AffineAnimCmd *const sAffineAnims_WeatherBallIceDown[] =
     sAffineAnim_WeatherBallIceDown,
 };
 
-const struct SpriteTemplate gHailParticleSpriteTemplate =
+extern const struct SpriteTemplate gHailParticleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_HAIL,
     .paletteTag = ANIM_TAG_HAIL,
@@ -430,7 +430,7 @@ const struct SpriteTemplate gHailParticleSpriteTemplate =
     .callback = AnimHailBegin,
 };
 
-const struct SpriteTemplate gWeatherBallIceDownSpriteTemplate =
+extern const struct SpriteTemplate gWeatherBallIceDownSpriteTemplate =
 {
     .tileTag = ANIM_TAG_HAIL,
     .paletteTag = ANIM_TAG_HAIL,
@@ -501,7 +501,7 @@ static const union AffineAnimCmd *const sAffineAnims_IceBallChunk[] =
     sAffineAnim_IceBallChunk_4,
 };
 
-const struct SpriteTemplate gIceBallChunkSpriteTemplate =
+extern const struct SpriteTemplate gIceBallChunkSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_CHUNK,
     .paletteTag = ANIM_TAG_ICE_CHUNK,
@@ -512,7 +512,7 @@ const struct SpriteTemplate gIceBallChunkSpriteTemplate =
     .callback = InitIceBallAnim,
 };
 
-const struct SpriteTemplate gIceBallImpactShardSpriteTemplate =
+extern const struct SpriteTemplate gIceBallImpactShardSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ICE_CRYSTALS,
     .paletteTag = ANIM_TAG_ICE_CRYSTALS,
@@ -981,7 +981,7 @@ static void AnimSwirlingFogAnim(struct Sprite *sprite)
 }
 
 // Adds moving foggy overlay. Used by Haze.
-void AnimTask_HazeScrollingFog(u8 taskId)
+extern "C" void AnimTask_HazeScrollingFog(u8 taskId)
 {
     struct BattleAnimBgData animBg;
 
@@ -1088,7 +1088,7 @@ static void AnimThrowMistBall(struct Sprite *sprite)
 }
 
 // Displays misty background in Mist Ball.
-void AnimTask_LoadMistTiles(u8 taskId)
+extern "C" void AnimTask_LoadMistTiles(u8 taskId)
 {
     struct BattleAnimBgData animBg;
 
@@ -1330,7 +1330,7 @@ static void MovePoisonGasCloud(struct Sprite *sprite)
     }
 }
 
-void AnimTask_Hail(u8 taskId)
+extern "C" void AnimTask_Hail(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -1562,7 +1562,7 @@ static void AnimIceBallParticle(struct Sprite *sprite)
         DestroyAnimSprite(sprite);
 }
 
-void AnimTask_GetIceBallCounter(u8 taskId)
+extern "C" void AnimTask_GetIceBallCounter(u8 taskId)
 {
     u8 arg = gBattleAnimArgs[0];
 

@@ -209,14 +209,14 @@ static const u8 sShadowEffectTemplateIds[] = {
     FLDEFFOBJ_SHADOW_XL
 };
 
-const u16 gShadowVerticalOffsets[] = {
+extern const u16 gShadowVerticalOffsets[] = {
     4,
     4,
     4,
     16
 };
 
-u32 FldEff_Shadow(void)
+extern "C" u32 FldEff_Shadow(void)
 {
     u8 objectEventId;
     const struct ObjectEventGraphicsInfo *graphicsInfo;
@@ -265,7 +265,7 @@ void UpdateShadowFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_TallGrass(void)
+extern "C" u32 FldEff_TallGrass(void)
 {
     s16 x;
     s16 y;
@@ -335,7 +335,7 @@ void UpdateTallGrassFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_JumpTallGrass(void)
+extern "C" u32 FldEff_JumpTallGrass(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -371,7 +371,7 @@ u8 FindTallGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s
     return MAX_SPRITES;
 }
 
-u32 FldEff_LongGrass(void)
+extern "C" u32 FldEff_LongGrass(void)
 {
     s16 x;
     s16 y;
@@ -438,7 +438,7 @@ void UpdateLongGrassFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_JumpLongGrass(void)
+extern "C" u32 FldEff_JumpLongGrass(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -456,7 +456,7 @@ u32 FldEff_JumpLongGrass(void)
     return 0;
 }
 
-u32 FldEff_ShortGrass(void)
+extern "C" u32 FldEff_ShortGrass(void)
 {
     u8 objectEventId;
     struct ObjectEvent *objectEvent;
@@ -516,7 +516,7 @@ void UpdateShortGrassFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_SandFootprints(void)
+extern "C" u32 FldEff_SandFootprints(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -534,7 +534,7 @@ u32 FldEff_SandFootprints(void)
     return 0;
 }
 
-u32 FldEff_DeepSandFootprints(void)
+extern "C" u32 FldEff_DeepSandFootprints(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -552,7 +552,7 @@ u32 FldEff_DeepSandFootprints(void)
     return spriteId;
 }
 
-u32 FldEff_BikeTireTracks(void)
+extern "C" u32 FldEff_BikeTireTracks(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -600,7 +600,7 @@ static void FadeFootprintsTireTracks_Step1(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_Splash(void)
+extern "C" u32 FldEff_Splash(void)
 {
     u8 objectEventId;
     struct ObjectEvent *objectEvent;
@@ -644,7 +644,7 @@ void UpdateSplashFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_JumpSmallSplash(void)
+extern "C" u32 FldEff_JumpSmallSplash(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -662,7 +662,7 @@ u32 FldEff_JumpSmallSplash(void)
     return 0;
 }
 
-u32 FldEff_JumpBigSplash(void)
+extern "C" u32 FldEff_JumpBigSplash(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -680,7 +680,7 @@ u32 FldEff_JumpBigSplash(void)
     return 0;
 }
 
-u32 FldEff_FeetInFlowingWater(void)
+extern "C" u32 FldEff_FeetInFlowingWater(void)
 {
     u8 objectEventId;
     struct ObjectEvent *objectEvent;
@@ -739,7 +739,7 @@ static void UpdateFeetInFlowingWaterFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_Ripple(void)
+extern "C" u32 FldEff_Ripple(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -755,7 +755,7 @@ u32 FldEff_Ripple(void)
     return 0;
 }
 
-u32 FldEff_HotSpringsWater(void)
+extern "C" u32 FldEff_HotSpringsWater(void)
 {
     u8 objectEventId;
     struct ObjectEvent *objectEvent;
@@ -800,7 +800,7 @@ void UpdateHotSpringsWaterFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_UnusedGrass(void)
+extern "C" u32 FldEff_UnusedGrass(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -817,7 +817,7 @@ u32 FldEff_UnusedGrass(void)
     return 0;
 }
 
-u32 FldEff_UnusedGrass2(void)
+extern "C" u32 FldEff_UnusedGrass2(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -834,7 +834,7 @@ u32 FldEff_UnusedGrass2(void)
     return 0;
 }
 
-u32 FldEff_UnusedSand(void)
+extern "C" u32 FldEff_UnusedSand(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -851,7 +851,7 @@ u32 FldEff_UnusedSand(void)
     return 0;
 }
 
-u32 FldEff_WaterSurfacing(void)
+extern "C" u32 FldEff_WaterSurfacing(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -879,7 +879,7 @@ void StartAshFieldEffect(s16 x, s16 y, u16 metatileId, s16 d)
     FieldEffectStart(FLDEFF_ASH);
 }
 
-u32 FldEff_Ash(void)
+extern "C" u32 FldEff_Ash(void)
 {
     s16 x;
     s16 y;
@@ -939,7 +939,7 @@ static void UpdateAshFieldEffect_Step2(struct Sprite *sprite)
         FieldEffectStop(sprite, FLDEFF_ASH);
 }
 
-u32 FldEff_SurfBlob(void)
+extern "C" u32 FldEff_SurfBlob(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -1102,7 +1102,7 @@ static void sub_8155850(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_Dust(void)
+extern "C" u32 FldEff_Dust(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -1120,7 +1120,7 @@ u32 FldEff_Dust(void)
     return 0;
 }
 
-u32 FldEff_SandPile(void)
+extern "C" u32 FldEff_SandPile(void)
 {
     u8 objectEventId;
     struct ObjectEvent *objectEvent;
@@ -1178,7 +1178,7 @@ void UpdateSandPileFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_Bubbles(void)
+extern "C" u32 FldEff_Bubbles(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -1206,7 +1206,7 @@ void UpdateBubblesFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_BerryTreeGrowthSparkle(void)
+extern "C" u32 FldEff_BerryTreeGrowthSparkle(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -1224,17 +1224,17 @@ u32 FldEff_BerryTreeGrowthSparkle(void)
     return 0;
 }
 
-u32 ShowTreeDisguiseFieldEffect(void)
+extern "C" u32 ShowTreeDisguiseFieldEffect(void)
 {
     return ShowDisguiseFieldEffect(FLDEFF_TREE_DISGUISE, FLDEFFOBJ_TREE_DISGUISE, 4);
 }
 
-u32 ShowMountainDisguiseFieldEffect(void)
+extern "C" u32 ShowMountainDisguiseFieldEffect(void)
 {
     return ShowDisguiseFieldEffect(FLDEFF_MOUNTAIN_DISGUISE, FLDEFFOBJ_MOUNTAIN_DISGUISE, 3);
 }
 
-u32 ShowSandDisguiseFieldEffect(void)
+extern "C" u32 ShowSandDisguiseFieldEffect(void)
 {
     return ShowDisguiseFieldEffect(FLDEFF_SAND_DISGUISE, FLDEFFOBJ_SAND_DISGUISE, 2);
 }
@@ -1325,7 +1325,7 @@ bool8 sub_8155DA0(struct ObjectEvent *objectEvent)
     return FALSE;
 }
 
-u32 FldEff_Sparkle(void)
+extern "C" u32 FldEff_Sparkle(void)
 {
     u8 spriteId;
 

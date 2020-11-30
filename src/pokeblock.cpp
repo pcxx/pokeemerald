@@ -117,7 +117,7 @@ EWRAM_DATA static struct PokeblockSavedData sSavedPokeblockData = {0};
 EWRAM_DATA static struct PokeblockMenuStruct *sPokeblockMenu = NULL;
 
 // const rom data
-const s8 gPokeblockFlavorCompatibilityTable[NUM_NATURES * FLAVOR_COUNT] =
+extern const s8 gPokeblockFlavorCompatibilityTable[NUM_NATURES * FLAVOR_COUNT] =
 {
     // Cool, Beauty, Cute, Smart, Tough
           0,      0,    0,     0,     0, // Hardy
@@ -178,7 +178,7 @@ static const struct BgTemplate sBgTemplatesForPokeblockMenu[] =
     }
 };
 
-const u8 *const gPokeblockNames[] =
+extern const u8 *const gPokeblockNames[] =
 {
     [PBLOCK_CLR_NONE]      = NULL,
     [PBLOCK_CLR_RED]       = gText_RedPokeblock,
@@ -258,12 +258,12 @@ static const union AffineAnimCmd *const sSpriteAffineAnimTable_85B26F0[] =
     sSpriteAffineAnim_85B26C8
 };
 
-const struct CompressedSpriteSheet gPokeblockCase_SpriteSheet =
+extern const struct CompressedSpriteSheet gPokeblockCase_SpriteSheet =
 {
     gMenuPokeblockDevice_Gfx, 0x800, GFX_TAG_POKEBLOCK_CASE
 };
 
-const struct CompressedSpritePalette gPokeblockCase_SpritePal =
+extern const struct CompressedSpritePalette gPokeblockCase_SpritePal =
 {
     gMenuPokeblockDevice_Pal, GFX_TAG_POKEBLOCK_CASE
 };

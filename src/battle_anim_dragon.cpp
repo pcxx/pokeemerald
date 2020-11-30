@@ -32,7 +32,7 @@ static const union AnimCmd *const gUnknown_08596E78[] =
     gUnknown_08596E60,
 };
 
-const struct SpriteTemplate gOutrageFlameSpriteTemplate =
+extern const struct SpriteTemplate gOutrageFlameSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -85,7 +85,7 @@ static const union AffineAnimCmd *const sAffineAnims_DragonBreathFire[] =
     sAffineAnim_DragonBreathFire_1,
 };
 
-const struct SpriteTemplate gDragonBreathFireSpriteTemplate =
+extern const struct SpriteTemplate gDragonBreathFireSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -111,7 +111,7 @@ static const union AnimCmd *const sAnims_DragonRageFirePlume[] =
     sAnim_DragonRageFirePlume,
 };
 
-const struct SpriteTemplate gDragonRageFirePlumeSpriteTemplate =
+extern const struct SpriteTemplate gDragonRageFirePlumeSpriteTemplate =
 {
     .tileTag = ANIM_TAG_FIRE_PLUME,
     .paletteTag = ANIM_TAG_FIRE_PLUME,
@@ -154,7 +154,7 @@ static const union AffineAnimCmd *const sAffineAnims_DragonRageFire[] =
     sAffineAnim_DragonRageFire_1,
 };
 
-const struct SpriteTemplate gDragonRageFireSpitSpriteTemplate =
+extern const struct SpriteTemplate gDragonRageFireSpitSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -165,7 +165,7 @@ const struct SpriteTemplate gDragonRageFireSpitSpriteTemplate =
     .callback = AnimDragonFireToTarget,
 };
 
-const struct SpriteTemplate gDragonDanceOrbSpriteTemplate =
+extern const struct SpriteTemplate gDragonDanceOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_HOLLOW_ORB,
     .paletteTag = ANIM_TAG_HOLLOW_ORB,
@@ -176,7 +176,7 @@ const struct SpriteTemplate gDragonDanceOrbSpriteTemplate =
     .callback = AnimDragonDanceOrb,
 };
 
-const struct SpriteTemplate gOverheatFlameSpriteTemplate =
+extern const struct SpriteTemplate gOverheatFlameSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -326,7 +326,7 @@ static void AnimDragonDanceOrb_Step(struct Sprite *sprite)
 
 // Wavers the attacker back and forth. Progressing vertical wave of scanline shifts
 // Used by Dragon Dance
-void AnimTask_DragonDanceWaver(u8 taskId)
+extern "C" void AnimTask_DragonDanceWaver(u8 taskId)
 {
     struct ScanlineEffectParams sp;
     struct Task *task = &gTasks[taskId];

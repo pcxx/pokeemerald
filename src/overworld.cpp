@@ -213,7 +213,7 @@ static const u32 sUnusedData[] =
     1200, 3600, 1200, 2400, 50, 80, -44, 44
 };
 
-const struct UCoords32 gDirectionToVectors[] =
+extern const struct UCoords32 gDirectionToVectors[] =
 {
     [DIR_NONE] =
     {

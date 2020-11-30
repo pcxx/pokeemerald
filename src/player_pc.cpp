@@ -173,7 +173,7 @@ static const struct ItemSlot gNewGamePCItems[] =
     { ITEM_NONE, 0 }
 };
 
-const struct MenuAction gMailboxMailOptions[] =
+extern const struct MenuAction gMailboxMailOptions[] =
 {
     { gText_Read, Mailbox_DoMailRead },
     { gText_MoveToBag, Mailbox_MoveToBag },

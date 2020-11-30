@@ -135,9 +135,9 @@ static void InitSpriteForFigure8Anim(struct Sprite *sprite);
 static bool8 AnimateSpriteInFigure8(struct Sprite *sprite);
 static void UpdateObjectEventSprite(struct Sprite *);
 
-const u8 gReflectionEffectPaletteMap[] = {1, 1, 6, 7, 8, 9, 6, 7, 8, 9, 11, 11, 0, 0, 0, 0};
+extern const u8 gReflectionEffectPaletteMap[] = {1, 1, 6, 7, 8, 9, 6, 7, 8, 9, 11, 11, 0, 0, 0, 0};
 
-const struct SpriteTemplate gCameraSpriteTemplate = {0, 0xFFFF, &gDummyOamData, gDummySpriteAnimTable, NULL, gDummySpriteAffineAnimTable, ObjectCB_CameraObject};
+extern const struct SpriteTemplate gCameraSpriteTemplate = {0, 0xFFFF, &gDummyOamData, gDummySpriteAnimTable, NULL, gDummySpriteAffineAnimTable, ObjectCB_CameraObject};
 
 void (*const gCameraObjectFuncs[])(struct Sprite *) = {
     CameraObject_0,
@@ -233,7 +233,7 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = MovementType_WalkSlowlyInPlace,
 };
 
-const u8 gRangedMovementTypes[] = {
+extern const u8 gRangedMovementTypes[] = {
     [MOVEMENT_TYPE_NONE] = 0,
     [MOVEMENT_TYPE_LOOK_AROUND] = 0,
     [MOVEMENT_TYPE_WANDER_AROUND] = 1,
@@ -317,7 +317,7 @@ const u8 gRangedMovementTypes[] = {
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = 0,
 };
 
-const u8 gInitialMovementTypeFacingDirections[] = {
+extern const u8 gInitialMovementTypeFacingDirections[] = {
     [MOVEMENT_TYPE_NONE] = DIR_SOUTH,
     [MOVEMENT_TYPE_LOOK_AROUND] = DIR_SOUTH,
     [MOVEMENT_TYPE_WANDER_AROUND] = DIR_SOUTH,
@@ -446,7 +446,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 //#include "data/object_events/object_event_subsprites.h"
 //#include "data/object_events/object_event_graphics_info.h"
 
-const struct SpritePalette sObjectEventSpritePalettes[] = {
+extern const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette0,  OBJ_EVENT_PAL_TAG_0},
     {gObjectEventPalette1,  OBJ_EVENT_PAL_TAG_1},
     {gObjectEventPalette2,  OBJ_EVENT_PAL_TAG_2},
@@ -485,112 +485,112 @@ const struct SpritePalette sObjectEventSpritePalettes[] = {
     {NULL,                  0x0000},
 };
 
-const u16 gPlayerReflectionPaletteTags[] = {
+extern const u16 gPlayerReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_9,
     OBJ_EVENT_PAL_TAG_9,
     OBJ_EVENT_PAL_TAG_9,
     OBJ_EVENT_PAL_TAG_9,
 };
 
-const u16 Unknown_0850BCF0[] = {
+extern const u16 Unknown_0850BCF0[] = {
     OBJ_EVENT_PAL_TAG_18,
     OBJ_EVENT_PAL_TAG_18,
     OBJ_EVENT_PAL_TAG_18,
     OBJ_EVENT_PAL_TAG_18,
 };
 
-const u16 gPlayerUnderwaterReflectionPaletteTags[] = {
+extern const u16 gPlayerUnderwaterReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_11,
     OBJ_EVENT_PAL_TAG_11,
     OBJ_EVENT_PAL_TAG_11,
     OBJ_EVENT_PAL_TAG_11,
 };
 
-const struct PairedPalettes gPlayerReflectionPaletteSets[] = {
+extern const struct PairedPalettes gPlayerReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_8, gPlayerReflectionPaletteTags},
     {OBJ_EVENT_PAL_TAG_17, Unknown_0850BCF0},
     {OBJ_EVENT_PAL_TAG_11, gPlayerUnderwaterReflectionPaletteTags},
     {OBJ_EVENT_PAL_TAG_NONE, NULL},
 };
 
-const u16 gQuintyPlumpReflectionPaletteTags[] = {
+extern const u16 gQuintyPlumpReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_13,
     OBJ_EVENT_PAL_TAG_13,
     OBJ_EVENT_PAL_TAG_13,
     OBJ_EVENT_PAL_TAG_13,
 };
 
-const u16 gTruckReflectionPaletteTags[] = {
+extern const u16 gTruckReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_14,
     OBJ_EVENT_PAL_TAG_14,
     OBJ_EVENT_PAL_TAG_14,
     OBJ_EVENT_PAL_TAG_14,
 };
 
-const u16 gVigorothMoverReflectionPaletteTags[] = {
+extern const u16 gVigorothMoverReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_15,
     OBJ_EVENT_PAL_TAG_15,
     OBJ_EVENT_PAL_TAG_15,
     OBJ_EVENT_PAL_TAG_15,
 };
 
-const u16 gMovingBoxReflectionPaletteTags[] = {
+extern const u16 gMovingBoxReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_19,
     OBJ_EVENT_PAL_TAG_19,
     OBJ_EVENT_PAL_TAG_19,
     OBJ_EVENT_PAL_TAG_19,
 };
 
-const u16 gCableCarReflectionPaletteTags[] = {
+extern const u16 gCableCarReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_20,
     OBJ_EVENT_PAL_TAG_20,
     OBJ_EVENT_PAL_TAG_20,
     OBJ_EVENT_PAL_TAG_20,
 };
 
-const u16 gSSTidalReflectionPaletteTags[] = {
+extern const u16 gSSTidalReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_21,
     OBJ_EVENT_PAL_TAG_21,
     OBJ_EVENT_PAL_TAG_21,
     OBJ_EVENT_PAL_TAG_21,
 };
 
-const u16 gSubmarineShadowReflectionPaletteTags[] = {
+extern const u16 gSubmarineShadowReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_26,
     OBJ_EVENT_PAL_TAG_26,
     OBJ_EVENT_PAL_TAG_26,
     OBJ_EVENT_PAL_TAG_26,
 };
 
-const u16 Unknown_0850BD58[] = { // Kyogre2?
+extern const u16 Unknown_0850BD58[] = { // Kyogre2?
     OBJ_EVENT_PAL_TAG_23,
     OBJ_EVENT_PAL_TAG_23,
     OBJ_EVENT_PAL_TAG_23,
     OBJ_EVENT_PAL_TAG_23,
 };
 
-const u16 Unknown_0850BD60[] = { // Groudon2?
+extern const u16 Unknown_0850BD60[] = { // Groudon2?
     OBJ_EVENT_PAL_TAG_25,
     OBJ_EVENT_PAL_TAG_25,
     OBJ_EVENT_PAL_TAG_25,
     OBJ_EVENT_PAL_TAG_25,
 };
 
-const u16 Unknown_0850BD68[] = { // Invisible Keckleon?
+extern const u16 Unknown_0850BD68[] = { // Invisible Keckleon?
     OBJ_EVENT_PAL_TAG_6,
     OBJ_EVENT_PAL_TAG_6,
     OBJ_EVENT_PAL_TAG_6,
     OBJ_EVENT_PAL_TAG_6,
 };
 
-const u16 gRedLeafReflectionPaletteTags[] = {
+extern const u16 gRedLeafReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_28,
     OBJ_EVENT_PAL_TAG_28,
     OBJ_EVENT_PAL_TAG_28,
     OBJ_EVENT_PAL_TAG_28,
 };
 
-const struct PairedPalettes gSpecialObjectReflectionPaletteSets[] = {
+extern const struct PairedPalettes gSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_8, gPlayerReflectionPaletteTags},
     {OBJ_EVENT_PAL_TAG_17, Unknown_0850BCF0},
     {OBJ_EVENT_PAL_TAG_12, gQuintyPlumpReflectionPaletteTags},
@@ -607,7 +607,7 @@ const struct PairedPalettes gSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_NONE, NULL},
 };
 
-const u16 gObjectPaletteTags0[] = {
+extern const u16 gObjectPaletteTags0[] = {
     OBJ_EVENT_PAL_TAG_8,
     OBJ_EVENT_PAL_TAG_9,
     OBJ_EVENT_PAL_TAG_0,
@@ -620,7 +620,7 @@ const u16 gObjectPaletteTags0[] = {
     OBJ_EVENT_PAL_TAG_7,
 };
 
-const u16 gObjectPaletteTags1[] = {
+extern const u16 gObjectPaletteTags1[] = {
     OBJ_EVENT_PAL_TAG_8,
     OBJ_EVENT_PAL_TAG_9,
     OBJ_EVENT_PAL_TAG_0,
@@ -633,7 +633,7 @@ const u16 gObjectPaletteTags1[] = {
     OBJ_EVENT_PAL_TAG_7,
 };
 
-const u16 gObjectPaletteTags2[] = {
+extern const u16 gObjectPaletteTags2[] = {
     OBJ_EVENT_PAL_TAG_8,
     OBJ_EVENT_PAL_TAG_9,
     OBJ_EVENT_PAL_TAG_0,
@@ -646,7 +646,7 @@ const u16 gObjectPaletteTags2[] = {
     OBJ_EVENT_PAL_TAG_7,
 };
 
-const u16 gObjectPaletteTags3[] = {
+extern const u16 gObjectPaletteTags3[] = {
     OBJ_EVENT_PAL_TAG_8,
     OBJ_EVENT_PAL_TAG_9,
     OBJ_EVENT_PAL_TAG_0,
@@ -659,7 +659,7 @@ const u16 gObjectPaletteTags3[] = {
     OBJ_EVENT_PAL_TAG_7,
 };
 
-const u16 *const gObjectPaletteTagSets[] = {
+extern const u16 *const gObjectPaletteTagSets[] = {
     gObjectPaletteTags0,
     gObjectPaletteTags1,
     gObjectPaletteTags2,
@@ -669,13 +669,13 @@ const u16 *const gObjectPaletteTagSets[] = {
 #include "data/object_events/berry_tree_graphics_tables.h"
 //#include "data/field_effects/field_effect_objects.h"
 
-const s16 gMovementDelaysMedium[] = {32, 64,  96, 128};
-const s16 gMovementDelaysLong[] =   {32, 64, 128, 192};
-const s16 gMovementDelaysShort[] =  {32, 48,  64,  80};
+extern const s16 gMovementDelaysMedium[] = {32, 64,  96, 128};
+extern const s16 gMovementDelaysLong[] =   {32, 64, 128, 192};
+extern const s16 gMovementDelaysShort[] =  {32, 48,  64,  80};
 
 #include "data/object_events/movement_type_func_tables.h"
 
-const u8 gFaceDirectionAnimNums[] = {
+extern const u8 gFaceDirectionAnimNums[] = {
     [DIR_NONE] = 0,
     [DIR_SOUTH] = 0,
     [DIR_NORTH] = 1,
@@ -686,7 +686,7 @@ const u8 gFaceDirectionAnimNums[] = {
     [DIR_NORTHWEST] = 1,
     [DIR_NORTHEAST] = 1,
 };
-const u8 gMoveDirectionAnimNums[] = {
+extern const u8 gMoveDirectionAnimNums[] = {
     [DIR_NONE] = 4,
     [DIR_SOUTH] = 4,
     [DIR_NORTH] = 5,
@@ -697,7 +697,7 @@ const u8 gMoveDirectionAnimNums[] = {
     [DIR_NORTHWEST] = 5,
     [DIR_NORTHEAST] = 5,
 };
-const u8 gMoveDirectionFastAnimNums[] = {
+extern const u8 gMoveDirectionFastAnimNums[] = {
     [DIR_NONE] = 8,
     [DIR_SOUTH] = 8,
     [DIR_NORTH] = 9,
@@ -708,7 +708,7 @@ const u8 gMoveDirectionFastAnimNums[] = {
     [DIR_NORTHWEST] = 9,
     [DIR_NORTHEAST] = 9,
 };
-const u8 gMoveDirectionFasterAnimNums[] = {
+extern const u8 gMoveDirectionFasterAnimNums[] = {
     [DIR_NONE] = 12,
     [DIR_SOUTH] = 12,
     [DIR_NORTH] = 13,
@@ -719,7 +719,7 @@ const u8 gMoveDirectionFasterAnimNums[] = {
     [DIR_NORTHWEST] = 13,
     [DIR_NORTHEAST] = 13,
 };
-const u8 gMoveDirectionFastestAnimNums[] = {
+extern const u8 gMoveDirectionFastestAnimNums[] = {
     [DIR_NONE] = 16,
     [DIR_SOUTH] = 16,
     [DIR_NORTH] = 17,
@@ -730,7 +730,7 @@ const u8 gMoveDirectionFastestAnimNums[] = {
     [DIR_NORTHWEST] = 17,
     [DIR_NORTHEAST] = 17,
 };
-const u8 gJumpSpecialDirectionAnimNums[] = { // used for jumping onto surf mon
+extern const u8 gJumpSpecialDirectionAnimNums[] = { // used for jumping onto surf mon
     [DIR_NONE] = 20,
     [DIR_SOUTH] = 20,
     [DIR_NORTH] = 21,
@@ -741,7 +741,7 @@ const u8 gJumpSpecialDirectionAnimNums[] = { // used for jumping onto surf mon
     [DIR_NORTHWEST] = 21,
     [DIR_NORTHEAST] = 21,
 };
-const u8 gAcroWheelieDirectionAnimNums[] = {
+extern const u8 gAcroWheelieDirectionAnimNums[] = {
     [DIR_NONE] = 20,
     [DIR_SOUTH] = 20,
     [DIR_NORTH] = 21,
@@ -752,7 +752,7 @@ const u8 gAcroWheelieDirectionAnimNums[] = {
     [DIR_NORTHWEST] = 21,
     [DIR_NORTHEAST] = 21,
 };
-const u8 gUnrefAnimNums_08375633[] = {
+extern const u8 gUnrefAnimNums_08375633[] = {
     [DIR_NONE] = 24,
     [DIR_SOUTH] = 24,
     [DIR_NORTH] = 25,
@@ -763,7 +763,7 @@ const u8 gUnrefAnimNums_08375633[] = {
     [DIR_NORTHWEST] = 25,
     [DIR_NORTHEAST] = 25,
 };
-const u8 gAcroEndWheelieDirectionAnimNums[] = {
+extern const u8 gAcroEndWheelieDirectionAnimNums[] = {
     [DIR_NONE] = 28,
     [DIR_SOUTH] = 28,
     [DIR_NORTH] = 29,
@@ -774,7 +774,7 @@ const u8 gAcroEndWheelieDirectionAnimNums[] = {
     [DIR_NORTHWEST] = 29,
     [DIR_NORTHEAST] = 29,
 };
-const u8 gAcroUnusedActionDirectionAnimNums[] = {
+extern const u8 gAcroUnusedActionDirectionAnimNums[] = {
     [DIR_NONE] = 32,
     [DIR_SOUTH] = 32,
     [DIR_NORTH] = 33,
@@ -785,7 +785,7 @@ const u8 gAcroUnusedActionDirectionAnimNums[] = {
     [DIR_NORTHWEST] = 33,
     [DIR_NORTHEAST] = 33,
 };
-const u8 gAcroWheeliePedalDirectionAnimNums[] = {
+extern const u8 gAcroWheeliePedalDirectionAnimNums[] = {
     [DIR_NONE] = 36,
     [DIR_SOUTH] = 36,
     [DIR_NORTH] = 37,
@@ -796,7 +796,7 @@ const u8 gAcroWheeliePedalDirectionAnimNums[] = {
     [DIR_NORTHWEST] = 37,
     [DIR_NORTHEAST] = 37,
 };
-const u8 gFishingDirectionAnimNums[] = {
+extern const u8 gFishingDirectionAnimNums[] = {
     [DIR_NONE] = 0,
     [DIR_SOUTH] = 0,
     [DIR_NORTH] = 1,
@@ -807,7 +807,7 @@ const u8 gFishingDirectionAnimNums[] = {
     [DIR_NORTHWEST] = 1,
     [DIR_NORTHEAST] = 1,
 };
-const u8 gFishingNoCatchDirectionAnimNums[] = {
+extern const u8 gFishingNoCatchDirectionAnimNums[] = {
     [DIR_NONE] = 4,
     [DIR_SOUTH] = 4,
     [DIR_NORTH] = 5,
@@ -818,7 +818,7 @@ const u8 gFishingNoCatchDirectionAnimNums[] = {
     [DIR_NORTHWEST] = 5,
     [DIR_NORTHEAST] = 5,
 };
-const u8 gFishingBiteDirectionAnimNums[] = {
+extern const u8 gFishingBiteDirectionAnimNums[] = {
     [DIR_NONE] = 8,
     [DIR_SOUTH] = 8,
     [DIR_NORTH] = 9,
@@ -829,7 +829,7 @@ const u8 gFishingBiteDirectionAnimNums[] = {
     [DIR_NORTHWEST] = 9,
     [DIR_NORTHEAST] = 9,
 };
-const u8 gRunningDirectionAnimNums[] = {
+extern const u8 gRunningDirectionAnimNums[] = {
     [DIR_NONE] = 20,
     [DIR_SOUTH] = 20,
     [DIR_NORTH] = 21,
@@ -841,7 +841,7 @@ const u8 gRunningDirectionAnimNums[] = {
     [DIR_NORTHEAST] = 21,
 };
 
-const u8 gTrainerFacingDirectionMovementTypes[] = {
+extern const u8 gTrainerFacingDirectionMovementTypes[] = {
     [DIR_NONE] = MOVEMENT_TYPE_FACE_DOWN,
     [DIR_SOUTH] = MOVEMENT_TYPE_FACE_DOWN,
     [DIR_NORTH] = MOVEMENT_TYPE_FACE_UP,
@@ -879,189 +879,189 @@ static const struct Coords16 sDirectionToVectors[] = {
     { 1, -1}
 };
 
-const u8 gFaceDirectionMovementActions[] = {
+extern const u8 gFaceDirectionMovementActions[] = {
     MOVEMENT_ACTION_FACE_DOWN,
     MOVEMENT_ACTION_FACE_DOWN,
     MOVEMENT_ACTION_FACE_UP,
     MOVEMENT_ACTION_FACE_LEFT,
     MOVEMENT_ACTION_FACE_RIGHT,
 };
-const u8 gWalkSlowMovementActions[] = {
+extern const u8 gWalkSlowMovementActions[] = {
     MOVEMENT_ACTION_WALK_SLOW_DOWN,
     MOVEMENT_ACTION_WALK_SLOW_DOWN,
     MOVEMENT_ACTION_WALK_SLOW_UP,
     MOVEMENT_ACTION_WALK_SLOW_LEFT,
     MOVEMENT_ACTION_WALK_SLOW_RIGHT,
 };
-const u8 gWalkNormalMovementActions[] = {
+extern const u8 gWalkNormalMovementActions[] = {
     MOVEMENT_ACTION_WALK_NORMAL_DOWN,
     MOVEMENT_ACTION_WALK_NORMAL_DOWN,
     MOVEMENT_ACTION_WALK_NORMAL_UP,
     MOVEMENT_ACTION_WALK_NORMAL_LEFT,
     MOVEMENT_ACTION_WALK_NORMAL_RIGHT,
 };
-const u8 gWalkFastMovementActions[] = {
+extern const u8 gWalkFastMovementActions[] = {
     MOVEMENT_ACTION_WALK_FAST_DOWN,
     MOVEMENT_ACTION_WALK_FAST_DOWN,
     MOVEMENT_ACTION_WALK_FAST_UP,
     MOVEMENT_ACTION_WALK_FAST_LEFT,
     MOVEMENT_ACTION_WALK_FAST_RIGHT,
 };
-const u8 gRideWaterCurrentMovementActions[] = {
+extern const u8 gRideWaterCurrentMovementActions[] = {
     MOVEMENT_ACTION_RIDE_WATER_CURRENT_DOWN,
     MOVEMENT_ACTION_RIDE_WATER_CURRENT_DOWN,
     MOVEMENT_ACTION_RIDE_WATER_CURRENT_UP,
     MOVEMENT_ACTION_RIDE_WATER_CURRENT_LEFT,
     MOVEMENT_ACTION_RIDE_WATER_CURRENT_RIGHT,
 };
-const u8 gWalkFastestMovementActions[] = {
+extern const u8 gWalkFastestMovementActions[] = {
     MOVEMENT_ACTION_WALK_FASTEST_DOWN,
     MOVEMENT_ACTION_WALK_FASTEST_DOWN,
     MOVEMENT_ACTION_WALK_FASTEST_UP,
     MOVEMENT_ACTION_WALK_FASTEST_LEFT,
     MOVEMENT_ACTION_WALK_FASTEST_RIGHT,
 };
-const u8 gSlideMovementActions[] = {
+extern const u8 gSlideMovementActions[] = {
     MOVEMENT_ACTION_SLIDE_DOWN,
     MOVEMENT_ACTION_SLIDE_DOWN,
     MOVEMENT_ACTION_SLIDE_UP,
     MOVEMENT_ACTION_SLIDE_LEFT,
     MOVEMENT_ACTION_SLIDE_RIGHT,
 };
-const u8 gPlayerRunMovementActions[] = {
+extern const u8 gPlayerRunMovementActions[] = {
     MOVEMENT_ACTION_PLAYER_RUN_DOWN,
     MOVEMENT_ACTION_PLAYER_RUN_DOWN,
     MOVEMENT_ACTION_PLAYER_RUN_UP,
     MOVEMENT_ACTION_PLAYER_RUN_LEFT,
     MOVEMENT_ACTION_PLAYER_RUN_RIGHT,
 };
-const u8 gJump2MovementActions[] = {
+extern const u8 gJump2MovementActions[] = {
     MOVEMENT_ACTION_JUMP_2_DOWN,
     MOVEMENT_ACTION_JUMP_2_DOWN,
     MOVEMENT_ACTION_JUMP_2_UP,
     MOVEMENT_ACTION_JUMP_2_LEFT,
     MOVEMENT_ACTION_JUMP_2_RIGHT,
 };
-const u8 gJumpInPlaceMovementActions[] = {
+extern const u8 gJumpInPlaceMovementActions[] = {
     MOVEMENT_ACTION_JUMP_IN_PLACE_DOWN,
     MOVEMENT_ACTION_JUMP_IN_PLACE_DOWN,
     MOVEMENT_ACTION_JUMP_IN_PLACE_UP,
     MOVEMENT_ACTION_JUMP_IN_PLACE_LEFT,
     MOVEMENT_ACTION_JUMP_IN_PLACE_RIGHT,
 };
-const u8 gJumpInPlaceTurnAroundMovementActions[] = {
+extern const u8 gJumpInPlaceTurnAroundMovementActions[] = {
     MOVEMENT_ACTION_JUMP_IN_PLACE_UP_DOWN,
     MOVEMENT_ACTION_JUMP_IN_PLACE_UP_DOWN,
     MOVEMENT_ACTION_JUMP_IN_PLACE_DOWN_UP,
     MOVEMENT_ACTION_JUMP_IN_PLACE_RIGHT_LEFT,
     MOVEMENT_ACTION_JUMP_IN_PLACE_LEFT_RIGHT,
 };
-const u8 gJumpMovementActions[] = {
+extern const u8 gJumpMovementActions[] = {
     MOVEMENT_ACTION_JUMP_DOWN,
     MOVEMENT_ACTION_JUMP_DOWN,
     MOVEMENT_ACTION_JUMP_UP,
     MOVEMENT_ACTION_JUMP_LEFT,
     MOVEMENT_ACTION_JUMP_RIGHT,
 };
-const u8 gJumpSpecialMovementActions[] = {
+extern const u8 gJumpSpecialMovementActions[] = {
     MOVEMENT_ACTION_JUMP_SPECIAL_DOWN,
     MOVEMENT_ACTION_JUMP_SPECIAL_DOWN,
     MOVEMENT_ACTION_JUMP_SPECIAL_UP,
     MOVEMENT_ACTION_JUMP_SPECIAL_LEFT,
     MOVEMENT_ACTION_JUMP_SPECIAL_RIGHT,
 };
-const u8 gWalkInPlaceSlowMovementActions[] = {
+extern const u8 gWalkInPlaceSlowMovementActions[] = {
     MOVEMENT_ACTION_WALK_IN_PLACE_SLOW_DOWN,
     MOVEMENT_ACTION_WALK_IN_PLACE_SLOW_DOWN,
     MOVEMENT_ACTION_WALK_IN_PLACE_SLOW_UP,
     MOVEMENT_ACTION_WALK_IN_PLACE_SLOW_LEFT,
     MOVEMENT_ACTION_WALK_IN_PLACE_SLOW_RIGHT,
 };
-const u8 gWalkInPlaceNormalMovementActions[] = {
+extern const u8 gWalkInPlaceNormalMovementActions[] = {
     MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_DOWN,
     MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_DOWN,
     MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_UP,
     MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_LEFT,
     MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_RIGHT,
 };
-const u8 gWalkInPlaceFastMovementActions[] = {
+extern const u8 gWalkInPlaceFastMovementActions[] = {
     MOVEMENT_ACTION_WALK_IN_PLACE_FAST_DOWN,
     MOVEMENT_ACTION_WALK_IN_PLACE_FAST_DOWN,
     MOVEMENT_ACTION_WALK_IN_PLACE_FAST_UP,
     MOVEMENT_ACTION_WALK_IN_PLACE_FAST_LEFT,
     MOVEMENT_ACTION_WALK_IN_PLACE_FAST_RIGHT,
 };
-const u8 gWalkInPlaceFastestMovementActions[] = {
+extern const u8 gWalkInPlaceFastestMovementActions[] = {
     MOVEMENT_ACTION_WALK_IN_PLACE_FASTEST_DOWN,
     MOVEMENT_ACTION_WALK_IN_PLACE_FASTEST_DOWN,
     MOVEMENT_ACTION_WALK_IN_PLACE_FASTEST_UP,
     MOVEMENT_ACTION_WALK_IN_PLACE_FASTEST_LEFT,
     MOVEMENT_ACTION_WALK_IN_PLACE_FASTEST_RIGHT,
 };
-const u8 gAcroWheelieFaceDirectionMovementActions[] = {
+extern const u8 gAcroWheelieFaceDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_WHEELIE_FACE_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_FACE_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_FACE_UP,
     MOVEMENT_ACTION_ACRO_WHEELIE_FACE_LEFT,
     MOVEMENT_ACTION_ACRO_WHEELIE_FACE_RIGHT,
 };
-const u8 gAcroPopWheelieFaceDirectionMovementActions[] = {
+extern const u8 gAcroPopWheelieFaceDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_DOWN,
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_DOWN,
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_UP,
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_LEFT,
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_RIGHT,
 };
-const u8 gAcroEndWheelieFaceDirectionMovementActions[] = {
+extern const u8 gAcroEndWheelieFaceDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_DOWN,
     MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_DOWN,
     MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_UP,
     MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_LEFT,
     MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_RIGHT,
 };
-const u8 gAcroWheelieHopFaceDirectionMovementActions[] = {
+extern const u8 gAcroWheelieHopFaceDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_FACE_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_FACE_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_FACE_UP,
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_FACE_LEFT,
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_FACE_RIGHT,
 };
-const u8 gAcroWheelieHopDirectionMovementActions[] = {
+extern const u8 gAcroWheelieHopDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_UP,
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_LEFT,
     MOVEMENT_ACTION_ACRO_WHEELIE_HOP_RIGHT,
 };
-const u8 gAcroWheelieJumpDirectionMovementActions[] = {
+extern const u8 gAcroWheelieJumpDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_WHEELIE_JUMP_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_JUMP_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_JUMP_UP,
     MOVEMENT_ACTION_ACRO_WHEELIE_JUMP_LEFT,
     MOVEMENT_ACTION_ACRO_WHEELIE_JUMP_RIGHT,
 };
-const u8 gAcroWheelieInPlaceDirectionMovementActions[] = {
+extern const u8 gAcroWheelieInPlaceDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_UP,
     MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_LEFT,
     MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_RIGHT,
 };
-const u8 gAcroPopWheelieMoveDirectionMovementActions[] = {
+extern const u8 gAcroPopWheelieMoveDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_MOVE_DOWN,
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_MOVE_DOWN,
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_MOVE_UP,
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_MOVE_LEFT,
     MOVEMENT_ACTION_ACRO_POP_WHEELIE_MOVE_RIGHT,
 };
-const u8 gAcroWheelieMoveDirectionMovementActions[] = {
+extern const u8 gAcroWheelieMoveDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_DOWN,
     MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_UP,
     MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_LEFT,
     MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_RIGHT,
 };
-const u8 gAcroEndWheelieMoveDirectionMovementActions[] = {
+extern const u8 gAcroEndWheelieMoveDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_END_WHEELIE_MOVE_DOWN,
     MOVEMENT_ACTION_ACRO_END_WHEELIE_MOVE_DOWN,
     MOVEMENT_ACTION_ACRO_END_WHEELIE_MOVE_UP,
@@ -1069,7 +1069,7 @@ const u8 gAcroEndWheelieMoveDirectionMovementActions[] = {
     MOVEMENT_ACTION_ACRO_END_WHEELIE_MOVE_RIGHT,
 };
 
-const u8 gOppositeDirections[] = {
+extern const u8 gOppositeDirections[] = {
     DIR_NORTH,
     DIR_SOUTH,
     DIR_EAST,
@@ -1080,14 +1080,14 @@ const u8 gOppositeDirections[] = {
     DIR_SOUTHWEST,
 };
 
-const u8 gUnknown_0850DC2F[][4] = {
+extern const u8 gUnknown_0850DC2F[][4] = {
     {2, 1, 4, 3},
     {1, 2, 3, 4},
     {3, 4, 2, 1},
     {4, 3, 1, 2}
 };
 
-const u8 gUnknown_0850DC3F[][4] = {
+extern const u8 gUnknown_0850DC3F[][4] = {
     {2, 1, 4, 3},
     {1, 2, 3, 4},
     {4, 3, 1, 2},
@@ -1861,7 +1861,7 @@ static void get_berry_tree_graphics(struct ObjectEvent *objectEvent, struct Spri
     }
 }
 
-const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8 graphicsId)
+extern const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8 graphicsId)
 {
     u8 bard;
 
@@ -2333,7 +2333,7 @@ static const u8 *GetObjectEventScriptPointerByLocalIdAndMap(u8 localId, u8 mapNu
     return GetObjectEventTemplateByLocalIdAndMap(localId, mapNum, mapGroup)->script;
 }
 
-const u8 *GetObjectEventScriptPointerByObjectEventId(u8 objectEventId)
+extern const u8 *GetObjectEventScriptPointerByObjectEventId(u8 objectEventId)
 {
     return GetObjectEventScriptPointerByLocalIdAndMap(gObjectEvents[objectEventId].localId, gObjectEvents[objectEventId].mapNum, gObjectEvents[objectEventId].mapGroup);
 }

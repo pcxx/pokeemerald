@@ -1715,7 +1715,7 @@ void OffsetCameraForBattle(void)
     SetCameraPanning(8, 0);
 }
 
-const struct WindowTemplate gElevatorFloor_WindowTemplate = 
+extern const struct WindowTemplate gElevatorFloor_WindowTemplate = 
 {
     .bg = 0,
     .tilemapLeft = 21,
@@ -1726,7 +1726,7 @@ const struct WindowTemplate gElevatorFloor_WindowTemplate =
     .baseBlock = 8,
 };
 
-const u8 *const gDeptStoreFloorNames[] =
+extern const u8 *const gDeptStoreFloorNames[] =
 {
     [DEPT_STORE_FLOORNUM_B4F] = gText_B4F,
     [DEPT_STORE_FLOORNUM_B3F] = gText_B3F,
@@ -1921,7 +1921,7 @@ void ShowDeptStoreElevatorFloorSelect(void)
     CopyWindowToVram(sTutorMoveAndElevatorWindowId, 3);
 }
 
-void CloseDeptStoreElevatorWindow(void)
+extern "C" void CloseDeptStoreElevatorWindow(void)
 {
     ClearStdWindowAndFrameToTransparent(sTutorMoveAndElevatorWindowId, TRUE);
     RemoveWindow(sTutorMoveAndElevatorWindowId);

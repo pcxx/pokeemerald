@@ -43,7 +43,7 @@ static const union AnimCmd *const sSpriteAnimTable_853EDF8[] =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_0853EDFC =
+extern const struct SpriteTemplate gUnknown_0853EDFC =
 {
     .tileTag = ANIM_TAG_ORB,
     .paletteTag = ANIM_TAG_ORB,
@@ -55,7 +55,7 @@ const struct SpriteTemplate gUnknown_0853EDFC =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_0853EE14 =
+extern const struct SpriteTemplate gUnknown_0853EE14 =
 {
     .tileTag = ANIM_TAG_ORB,
     .paletteTag = ANIM_TAG_ORB,
@@ -77,7 +77,7 @@ static const union AnimCmd *const sAnims_WeatherBallNormal[] =
     sAnim_WeatherBallNormal
 };
 
-const struct SpriteTemplate gWeatherBallUpSpriteTemplate =
+extern const struct SpriteTemplate gWeatherBallUpSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WEATHER_BALL,
     .paletteTag = ANIM_TAG_WEATHER_BALL,
@@ -88,7 +88,7 @@ const struct SpriteTemplate gWeatherBallUpSpriteTemplate =
     .callback = AnimWeatherBallUp,
 };
 
-const struct SpriteTemplate gWeatherBallNormalDownSpriteTemplate =
+extern const struct SpriteTemplate gWeatherBallNormalDownSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WEATHER_BALL,
     .paletteTag = ANIM_TAG_WEATHER_BALL,
@@ -114,7 +114,7 @@ static const union AnimCmd *const sSpriteAnimTable_853EE80[] =
     sSpriteAnim_853EE68
 };
 
-const struct SpriteTemplate gSpinningSparkleSpriteTemplate =
+extern const struct SpriteTemplate gSpinningSparkleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARKLE_4,
     .paletteTag = ANIM_TAG_SPARKLE_4,
@@ -126,7 +126,7 @@ const struct SpriteTemplate gSpinningSparkleSpriteTemplate =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_0853EE9C =
+extern const struct SpriteTemplate gUnknown_0853EE9C =
 {
     .tileTag = ANIM_TAG_MONSTER_FOOT,
     .paletteTag = ANIM_TAG_MONSTER_FOOT,
@@ -163,7 +163,7 @@ static const union AnimCmd *const sSpriteAnimTable_853EECC[] =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_0853EED8 =
+extern const struct SpriteTemplate gUnknown_0853EED8 =
 {
     .tileTag = ANIM_TAG_IMPACT,
     .paletteTag = ANIM_TAG_IMPACT,
@@ -197,7 +197,7 @@ static const union AffineAnimCmd *const sSpriteAffineAnimTable_853EEF8[] =
     sSpriteAffineAnim_853EEFC
 };
 
-const struct SpriteTemplate gUnknown_0853EF18 =
+extern const struct SpriteTemplate gUnknown_0853EF18 =
 {
     .tileTag = ANIM_TAG_ORB,
     .paletteTag = ANIM_TAG_ORB,
@@ -380,7 +380,7 @@ static void sub_80A9E78(struct Sprite *sprite)
     }
 }
 
-void AnimTask_FrozenIceCube(u8 taskId)
+extern "C" void AnimTask_FrozenIceCube(u8 taskId)
 {
     s16 x = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) - 32;
     s16 y = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) - 36;
@@ -483,7 +483,7 @@ static void AnimTask_FrozenIceCube_Step4(u8 taskId)
 
 #define CASE(by, stat) case (STAT_ANIM_##by + stat - 1)
 
-void AnimTask_StatsChange(u8 taskId)
+extern "C" void AnimTask_StatsChange(u8 taskId)
 {
     bool16 goesDown = FALSE;
     s16 animStatId = 0;

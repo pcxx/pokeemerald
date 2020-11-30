@@ -154,7 +154,7 @@ static const u8 sBasePaletteGammaTypes[32] =
     GAMMA_NORMAL,
 };
 
-const u16 gUnknown_083970E8[] = INCBIN_U16("graphics/weather/0.gbapal");
+extern const u16 gUnknown_083970E8[] = INCBIN_U16("graphics/weather/0.gbapal");
 
 // code
 void StartWeather(void)

@@ -668,7 +668,7 @@ void TryPrepareSecondApproachingTrainer(void)
 #define sData4      data[4]
 #define sFldEffId   data[7]
 
-u8 FldEff_ExclamationMarkIcon(void)
+extern "C" u8 FldEff_ExclamationMarkIcon(void)
 {
     u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
 
@@ -678,7 +678,7 @@ u8 FldEff_ExclamationMarkIcon(void)
     return 0;
 }
 
-u8 FldEff_QuestionMarkIcon(void)
+extern "C" u8 FldEff_QuestionMarkIcon(void)
 {
     u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x52);
 
@@ -688,7 +688,7 @@ u8 FldEff_QuestionMarkIcon(void)
     return 0;
 }
 
-u8 FldEff_HeartIcon(void)
+extern "C" u8 FldEff_HeartIcon(void)
 {
     u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_HeartIcon, 0, 0, 0x52);
 

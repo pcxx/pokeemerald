@@ -53,11 +53,11 @@ static void DrawHelpBar(u32 windowId);
 static void SpriteCB_SpinningPokenav(struct Sprite* sprite);
 static u32 LoopedTask_InitPokenavMenu(s32 a0);
 
-const u16 gSpinningPokenavPaletteData[] = INCBIN_U16("graphics/pokenav/icon2.gbapal");
-const u32 gSpinningPokenavGfx[] = INCBIN_U32("graphics/pokenav/icon2.4bpp.lz");
-const u32 gUnused_SpinningPokenavGfx2[] = INCBIN_U32("graphics/pokenav/icon2_unused.4bpp.lz");
+extern const u16 gSpinningPokenavPaletteData[] = INCBIN_U16("graphics/pokenav/icon2.gbapal");
+extern const u32 gSpinningPokenavGfx[] = INCBIN_U32("graphics/pokenav/icon2.4bpp.lz");
+extern const u32 gUnused_SpinningPokenavGfx2[] = INCBIN_U32("graphics/pokenav/icon2_unused.4bpp.lz");
 
-const struct BgTemplate gPokenavMainMenuBgTemplates[] =
+extern const struct BgTemplate gPokenavMainMenuBgTemplates[] =
 {
     {
         .bg = 0,

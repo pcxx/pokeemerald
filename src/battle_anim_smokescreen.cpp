@@ -13,7 +13,7 @@ static void SpriteCB_DestroySprite(struct Sprite *sprite);
 
 // The below data for smokescreen starts and ends with some data that belongs to battle_gfx_sfx_util.c
 
-const u8 gBattlePalaceNatureToMoveTarget[NUM_NATURES] = 
+extern const u8 gBattlePalaceNatureToMoveTarget[NUM_NATURES] = 
 {
     [NATURE_HARDY]   = PALACE_TARGET_STRONGER,
     [NATURE_LONELY]  = PALACE_TARGET_STRONGER,
@@ -120,7 +120,7 @@ static const struct SpriteTemplate sSmokescreenImpactSpriteTemplate =
     .callback = SpriteCB_DestroySprite
 };
 
-const struct CompressedSpriteSheet gSpriteSheet_EnemyShadow =
+extern const struct CompressedSpriteSheet gSpriteSheet_EnemyShadow =
 {
     .data = gEnemyMonShadow_Gfx, .size = 0x80, .tag = 55129
 };
@@ -142,7 +142,7 @@ static const struct OamData gUnknown_0831C6A8 =
     .affineParam = 0
 };
 
-const struct SpriteTemplate gSpriteTemplate_EnemyShadow =
+extern const struct SpriteTemplate gSpriteTemplate_EnemyShadow =
 {
     .tileTag = 55129, 
     .paletteTag = 55039, 

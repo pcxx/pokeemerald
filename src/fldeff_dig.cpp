@@ -35,7 +35,7 @@ static void FieldCallback_Dig(void)
     gFieldEffectArguments[0] = GetCursorSelectionMonId();
 }
 
-bool8 FldEff_UseDig(void)
+extern "C" bool8 FldEff_UseDig(void)
 {
     u8 taskId = CreateFieldMoveTask();
 

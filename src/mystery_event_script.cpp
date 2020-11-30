@@ -161,13 +161,13 @@ u16 GetRecordMixingGift(void)
     }
 }
 
-bool8 MEScrCmd_end(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_end(struct ScriptContext *ctx)
 {
     StopScript(ctx);
     return TRUE;
 }
 
-bool8 MEScrCmd_checkcompat(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_checkcompat(struct ScriptContext *ctx)
 {
     u16 v1;
     u32 v2;
@@ -188,19 +188,19 @@ bool8 MEScrCmd_checkcompat(struct ScriptContext *ctx)
     return TRUE;
 }
 
-bool8 MEScrCmd_nop(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_nop(struct ScriptContext *ctx)
 {
     return FALSE;
 }
 
-bool8 MEScrCmd_setstatus(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_setstatus(struct ScriptContext *ctx)
 {
     u8 value = ScriptReadByte(ctx);
     ctx->data[2] = value;
     return FALSE;
 }
 
-bool8 MEScrCmd_setmsg(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_setmsg(struct ScriptContext *ctx)
 {
     u8 value = ScriptReadByte(ctx);
     u8 *str = (u8 *)(ScriptReadWord(ctx) - ctx->data[1] + ctx->data[0]);
@@ -209,14 +209,14 @@ bool8 MEScrCmd_setmsg(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_runscript(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_runscript(struct ScriptContext *ctx)
 {
     u8 *script = (u8 *)(ScriptReadWord(ctx) - ctx->data[1] + ctx->data[0]);
     ScriptContext2_RunNewScript(script);
     return FALSE;
 }
 
-bool8 MEScrCmd_setenigmaberry(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_setenigmaberry(struct ScriptContext *ctx)
 {
     u8 *str;
     const u8 *message;
@@ -254,7 +254,7 @@ bool8 MEScrCmd_setenigmaberry(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_giveribbon(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_giveribbon(struct ScriptContext *ctx)
 {
     u8 index = ScriptReadByte(ctx);
     u8 ribbonId = ScriptReadByte(ctx);
@@ -264,7 +264,7 @@ bool8 MEScrCmd_giveribbon(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_initramscript(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_initramscript(struct ScriptContext *ctx)
 {
     u8 mapGroup = ScriptReadByte(ctx);
     u8 mapNum = ScriptReadByte(ctx);
@@ -275,7 +275,7 @@ bool8 MEScrCmd_initramscript(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_givenationaldex(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_givenationaldex(struct ScriptContext *ctx)
 {
     EnableNationalPokedex();
     StringExpandPlaceholders(gStringVar4, gText_MysteryGiftNationalDex);
@@ -283,7 +283,7 @@ bool8 MEScrCmd_givenationaldex(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_addrareword(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_addrareword(struct ScriptContext *ctx)
 {
     UnlockAdditionalPhrase(ScriptReadByte(ctx));
     StringExpandPlaceholders(gStringVar4, gText_MysteryGiftRareWord);
@@ -291,7 +291,7 @@ bool8 MEScrCmd_addrareword(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_setrecordmixinggift(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_setrecordmixinggift(struct ScriptContext *ctx)
 {
     u8 unk = ScriptReadByte(ctx);
     u8 quantity = ScriptReadByte(ctx);
@@ -300,7 +300,7 @@ bool8 MEScrCmd_setrecordmixinggift(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_givepokemon(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_givepokemon(struct ScriptContext *ctx)
 {
     struct MailStruct mail;
     struct Pokemon pokemon;
@@ -347,7 +347,7 @@ bool8 MEScrCmd_givepokemon(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_addtrainer(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_addtrainer(struct ScriptContext *ctx)
 {
     u32 data = ScriptReadWord(ctx) - ctx->data[1] + ctx->data[0];
     memcpy((void*)(gSaveBlock2Ptr + 0xBEC), (void *)data, 0xBC);
@@ -357,7 +357,7 @@ bool8 MEScrCmd_addtrainer(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_enableresetrtc(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_enableresetrtc(struct ScriptContext *ctx)
 {
     EnableResetRTC();
     StringExpandPlaceholders(gStringVar4, gText_InGameClockUsable);
@@ -365,7 +365,7 @@ bool8 MEScrCmd_enableresetrtc(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_checksum(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_checksum(struct ScriptContext *ctx)
 {
     int checksum = ScriptReadWord(ctx);
     u8 *data = (u8 *)(ScriptReadWord(ctx) - ctx->data[1] + ctx->data[0]);
@@ -378,7 +378,7 @@ bool8 MEScrCmd_checksum(struct ScriptContext *ctx)
     return TRUE;
 }
 
-bool8 MEScrCmd_crc(struct ScriptContext *ctx)
+extern "C" bool8 MEScrCmd_crc(struct ScriptContext *ctx)
 {
     int crc = ScriptReadWord(ctx);
     u8 *data = (u8 *)(ScriptReadWord(ctx) - ctx->data[1] + ctx->data[0]);

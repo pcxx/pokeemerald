@@ -66,8 +66,8 @@ const u8 sTextColorTable[][3] = {
     {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY},
     {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GREY}
 };
-const u8 ALIGNED(4) gUnknown_082F0E18[3] = {7, 4, 7};
-const struct WindowTemplate gUnknown_082F0E1C[] = {
+extern const u8 ALIGNED(4) gUnknown_082F0E18[3] = {7, 4, 7};
+extern const struct WindowTemplate gUnknown_082F0E1C[] = {
     {
         .bg = 1,
         .tilemapLeft = 1,
@@ -95,38 +95,38 @@ const struct WindowTemplate gUnknown_082F0E1C[] = {
     }
 };
 
-const u16 gWonderCardBgPal1[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_1.gbapal");
-const u16 gWonderCardBgPal2[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_2.gbapal");
-const u16 gWonderCardBgPal3[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_3.gbapal");
-const u16 gWonderCardBgPal4[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_4.gbapal");
-const u16 gWonderCardBgPal5[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_5.gbapal");
-const u16 gWonderCardBgPal6[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_6.gbapal");
-const u16 gWonderCardBgPal7[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_7.gbapal");
-const u16 gWonderCardBgPal8[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_8.gbapal");
-const u32 gWonderCardBgGfx1[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_1.4bpp.lz");
-const u32 gWonderCardBgTilemap1[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_1.bin.lz");
-const u32 gWonderCardBgGfx2[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_2.4bpp.lz");
-const u32 gWonderCardBgTilemap2[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_2.bin.lz");
-const u32 gWonderCardBgGfx3[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_3.4bpp.lz");
-const u32 gWonderCardBgTilemap3[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_3.bin.lz");
-const u32 gWonderCardBgGfx7[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_7.4bpp.lz");
-const u32 gWonderCardBgTilemap7[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_7.bin.lz");
-const u32 gWonderCardBgGfx8[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_8.4bpp.lz");
-const u32 gWonderCardBgTilemap8[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_8.bin.lz");
-const u16 gWonderCardShadowPal1[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_1.gbapal");
-const u16 gWonderCardShadowPal2[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_2.gbapal");
-const u16 gWonderCardShadowPal3[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_3.gbapal");
-const u16 gWonderCardShadowPal4[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_4.gbapal");
-const u16 gWonderCardShadowPal5[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_5.gbapal");
-const u16 gWonderCardShadowPal6[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_6.gbapal");
-const u16 gWonderCardShadowPal7[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_7.gbapal");
-const u16 gWonderCardShadowPal8[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_8.gbapal");
-const u32 gWonderCardShadowGfx[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_shadow.4bpp.lz");
+extern const u16 gWonderCardBgPal1[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_1.gbapal");
+extern const u16 gWonderCardBgPal2[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_2.gbapal");
+extern const u16 gWonderCardBgPal3[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_3.gbapal");
+extern const u16 gWonderCardBgPal4[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_4.gbapal");
+extern const u16 gWonderCardBgPal5[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_5.gbapal");
+extern const u16 gWonderCardBgPal6[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_6.gbapal");
+extern const u16 gWonderCardBgPal7[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_7.gbapal");
+extern const u16 gWonderCardBgPal8[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_8.gbapal");
+extern const u32 gWonderCardBgGfx1[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_1.4bpp.lz");
+extern const u32 gWonderCardBgTilemap1[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_1.bin.lz");
+extern const u32 gWonderCardBgGfx2[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_2.4bpp.lz");
+extern const u32 gWonderCardBgTilemap2[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_2.bin.lz");
+extern const u32 gWonderCardBgGfx3[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_3.4bpp.lz");
+extern const u32 gWonderCardBgTilemap3[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_3.bin.lz");
+extern const u32 gWonderCardBgGfx7[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_7.4bpp.lz");
+extern const u32 gWonderCardBgTilemap7[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_7.bin.lz");
+extern const u32 gWonderCardBgGfx8[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_8.4bpp.lz");
+extern const u32 gWonderCardBgTilemap8[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_8.bin.lz");
+extern const u16 gWonderCardShadowPal1[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_1.gbapal");
+extern const u16 gWonderCardShadowPal2[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_2.gbapal");
+extern const u16 gWonderCardShadowPal3[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_3.gbapal");
+extern const u16 gWonderCardShadowPal4[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_4.gbapal");
+extern const u16 gWonderCardShadowPal5[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_5.gbapal");
+extern const u16 gWonderCardShadowPal6[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_6.gbapal");
+extern const u16 gWonderCardShadowPal7[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_7.gbapal");
+extern const u16 gWonderCardShadowPal8[] = INCBIN_U16("graphics/wonder_transfers/wonder_card_shadow_8.gbapal");
+extern const u32 gWonderCardShadowGfx[] = INCBIN_U32("graphics/wonder_transfers/wonder_card_shadow.4bpp.lz");
 
-const struct CompressedSpriteSheet gUnknown_082F1D00 = {
+extern const struct CompressedSpriteSheet gUnknown_082F1D00 = {
     gWonderCardShadowGfx, 0x100, 0x8000
 };
-const struct SpritePalette gUnknown_082F1D08[] = {
+extern const struct SpritePalette gUnknown_082F1D08[] = {
     {gWonderCardShadowPal1, 0x8000},
     {gWonderCardShadowPal2, 0x8000},
     {gWonderCardShadowPal3, 0x8000},
@@ -136,10 +136,10 @@ const struct SpritePalette gUnknown_082F1D08[] = {
     {gWonderCardShadowPal7, 0x8000},
     {gWonderCardShadowPal8, 0x8000}
 };
-const struct SpriteTemplate gUnknown_082F1D48 = {
+extern const struct SpriteTemplate gUnknown_082F1D48 = {
     0x8000, 0x8000, &gOamData_AffineOff_ObjNormal_32x16, gDummySpriteAnimTable, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy
 };
-const struct UnkStruct_8467FB8 gUnknown_082F1D60[8] = {
+extern const struct UnkStruct_8467FB8 gUnknown_082F1D60[8] = {
     {1, 0, 0, 0, gWonderCardBgGfx1, gWonderCardBgTilemap1, gWonderCardBgPal1},
     {1, 0, 0, 1, gWonderCardBgGfx2, gWonderCardBgTilemap2, gWonderCardBgPal2},
     {1, 0, 0, 2, gWonderCardBgGfx3, gWonderCardBgTilemap3, gWonderCardBgPal3},
@@ -490,11 +490,11 @@ void sub_801CDCC(void);
 void sub_801CE7C(void);
 void sub_801CFA4(void);
 
-const u8 gUnknown_082F1DE0[][3] = {
+extern const u8 gUnknown_082F1DE0[][3] = {
     {0, 2, 3},
     {0, 1, 2}
 };
-const struct WindowTemplate gUnknown_082F1DE8[] = {
+extern const struct WindowTemplate gUnknown_082F1DE8[] = {
     {
         .bg = 0,
         .tilemapLeft = 1,
@@ -513,25 +513,25 @@ const struct WindowTemplate gUnknown_082F1DE8[] = {
         .baseBlock = 0x07C
     }
 };
-const struct ScrollArrowsTemplate gUnknown_082F1DF8 = {
+extern const struct ScrollArrowsTemplate gUnknown_082F1DF8 = {
     0x02, 0xe8, 0x18, 0x03, 0xe8, 0x98,
     0x0000, 0x0002, 0x1000, 0x1000, 0x0
 };
-const u16 gWonderNewsPal1[] = INCBIN_U16("graphics/wonder_transfers/wonder_news_1.gbapal");
-const u16 gWonderNewsPal7[] = INCBIN_U16("graphics/wonder_transfers/wonder_news_7.gbapal");
-const u16 gWonderNewsPal8[] = INCBIN_U16("graphics/wonder_transfers/wonder_news_8.gbapal");
-const u32 gWonderNewsGfx1[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_1.4bpp.lz");
-const u32 gWonderNewsTilemap1[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_1.bin.lz");
-const u32 gWonderNewsGfx2[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_2.4bpp.lz");
-const u32 gWonderNewsTilemap2[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_2.bin.lz");
-const u32 gWonderNewsGfx3[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_3.4bpp.lz");
-const u32 gWonderNewsTilemap3[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_3.bin.lz");
-const u32 gWonderNewsGfx7[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_7.4bpp.lz");
-const u32 gWonderNewsTilemap7[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_7.bin.lz");
-const u32 gWonderNewsGfx8[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_8.4bpp.lz");
-const u32 gWonderNewsTilemap8[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_8.bin.lz");
+extern const u16 gWonderNewsPal1[] = INCBIN_U16("graphics/wonder_transfers/wonder_news_1.gbapal");
+extern const u16 gWonderNewsPal7[] = INCBIN_U16("graphics/wonder_transfers/wonder_news_7.gbapal");
+extern const u16 gWonderNewsPal8[] = INCBIN_U16("graphics/wonder_transfers/wonder_news_8.gbapal");
+extern const u32 gWonderNewsGfx1[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_1.4bpp.lz");
+extern const u32 gWonderNewsTilemap1[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_1.bin.lz");
+extern const u32 gWonderNewsGfx2[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_2.4bpp.lz");
+extern const u32 gWonderNewsTilemap2[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_2.bin.lz");
+extern const u32 gWonderNewsGfx3[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_3.4bpp.lz");
+extern const u32 gWonderNewsTilemap3[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_3.bin.lz");
+extern const u32 gWonderNewsGfx7[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_7.4bpp.lz");
+extern const u32 gWonderNewsTilemap7[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_7.bin.lz");
+extern const u32 gWonderNewsGfx8[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_8.4bpp.lz");
+extern const u32 gWonderNewsTilemap8[] = INCBIN_U32("graphics/wonder_transfers/wonder_news_8.bin.lz");
 
-const struct UnkStruct_8467FB8 gUnknown_082F24C8[] = {
+extern const struct UnkStruct_8467FB8 gUnknown_082F24C8[] = {
     {1, 0, 0, 0, gWonderNewsGfx1, gWonderNewsTilemap1, gWonderNewsPal1},
     {1, 0, 0, 0, gWonderNewsGfx2, gWonderNewsTilemap2, gWonderCardBgPal2},
     {1, 0, 0, 0, gWonderNewsGfx3, gWonderNewsTilemap3, gWonderCardBgPal3},

@@ -225,8 +225,8 @@ static const struct SpriteTemplate sSpriteTemplate_SecretPowerShrub =
     .callback = SpriteCB_ShrubEntranceInit,
 };
 
-const struct SpritePalette gSpritePalette_SecretPower_Cave = {sSecretPowerCave_Pal, FLDEFF_PAL_TAG_SECRET_POWER_TREE};
-const struct SpritePalette gSpritePalette_SecretPower_Plant = {sSecretPowerPlant_Pal, FLDEFF_PAL_TAG_SECRET_POWER_PLANT};
+extern const struct SpritePalette gSpritePalette_SecretPower_Cave = {sSecretPowerCave_Pal, FLDEFF_PAL_TAG_SECRET_POWER_TREE};
+extern const struct SpritePalette gSpritePalette_SecretPower_Plant = {sSecretPowerPlant_Pal, FLDEFF_PAL_TAG_SECRET_POWER_PLANT};
 
 static const struct OamData sOam_SandPillar =
 {
@@ -271,7 +271,7 @@ static const struct SpriteTemplate sSpriteTemplate_SandPillar =
     .callback = SpriteCB_SandPillar_BreakTop,
 };
 
-const struct SpritePalette gSpritePalette_SandPillar = {gTilesetPalettes_SecretBase[5], FLDEFF_PAL_TAG_SAND_PILLAR};
+extern const struct SpritePalette gSpritePalette_SandPillar = {gTilesetPalettes_SecretBase[5], FLDEFF_PAL_TAG_SAND_PILLAR};
 
 static const u8 sRecordMixLights_Gfx[] = INCBIN_U8("graphics/field_effects/pics/record_mix_lights.4bpp");
 static const u16 sRecordMixLights_Pal[] = INCBIN_U16("graphics/field_effects/palettes/record_mix_lights.gbapal");
@@ -590,7 +590,7 @@ static void FieldCallback_SecretBaseCave(void)
     ScriptContext1_SetupScript(SecretBase_EventScript_CaveUseSecretPower);
 }
 
-bool8 FldEff_UseSecretPowerCave(void)
+extern "C" bool8 FldEff_UseSecretPowerCave(void)
 {
     u8 taskId = CreateFieldMoveTask();
 
@@ -606,7 +606,7 @@ static void StartSecretBaseCaveFieldEffect(void)
     FieldEffectStart(FLDEFF_SECRET_POWER_CAVE);
 }
 
-bool8 FldEff_SecretPowerCave(void)
+extern "C" bool8 FldEff_SecretPowerCave(void)
 {
     AdjustSecretPowerSpritePixelOffsets();
     CreateSprite(&sSpriteTemplate_SecretPowerCave,
@@ -650,7 +650,7 @@ static void FieldCallback_SecretBaseTree(void)
     ScriptContext1_SetupScript(SecretBase_EventScript_TreeUseSecretPower);
 }
 
-bool8 FldEff_UseSecretPowerTree(void)
+extern "C" bool8 FldEff_UseSecretPowerTree(void)
 {
     u8 taskId = CreateFieldMoveTask();
 
@@ -666,7 +666,7 @@ static void StartSecretBaseTreeFieldEffect(void)
     FieldEffectStart(FLDEFF_SECRET_POWER_TREE);
 }
 
-bool8 FldEff_SecretPowerTree(void)
+extern "C" bool8 FldEff_SecretPowerTree(void)
 {
     s16 mb = MapGridGetMetatileBehaviorAt(gPlayerFacingPosition.x, gPlayerFacingPosition.y) & 0xFFF;
 
@@ -724,7 +724,7 @@ static void FieldCallback_SecretBaseShrub(void)
     ScriptContext1_SetupScript(SecretBase_EventScript_ShrubUseSecretPower);
 }
 
-bool8 FldEff_UseSecretPowerShrub(void)
+extern "C" bool8 FldEff_UseSecretPowerShrub(void)
 {
     u8 taskId = CreateFieldMoveTask();
 
@@ -740,7 +740,7 @@ static void StartSecretBaseShrubFieldEffect(void)
     FieldEffectStart(FLDEFF_SECRET_POWER_SHRUB);
 }
 
-bool8 FldEff_SecretPowerShrub(void)
+extern "C" bool8 FldEff_SecretPowerShrub(void)
 {
     AdjustSecretPowerSpritePixelOffsets();
 
@@ -786,7 +786,7 @@ static void SpriteCB_ShrubEntranceEnd(struct Sprite *sprite)
 #define tY     data[1]
 #define tState data[2]
 
-bool8 FldEff_SecretBasePCTurnOn(void)
+extern "C" bool8 FldEff_SecretBasePCTurnOn(void)
 {
     s16 x, y;
     u8 taskId;
@@ -902,12 +902,12 @@ static void DoBalloonSoundEffect(s16 metatileId)
     }
 }
 
-bool8 FldEff_Nop47(void)
+extern "C" bool8 FldEff_Nop47(void)
 {
     return FALSE;
 }
 
-bool8 FldEff_Nop48(void)
+extern "C" bool8 FldEff_Nop48(void)
 {
     return FALSE;
 }
@@ -1031,7 +1031,7 @@ void DoSecretBaseGlitterMatSparkle(void)
     }
 }
 
-bool8 FldEff_SandPillar(void)
+extern "C" bool8 FldEff_SandPillar(void)
 {
     s16 x, y;
 

@@ -57,7 +57,7 @@ mplayFn gMPlayJumpTableTemplate[] =
 };
 
 // This is a table of deltas between sample values in compressed PCM data.
-const s8 gDeltaEncodingTable[] =
+extern const s8 gDeltaEncodingTable[] =
 {
       0,
       1,
@@ -77,7 +77,7 @@ const s8 gDeltaEncodingTable[] =
      -1,
 };
 
-const u8 gScaleTable[] =
+extern const u8 gScaleTable[] =
 {
     0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB,
     0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0xD5, 0xD6, 0xD7, 0xD8, 0xD9, 0xDA, 0xDB,
@@ -96,7 +96,7 @@ const u8 gScaleTable[] =
     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B,
 };
 
-const u32 gFreqTable[12] =
+extern const u32 gFreqTable[12] =
 {
     2147483648u,
     2275179671u,
@@ -112,7 +112,7 @@ const u32 gFreqTable[12] =
     4053909305u,
 };
 
-const u16 gPcmSamplesPerVBlankTable[12] =
+extern const u16 gPcmSamplesPerVBlankTable[12] =
 {
     96,
     132,
@@ -128,7 +128,7 @@ const u16 gPcmSamplesPerVBlankTable[12] =
     704,
 };
 
-const u8 gCgbScaleTable[] =
+extern const u8 gCgbScaleTable[] =
 {
     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B,
     0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B,
@@ -143,7 +143,7 @@ const u8 gCgbScaleTable[] =
     0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB,
 };
 
-const s16 gCgbFreqTable[12] =
+extern const s16 gCgbFreqTable[12] =
 {
     -2004,
     -1891,
@@ -159,7 +159,7 @@ const s16 gCgbFreqTable[12] =
     -1062,
 };
 
-const u8 gNoiseTable[] =
+extern const u8 gNoiseTable[] =
 {
     0xD7, 0xD6, 0xD5, 0xD4,
     0xC7, 0xC6, 0xC5, 0xC4,
@@ -178,7 +178,7 @@ const u8 gNoiseTable[] =
     0x03, 0x02, 0x01, 0x00,
 };
 
-const u8 gCgb3Vol[] =
+extern const u8 gCgb3Vol[] =
 {
     0x00, 0x00,
     0x60, 0x60, 0x60, 0x60,
@@ -187,7 +187,7 @@ const u8 gCgb3Vol[] =
     0x20, 0x20,
 };
 
-const u8 gClockTable[] =
+extern const u8 gClockTable[] =
 {
     0x00,
     0x01,
@@ -268,7 +268,7 @@ const u8 gClockTable[] =
 #define EOT    0xce
 #define TIE    0xcf
 
-const struct PokemonCrySong gPokemonCrySongTemplate =
+extern const struct PokemonCrySong gPokemonCrySongTemplate =
 {
     1, // track count
     0, // block count
@@ -301,7 +301,7 @@ const struct PokemonCrySong gPokemonCrySongTemplate =
     {EOT, FINE} // end
 };
 
-const XcmdFunc gXcmdTable[] =
+extern const XcmdFunc gXcmdTable[] =
 {
     ply_xxx,
     ply_xwave,

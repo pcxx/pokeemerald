@@ -37,7 +37,7 @@ static void AnimSkyAttackBird_Step(struct Sprite *);
 static void AnimTask_AnimateGustTornadoPalette_Step(u8);
 
 
-const struct SpriteTemplate gEllipticalGustSpriteTemplate =
+extern const struct SpriteTemplate gEllipticalGustSpriteTemplate =
 {
     .tileTag = ANIM_TAG_GUST,
     .paletteTag = ANIM_TAG_GUST,
@@ -60,7 +60,7 @@ static const union AffineAnimCmd *const sAffineAnims_GustToTarget[] =
     sAffineAnim_GustToTarget,
 };
 
-const struct SpriteTemplate gGustToTargetSpriteTemplate =
+extern const struct SpriteTemplate gGustToTargetSpriteTemplate =
 {
     .tileTag = ANIM_TAG_GUST,
     .paletteTag = ANIM_TAG_GUST,
@@ -85,7 +85,7 @@ static const union AnimCmd *const sAffineAnims_AirWaveCrescent[] =
     sAffineAnim_AirWaveCrescent,
 };
 
-const struct SpriteTemplate gAirWaveCrescentSpriteTemplate =
+extern const struct SpriteTemplate gAirWaveCrescentSpriteTemplate =
 {
     .tileTag = ANIM_TAG_AIR_WAVE_2,
     .paletteTag = ANIM_TAG_AIR_WAVE_2,
@@ -128,7 +128,7 @@ static const union AffineAnimCmd *const sAffineAnims_FlyBallAttack[] =
     sAffineAnim_FlyBallAttack_1,
 };
 
-const struct SpriteTemplate gFlyBallUpSpriteTemplate =
+extern const struct SpriteTemplate gFlyBallUpSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROUND_SHADOW,
     .paletteTag = ANIM_TAG_ROUND_SHADOW,
@@ -139,7 +139,7 @@ const struct SpriteTemplate gFlyBallUpSpriteTemplate =
     .callback = AnimFlyBallUp,
 };
 
-const struct SpriteTemplate gFlyBallAttackSpriteTemplate =
+extern const struct SpriteTemplate gFlyBallAttackSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROUND_SHADOW,
     .paletteTag = ANIM_TAG_ROUND_SHADOW,
@@ -168,7 +168,7 @@ static const union AnimCmd *const sAnims_FallingFeather[] =
     sAnim_FallingFeather_1,
 };
 
-const struct SpriteTemplate gFallingFeatherSpriteTemplate =
+extern const struct SpriteTemplate gFallingFeatherSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WHITE_FEATHER,
     .paletteTag = ANIM_TAG_WHITE_FEATHER,
@@ -179,7 +179,7 @@ const struct SpriteTemplate gFallingFeatherSpriteTemplate =
     .callback = AnimFallingFeather,
 };
 
-const struct SpriteTemplate gUnknown_085963A0 =
+extern const struct SpriteTemplate gUnknown_085963A0 =
 {
     .tileTag = ANIM_TAG_SMALL_BUBBLES,
     .paletteTag = ANIM_TAG_SMALL_BUBBLES,
@@ -205,7 +205,7 @@ static const union AnimCmd *const sAnims_WhirlwindLines[] =
     sAnim_WhirlwindLines,
 };
 
-const struct SpriteTemplate gWhirlwindLineSpriteTemplate =
+extern const struct SpriteTemplate gWhirlwindLineSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WHIRLWIND_LINES,
     .paletteTag = ANIM_TAG_WHIRLWIND_LINES,
@@ -231,7 +231,7 @@ static const union AffineAnimCmd *const sAffineAnims_BounceBallShrink[] =
     sAffineAnim_BounceBallShrink,
 };
 
-const struct SpriteTemplate gBounceBallShrinkSpriteTemplate =
+extern const struct SpriteTemplate gBounceBallShrinkSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROUND_SHADOW,
     .paletteTag = ANIM_TAG_ROUND_SHADOW,
@@ -253,7 +253,7 @@ static const union AffineAnimCmd *const sAffineAnims_BounceBallLand[] =
     sAffineAnim_BounceBallLand,
 };
 
-const struct SpriteTemplate gBounceBallLandSpriteTemplate =
+extern const struct SpriteTemplate gBounceBallLandSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROUND_SHADOW,
     .paletteTag = ANIM_TAG_ROUND_SHADOW,
@@ -278,7 +278,7 @@ static const union AffineAnimCmd *const sAffineAnims_DiveBall[] =
     sAffineAnim_DiveBall,
 };
 
-const struct SpriteTemplate gDiveBallSpriteTemplate =
+extern const struct SpriteTemplate gDiveBallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROUND_SHADOW,
     .paletteTag = ANIM_TAG_ROUND_SHADOW,
@@ -303,7 +303,7 @@ static const union AffineAnimCmd *const gUnknown_085964C8[] =
     gUnknown_085964A8,
 };
 
-const struct SpriteTemplate gDiveWaterSplashSpriteTemplate =
+extern const struct SpriteTemplate gDiveWaterSplashSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPLASH,
     .paletteTag = ANIM_TAG_SPLASH,
@@ -314,7 +314,7 @@ const struct SpriteTemplate gDiveWaterSplashSpriteTemplate =
     .callback = AnimDiveWaterSplash,
 };
 
-const struct SpriteTemplate gSprayWaterDropletSpriteTemplate =
+extern const struct SpriteTemplate gSprayWaterDropletSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SWEAT_BEAD,
     .paletteTag = ANIM_TAG_SWEAT_BEAD,
@@ -325,7 +325,7 @@ const struct SpriteTemplate gSprayWaterDropletSpriteTemplate =
     .callback = AnimSprayWaterDroplet,
 };
 
-const struct SpriteTemplate gUnknown_085964FC =
+extern const struct SpriteTemplate gUnknown_085964FC =
 {
     .tileTag = ANIM_TAG_CIRCLE_OF_LIGHT,
     .paletteTag = ANIM_TAG_CIRCLE_OF_LIGHT,
@@ -336,7 +336,7 @@ const struct SpriteTemplate gUnknown_085964FC =
     .callback = sub_810F004,
 };
 
-const struct SpriteTemplate gSkyAttackBirdSpriteTemplate =
+extern const struct SpriteTemplate gSkyAttackBirdSpriteTemplate =
 {
     .tileTag = ANIM_TAG_BIRD,
     .paletteTag = ANIM_TAG_BIRD,
@@ -368,7 +368,7 @@ static void AnimEllipticalGust_Step(struct Sprite *sprite)
 }
 
 // Animates the palette on the gust tornado to make it look like its spinning
-void AnimTask_AnimateGustTornadoPalette(u8 taskId)
+extern "C" void AnimTask_AnimateGustTornadoPalette(u8 taskId)
 {
     gTasks[taskId].data[0] = gBattleAnimArgs[1];
     gTasks[taskId].data[1] = gBattleAnimArgs[0];
@@ -923,7 +923,7 @@ static void sub_810EB40(struct Sprite *sprite)
         DestroyAnimSprite(sprite);
 }
 
-void AnimTask_DrillPeckHitSplats(u8 task)
+extern "C" void AnimTask_DrillPeckHitSplats(u8 task)
 {
     if ((gTasks[task].data[0] % 32) == 0)
     {

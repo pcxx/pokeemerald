@@ -153,9 +153,9 @@ static const u8 sText_PkmnClamped[] = _("{B_ATK_NAME_WITH_PREFIX} CLAMPED\n{B_DE
 static const u8 sText_PkmnHurtBy[] = _("{B_ATK_NAME_WITH_PREFIX} is hurt\nby {B_BUFF1}!");
 static const u8 sText_PkmnFreedFrom[] = _("{B_ATK_NAME_WITH_PREFIX} was freed\nfrom {B_BUFF1}!");
 static const u8 sText_PkmnCrashed[] = _("{B_ATK_NAME_WITH_PREFIX} kept going\nand crashed!");
-const u8 gText_PkmnShroudedInMist[] = _("{B_ATK_PREFIX2} became\nshrouded in MIST!");
+extern const u8 gText_PkmnShroudedInMist[] = _("{B_ATK_PREFIX2} became\nshrouded in MIST!");
 static const u8 sText_PkmnProtectedByMist[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is protected\nby MIST!");
-const u8 gText_PkmnGettingPumped[] = _("{B_ATK_NAME_WITH_PREFIX} is getting\npumped!");
+extern const u8 gText_PkmnGettingPumped[] = _("{B_ATK_NAME_WITH_PREFIX} is getting\npumped!");
 static const u8 sText_PkmnHitWithRecoil[] = _("{B_ATK_NAME_WITH_PREFIX} is hit\nwith recoil!");
 static const u8 sText_PkmnProtectedItself2[] = _("{B_ATK_NAME_WITH_PREFIX} protected\nitself!");
 static const u8 sText_PkmnBuffetedBySandstorm[] = _("{B_ATK_NAME_WITH_PREFIX} is buffeted\nby the sandstorm!");
@@ -295,7 +295,7 @@ static const u8 sText_PkmnsXCuredYProblem[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}
 static const u8 sText_ItSuckedLiquidOoze[] = _("It sucked up the\nLIQUID OOZE!");
 static const u8 sText_PkmnTransformed[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} transformed!");
 static const u8 sText_PkmnsXTookAttack[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\ntook the attack!");
-const u8 gText_PkmnsXPreventsSwitching[] = _("{B_BUFF1}'s {B_LAST_ABILITY}\nprevents switching!\p");
+extern const u8 gText_PkmnsXPreventsSwitching[] = _("{B_BUFF1}'s {B_LAST_ABILITY}\nprevents switching!\p");
 static const u8 sText_PreventedFromWorking[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nprevented {B_SCR_ACTIVE_NAME_WITH_PREFIX}'s\l{B_BUFF1} from working!");
 static const u8 sText_PkmnsXMadeItIneffective[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nmade it ineffective!");
 static const u8 sText_PkmnsXPreventsFlinching[] = _("{B_EFF_NAME_WITH_PREFIX}'s {B_EFF_ABILITY}\nprevents flinching!");
@@ -303,11 +303,11 @@ static const u8 sText_PkmnsXPreventsYsZ[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK
 static const u8 sText_PkmnsXCuredItsYProblem[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncured its {B_BUFF1} problem!");
 static const u8 sText_PkmnsXHadNoEffectOnY[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nhad no effect on {B_EFF_NAME_WITH_PREFIX}!");
 static const u8 sText_StatSharply[] = _("sharply ");
-const u8 gText_StatRose[] = _("rose!");
+extern const u8 gText_StatRose[] = _("rose!");
 static const u8 sText_StatHarshly[] = _("harshly ");
 static const u8 sText_StatFell[] = _("fell!");
 static const u8 sText_PkmnsStatChanged[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1}\n{B_BUFF2}");
-const u8 gText_PkmnsStatChanged2[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\n{B_BUFF2}");
+extern const u8 gText_PkmnsStatChanged2[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\n{B_BUFF2}");
 static const u8 sText_UsingXTheYOfZN[] = _("Using {B_LAST_ITEM}, the {B_BUFF1}\nof {B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_BUFF2}");
 static const u8 sText_PkmnsStatChanged3[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1}\n{B_BUFF2}");
 static const u8 sText_PkmnsStatChanged4[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\n{B_BUFF2}");
@@ -436,7 +436,7 @@ static const u8 sText_SpDef2[] = _("SP. DEF");
 static const u8 sText_Accuracy[] = _("accuracy");
 static const u8 sText_Evasiveness[] = _("evasiveness");
 
-const u8 * const gStatNamesTable[NUM_BATTLE_STATS] =
+extern const u8 * const gStatNamesTable[NUM_BATTLE_STATS] =
 {
     [STAT_HP]      = sText_HP2,
     [STAT_ATK]     = sText_Attack2,
@@ -454,7 +454,7 @@ static const u8 sText_PokeblockWasTooSweet[] = _("was too sweet!");
 static const u8 sText_PokeblockWasTooBitter[] = _("was too bitter!");
 static const u8 sText_PokeblockWasTooSour[] = _("was too sour!");
 
-const u8 * const gPokeblockWasTooXStringTable[FLAVOR_COUNT] =
+extern const u8 * const gPokeblockWasTooXStringTable[FLAVOR_COUNT] =
 {
     [FLAVOR_SPICY]  = sText_PokeblockWasTooSpicy,
     [FLAVOR_DRY]    = sText_PokeblockWasTooDry,
@@ -500,7 +500,7 @@ static const u8 sText_PkmnsItemRestoredStatus[] = _("{B_SCR_ACTIVE_NAME_WITH_PRE
 static const u8 sText_PkmnsItemRestoredHPALittle[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_LAST_ITEM}\nrestored its HP a little!");
 static const u8 sText_ItemAllowsOnlyYMove[] = _("{B_LAST_ITEM} allows the\nuse of only {B_CURRENT_MOVE}!\p");
 static const u8 sText_PkmnHungOnWithX[] = _("{B_DEF_NAME_WITH_PREFIX} hung on\nusing its {B_LAST_ITEM}!");
-const u8 gText_EmptyString3[] = _("");
+extern const u8 gText_EmptyString3[] = _("");
 static const u8 sText_YouThrowABallNowRight[] = _("You throw a BALL now, right?\nI… I'll do my best!");
 
 // early declaration of strings
@@ -519,7 +519,7 @@ static const u8 sText_Trainer2WinText[] = _("{B_TRAINER2_WIN_TEXT}");
 static const u8 sText_TwoInGameTrainersDefeated[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_NAME} and\n{B_TRAINER2_CLASS} {B_TRAINER2_NAME}\lwere defeated!\p");
 static const u8 sText_Trainer2LoseText[] = _("{B_TRAINER2_LOSE_TEXT}");
 
-const u8 * const gBattleStringsTable[BATTLESTRINGS_COUNT] =
+extern const u8 * const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
     [STRINGID_TRAINER1LOSETEXT - 12] = sText_Trainer1LoseText,
     [STRINGID_PKMNGAINEDEXP - 12] = sText_PkmnGainedEXP,
@@ -892,105 +892,105 @@ const u8 * const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TRAINER2WINTEXT - 12] = sText_Trainer2WinText,
 };
 
-const u16 gMissStringIds[] =
+extern const u16 gMissStringIds[] =
 {
     STRINGID_ATTACKMISSED, STRINGID_PKMNPROTECTEDITSELF,
     STRINGID_PKMNAVOIDEDATTACK, STRINGID_AVOIDEDDAMAGE,
     STRINGID_PKMNMAKESGROUNDMISS
 };
 
-const u16 gNoEscapeStringIds[] =
+extern const u16 gNoEscapeStringIds[] =
 {
     STRINGID_CANTESCAPE, STRINGID_DONTLEAVEBIRCH, STRINGID_PREVENTSESCAPE,
     STRINGID_CANTESCAPE2, STRINGID_ATTACKERCANTESCAPE
 };
 
-const u16 gMoveWeatherChangeStringIds[] =
+extern const u16 gMoveWeatherChangeStringIds[] =
 {
     STRINGID_STARTEDTORAIN, STRINGID_DOWNPOURSTARTED, STRINGID_BUTITFAILED,
     STRINGID_SANDSTORMBREWED, STRINGID_SUNLIGHTGOTBRIGHT, STRINGID_STARTEDHAIL
 };
 
-const u16 gSandStormHailContinuesStringIds[] =
+extern const u16 gSandStormHailContinuesStringIds[] =
 {
     STRINGID_SANDSTORMRAGES, STRINGID_HAILCONTINUES
 };
 
-const u16 gSandStormHailDmgStringIds[] =
+extern const u16 gSandStormHailDmgStringIds[] =
 {
     STRINGID_PKMNBUFFETEDBYSANDSTORM, STRINGID_PKMNPELTEDBYHAIL
 };
 
-const u16 gSandStormHailEndStringIds[] =
+extern const u16 gSandStormHailEndStringIds[] =
 {
     STRINGID_SANDSTORMSUBSIDED, STRINGID_HAILSTOPPED
 };
 
-const u16 gRainContinuesStringIds[] =
+extern const u16 gRainContinuesStringIds[] =
 {
     STRINGID_RAINCONTINUES, STRINGID_DOWNPOURCONTINUES, STRINGID_RAINSTOPPED
 };
 
-const u16 gProtectLikeUsedStringIds[] =
+extern const u16 gProtectLikeUsedStringIds[] =
 {
     STRINGID_PKMNPROTECTEDITSELF2, STRINGID_PKMNBRACEDITSELF, STRINGID_BUTITFAILED
 };
 
-const u16 gReflectLightScreenSafeguardStringIds[] =
+extern const u16 gReflectLightScreenSafeguardStringIds[] =
 {
     STRINGID_BUTITFAILED, STRINGID_PKMNRAISEDDEF, STRINGID_PKMNRAISEDDEFALITTLE,
     STRINGID_PKMNRAISEDSPDEF, STRINGID_PKMNRAISEDSPDEFALITTLE, STRINGID_PKMNCOVEREDBYVEIL
 };
 
-const u16 gLeechSeedStringIds[] =
+extern const u16 gLeechSeedStringIds[] =
 {
     STRINGID_PKMNSEEDED, STRINGID_PKMNEVADEDATTACK,
     STRINGID_ITDOESNTAFFECT, STRINGID_PKMNSAPPEDBYLEECHSEED, STRINGID_ITSUCKEDLIQUIDOOZE,
 };
 
-const u16 gRestUsedStringIds[] =
+extern const u16 gRestUsedStringIds[] =
 {
     STRINGID_PKMNWENTTOSLEEP, STRINGID_PKMNSLEPTHEALTHY
 };
 
-const u16 gUproarOverTurnStringIds[] =
+extern const u16 gUproarOverTurnStringIds[] =
 {
     STRINGID_PKMNMAKINGUPROAR, STRINGID_PKMNCALMEDDOWN
 };
 
-const u16 gStockpileUsedStringIds[] =
+extern const u16 gStockpileUsedStringIds[] =
 {
     STRINGID_PKMNSTOCKPILED, STRINGID_PKMNCANTSTOCKPILE,
 };
 
-const u16 gWokeUpStringIds[] =
+extern const u16 gWokeUpStringIds[] =
 {
     STRINGID_PKMNWOKEUP, STRINGID_PKMNWOKEUPINUPROAR
 };
 
-const u16 gSwallowFailStringIds[] =
+extern const u16 gSwallowFailStringIds[] =
 {
     STRINGID_FAILEDTOSWALLOW, STRINGID_PKMNHPFULL
 };
 
-const u16 gUproarAwakeStringIds[] =
+extern const u16 gUproarAwakeStringIds[] =
 {
     STRINGID_PKMNCANTSLEEPINUPROAR2, STRINGID_UPROARKEPTPKMNAWAKE, STRINGID_PKMNSTAYEDAWAKEUSING
 };
 
-const u16 gStatUpStringIds[] =
+extern const u16 gStatUpStringIds[] =
 {
     STRINGID_PKMNSSTATCHANGED, STRINGID_PKMNSSTATCHANGED2, STRINGID_STATSWONTINCREASE,
     STRINGID_EMPTYSTRING3, STRINGID_USINGXTHEYOFZN, STRINGID_PKMNUSEDXTOGETPUMPED
 };
 
-const u16 gStatDownStringIds[] =
+extern const u16 gStatDownStringIds[] =
 {
     STRINGID_PKMNSSTATCHANGED3, STRINGID_PKMNSSTATCHANGED4, STRINGID_STATSWONTDECREASE, STRINGID_EMPTYSTRING3
 };
 
 // Index read from sTWOTURN_STRINGID
-const u16 gFirstTurnOfTwoStringIds[] =
+extern const u16 gFirstTurnOfTwoStringIds[] =
 {
     STRINGID_PKMNWHIPPEDWHIRLWIND, // MOVE_RAZOR_WIND
     STRINGID_PKMNTOOKSUNLIGHT,     // MOVE_SOLAR_BEAM
@@ -1003,7 +1003,7 @@ const u16 gFirstTurnOfTwoStringIds[] =
 };
 
 // Index copied from move's index in gTrappingMoves
-const u16 gWrappedStringIds[] =
+extern const u16 gWrappedStringIds[] =
 {
     STRINGID_PKMNSQUEEZEDBYBIND,   // MOVE_BIND
     STRINGID_PKMNWRAPPEDBY,        // MOVE_WRAP
@@ -1013,95 +1013,95 @@ const u16 gWrappedStringIds[] =
     STRINGID_PKMNTRAPPEDBYSANDTOMB // MOVE_SAND_TOMB
 };
 
-const u16 gMistUsedStringIds[] =
+extern const u16 gMistUsedStringIds[] =
 {
     STRINGID_PKMNSHROUDEDINMIST, STRINGID_BUTITFAILED
 };
 
-const u16 gFocusEnergyUsedStringIds[] =
+extern const u16 gFocusEnergyUsedStringIds[] =
 {
     STRINGID_PKMNGETTINGPUMPED, STRINGID_BUTITFAILED
 };
 
-const u16 gTransformUsedStringIds[] =
+extern const u16 gTransformUsedStringIds[] =
 {
     STRINGID_PKMNTRANSFORMEDINTO, STRINGID_BUTITFAILED
 };
 
-const u16 gSubsituteUsedStringIds[] =
+extern const u16 gSubsituteUsedStringIds[] =
 {
     STRINGID_PKMNMADESUBSTITUTE, STRINGID_TOOWEAKFORSUBSTITUTE
 };
 
-const u16 gGotPoisonedStringIds[] =
+extern const u16 gGotPoisonedStringIds[] =
 {
     STRINGID_PKMNWASPOISONED, STRINGID_PKMNPOISONEDBY
 };
 
-const u16 gGotParalyzedStringIds[] =
+extern const u16 gGotParalyzedStringIds[] =
 {
     STRINGID_PKMNWASPARALYZED, STRINGID_PKMNWASPARALYZEDBY
 };
 
-const u16 gFellAsleepStringIds[] =
+extern const u16 gFellAsleepStringIds[] =
 {
     STRINGID_PKMNFELLASLEEP, STRINGID_PKMNMADESLEEP,
 };
 
-const u16 gGotBurnedStringIds[] =
+extern const u16 gGotBurnedStringIds[] =
 {
     STRINGID_PKMNWASBURNED, STRINGID_PKMNBURNEDBY
 };
 
-const u16 gGotFrozenStringIds[] =
+extern const u16 gGotFrozenStringIds[] =
 {
     STRINGID_PKMNWASFROZEN, STRINGID_PKMNFROZENBY
 };
 
-const u16 gGotDefrostedStringIds[] =
+extern const u16 gGotDefrostedStringIds[] =
 {
     STRINGID_PKMNWASDEFROSTED2, STRINGID_PKMNWASDEFROSTEDBY
 };
 
-const u16 gKOFailedStringIds[] =
+extern const u16 gKOFailedStringIds[] =
 {
     STRINGID_ATTACKMISSED, STRINGID_PKMNUNAFFECTED
 };
 
-const u16 gAttractUsedStringIds[] =
+extern const u16 gAttractUsedStringIds[] =
 {
     STRINGID_PKMNFELLINLOVE, STRINGID_PKMNSXINFATUATEDY
 };
 
-const u16 gLeechSeedDrainStringIds[] =
+extern const u16 gLeechSeedDrainStringIds[] =
 {
     STRINGID_PKMNENERGYDRAINED, STRINGID_ITSUCKEDLIQUIDOOZE
 };
 
-const u16 gSportsUsedStringIds[] =
+extern const u16 gSportsUsedStringIds[] =
 {
     STRINGID_ELECTRICITYWEAKENED, STRINGID_FIREWEAKENED
 };
 
-const u16 gPartyStatusHealStringIds[] =
+extern const u16 gPartyStatusHealStringIds[] =
 {
     STRINGID_BELLCHIMED, STRINGID_BELLCHIMED, STRINGID_BELLCHIMED, STRINGID_BELLCHIMED,
     // interesting how there are four instances of the same string
     STRINGID_SOOTHINGAROMA
 };
 
-const u16 gFutureMoveUsedStringIds[] =
+extern const u16 gFutureMoveUsedStringIds[] =
 {
     STRINGID_PKMNFORESAWATTACK, STRINGID_PKMNCHOSEXASDESTINY
 };
 
-const u16 gBallEscapeStringIds[] =
+extern const u16 gBallEscapeStringIds[] =
 {
     STRINGID_PKMNBROKEFREE, STRINGID_ITAPPEAREDCAUGHT, STRINGID_AARGHALMOSTHADIT, STRINGID_SHOOTSOCLOSE
 };
 
 // Overworld weathers that don't have an associated battle weather default to "It is raining."
-const u16 gWeatherStartsStringIds[] =
+extern const u16 gWeatherStartsStringIds[] =
 {
     [WEATHER_NONE]               = STRINGID_ITISRAINING,
     [WEATHER_SUNNY_CLOUDS]       = STRINGID_ITISRAINING,
@@ -1121,64 +1121,64 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING
 };
 
-const u16 gInobedientStringIds[] =
+extern const u16 gInobedientStringIds[] =
 {
     STRINGID_PKMNLOAFING, STRINGID_PKMNWONTOBEY, STRINGID_PKMNTURNEDAWAY,
     STRINGID_PKMNPRETENDNOTNOTICE, STRINGID_PKMNINCAPABLEOFPOWER
 };
 
-const u16 gSafariGetNearStringIds[] =
+extern const u16 gSafariGetNearStringIds[] =
 {
     STRINGID_CREPTCLOSER, STRINGID_CANTGETCLOSER
 };
 
-const u16 gSafariPokeblockResultStringIds[] =
+extern const u16 gSafariPokeblockResultStringIds[] =
 {
     STRINGID_PKMNCURIOUSABOUTX, STRINGID_PKMNENTHRALLEDBYX, STRINGID_PKMNIGNOREDX
 };
 
-const u16 gTrainerItemCuredStatusStringIds[] =
+extern const u16 gTrainerItemCuredStatusStringIds[] =
 {
     STRINGID_PKMNSITEMSNAPPEDOUT, STRINGID_PKMNSITEMCUREDPARALYSIS, STRINGID_PKMNSITEMDEFROSTEDIT,
     STRINGID_PKMNSITEMHEALEDBURN, STRINGID_PKMNSITEMCUREDPOISON, STRINGID_PKMNSITEMWOKEIT
 };
 
-const u16 gBerryEffectStringIds[] =
+extern const u16 gBerryEffectStringIds[] =
 {
     STRINGID_PKMNSITEMCUREDPROBLEM, STRINGID_PKMNSITEMNORMALIZEDSTATUS
 };
 
-const u16 gBRNPreventionStringIds[] =
+extern const u16 gBRNPreventionStringIds[] =
 {
     STRINGID_PKMNSXPREVENTSBURNS, STRINGID_PKMNSXPREVENTSYSZ, STRINGID_PKMNSXHADNOEFFECTONY
 };
 
-const u16 gPRLZPreventionStringIds[] =
+extern const u16 gPRLZPreventionStringIds[] =
 {
     STRINGID_PKMNPREVENTSPARALYSISWITH, STRINGID_PKMNSXPREVENTSYSZ, STRINGID_PKMNSXHADNOEFFECTONY
 };
 
-const u16 gPSNPreventionStringIds[] =
+extern const u16 gPSNPreventionStringIds[] =
 {
     STRINGID_PKMNPREVENTSPOISONINGWITH, STRINGID_PKMNSXPREVENTSYSZ, STRINGID_PKMNSXHADNOEFFECTONY
 };
 
-const u16 gItemSwapStringIds[] =
+extern const u16 gItemSwapStringIds[] =
 {
     STRINGID_PKMNOBTAINEDX, STRINGID_PKMNOBTAINEDX2, STRINGID_PKMNOBTAINEDXYOBTAINEDZ
 };
 
-const u16 gFlashFireStringIds[] =
+extern const u16 gFlashFireStringIds[] =
 {
     STRINGID_PKMNRAISEDFIREPOWERWITH, STRINGID_PKMNSXMADEYINEFFECTIVE
 };
 
-const u16 gCaughtMonStringIds[] =
+extern const u16 gCaughtMonStringIds[] =
 {
     STRINGID_PKMNTRANSFERREDSOMEONESPC, STRINGID_PKMNTRANSFERREDLANETTESPC, STRINGID_PKMNBOXSOMEONESPCFULL, STRINGID_PKMNBOXLANETTESPCFULL,
 };
 
-const u16 gTrappingMoves[] =
+extern const u16 gTrappingMoves[] =
 {
     MOVE_BIND,
     MOVE_WRAP,
@@ -1189,27 +1189,27 @@ const u16 gTrappingMoves[] =
     0xFFFF
 };
 
-const u8 gText_PkmnIsEvolving[] = _("What?\n{STR_VAR_1} is evolving!");
-const u8 gText_CongratsPkmnEvolved[] = _("Congratulations! Your {STR_VAR_1}\nevolved into {STR_VAR_2}!{WAIT_SE}\p");
-const u8 gText_PkmnStoppedEvolving[] = _("Huh? {STR_VAR_1}\nstopped evolving!\p");
-const u8 gText_EllipsisQuestionMark[] = _("……?\p");
-const u8 gText_WhatWillPkmnDo[] = _("What will\n{B_ACTIVE_NAME_WITH_PREFIX} do?");
-const u8 gText_WhatWillPkmnDo2[] = _("What will\n{B_PLAYER_NAME} do?");
-const u8 gText_WhatWillWallyDo[] = _("What will\nWALLY do?");
-const u8 gText_LinkStandby[] = _("{PAUSE 16}Link standby…");
-const u8 gText_BattleMenu[] = _("FIGHT{CLEAR_TO 56}BAG\nPOKéMON{CLEAR_TO 56}RUN");
-const u8 gText_SafariZoneMenu[] = _("BALL{CLEAR_TO 56}{POKEBLOCK}\nGO NEAR{CLEAR_TO 56}RUN");
-const u8 gText_MoveInterfacePP[] = _("PP ");
-const u8 gText_MoveInterfaceType[] = _("TYPE/");
-const u8 gText_MoveInterfacePpType[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}PP\nTYPE/");
-const u8 gText_MoveInterfaceDynamicColors[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}");
-const u8 gText_WhichMoveToForget4[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Which move should\nbe forgotten?");
-const u8 gText_BattleYesNoChoice[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Yes\nNo");
-const u8 gText_BattleSwitchWhich[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Switch\nwhich?");
-const u8 gText_BattleSwitchWhich2[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}");
-const u8 gText_BattleSwitchWhich3[] = _("{UP_ARROW}");
-const u8 gText_BattleSwitchWhich4[] = _("{ESCAPE 4}");
-const u8 gText_BattleSwitchWhich5[] = _("-");
+extern const u8 gText_PkmnIsEvolving[] = _("What?\n{STR_VAR_1} is evolving!");
+extern const u8 gText_CongratsPkmnEvolved[] = _("Congratulations! Your {STR_VAR_1}\nevolved into {STR_VAR_2}!{WAIT_SE}\p");
+extern const u8 gText_PkmnStoppedEvolving[] = _("Huh? {STR_VAR_1}\nstopped evolving!\p");
+extern const u8 gText_EllipsisQuestionMark[] = _("……?\p");
+extern const u8 gText_WhatWillPkmnDo[] = _("What will\n{B_ACTIVE_NAME_WITH_PREFIX} do?");
+extern const u8 gText_WhatWillPkmnDo2[] = _("What will\n{B_PLAYER_NAME} do?");
+extern const u8 gText_WhatWillWallyDo[] = _("What will\nWALLY do?");
+extern const u8 gText_LinkStandby[] = _("{PAUSE 16}Link standby…");
+extern const u8 gText_BattleMenu[] = _("FIGHT{CLEAR_TO 56}BAG\nPOKéMON{CLEAR_TO 56}RUN");
+extern const u8 gText_SafariZoneMenu[] = _("BALL{CLEAR_TO 56}{POKEBLOCK}\nGO NEAR{CLEAR_TO 56}RUN");
+extern const u8 gText_MoveInterfacePP[] = _("PP ");
+extern const u8 gText_MoveInterfaceType[] = _("TYPE/");
+extern const u8 gText_MoveInterfacePpType[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}PP\nTYPE/");
+extern const u8 gText_MoveInterfaceDynamicColors[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}");
+extern const u8 gText_WhichMoveToForget4[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Which move should\nbe forgotten?");
+extern const u8 gText_BattleYesNoChoice[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Yes\nNo");
+extern const u8 gText_BattleSwitchWhich[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Switch\nwhich?");
+extern const u8 gText_BattleSwitchWhich2[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}");
+extern const u8 gText_BattleSwitchWhich3[] = _("{UP_ARROW}");
+extern const u8 gText_BattleSwitchWhich4[] = _("{ESCAPE 4}");
+extern const u8 gText_BattleSwitchWhich5[] = _("-");
 
 static const u8 sText_HP[] = _("HP");
 static const u8 sText_Attack[] = _("ATTACK");
@@ -1217,33 +1217,33 @@ static const u8 sText_Defense[] = _("DEFENSE");
 static const u8 sText_SpAtk[] = _("SP. ATK");
 static const u8 sText_SpDef[] = _("SP. DEF");
 
-const u8 * const gStatNamesTable2[] =
+extern const u8 * const gStatNamesTable2[] =
 {
     sText_HP, sText_SpAtk, sText_Attack,
     sText_SpDef, sText_Defense, sText_Speed
 };
 
-const u8 gText_SafariBalls[] = _("{HIGHLIGHT DARK_GREY}SAFARI BALLS");
-const u8 gText_SafariBallLeft[] = _("{HIGHLIGHT DARK_GREY}Left: $" "{HIGHLIGHT DARK_GREY}");
-const u8 gText_Sleep[] = _("sleep");
-const u8 gText_Poison[] = _("poison");
-const u8 gText_Burn[] = _("burn");
-const u8 gText_Paralysis[] = _("paralysis");
-const u8 gText_Ice[] = _("ice");
-const u8 gText_Confusion[] = _("confusion");
-const u8 gText_Love[] = _("love");
-const u8 gText_SpaceAndSpace[] = _(" and ");
-const u8 gText_CommaSpace[] = _(", ");
-const u8 gText_Space2[] = _(" ");
-const u8 gText_LineBreak[] = _("\l");
-const u8 gText_NewLine[] = _("\n");
-const u8 gText_Are[] = _("are");
-const u8 gText_Are2[] = _("are");
-const u8 gText_BadEgg[] = _("Bad EGG");
-const u8 gText_BattleWallyName[] = _("WALLY");
-const u8 gText_Win[] = _("{HIGHLIGHT TRANSPARENT}Win");
-const u8 gText_Loss[] = _("{HIGHLIGHT TRANSPARENT}Loss");
-const u8 gText_Draw[] = _("{HIGHLIGHT TRANSPARENT}Draw");
+extern const u8 gText_SafariBalls[] = _("{HIGHLIGHT DARK_GREY}SAFARI BALLS");
+extern const u8 gText_SafariBallLeft[] = _("{HIGHLIGHT DARK_GREY}Left: $" "{HIGHLIGHT DARK_GREY}");
+extern const u8 gText_Sleep[] = _("sleep");
+extern const u8 gText_Poison[] = _("poison");
+extern const u8 gText_Burn[] = _("burn");
+extern const u8 gText_Paralysis[] = _("paralysis");
+extern const u8 gText_Ice[] = _("ice");
+extern const u8 gText_Confusion[] = _("confusion");
+extern const u8 gText_Love[] = _("love");
+extern const u8 gText_SpaceAndSpace[] = _(" and ");
+extern const u8 gText_CommaSpace[] = _(", ");
+extern const u8 gText_Space2[] = _(" ");
+extern const u8 gText_LineBreak[] = _("\l");
+extern const u8 gText_NewLine[] = _("\n");
+extern const u8 gText_Are[] = _("are");
+extern const u8 gText_Are2[] = _("are");
+extern const u8 gText_BadEgg[] = _("Bad EGG");
+extern const u8 gText_BattleWallyName[] = _("WALLY");
+extern const u8 gText_Win[] = _("{HIGHLIGHT TRANSPARENT}Win");
+extern const u8 gText_Loss[] = _("{HIGHLIGHT TRANSPARENT}Loss");
+extern const u8 gText_Draw[] = _("{HIGHLIGHT TRANSPARENT}Draw");
 static const u8 sText_SpaceIs[] = _(" is");
 static const u8 sText_ApostropheS[] = _("'s");
 
@@ -1270,13 +1270,13 @@ static const u8 sATypeMove_Table[][NUMBER_OF_MON_TYPES - 1] =
     [TYPE_DARK]     = _("a DARK move")
 };
 
-const u8 gText_BattleTourney[] = _("BATTLE TOURNEY");
+extern const u8 gText_BattleTourney[] = _("BATTLE TOURNEY");
 static const u8 sText_Round1[] = _("Round 1");
 static const u8 sText_Round2[] = _("Round 2");
 static const u8 sText_Semifinal[] = _("Semifinal");
 static const u8 sText_Final[] = _("Final");
 
-const u8 *const gRoundsStringTable[DOME_ROUNDS_COUNT] =
+extern const u8 *const gRoundsStringTable[DOME_ROUNDS_COUNT] =
 {
     [DOME_ROUND1]    = sText_Round1,
     [DOME_ROUND2]    = sText_Round2,
@@ -1284,24 +1284,24 @@ const u8 *const gRoundsStringTable[DOME_ROUNDS_COUNT] =
     [DOME_FINAL]     = sText_Final
 };
 
-const u8 gText_TheGreatNewHope[] = _("The great new hope!\p");
-const u8 gText_WillChampionshipDreamComeTrue[] = _("Will the championship dream come true?!\p");
-const u8 gText_AFormerChampion[] = _("A former CHAMPION!\p");
-const u8 gText_ThePreviousChampion[] = _("The previous CHAMPION!\p");
-const u8 gText_TheUnbeatenChampion[] = _("The unbeaten CHAMPION!\p");
-const u8 gText_PlayerMon1Name[] = _("{B_PLAYER_MON1_NAME}");
-const u8 gText_Vs[] = _("VS");
-const u8 gText_OpponentMon1Name[] = _("{B_OPPONENT_MON1_NAME}");
-const u8 gText_Mind[] = _("Mind");
-const u8 gText_Skill[] = _("Skill");
-const u8 gText_Body[] = _("Body");
-const u8 gText_Judgement[] = _("{B_BUFF1}{CLEAR 13}Judgment{CLEAR 13}{B_BUFF2}");
+extern const u8 gText_TheGreatNewHope[] = _("The great new hope!\p");
+extern const u8 gText_WillChampionshipDreamComeTrue[] = _("Will the championship dream come true?!\p");
+extern const u8 gText_AFormerChampion[] = _("A former CHAMPION!\p");
+extern const u8 gText_ThePreviousChampion[] = _("The previous CHAMPION!\p");
+extern const u8 gText_TheUnbeatenChampion[] = _("The unbeaten CHAMPION!\p");
+extern const u8 gText_PlayerMon1Name[] = _("{B_PLAYER_MON1_NAME}");
+extern const u8 gText_Vs[] = _("VS");
+extern const u8 gText_OpponentMon1Name[] = _("{B_OPPONENT_MON1_NAME}");
+extern const u8 gText_Mind[] = _("Mind");
+extern const u8 gText_Skill[] = _("Skill");
+extern const u8 gText_Body[] = _("Body");
+extern const u8 gText_Judgement[] = _("{B_BUFF1}{CLEAR 13}Judgment{CLEAR 13}{B_BUFF2}");
 static const u8 sText_TwoTrainersSentPkmn[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_NAME} sent\nout {B_OPPONENT_MON1_NAME}!\p{B_TRAINER2_CLASS} {B_TRAINER2_NAME} sent\nout {B_OPPONENT_MON2_NAME}!");
 static const u8 sText_Trainer2SentOutPkmn[] = _("{B_TRAINER2_CLASS} {B_TRAINER2_NAME} sent\nout {B_BUFF1}!");
 static const u8 sText_TwoTrainersWantToBattle[] = _("{B_TRAINER1_CLASS} {B_TRAINER1_NAME} and\n{B_TRAINER2_CLASS} {B_TRAINER2_NAME}\lwant to battle!\p");
 static const u8 sText_InGamePartnerSentOutZGoN[] = _("{B_PARTNER_CLASS} {B_PARTNER_NAME} sent\nout {B_PLAYER_MON2_NAME}!\lGo, {B_PLAYER_MON1_NAME}!");
 
-const u16 gBattlePalaceFlavorTextTable[] =
+extern const u16 gBattlePalaceFlavorTextTable[] =
 {
     STRINGID_GLINTAPPEARSINEYE, 
     STRINGID_PKMNGETTINGINTOPOSITION,
@@ -1319,7 +1319,7 @@ static const u8 sText_RefJudgement2[] = _("REFEREE: Judgment: {B_BUFF1} to {B_BU
 static const u8 sText_RefJudgement3[] = _("REFEREE: Judgment: 3 to 3!\nWe have a draw!\p");
 static const u8 sText_RefCommenceBattle[] = _("REFEREE: {B_PLAYER_MON1_NAME} VS {B_OPPONENT_MON1_NAME}!\nCommence battling!");
 
-const u8 * const gRefereeStringsTable[] =
+extern const u8 * const gRefereeStringsTable[] =
 {
     sText_RefIfNothingIsDecided,
     sText_RefThatsIt,
@@ -1335,8 +1335,8 @@ const u8 * const gRefereeStringsTable[] =
 static const u8 sText_Trainer1Fled[] = _( "{PLAY_SE SE_FLEE}{B_TRAINER1_CLASS} {B_TRAINER1_NAME} fled!");
 static const u8 sText_PlayerLostAgainstTrainer1[] = _("Player lost against\n{B_TRAINER1_CLASS} {B_TRAINER1_NAME}!");
 static const u8 sText_PlayerBattledToDrawTrainer1[] = _("Player battled to a draw against\n{B_TRAINER1_CLASS} {B_TRAINER1_NAME}!");
-const u8 gText_RecordBattleToPass[] = _("Would you like to record your battle\non your FRONTIER PASS?");
-const u8 gText_BattleRecordedOnPass[] = _("{B_PLAYER_NAME}'s battle result was recorded\non the FRONTIER PASS.");
+extern const u8 gText_RecordBattleToPass[] = _("Would you like to record your battle\non your FRONTIER PASS?");
+extern const u8 gText_BattleRecordedOnPass[] = _("{B_PLAYER_NAME}'s battle result was recorded\non the FRONTIER PASS.");
 static const u8 sText_LinkTrainerWantsToBattlePause[] = _("{B_LINK_OPPONENT1_NAME}\nwants to battle!{PAUSE 49}");
 static const u8 sText_TwoLinkTrainersWantToBattlePause[] = _("{B_LINK_OPPONENT1_NAME} and {B_LINK_OPPONENT2_NAME}\nwant to battle!{PAUSE 49}");
 

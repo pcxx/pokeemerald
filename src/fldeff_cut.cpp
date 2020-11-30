@@ -122,7 +122,7 @@ static const struct SpriteFrameImage sSpriteImageTable_CutGrass[] =
     {gFieldEffectPic_CutGrass, 0x20},
 };
 
-const struct SpritePalette gSpritePalette_CutGrass = {gFieldEffectPal_CutGrass, FLDEFF_PAL_TAG_CUT_GRASS};
+extern const struct SpritePalette gSpritePalette_CutGrass = {gFieldEffectPal_CutGrass, FLDEFF_PAL_TAG_CUT_GRASS};
 
 static const struct SpriteTemplate sSpriteTemplate_CutGrass =
 {
@@ -274,7 +274,7 @@ static void FieldCallback_CutGrass(void)
     gFieldEffectArguments[0] = GetCursorSelectionMonId();
 }
 
-bool8 FldEff_UseCutOnGrass(void)
+extern "C" bool8 FldEff_UseCutOnGrass(void)
 {
     u8 taskId = CreateFieldMoveTask();
 
@@ -290,7 +290,7 @@ static void FieldCallback_CutTree(void)
     ScriptContext1_SetupScript(EventScript_UseCut);
 }
 
-bool8 FldEff_UseCutOnTree(void)
+extern "C" bool8 FldEff_UseCutOnTree(void)
 {
     u8 taskId = CreateFieldMoveTask();
 
@@ -306,7 +306,7 @@ static void StartCutGrassFieldEffect(void)
     FieldEffectStart(FLDEFF_CUT_GRASS);
 }
 
-bool8 FldEff_CutGrass(void)
+extern "C" bool8 FldEff_CutGrass(void)
 {
     s16 x, y;
     u8 i = 0;

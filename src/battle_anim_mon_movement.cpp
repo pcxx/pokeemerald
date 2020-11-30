@@ -28,7 +28,7 @@ static void AnimTask_RotateMonSpriteToSide_Step(u8 taskId);
 static void AnimTask_ShakeTargetBasedOnMovePowerOrDmg_Step(u8 taskId);
 static void AnimTask_SlideOffScreen_Step(u8 taskId);
 
-const struct SpriteTemplate gHorizontalLungeSpriteTemplate =
+extern const struct SpriteTemplate gHorizontalLungeSpriteTemplate =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -39,7 +39,7 @@ const struct SpriteTemplate gHorizontalLungeSpriteTemplate =
     .callback = DoHorizontalLunge,
 };
 
-const struct SpriteTemplate gVerticalDipSpriteTemplate =
+extern const struct SpriteTemplate gVerticalDipSpriteTemplate =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -50,7 +50,7 @@ const struct SpriteTemplate gVerticalDipSpriteTemplate =
     .callback = DoVerticalDip,
 };
 
-const struct SpriteTemplate gSlideMonToOriginalPosSpriteTemplate =
+extern const struct SpriteTemplate gSlideMonToOriginalPosSpriteTemplate =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -61,7 +61,7 @@ const struct SpriteTemplate gSlideMonToOriginalPosSpriteTemplate =
     .callback = SlideMonToOriginalPos,
 };
 
-const struct SpriteTemplate gSlideMonToOffsetSpriteTemplate =
+extern const struct SpriteTemplate gSlideMonToOffsetSpriteTemplate =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -72,7 +72,7 @@ const struct SpriteTemplate gSlideMonToOffsetSpriteTemplate =
     .callback = SlideMonToOffset,
 };
 
-const struct SpriteTemplate gSlideMonToOffsetAndBackSpriteTemplate =
+extern const struct SpriteTemplate gSlideMonToOffsetAndBackSpriteTemplate =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -90,7 +90,7 @@ const struct SpriteTemplate gSlideMonToOffsetAndBackSpriteTemplate =
 // arg 2: y pixel offset
 // arg 3: num times to shake
 // arg 4: frame delay
-void AnimTask_ShakeMon(u8 taskId)
+extern "C" void AnimTask_ShakeMon(u8 taskId)
 {
     u8 spriteId;
     spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[0]);
@@ -153,7 +153,7 @@ static void AnimTask_ShakeMon_Step(u8 taskId)
 // arg 2: y pixel offset
 // arg 3: num times to shake
 // arg 4: frame delay
-void AnimTask_ShakeMon2(u8 taskId)
+extern "C" void AnimTask_ShakeMon2(u8 taskId)
 {
     u8 spriteId;
     bool8 destroy = FALSE;
@@ -252,7 +252,7 @@ static void AnimTask_ShakeMon2_Step(u8 taskId)
 // arg 2: y offset
 // arg 3: num shakes
 // arg 4: delay
-void AnimTask_ShakeMonInPlace(u8 taskId)
+extern "C" void AnimTask_ShakeMonInPlace(u8 taskId)
 {
     u8 spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[0]);
     if (spriteId == 0xff)
@@ -317,7 +317,7 @@ static void AnimTask_ShakeMonInPlace_Step(u8 taskId)
 // arg 2: frame delay between each movement
 // arg 3: downward speed (subpixel)
 // arg 4: duration
-void AnimTask_ShakeAndSinkMon(u8 taskId)
+extern "C" void AnimTask_ShakeAndSinkMon(u8 taskId)
 {
     u8 spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[0]);
     gSprites[spriteId].pos2.x = gBattleAnimArgs[1];
@@ -362,7 +362,7 @@ static void AnimTask_ShakeAndSinkMon_Step(u8 taskId)
 // arg 2: ellipse height
 // arg 3: num loops
 // arg 4: speed (valid values are 0-5)
-void AnimTask_TranslateMonElliptical(u8 taskId)
+extern "C" void AnimTask_TranslateMonElliptical(u8 taskId)
 {
     u8 i;
     u8 spriteId;
@@ -416,7 +416,7 @@ static void AnimTask_TranslateMonElliptical_Step(u8 taskId)
 // arg 2: ellipse height
 // arg 3: num loops
 // arg 4: speed (valid values are 0-5)
-void AnimTask_TranslateMonEllipticalRespectSide(u8 taskId)
+extern "C" void AnimTask_TranslateMonEllipticalRespectSide(u8 taskId)
 {
     if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER)
         gBattleAnimArgs[1] = -gBattleAnimArgs[1];
@@ -643,7 +643,7 @@ static void SlideMonToOffsetAndBack_End(struct Sprite *sprite)
 // arg 4: delay before starting lunge
 // arg 5: target x offset for lunge
 // arg 6: lunge duration
-void AnimTask_WindUpLunge(u8 taskId)
+extern "C" void AnimTask_WindUpLunge(u8 taskId)
 {
     s16 wavePeriod = 0x8000 / gBattleAnimArgs[3];
     if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER)
@@ -697,7 +697,7 @@ static void AnimTask_WindUpLunge_Step2(u8 taskId)
 }
 
 // To move a mon off-screen when pushed out by Roar/Whirlwind
-void AnimTask_SlideOffScreen(u8 taskId)
+extern "C" void AnimTask_SlideOffScreen(u8 taskId)
 {
     u8 spriteId;
     switch (gBattleAnimArgs[0])
@@ -757,7 +757,7 @@ static void AnimTask_SlideOffScreen_Step(u8 taskId)
 // arg 2: wave period
 // arg 3: num sways
 // arg 4: which mon (0 = attacker, 1`= target)
-void AnimTask_SwayMon(u8 taskId)
+extern "C" void AnimTask_SwayMon(u8 taskId)
 {
     u8 spriteId;
     if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER)
@@ -829,7 +829,7 @@ static void AnimTask_SwayMonStep(u8 taskId)
 // arg 2: duration
 // arg 3: anim bank
 // arg 4: sprite object mode
-void AnimTask_ScaleMonAndRestore(u8 taskId)
+extern "C" void AnimTask_ScaleMonAndRestore(u8 taskId)
 {
     u8 spriteId;
     spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[3]);
@@ -869,7 +869,7 @@ static void AnimTask_ScaleMonAndRestore_Step(u8 taskId)
     }
 }
 
-void AnimTask_RotateMonSpriteToSide(u8 taskId)
+extern "C" void AnimTask_RotateMonSpriteToSide(u8 taskId)
 {
     u8 spriteId;
     spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[2]);
@@ -914,7 +914,7 @@ void AnimTask_RotateMonSpriteToSide(u8 taskId)
 }
 
 // Rotates mon to side and back to original position. For Peck and when a held item activates
-void AnimTask_RotateMonToSideAndRestore(u8 taskId)
+extern "C" void AnimTask_RotateMonToSideAndRestore(u8 taskId)
 {
     u8 spriteId;
     spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[2]);
@@ -979,7 +979,7 @@ static void AnimTask_RotateMonSpriteToSide_Step(u8 taskId)
     }
 }
 
-void AnimTask_ShakeTargetBasedOnMovePowerOrDmg(u8 taskId)
+extern "C" void AnimTask_ShakeTargetBasedOnMovePowerOrDmg(u8 taskId)
 {
     if (!gBattleAnimArgs[0])
     {

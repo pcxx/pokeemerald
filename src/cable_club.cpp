@@ -430,7 +430,7 @@ static void Task_LinkupCheckStatusAfterConfirm(u8 taskId)
     }
 }
 
-bool32 AreBattleTowerLinkSpeciesSame(u16 *speciesList1, u16 *speciesList2)
+extern "C" bool32 AreBattleTowerLinkSpeciesSame(u16 *speciesList1, u16 *speciesList2)
 {
     int i;
     int j;
@@ -572,7 +572,7 @@ static bool8 TryLinkTimeout(u8 taskId)
     return FALSE;
 }
 
-void TryBattleLinkup(void)
+extern "C" void TryBattleLinkup(void)
 {
     u8 minPlayers = 2;
     u8 maxPlayers = 2;
@@ -611,14 +611,14 @@ void TryBattleLinkup(void)
 #undef tTimer
 #undef tWindowId
 
-void TryTradeLinkup(void)
+extern "C" void TryTradeLinkup(void)
 {
     gLinkType = LINKTYPE_TRADE_SETUP;
     gBattleTypeFlags = 0;
     CreateLinkupTask(2, 2);
 }
 
-void TryRecordMixLinkup(void)
+extern "C" void TryRecordMixLinkup(void)
 {
     gSpecialVar_Result = LINKUP_ONGOING;
     gLinkType = LINKTYPE_RECORD_MIX_BEFORE;
@@ -626,7 +626,7 @@ void TryRecordMixLinkup(void)
     CreateLinkupTask(2, 4);
 }
 
-void ValidateMixingGameLanguage(void)
+extern "C" void ValidateMixingGameLanguage(void)
 {
     u32 taskId = FindTaskIdByFunc(Task_ValidateMixingGameLanguage);
 
@@ -704,28 +704,28 @@ static void Task_ValidateMixingGameLanguage(u8 taskId)
     }
 }
 
-void TryBerryBlenderLinkup(void)
+extern "C" void TryBerryBlenderLinkup(void)
 {
     gLinkType = LINKTYPE_BERRY_BLENDER_SETUP;
     gBattleTypeFlags = 0;
     CreateLinkupTask(2, 4);
 }
 
-void TryContestGModeLinkup(void)
+extern "C" void TryContestGModeLinkup(void)
 {
     gLinkType = LINKTYPE_CONTEST_GMODE;
     gBattleTypeFlags = 0;
     CreateLinkupTask(4, 4);
 }
 
-void TryContestEModeLinkup(void)
+extern "C" void TryContestEModeLinkup(void)
 {
     gLinkType = LINKTYPE_CONTEST_EMODE;
     gBattleTypeFlags = 0;
     CreateLinkupTask(2, 4);
 }
 
-u8 CreateTask_ReestablishCableClubLink(void)
+extern "C" u8 CreateTask_ReestablishCableClubLink(void)
 {
     if (FuncIsActiveTask(Task_ReestablishLink) != FALSE)
         return 0xFF;
@@ -807,7 +807,7 @@ static void Task_ReestablishLinkAwaitConfirmation(u8 taskId)
 }
 
 // Unused
-void CableClubSaveGame(void)
+extern "C" void CableClubSaveGame(void)
 {
     SaveGame();
 }
@@ -991,7 +991,7 @@ static void CB2_ReturnFromUnionRoomBattle(void)
     RunTasks();
 }
 
-void CB2_ReturnFromCableClubBattle(void)
+extern "C" void CB2_ReturnFromCableClubBattle(void)
 {
     gBattleTypeFlags &= ~BATTLE_TYPE_20;
     Overworld_ResetMapMusic();
@@ -1024,7 +1024,7 @@ void CB2_ReturnFromCableClubBattle(void)
     SetMainCallback2(CB2_SetUpSaveAfterLinkBattle);
 }
 
-void CleanupLinkRoomState(void)
+extern "C" void CleanupLinkRoomState(void)
 {
     if (gSpecialVar_0x8004 == USING_SINGLE_BATTLE 
      || gSpecialVar_0x8004 == USING_DOUBLE_BATTLE 
@@ -1037,7 +1037,7 @@ void CleanupLinkRoomState(void)
     SetWarpDestinationToDynamicWarp(0x7F);
 }
 
-void ExitLinkRoom(void)
+extern "C" void ExitLinkRoom(void)
 {
     QueueExitLinkRoomKey();
 }
@@ -1086,7 +1086,7 @@ static void Task_EnterCableClubSeat(u8 taskId)
     }
 }
 
-void CreateTask_EnterCableClubSeat(TaskFunc followupFunc)
+extern "C" void CreateTask_EnterCableClubSeat(TaskFunc followupFunc)
 {
     u8 taskId = CreateTask(Task_EnterCableClubSeat, 80);
     SetTaskFuncWithFollowupFunc(taskId, Task_EnterCableClubSeat, followupFunc);
@@ -1159,7 +1159,7 @@ static void Task_StartWirelessTrade(u8 taskId)
     }
 }
 
-void PlayerEnteredTradeSeat(void)
+extern "C" void PlayerEnteredTradeSeat(void)
 {
     if (gWirelessCommType != 0)
         CreateTask_EnterCableClubSeat(Task_StartWirelessTrade);
@@ -1173,12 +1173,12 @@ static void CreateTask_StartWiredTrade(void)
     CreateTask(Task_StartWiredTrade, 80);
 }
 
-void nullsub_37(void)
+extern "C" void nullsub_37(void)
 {
 
 }
 
-void ColosseumPlayerSpotTriggered(void)
+extern "C" void ColosseumPlayerSpotTriggered(void)
 {
     gLinkType = LINKTYPE_BATTLE;
 
@@ -1195,14 +1195,14 @@ static void CreateTask_EnterCableClubSeatNoFollowup(void)
     ScriptContext1_Stop();
 }
 
-void Script_ShowLinkTrainerCard(void)
+extern "C" void Script_ShowLinkTrainerCard(void)
 {
     ShowTrainerCardInLink(gSpecialVar_0x8006, CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
 // Returns FALSE if the player has no stars. Returns TRUE otherwise, and puts the name of the
 // color into gStringVar2.
-bool32 GetLinkTrainerCardColor(u8 linkPlayerIndex)
+extern "C" bool32 GetLinkTrainerCardColor(u8 linkPlayerIndex)
 {
     u32 numStars;
 
@@ -1219,7 +1219,7 @@ bool32 GetLinkTrainerCardColor(u8 linkPlayerIndex)
 
 #define tTimer data[0]
 
-void Task_WaitForLinkPlayerConnection(u8 taskId)
+extern "C" void Task_WaitForLinkPlayerConnection(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -1270,7 +1270,7 @@ static void sub_80B3AD0(u8 taskId)
 
 #define tTimer data[1]
 
-void sub_80B3AF8(u8 taskId)
+extern "C" void sub_80B3AF8(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
@@ -1323,7 +1323,7 @@ void sub_80B3AF8(u8 taskId)
 
 #undef tTimer
 
-void TrySetBattleTowerLinkType(void)
+extern "C" void TrySetBattleTowerLinkType(void)
 {
     if (gWirelessCommType == 0)
         gLinkType = LINKTYPE_BATTLE_TOWER;

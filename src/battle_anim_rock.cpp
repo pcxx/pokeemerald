@@ -52,7 +52,7 @@ static const union AnimCmd *const sAnims_FlyingRock[] =
     sAnim_FlyingRock_2,
 };
 
-const struct SpriteTemplate gFallingRockSpriteTemplate =
+extern const struct SpriteTemplate gFallingRockSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCKS,
     .paletteTag = ANIM_TAG_ROCKS,
@@ -63,7 +63,7 @@ const struct SpriteTemplate gFallingRockSpriteTemplate =
     .callback = AnimFallingRock,
 };
 
-const struct SpriteTemplate gRockFragmentSpriteTemplate =
+extern const struct SpriteTemplate gRockFragmentSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCKS,
     .paletteTag = ANIM_TAG_ROCKS,
@@ -74,7 +74,7 @@ const struct SpriteTemplate gRockFragmentSpriteTemplate =
     .callback = AnimRockFragment,
 };
 
-const struct SpriteTemplate gSwirlingDirtSpriteTemplate =
+extern const struct SpriteTemplate gSwirlingDirtSpriteTemplate =
 {
     .tileTag = ANIM_TAG_MUD_SAND,
     .paletteTag = ANIM_TAG_MUD_SAND,
@@ -98,7 +98,7 @@ static const union AffineAnimCmd *const sAffineAnims_Whirlpool[] =
     sAffineAnim_Whirlpool,
 };
 
-const struct SpriteTemplate gWhirlpoolSpriteTemplate =
+extern const struct SpriteTemplate gWhirlpoolSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WATER_ORB,
     .paletteTag = ANIM_TAG_WATER_ORB,
@@ -109,7 +109,7 @@ const struct SpriteTemplate gWhirlpoolSpriteTemplate =
     .callback = AnimParticleInVortex,
 };
 
-const struct SpriteTemplate gFireSpinSpriteTemplate =
+extern const struct SpriteTemplate gFireSpinSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -120,7 +120,7 @@ const struct SpriteTemplate gFireSpinSpriteTemplate =
     .callback = AnimParticleInVortex,
 };
 
-const struct SpriteTemplate gFlyingSandCrescentSpriteTemplate =
+extern const struct SpriteTemplate gFlyingSandCrescentSpriteTemplate =
 {
     .tileTag = ANIM_TAG_FLYING_DIRT,
     .paletteTag = ANIM_TAG_FLYING_DIRT,
@@ -192,7 +192,7 @@ static const union AnimCmd *const sAnims_TwisterRock[] =
     sAnim_TwisterRock_1,
 };
 
-const struct SpriteTemplate gAncientPowerRockSpriteTemplate =
+extern const struct SpriteTemplate gAncientPowerRockSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCKS,
     .paletteTag = ANIM_TAG_ROCKS,
@@ -203,7 +203,7 @@ const struct SpriteTemplate gAncientPowerRockSpriteTemplate =
     .callback = AnimRaiseSprite,
 };
 
-const struct SpriteTemplate gRolloutMudSpriteTemplate =
+extern const struct SpriteTemplate gRolloutMudSpriteTemplate =
 {
     .tileTag = ANIM_TAG_MUD_SAND,
     .paletteTag = ANIM_TAG_MUD_SAND,
@@ -214,7 +214,7 @@ const struct SpriteTemplate gRolloutMudSpriteTemplate =
     .callback = AnimRolloutParticle,
 };
 
-const struct SpriteTemplate gRolloutRockSpriteTemplate =
+extern const struct SpriteTemplate gRolloutRockSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCKS,
     .paletteTag = ANIM_TAG_ROCKS,
@@ -225,7 +225,7 @@ const struct SpriteTemplate gRolloutRockSpriteTemplate =
     .callback = AnimRolloutParticle,
 };
 
-const struct SpriteTemplate gRockTombRockSpriteTemplate =
+extern const struct SpriteTemplate gRockTombRockSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCKS,
     .paletteTag = ANIM_TAG_ROCKS,
@@ -254,7 +254,7 @@ static const union AffineAnimCmd *const sAffineAnims_BasicRock[] =
     sAffineAnim_BasicRock_1,
 };
 
-const struct SpriteTemplate gRockBlastRockSpriteTemplate =
+extern const struct SpriteTemplate gRockBlastRockSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCKS,
     .paletteTag = ANIM_TAG_ROCKS,
@@ -265,7 +265,7 @@ const struct SpriteTemplate gRockBlastRockSpriteTemplate =
     .callback = AnimRockBlastRock,
 };
 
-const struct SpriteTemplate gRockScatterSpriteTemplate =
+extern const struct SpriteTemplate gRockScatterSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCKS,
     .paletteTag = ANIM_TAG_ROCKS,
@@ -276,7 +276,7 @@ const struct SpriteTemplate gRockScatterSpriteTemplate =
     .callback = AnimRockScatter,
 };
 
-const struct SpriteTemplate gTwisterRockSpriteTemplate =
+extern const struct SpriteTemplate gTwisterRockSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCKS,
     .paletteTag = ANIM_TAG_ROCKS,
@@ -287,7 +287,7 @@ const struct SpriteTemplate gTwisterRockSpriteTemplate =
     .callback = AnimMoveTwisterParticle,
 };
 
-const struct SpriteTemplate gWeatherBallRockDownSpriteTemplate =
+extern const struct SpriteTemplate gWeatherBallRockDownSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCKS,
     .paletteTag = ANIM_TAG_ROCKS,
@@ -392,7 +392,7 @@ static void AnimParticleInVortex_Step(struct Sprite *sprite)
     }
 }
 
-void AnimTask_LoadSandstormBackground(u8 taskId)
+extern "C" void AnimTask_LoadSandstormBackground(u8 taskId)
 {
     int var0;
     struct BattleAnimBgData animBg;
@@ -558,7 +558,7 @@ static void AnimRaiseSprite(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-void AnimTask_Rollout(u8 taskId)
+extern "C" void AnimTask_Rollout(u8 taskId)
 {
     u16 var0, var1, var2, var3;
     u8 rolloutCounter;
@@ -817,7 +817,7 @@ static void AnimRockScatter_Step(struct Sprite *sprite)
         DestroyAnimSprite(sprite);
 }
 
-void AnimTask_GetSeismicTossDamageLevel(u8 taskId)
+extern "C" void AnimTask_GetSeismicTossDamageLevel(u8 taskId)
 {
     if (gAnimMoveDmg < 33)
         gBattleAnimArgs[ARG_RET_ID] = 0;
@@ -829,7 +829,7 @@ void AnimTask_GetSeismicTossDamageLevel(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_MoveSeismicTossBg(u8 taskId)
+extern "C" void AnimTask_MoveSeismicTossBg(u8 taskId)
 {
     if (gTasks[taskId].data[0] == 0)
     {
@@ -849,7 +849,7 @@ void AnimTask_MoveSeismicTossBg(u8 taskId)
     gTasks[taskId].data[0]++;
 }
 
-void AnimTask_SeismicTossBgAccelerateDownAtEnd(u8 taskId)
+extern "C" void AnimTask_SeismicTossBgAccelerateDownAtEnd(u8 taskId)
 {
     if (gTasks[taskId].data[0] == 0)
     {

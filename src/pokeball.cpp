@@ -59,7 +59,7 @@ static u16 GetBattlerPokeballItemId(u8 battlerId);
 #define GFX_TAG_LUXURYBALL  55010
 #define GFX_TAG_PREMIERBALL 55011
 
-const struct CompressedSpriteSheet gBallSpriteSheets[POKEBALL_COUNT] =
+extern const struct CompressedSpriteSheet gBallSpriteSheets[POKEBALL_COUNT] =
 {
     {gInterfaceGfx_PokeBall,    384, GFX_TAG_POKEBALL},
     {gInterfaceGfx_GreatBall,   384, GFX_TAG_GREATBALL},
@@ -75,7 +75,7 @@ const struct CompressedSpriteSheet gBallSpriteSheets[POKEBALL_COUNT] =
     {gInterfaceGfx_PremierBall, 384, GFX_TAG_PREMIERBALL},
 };
 
-const struct CompressedSpritePalette gBallSpritePalettes[POKEBALL_COUNT] =
+extern const struct CompressedSpritePalette gBallSpritePalettes[POKEBALL_COUNT] =
 {
     {gInterfacePal_PokeBall,    GFX_TAG_POKEBALL},
     {gInterfacePal_GreatBall,   GFX_TAG_GREATBALL},
@@ -204,7 +204,7 @@ static const union AffineAnimCmd *const sAffineAnim_BallRotate[] =
     [BALL_AFFINE_ANIM_4] = sAffineAnim_BallRotate_4,
 };
 
-const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
+extern const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
 {
     {
         .tileTag = GFX_TAG_POKEBALL,

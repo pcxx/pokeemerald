@@ -54,7 +54,7 @@ static const union AffineAnimCmd *const sAffineAnims_ConfuseRayBallBounce[] =
     sAffineAnim_ConfuseRayBallBounce,
 };
 
-const struct SpriteTemplate gConfuseRayBallBounceSpriteTemplate =
+extern const struct SpriteTemplate gConfuseRayBallBounceSpriteTemplate =
 {
     .tileTag = ANIM_TAG_YELLOW_BALL,
     .paletteTag = ANIM_TAG_YELLOW_BALL,
@@ -65,7 +65,7 @@ const struct SpriteTemplate gConfuseRayBallBounceSpriteTemplate =
     .callback = AnimConfuseRayBallBounce,
 };
 
-const struct SpriteTemplate gConfuseRayBallSpiralSpriteTemplate =
+extern const struct SpriteTemplate gConfuseRayBallSpiralSpriteTemplate =
 {
     .tileTag = ANIM_TAG_YELLOW_BALL,
     .paletteTag = ANIM_TAG_YELLOW_BALL,
@@ -87,7 +87,7 @@ static const union AffineAnimCmd *const sAffineAnims_ShadowBall[] =
     sAffineAnim_ShadowBall,
 };
 
-const struct SpriteTemplate gShadowBallSpriteTemplate =
+extern const struct SpriteTemplate gShadowBallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SHADOW_BALL,
     .paletteTag = ANIM_TAG_SHADOW_BALL,
@@ -113,7 +113,7 @@ static const union AnimCmd *const sAnims_Lick[] =
     sAnim_Lick,
 };
 
-const struct SpriteTemplate gLickSpriteTemplate =
+extern const struct SpriteTemplate gLickSpriteTemplate =
 {
     .tileTag = ANIM_TAG_LICK,
     .paletteTag = ANIM_TAG_LICK,
@@ -136,7 +136,7 @@ static const union AffineAnimCmd *const gUnknown_08596DB4[] =
     gUnknown_08596DA4,
 };
 
-const struct SpriteTemplate gDestinyBondWhiteShadowSpriteTemplate =
+extern const struct SpriteTemplate gDestinyBondWhiteShadowSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WHITE_SHADOW,
     .paletteTag = ANIM_TAG_WHITE_SHADOW,
@@ -147,7 +147,7 @@ const struct SpriteTemplate gDestinyBondWhiteShadowSpriteTemplate =
     .callback = AnimDestinyBondWhiteShadow,
 };
 
-const struct SpriteTemplate gCurseNailSpriteTemplate =
+extern const struct SpriteTemplate gCurseNailSpriteTemplate =
 {
     .tileTag = ANIM_TAG_NAIL,
     .paletteTag = ANIM_TAG_NAIL,
@@ -158,7 +158,7 @@ const struct SpriteTemplate gCurseNailSpriteTemplate =
     .callback = AnimCurseNail,
 };
 
-const struct SpriteTemplate gCurseGhostSpriteTemplate =
+extern const struct SpriteTemplate gCurseGhostSpriteTemplate =
 {
     .tileTag = ANIM_TAG_GHOSTLY_SPIRIT,
     .paletteTag = ANIM_TAG_GHOSTLY_SPIRIT,
@@ -169,7 +169,7 @@ const struct SpriteTemplate gCurseGhostSpriteTemplate =
     .callback = AnimGhostStatusSprite,
 };
 
-const struct SpriteTemplate gNightmareDevilSpriteTemplate =
+extern const struct SpriteTemplate gNightmareDevilSpriteTemplate =
 {
     .tileTag = ANIM_TAG_DEVIL,
     .paletteTag = ANIM_TAG_DEVIL,
@@ -194,7 +194,7 @@ static const union AnimCmd *const sAnims_GrudgeFlame[] =
     sAnim_GrudgeFlame,
 };
 
-const struct SpriteTemplate gGrudgeFlameSpriteTemplate =
+extern const struct SpriteTemplate gGrudgeFlameSpriteTemplate =
 {
     .tileTag = ANIM_TAG_PURPLE_FLAME,
     .paletteTag = ANIM_TAG_PURPLE_FLAME,
@@ -206,7 +206,7 @@ const struct SpriteTemplate gGrudgeFlameSpriteTemplate =
 };
 
 // Unused
-const struct SpriteTemplate gUnknown_08596E48 =
+extern const struct SpriteTemplate gUnknown_08596E48 =
 {
     .tileTag = 0,
     .paletteTag = 0,
@@ -339,7 +339,7 @@ static void AnimConfuseRayBallSpiral_Step(struct Sprite *sprite)
 }
 
 // Creates a large transparent clone of the attacker centered on their position which shrinks to original size
-void AnimTask_NightShadeClone(u8 taskId)
+extern "C" void AnimTask_NightShadeClone(u8 taskId)
 {
     u8 spriteId;
     SetGpuReg(REG_OFFSET_BLDCNT, (BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_ALL));
@@ -516,7 +516,7 @@ static void AnimLick_Step(struct Sprite *sprite)
 }
 
 // Creates a transparent clone of the target which drifts up and away to the side
-void AnimTask_NightmareClone(u8 taskId)
+extern "C" void AnimTask_NightmareClone(u8 taskId)
 {
     struct Task *task;
 
@@ -589,7 +589,7 @@ static void AnimTask_NightmareClone_Step(u8 taskId)
 }
 
 // Creates a blended copy of the target that wavers in front of them
-void AnimTask_SpiteTargetShadow(u8 taskId)
+extern "C" void AnimTask_SpiteTargetShadow(u8 taskId)
 {
     struct Task *task;
 
@@ -794,7 +794,7 @@ static void AnimDestinyBondWhiteShadow_Step(struct Sprite *sprite)
     }
 }
 
-void AnimTask_DestinyBondWhiteShadow(u8 taskId)
+extern "C" void AnimTask_DestinyBondWhiteShadow(u8 taskId)
 {
     struct Task *task;
     s16 battler;
@@ -943,7 +943,7 @@ static void AnimTask_DestinyBondWhiteShadow_Step(u8 taskId)
     }
 }
 
-void AnimTask_CurseStretchingBlackBg(u8 taskId)
+extern "C" void AnimTask_CurseStretchingBlackBg(u8 taskId)
 {
     s16 startX, startY;
     s16 leftDistance, topDistance, bottomDistance, rightDistance;
@@ -1174,7 +1174,7 @@ static void AnimGhostStatusSprite_Step(struct Sprite *sprite)
     DestroyAnimSprite(sprite);
 }
 
-void AnimTask_GrudgeFlames(u8 taskId)
+extern "C" void AnimTask_GrudgeFlames(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 

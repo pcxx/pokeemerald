@@ -38,14 +38,14 @@ static void AnimTask_UpdateSlidingBg(u8);
 static void sub_8117A60(u8);
 static void AnimTask_WaitAndRestoreVisibility(u8);
 
-const u16 gUnknown_08597418 = RGB(31, 31, 31);
+extern const u16 gUnknown_08597418 = RGB(31, 31, 31);
 
 // These belong in battle_intro.c, but there putting them there causes 2 bytes of alignment padding
 // between the two .rodata segments. Perhaps battle_intro.c actually belongs in this file, too.
-const u8 gUnknown_0859741A[] = {REG_OFFSET_BG0CNT, REG_OFFSET_BG1CNT, REG_OFFSET_BG2CNT, REG_OFFSET_BG3CNT};
-const u8 gUnknown_0859741E[] = {REG_OFFSET_BG0CNT, REG_OFFSET_BG1CNT, REG_OFFSET_BG2CNT, REG_OFFSET_BG3CNT};
+extern const u8 gUnknown_0859741A[] = {REG_OFFSET_BG0CNT, REG_OFFSET_BG1CNT, REG_OFFSET_BG2CNT, REG_OFFSET_BG3CNT};
+extern const u8 gUnknown_0859741E[] = {REG_OFFSET_BG0CNT, REG_OFFSET_BG1CNT, REG_OFFSET_BG2CNT, REG_OFFSET_BG3CNT};
 
-void AnimTask_BlendBattleAnimPal(u8 taskId)
+extern "C" void AnimTask_BlendBattleAnimPal(u8 taskId)
 {
     u32 selectedPalettes = UnpackSelectedBattleAnimPalettes(gBattleAnimArgs[0]);
     selectedPalettes |= sub_80A76C4((gBattleAnimArgs[0] >>  7) & 1,
@@ -55,7 +55,7 @@ void AnimTask_BlendBattleAnimPal(u8 taskId)
     StartBlendAnimSpriteColor(taskId, selectedPalettes);
 }
 
-void AnimTask_BlendBattleAnimPalExclude(u8 taskId)
+extern "C" void AnimTask_BlendBattleAnimPalExclude(u8 taskId)
 {
     u8 battler;
     u32 selectedPalettes;
@@ -103,7 +103,7 @@ void AnimTask_BlendBattleAnimPalExclude(u8 taskId)
     StartBlendAnimSpriteColor(taskId, selectedPalettes);
 }
 
-void AnimTask_SetCamouflageBlend(u8 taskId)
+extern "C" void AnimTask_SetCamouflageBlend(u8 taskId)
 {
     u32 selectedPalettes = UnpackSelectedBattleAnimPalettes(gBattleAnimArgs[0]);
     switch (gBattleTerrain)
@@ -143,7 +143,7 @@ void AnimTask_SetCamouflageBlend(u8 taskId)
     StartBlendAnimSpriteColor(taskId, selectedPalettes);
 }
 
-void AnimTask_BlendParticle(u8 taskId)
+extern "C" void AnimTask_BlendParticle(u8 taskId)
 {
     u8 paletteIndex = IndexOfSpritePaletteTag(gBattleAnimArgs[0]);
     u32 selectedPalettes = 1 << (paletteIndex + 16);
@@ -193,7 +193,7 @@ static void AnimTask_BlendSpriteColor_Step2(u8 taskId)
     }
 }
 
-void AnimTask_HardwarePaletteFade(u8 taskId)
+extern "C" void AnimTask_HardwarePaletteFade(u8 taskId)
 {
     BeginHardwarePaletteFade(
         gBattleAnimArgs[0],
@@ -212,7 +212,7 @@ static void AnimTask_HardwarePaletteFade_Step(u8 taskId)
 }
 
 // Used to leave blended traces of a mon, usually to imply speed as in Agility or Aerial Ace
-void AnimTask_TraceMonBlended(u8 taskId)
+extern "C" void AnimTask_TraceMonBlended(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -272,7 +272,7 @@ static void AnimMonTrace(struct Sprite *sprite)
 }
 
 // Only used by Curse for non-Ghost mons
-void AnimTask_DrawFallingWhiteLinesOnAttacker(u8 taskId)
+extern "C" void AnimTask_DrawFallingWhiteLinesOnAttacker(u8 taskId)
 {
     u16 species;
     int spriteId, newSpriteId;
@@ -601,7 +601,7 @@ static void sub_81172EC(u8 taskId)
     }
 }
 
-void AnimTask_Flash(u8 taskId)
+extern "C" void AnimTask_Flash(u8 taskId)
 {
     u32 selectedPalettes = sub_80A76C4(1, 1, 1, 1);
     sub_81175C4(selectedPalettes, 0);
@@ -683,7 +683,7 @@ static void sub_81175C4(u32 selectedPalettes, u16 color)
     }
 }
 
-void AnimTask_BlendNonAttackerPalettes(u8 taskId)
+extern "C" void AnimTask_BlendNonAttackerPalettes(u8 taskId)
 {
     u32 battler;
     int j;
@@ -701,7 +701,7 @@ void AnimTask_BlendNonAttackerPalettes(u8 taskId)
     StartBlendAnimSpriteColor(taskId, selectedPalettes);
 }
 
-void AnimTask_StartSlidingBg(u8 taskId)
+extern "C" void AnimTask_StartSlidingBg(u8 taskId)
 {
     u8 newTaskId;
 
@@ -738,19 +738,19 @@ static void AnimTask_UpdateSlidingBg(u8 taskId)
     }
 }
 
-void AnimTask_GetAttackerSide(u8 taskId)
+extern "C" void AnimTask_GetAttackerSide(u8 taskId)
 {
     gBattleAnimArgs[ARG_RET_ID] = GetBattlerSide(gBattleAnimAttacker);
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_GetTargetSide(u8 taskId)
+extern "C" void AnimTask_GetTargetSide(u8 taskId)
 {
     gBattleAnimArgs[ARG_RET_ID] = GetBattlerSide(gBattleAnimTarget);
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_GetTargetIsAttackerPartner(u8 taskId)
+extern "C" void AnimTask_GetTargetIsAttackerPartner(u8 taskId)
 {
     gBattleAnimArgs[ARG_RET_ID] = BATTLE_PARTNER(gBattleAnimAttacker) == gBattleAnimTarget;
     DestroyAnimVisualTask(taskId);
@@ -759,7 +759,7 @@ void AnimTask_GetTargetIsAttackerPartner(u8 taskId)
 #define tInvisible gBattleAnimArgs[0];
 
 // For hiding or subsequently revealing all other battlers
-void AnimTask_SetAllNonAttackersInvisiblity(u8 taskId)
+extern "C" void AnimTask_SetAllNonAttackersInvisiblity(u8 taskId)
 {
     u16 battler;
 
@@ -902,25 +902,25 @@ static void sub_8117A60(u8 taskId)
     }
 }
 
-void AnimTask_GetBattleTerrain(u8 taskId)
+extern "C" void AnimTask_GetBattleTerrain(u8 taskId)
 {
     gBattleAnimArgs[0] = gBattleTerrain;
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_AllocBackupPalBuffer(u8 taskId)
+extern "C" void AnimTask_AllocBackupPalBuffer(u8 taskId)
 {
     gMonSpritesGfxPtr->buffer = AllocZeroed<u16>(0x1000);
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_FreeBackupPalBuffer(u8 taskId)
+extern "C" void AnimTask_FreeBackupPalBuffer(u8 taskId)
 {
     FREE_AND_SET_NULL(gMonSpritesGfxPtr->buffer);
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_CopyPalUnfadedToBackup(u8 taskId)
+extern "C" void AnimTask_CopyPalUnfadedToBackup(u8 taskId)
 {
     u32 selectedPalettes;
     int paletteIndex = 0;
@@ -947,7 +947,7 @@ void AnimTask_CopyPalUnfadedToBackup(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_CopyPalUnfadedFromBackup(u8 taskId)
+extern "C" void AnimTask_CopyPalUnfadedFromBackup(u8 taskId)
 {
     u32 selectedPalettes;
     int paletteIndex = 0;
@@ -974,7 +974,7 @@ void AnimTask_CopyPalUnfadedFromBackup(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_CopyPalFadedToUnfaded(u8 taskId)
+extern "C" void AnimTask_CopyPalFadedToUnfaded(u8 taskId)
 {
     u32 selectedPalettes;
     int paletteIndex = 0;
@@ -1001,7 +1001,7 @@ void AnimTask_CopyPalFadedToUnfaded(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_IsContest(u8 taskId)
+extern "C" void AnimTask_IsContest(u8 taskId)
 {
     if (IsContest())
         gBattleAnimArgs[ARG_RET_ID] = TRUE;
@@ -1011,14 +1011,14 @@ void AnimTask_IsContest(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_SetAnimAttackerAndTargetForEffectTgt(u8 taskId)
+extern "C" void AnimTask_SetAnimAttackerAndTargetForEffectTgt(u8 taskId)
 {
     gBattleAnimAttacker = gBattlerTarget;
     gBattleAnimTarget = gEffectBattler;
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_IsTargetSameSide(u8 taskId)
+extern "C" void AnimTask_IsTargetSameSide(u8 taskId)
 {
     if (GetBattlerSide(gBattleAnimAttacker) == GetBattlerSide(gBattleAnimTarget))
         gBattleAnimArgs[ARG_RET_ID] = TRUE;
@@ -1028,20 +1028,20 @@ void AnimTask_IsTargetSameSide(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_SetAnimTargetToBattlerTarget(u8 taskId)
+extern "C" void AnimTask_SetAnimTargetToBattlerTarget(u8 taskId)
 {
     gBattleAnimTarget = gBattlerTarget;
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_SetAnimAttackerAndTargetForEffectAtk(u8 taskId)
+extern "C" void AnimTask_SetAnimAttackerAndTargetForEffectAtk(u8 taskId)
 {
     gBattleAnimAttacker = gBattlerAttacker;
     gBattleAnimTarget = gEffectBattler;
     DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_SetAttackerInvisibleWaitForSignal(u8 taskId)
+extern "C" void AnimTask_SetAttackerInvisibleWaitForSignal(u8 taskId)
 {
     if (IsContest())
     {

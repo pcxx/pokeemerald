@@ -101,7 +101,7 @@ const s16 sCeilingCrumblePositions[][3] =
     {-24,  -4,  65},
 };
 
-const struct SpriteSheet gMirageTowerCeilingCrumbleSpriteSheets[] =
+extern const struct SpriteSheet gMirageTowerCeilingCrumbleSpriteSheets[] =
 {
     {sMirageTowerCrumbles_Gfx, 0x0080, 4000},
     {NULL}
@@ -162,7 +162,7 @@ static const struct SpriteTemplate gUnknown_08617E00 =
     0xFFFF, 0xFFFF, &gOamData_8617DF4, gSpriteAnimTable_8617DFC, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy
 };
 
-const struct PulseBlendSettings gMirageTowerPulseBlendSettings = {
+extern const struct PulseBlendSettings gMirageTowerPulseBlendSettings = {
     .blendColor = RGB(27, 25, 16),
     .paletteOffset = 0x61,
     .numColors = 15,

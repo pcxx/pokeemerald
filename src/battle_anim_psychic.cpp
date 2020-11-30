@@ -41,7 +41,7 @@ static const union AffineAnimCmd *const sAffineAnims_PsychUpSpiral[] =
     sAffineAnim_PsychUpSpiral,
 };
 
-const struct SpriteTemplate gPsychUpSpiralSpriteTemplate =
+extern const struct SpriteTemplate gPsychUpSpiralSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPIRAL,
     .paletteTag = ANIM_TAG_SPIRAL,
@@ -52,7 +52,7 @@ const struct SpriteTemplate gPsychUpSpiralSpriteTemplate =
     .callback = AnimSpriteOnMonPos,
 };
 
-const struct SpriteTemplate gLightScreenWallSpriteTemplate =
+extern const struct SpriteTemplate gLightScreenWallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_GREEN_LIGHT_WALL,
     .paletteTag = ANIM_TAG_GREEN_LIGHT_WALL,
@@ -63,7 +63,7 @@ const struct SpriteTemplate gLightScreenWallSpriteTemplate =
     .callback = AnimDefensiveWall,
 };
 
-const struct SpriteTemplate gReflectWallSpriteTemplate =
+extern const struct SpriteTemplate gReflectWallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_BLUE_LIGHT_WALL,
     .paletteTag = ANIM_TAG_BLUE_LIGHT_WALL,
@@ -74,7 +74,7 @@ const struct SpriteTemplate gReflectWallSpriteTemplate =
     .callback = AnimDefensiveWall,
 };
 
-const struct SpriteTemplate gMirrorCoatWallSpriteTemplate =
+extern const struct SpriteTemplate gMirrorCoatWallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_RED_LIGHT_WALL,
     .paletteTag = ANIM_TAG_RED_LIGHT_WALL,
@@ -85,7 +85,7 @@ const struct SpriteTemplate gMirrorCoatWallSpriteTemplate =
     .callback = AnimDefensiveWall,
 };
 
-const struct SpriteTemplate gBarrierWallSpriteTemplate =
+extern const struct SpriteTemplate gBarrierWallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_GRAY_LIGHT_WALL,
     .paletteTag = ANIM_TAG_GRAY_LIGHT_WALL,
@@ -96,7 +96,7 @@ const struct SpriteTemplate gBarrierWallSpriteTemplate =
     .callback = AnimDefensiveWall,
 };
 
-const struct SpriteTemplate gMagicCoatWallSpriteTemplate =
+extern const struct SpriteTemplate gMagicCoatWallSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ORANGE_LIGHT_WALL,
     .paletteTag = ANIM_TAG_ORANGE_LIGHT_WALL,
@@ -122,7 +122,7 @@ static const union AnimCmd *const sAnims_ReflectSparkle[] =
     sAnim_ReflectSparkle,
 };
 
-const struct SpriteTemplate gReflectSparkleSpriteTemplate =
+extern const struct SpriteTemplate gReflectSparkleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARKLE_4,
     .paletteTag = ANIM_TAG_SPARKLE_4,
@@ -147,7 +147,7 @@ static const union AnimCmd *const sAnims_SpecialScreenSparkle[] =
     sAnim_SpecialScreenSparkle,
 };
 
-const struct SpriteTemplate gSpecialScreenSparkleSpriteTemplate =
+extern const struct SpriteTemplate gSpecialScreenSparkleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_SPARKLE_3,
     .paletteTag = ANIM_TAG_SPARKLE_3,
@@ -158,7 +158,7 @@ const struct SpriteTemplate gSpecialScreenSparkleSpriteTemplate =
     .callback = AnimWallSparkle,
 };
 
-const struct SpriteTemplate gGoldRingSpriteTemplate =
+extern const struct SpriteTemplate gGoldRingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_GOLD_RING,
     .paletteTag = ANIM_TAG_GOLD_RING,
@@ -215,7 +215,7 @@ static const union AnimCmd *const sAnims_BentSpoon[] =
     sAnim_BentSpoon_1,
 };
 
-const struct SpriteTemplate gBentSpoonSpriteTemplate =
+extern const struct SpriteTemplate gBentSpoonSpriteTemplate =
 {
     .tileTag = ANIM_TAG_BENT_SPOON,
     .paletteTag = ANIM_TAG_BENT_SPOON,
@@ -257,7 +257,7 @@ static const union AffineAnimCmd *const sAffineAnims_QuestionMark[] =
     sAffineAnim_QuestionMark,
 };
 
-const struct SpriteTemplate gQuestionMarkSpriteTemplate =
+extern const struct SpriteTemplate gQuestionMarkSpriteTemplate =
 {
     .tileTag = ANIM_TAG_AMNESIA,
     .paletteTag = ANIM_TAG_AMNESIA,
@@ -283,7 +283,7 @@ static const union AffineAnimCmd sAffineAnim_Teleport[] =
     AFFINEANIMCMD_END,
 };
 
-const struct SpriteTemplate gImprisonOrbSpriteTemplate =
+extern const struct SpriteTemplate gImprisonOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_HOLLOW_ORB,
     .paletteTag = ANIM_TAG_HOLLOW_ORB,
@@ -294,7 +294,7 @@ const struct SpriteTemplate gImprisonOrbSpriteTemplate =
     .callback = SpriteCallbackDummy,
 };
 
-const struct SpriteTemplate gRedXSpriteTemplate =
+extern const struct SpriteTemplate gRedXSpriteTemplate =
 {
     .tileTag = ANIM_TAG_X_SIGN,
     .paletteTag = ANIM_TAG_X_SIGN,
@@ -347,7 +347,7 @@ static const union AffineAnimCmd *const sAffineAnims_SkillSwapOrb[] =
     sAffineAnim_SkillSwapOrb_3,
 };
 
-const struct SpriteTemplate gSkillSwapOrbSpriteTemplate =
+extern const struct SpriteTemplate gSkillSwapOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_BLUEGREEN_ORB,
     .paletteTag = ANIM_TAG_BLUEGREEN_ORB,
@@ -370,7 +370,7 @@ static const union AffineAnimCmd *const sAffineAnims_LusterPurgeCircle[] =
     sAffineAnim_LusterPurgeCircle,
 };
 
-const struct SpriteTemplate gLusterPurgeCircleSpriteTemplate =
+extern const struct SpriteTemplate gLusterPurgeCircleSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WHITE_CIRCLE_OF_LIGHT,
     .paletteTag = ANIM_TAG_WHITE_CIRCLE_OF_LIGHT,
@@ -408,7 +408,7 @@ static const union AffineAnimCmd *const sAffineAnims_PsychoBoostOrb[] =
     sAffineAnim_PsychoBoostOrb_1,
 };
 
-const struct SpriteTemplate gPsychoBoostOrbSpriteTemplate =
+extern const struct SpriteTemplate gPsychoBoostOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_CIRCLE_OF_LIGHT,
     .paletteTag = ANIM_TAG_CIRCLE_OF_LIGHT,
@@ -689,7 +689,7 @@ static void AnimQuestionMark_Step2(struct Sprite *sprite)
     }
 }
 
-void AnimTask_MeditateStretchAttacker(u8 taskId)
+extern "C" void AnimTask_MeditateStretchAttacker(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
@@ -704,7 +704,7 @@ static void AnimTask_MeditateStretchAttacker_Step(u8 taskId)
         DestroyAnimVisualTask(taskId);
 }
 
-void AnimTask_Teleport(u8 taskId)
+extern "C" void AnimTask_Teleport(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
@@ -745,7 +745,7 @@ static void AnimTask_Teleport_Step(u8 taskId)
     }
 }
 
-void AnimTask_ImprisonOrbs(u8 taskId)
+extern "C" void AnimTask_ImprisonOrbs(u8 taskId)
 {
     u16 var0, var1;
 
@@ -859,7 +859,7 @@ static void AnimRedX(struct Sprite *sprite)
     sprite->callback = sub_810FB60;
 }
 
-void AnimTask_SkillSwap(u8 taskId)
+extern "C" void AnimTask_SkillSwap(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
@@ -951,7 +951,7 @@ static void AnimSkillSwapOrb(struct Sprite *sprite)
 
 // The scanline effect that distorts the target during Extrasensory by segmenting the mon vertically and shifting the slices
 // arg0: Stage. Stage 0 is a slight right distortion, 1 is a medium left distortion, and 2 is a severe right distortion
-void AnimTask_ExtrasensoryDistortion(u8 taskId)
+extern "C" void AnimTask_ExtrasensoryDistortion(u8 taskId)
 {
     s16 i;
     u8 yOffset;
@@ -1051,7 +1051,7 @@ static void AnimTask_ExtrasensoryDistortion_Step(u8 taskId)
 
 // Creates a cloned transparent sprite of the battler that grows and then shrinks back to original size. Used by Extrasensory
 // arg0: battler
-void AnimTask_TransparentCloneGrowAndShrink(u8 taskId)
+extern "C" void AnimTask_TransparentCloneGrowAndShrink(u8 taskId)
 {
     s16 spriteId;
     s16 matrixNum;

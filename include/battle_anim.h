@@ -205,7 +205,7 @@ u8 GetSubstituteSpriteDefault_Y(u8 battlerId);
 void LaunchStatusAnimation(u8 battlerId, u8 statusAnimId);
 
 // battle_anim_ground.c
-void AnimTask_HorizontalShake(u8 taskId);
+extern "C" void AnimTask_HorizontalShake(u8 taskId);
 
 // battle_anim_throw.c
 void TryShinyAnimation(u8 battler, struct Pokemon *mon);
