@@ -16,7 +16,7 @@ union mplayFn
 };
 
 
-mplayFn gMPlayJumpTableTemplate[] =
+extern const mplayFn gMPlayJumpTableTemplate[] =
 {
     ply_fine,
     ply_goto,
