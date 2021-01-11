@@ -17,6 +17,7 @@ u16 (*EraseFlashChip)();
 u16 (*EraseFlashSector)(u16 sectorNum);
 extern const u16 *gFlashMaxTime = NULL;
 
+u8 ReadFlash1(u8 *addr);
 void SetReadFlash1(u16 *dest);
 
 void SwitchFlashBank(u8 bankNum)
@@ -37,11 +38,11 @@ do {                             \
 u16 ReadFlashId(void)
 {
     u16 flashId;
-    u16 readFlash1Buffer[0x20];
-    u8 (*readFlash1)(u8 *);
+    //u16 readFlash1Buffer[0x20];
+    //u8 (*readFlash1)(u8 *);
 
-    SetReadFlash1(readFlash1Buffer);
-    readFlash1 = (u8 (*)(u8 *))((uintptr_t)readFlash1Buffer + 1);
+    //SetReadFlash1(readFlash1Buffer);
+    //readFlash1 = (u8 (*)(u8 *))((uintptr_t)readFlash1Buffer + 1);
 
     // Enter ID mode.
     FLASH_WRITE(0x5555, 0xAA);
@@ -49,8 +50,8 @@ u16 ReadFlashId(void)
     FLASH_WRITE(0x5555, 0x90);
     DELAY();
 
-    flashId = readFlash1(FLASH_BASE + 1) << 8;
-    flashId |= readFlash1(FLASH_BASE);
+    flashId = ReadFlash1(FLASH_BASE + 1) << 8;
+    flashId |= ReadFlash1(FLASH_BASE);
 
     // Leave ID mode.
     FLASH_WRITE(0x5555, 0xAA);

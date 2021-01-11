@@ -392,6 +392,8 @@ static int WriteCommand(u8 value)
         GPIO_PORT_DATA = (temp << 1) | SCK_HI | CS_HI;
     }
 
+    // TODO: is this the proper return value?
+    return 0;
     // control reaches end of non-void function
 }
 
@@ -409,6 +411,8 @@ static int WriteData(u8 value)
         GPIO_PORT_DATA = (temp << 1) | SCK_HI | CS_HI;
     }
 
+    // TODO: is this the proper return value?
+    return 0;
     // control reaches end of non-void function
 }
 

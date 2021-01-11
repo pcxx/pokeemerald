@@ -86,9 +86,9 @@ extern "C" void AgbMain()
 #if MODERN
     // Modern compilers are liberal with the stack on entry to this function,
     // so RegisterRamReset may crash if it resets IWRAM.
-    RegisterRamReset(RESET_ALL & ~RESET_IWRAM);
+    RegisterRamReset(RESET_ALL /*& ~RESET_IWRAM*/);
     // TODO what does this do? replace with actual code
-    /*
+    /**
     asm("mov\tr1, #0xC0\n"
         "\tlsl\tr1, r1, #0x12\n"
         "\tmov r2, #0xFC\n"
@@ -103,7 +103,7 @@ extern "C" void AgbMain()
         "\tcmp\tr1, r2\n"
         "\tbcc\t.LCU0\n"
     );
-    */
+    /**/
 #else
     RegisterRamReset(RESET_ALL);
 #endif //MODERN
